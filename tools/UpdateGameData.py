@@ -808,6 +808,7 @@ def main(argv: list[str] | None = None) -> int:
             version,
             "--texture-quality",
             str(args.web_texture_quality),
+            "--force-textures",
         ]
         if args.archive_json_root is not None:
             avatar_cmd.extend(["--archive-json-root", str(args.archive_json_root)])

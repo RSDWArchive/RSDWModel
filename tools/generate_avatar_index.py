@@ -178,7 +178,7 @@ def _build_palettes(source_root: Path, archive_json_root: Path | None) -> dict[s
     hair_fallbacks = ["#2E2118", "#5B3824", "#8A5632", "#B27A45", "#D6B06A", "#A33D2D", "#D7D7D3", "#1D1B1C", "#6C5D48"]
     eye_fallbacks = ["#5C3923", "#2E6A54", "#3D6D9F", "#6E8A3A", "#8B6B38", "#737373", "#6B4A8A", "#A4462E"]
     return {
-        "skin": _sample_skin_palette(source_root),
+        "skin": [ColorOption("skinOriginal", "Original", "#D8A58E", _color_from_hex("#D8A58E"))] + _sample_skin_palette(source_root),
         "hair": _curve_palette(
             archive_json_root,
             "RSDragonwilds/Content/Materials/Character/CurveAtlases/HairColourCurves",
@@ -306,10 +306,7 @@ def _colorize_image(img: Image.Image, color: tuple[int, int, int], role: str) ->
     rgba = img.convert("RGBA")
     gray = rgba.convert("L")
     if role == "skin":
-        low = tuple(_clamp_byte(c * 0.42) for c in color)
-        high = tuple(_clamp_byte(255 - (255 - c) * 0.22) for c in color)
-        tinted = Image.merge("RGBA", (*ImageOps_colorize(gray, low, high).split(), rgba.getchannel("A")))
-        return Image.blend(rgba, tinted, 0.58)
+        return _skin_tint_image(rgba, color)
     if role == "eyes":
         # Tint only saturated/non-white pixels so sclera stays readable.
         pixels = rgba.load()
@@ -344,6 +341,51 @@ def _colorize_image(img: Image.Image, color: tuple[int, int, int], role: str) ->
     return tinted
 
 
+def _skin_tint_image(rgba: Image.Image, color: tuple[int, int, int]) -> Image.Image:
+    try:
+        import numpy as np
+    except Exception:
+        low = tuple(_clamp_byte(c * 0.42) for c in color)
+        high = tuple(_clamp_byte(255 - (255 - c) * 0.22) for c in color)
+        gray = rgba.convert("L")
+        tinted = Image.merge("RGBA", (*ImageOps_colorize(gray, low, high).split(), rgba.getchannel("A")))
+        return Image.blend(rgba, tinted, 0.58)
+
+    arr = np.asarray(rgba).astype(np.float32)
+    rgb = arr[:, :, :3]
+    alpha = arr[:, :, 3:4]
+    r = rgb[:, :, 0]
+    g = rgb[:, :, 1]
+    b = rgb[:, :, 2]
+    mx = np.maximum.reduce([r, g, b])
+    mn = np.minimum.reduce([r, g, b])
+    sat = np.divide(mx - mn, np.maximum(mx, 1.0))
+
+    # The player body texture includes fabric and shadowed areas. Weight only
+    # warm skin-like pixels so color swatches do not recolor underwear/details.
+    warm_rg = np.clip((r - g * 0.82) / 52.0, 0.0, 1.0)
+    warm_gb = np.clip((g - b * 0.76 + 8.0) / 44.0, 0.0, 1.0)
+    red_blue = np.clip((r - b - 4.0) / 64.0, 0.0, 1.0)
+    bright = np.clip((mx - 45.0) / 120.0, 0.0, 1.0)
+    not_gray = np.clip((sat - 0.035) / 0.22, 0.0, 1.0)
+    weight = warm_rg * warm_gb * red_blue * bright
+    weight = np.maximum(weight, np.minimum(weight, not_gray * warm_rg * red_blue * 0.65))
+    weight = np.where(alpha[:, :, 0] > 0, weight, 0.0)
+
+    if float(weight.max()) <= 0.0:
+        return rgba.copy()
+
+    lum = rgb[:, :, 0] * 0.2126 + rgb[:, :, 1] * 0.7152 + rgb[:, :, 2] * 0.0722
+    avg_lum = float((lum * weight).sum() / max(float(weight.sum()), 1.0))
+    shade = np.clip(lum / max(avg_lum, 1.0), 0.35, 1.85)
+    target = np.array(color, dtype=np.float32)
+    tinted = np.clip(shade[:, :, None] * target[None, None, :], 0, 255)
+    blend = np.clip(weight * 0.92, 0.0, 0.92)[:, :, None]
+    out_rgb = rgb * (1.0 - blend) + tinted * blend
+    out = np.concatenate([out_rgb, alpha], axis=2).clip(0, 255).astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
+
+
 def ImageOps_colorize(gray: Image.Image, black: tuple[int, int, int], white: tuple[int, int, int]) -> Image.Image:
     # Tiny wrapper keeps the import list obvious for generated environments.
     from PIL import ImageOps
@@ -359,6 +401,7 @@ def _save_variant(
     color: ColorOption,
     quality: int,
     cache: dict[tuple[str, str, str], str],
+    force: bool,
 ) -> str | None:
     key = (source_rel, role, color.id)
     if key in cache:
@@ -369,7 +412,7 @@ def _save_variant(
     out_rel = f"avatar/textures/{role}/{_asset_hash(source_rel)}/{color.id}.webp"
     out_abs = webassets_root / Path(out_rel)
     out_abs.parent.mkdir(parents=True, exist_ok=True)
-    if not out_abs.is_file():
+    if force or not out_abs.is_file():
         img = Image.open(source_abs)
         baked = _colorize_image(img, color.rgb, role)
         baked.save(out_abs, "WEBP", quality=quality, method=6)
@@ -385,6 +428,7 @@ def _material_variants(
     palettes: dict[str, list[ColorOption]],
     quality: int,
     cache: dict[tuple[str, str, str], str],
+    force_textures: bool,
 ) -> dict[str, dict[str, dict[str, str]]]:
     gltf_abs = webassets_root / Path(gltf_rel)
     if not gltf_abs.is_file():
@@ -407,6 +451,8 @@ def _material_variants(
             continue
         role_variants: dict[str, str] = {}
         for color in palettes.get(role, []):
+            if color.id == "skinOriginal":
+                continue
             variant_rel = _save_variant(
                 webassets_root=webassets_root,
                 source_rel=source_rel,
@@ -414,6 +460,7 @@ def _material_variants(
                 color=color,
                 quality=quality,
                 cache=cache,
+                force=force_textures,
             )
             if variant_rel:
                 role_variants[color.id] = variant_rel
@@ -429,6 +476,7 @@ def _candidate_rows(
     model_index: dict,
     palettes: dict[str, list[ColorOption]],
     quality: int,
+    force_textures: bool,
 ) -> dict[str, list[dict]]:
     slots = {key: [] for key in ("baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape")}
     variant_cache: dict[tuple[str, str, str], str] = {}
@@ -462,6 +510,7 @@ def _candidate_rows(
                 palettes=palettes,
                 quality=quality,
                 cache=variant_cache,
+                force_textures=force_textures,
             ),
         }
         slots[slot].append(row)
@@ -495,6 +544,7 @@ def build_avatar_index(
     output_path: Path,
     archive_json_root: Path | None,
     texture_quality: int,
+    force_textures: bool,
 ) -> dict:
     source_root = repo_root / dataset_version
     webassets_root = source_root / "WebAssets"
@@ -506,6 +556,7 @@ def build_avatar_index(
         model_index=model_index,
         palettes=palettes,
         quality=texture_quality,
+        force_textures=force_textures,
     )
 
     out = {
@@ -516,6 +567,7 @@ def build_avatar_index(
         "sourceWebAssets": f"{dataset_version}/WebAssets",
         "defaults": {
             "sex": "M_MED",
+            "bodyVisible": True,
             "slots": {
                 "baseBody": _default_for(slots, "baseBody", "SK_M_MED_Body_A_01"),
                 "baseHead": _default_for(slots, "baseHead", "SK_M_MED_Head_A_01"),
@@ -527,7 +579,7 @@ def build_avatar_index(
                 "cape": None,
             },
             "colors": {
-                "skin": palettes["skin"][7].id if len(palettes["skin"]) > 7 else palettes["skin"][0].id,
+                "skin": palettes["skin"][0].id,
                 "hair": palettes["hair"][0].id,
                 "eyes": palettes["eyes"][0].id,
             },
@@ -548,6 +600,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--archive-json-root", type=Path, default=None)
     parser.add_argument("--texture-quality", type=int, default=75)
+    parser.add_argument("--force-textures", action="store_true", help="Rewrite existing generated avatar texture variants.")
     args = parser.parse_args(argv)
 
     repo = args.repo_root.resolve()
@@ -567,6 +620,7 @@ def main(argv: list[str] | None = None) -> int:
         output_path=output.resolve(),
         archive_json_root=archive_json_root.resolve() if archive_json_root else None,
         texture_quality=args.texture_quality,
+        force_textures=args.force_textures,
     )
     print(f"wrote avatar index to {output}")
     print("slot counts:")

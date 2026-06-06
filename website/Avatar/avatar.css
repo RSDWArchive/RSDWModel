@@ -110,6 +110,22 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+  color: var(--rsdw-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.toggle-row input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--rsdw-accent);
+}
+
 .slot-grid {
   display: grid;
   gap: 0.7rem;

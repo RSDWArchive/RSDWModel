@@ -37,6 +37,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     openModel: document.getElementById("open-current-model"),
     sexM: document.getElementById("sex-m"),
     sexF: document.getElementById("sex-f"),
+    bodyVisible: document.getElementById("body-visible"),
     slotControls: Object.fromEntries(SLOT_ORDER.map((slot) => [slot, document.getElementById(`slot-${slot}`)])),
     swatches: {
       skin: document.getElementById("skin-swatches"),
@@ -55,6 +56,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   let controls = null;
   let avatarRoot = null;
   let loader = null;
+  let hasFitCamera = false;
   const gltfCache = new Map();
   const textureCache = new Map();
   const activeObjects = new Map();
@@ -157,6 +159,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       sex: defaults.sex || "M_MED",
       slots: { ...(defaults.slots || {}) },
       colors: { ...(defaults.colors || {}) },
+      bodyVisible: defaults.bodyVisible !== false,
     };
   }
 
@@ -166,6 +169,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     const next = defaultState();
     const sex = params.get("sex");
     if (sex === "M_MED" || sex === "F_MED") next.sex = sex;
+    if (params.get("bodyVisible") === "0" || params.get("bodyVisible") === "false") {
+      next.bodyVisible = false;
+    }
     for (const slot of SLOT_ORDER) {
       if (params.has(slot)) {
         const value = params.get(slot);
@@ -193,6 +199,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     for (const role of COLOR_ROLES) {
       if (state.colors[role]) params.set(COLOR_HASH_KEYS[role], state.colors[role]);
     }
+    if (!state.bodyVisible) params.set("bodyVisible", "0");
     window.history.replaceState(null, "", `#${params.toString()}`);
   }
 
@@ -247,6 +254,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function renderControls() {
     els.sexM.classList.toggle("is-active", state.sex === "M_MED");
     els.sexF.classList.toggle("is-active", state.sex === "F_MED");
+    els.bodyVisible.checked = state.bodyVisible;
     for (const slot of SLOT_ORDER) fillSlotSelect(slot);
     for (const role of COLOR_ROLES) {
       const container = els.swatches[role];
@@ -409,7 +417,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   }
 
   function selectedRows() {
-    return SLOT_ORDER.map((slot) => [slot, rowById(state.slots[slot])]).filter(([, row]) => row);
+    return SLOT_ORDER
+      .filter((slot) => slot !== "baseBody" || state.bodyVisible)
+      .map((slot) => [slot, rowById(state.slots[slot])])
+      .filter(([, row]) => row);
   }
 
   function fitCamera() {
@@ -437,6 +448,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     const parts = selectedRows()
       .map(([slot, row]) => `${slot.replace("base", "")}: ${row.label}`)
       .slice(0, 5);
+    if (!state.bodyVisible) parts.unshift("Body: hidden");
     els.summary.textContent = parts.join(" | ") || "Default loadout";
   }
 
@@ -448,11 +460,15 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     updateSummary();
     try {
       const rows = selectedRows();
+      const visibleSlots = new Set(rows.map(([slot]) => slot));
       await Promise.all(rows.map(([slot, row]) => loadSlot(slot, row)));
       for (const slot of SLOT_ORDER) {
-        if (!state.slots[slot]) await loadSlot(slot, null);
+        if (!visibleSlots.has(slot)) await loadSlot(slot, null);
       }
-      fitCamera();
+      if (!hasFitCamera) {
+        fitCamera();
+        hasFitCamera = true;
+      }
       els.status.textContent = `${rows.length} layered model${rows.length === 1 ? "" : "s"}.`;
       els.resetView.disabled = false;
       els.screenshot.disabled = false;
@@ -500,7 +516,14 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       });
     }
 
-    els.resetView.addEventListener("click", fitCamera);
+    els.bodyVisible.addEventListener("change", () => {
+      state.bodyVisible = els.bodyVisible.checked;
+      updateAvatar();
+    });
+    els.resetView.addEventListener("click", () => {
+      fitCamera();
+      hasFitCamera = true;
+    });
     els.screenshot.addEventListener("click", () => {
       renderer.domElement.toBlob((blob) => {
         if (!blob) return;

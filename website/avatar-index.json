@@ -1,11 +1,12 @@
 {
   "schema": "RSDWModel.WebsiteAvatarIndex.v1",
   "datasetVersion": "0.11.2.2",
-  "generatedUtc": "2026-06-06T09:06:03.629156+00:00",
+  "generatedUtc": "2026-06-06T09:33:15.045660+00:00",
   "sourceModelIndex": "website/model-index.json",
   "sourceWebAssets": "0.11.2.2/WebAssets",
   "defaults": {
     "sex": "M_MED",
+    "bodyVisible": true,
     "slots": {
       "baseBody": "SK:RSDragonwilds/Content/Art/Skeleton/Player/Body/M_MED_Body_A_01/SK_M_MED_Body_A_01.uemodel",
       "baseHead": "SK:RSDragonwilds/Content/Art/Skeleton/Player/Heads/M_MED_Head_A_01/SK_M_MED_Head_A_01.uemodel",
@@ -17,13 +18,18 @@
       "cape": null
     },
     "colors": {
-      "skin": "skin08",
+      "skin": "skinOriginal",
       "hair": "hair01",
       "eyes": "eye01"
     }
   },
   "colors": {
     "skin": [
+      {
+        "id": "skinOriginal",
+        "label": "Original",
+        "hex": "#D8A58E"
+      },
       {
         "id": "skin01",
         "label": "Skin 1",
