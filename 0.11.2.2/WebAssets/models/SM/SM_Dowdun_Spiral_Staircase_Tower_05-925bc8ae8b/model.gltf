@@ -1,0 +1,161 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Dowdun_Spiral_Staircase_Tower_05_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MT_DR_BrickWall_04",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Dowdun_Spiral_Staircase_Tower_05_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "b2489adece9fb2b859918203.webp",
+      "uri": "../../../textures/webp_1024/b2489adece9fb2b859918203.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 51,
+      "max": [
+        2.2828285694122314,
+        1.4836920172456303e-06,
+        2.2828426361083984
+      ],
+      "min": [
+        -2.282844305038452,
+        -1.99625825881958,
+        -2.282830238342285
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 51,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 51,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 51,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 51,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 147,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 552,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 552,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Dragonfly_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "MI_VFX_Dragonfly",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Dragonfly_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "COLOR_0": 4,
+            "COLOR_1": 5
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "COLOR_0": 4,
+                "COLOR_1": 5
+              }
+            }
+          },
+          "indices": 6,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "fb090d33e9f67556376bac83.webp",
+      "uri": "../../../textures/webp_1024/fb090d33e9f67556376bac83.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 104,
+      "max": [
+        0.05755505710840225,
+        0.0084059564396739,
+        0.07317928969860077
+      ],
+      "min": [
+        -0.1043267697095871,
+        -0.013782279565930367,
+        -0.07317804545164108
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 104,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 104,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 104,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 104,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 104,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 228,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1929,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1932,
+      "uri": "model.bin"
+    }
+  ]
+}

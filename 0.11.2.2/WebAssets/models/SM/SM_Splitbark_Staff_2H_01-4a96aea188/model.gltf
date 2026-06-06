@@ -1,0 +1,197 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Splitbark_Staff_2H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Splitbark_Staff_2H_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Splitbark_Staff_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "be8bb8781bc9a4965e24a4d8.webp",
+      "uri": "../../../textures/webp_1024/be8bb8781bc9a4965e24a4d8.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "4cda1a24c035ee9bf91fb2dc.webp",
+      "uri": "../../../textures/webp_1024/4cda1a24c035ee9bf91fb2dc.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "66761ecefa13bec92e8c8bae.webp",
+      "uri": "../../../textures/webp_1024/66761ecefa13bec92e8c8bae.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "b99c8459d541b901f3f5170d.webp",
+      "uri": "../../../textures/webp_1024/b99c8459d541b901f3f5170d.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1402,
+      "max": [
+        0.22817915678024292,
+        0.962870717048645,
+        0.09650290757417679
+      ],
+      "min": [
+        -0.2618466317653656,
+        -1.2978421449661255,
+        -0.04733039438724518
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1402,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1402,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1402,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 7320,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13421,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 13424,
+      "uri": "model.bin"
+    }
+  ]
+}

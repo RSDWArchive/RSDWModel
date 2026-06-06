@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_CandleStand02_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_CandleStand01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_CandleStand02_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "927e3e5f185b2cd9036d8379.webp",
+      "uri": "../../../textures/webp_1024/927e3e5f185b2cd9036d8379.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ff8081d8d4fec95f98945af8.webp",
+      "uri": "../../../textures/webp_1024/ff8081d8d4fec95f98945af8.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "09e8b605fe18c031a7d1466f.webp",
+      "uri": "../../../textures/webp_1024/09e8b605fe18c031a7d1466f.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 7852,
+      "max": [
+        1.0079108476638794,
+        2.243058681488037,
+        0.8868324756622314
+      ],
+      "min": [
+        -0.5281281471252441,
+        -0.002140960656106472,
+        -0.8868324160575867
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 7852,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 7852,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 7852,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 25074,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 61939,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 61940,
+      "uri": "model.bin"
+    }
+  ]
+}

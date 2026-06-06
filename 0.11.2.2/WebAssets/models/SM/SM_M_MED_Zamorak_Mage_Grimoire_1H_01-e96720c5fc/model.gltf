@@ -1,0 +1,175 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_M_MED_Zamorak_Mage_Grimoire_1H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "WorldGridMaterial",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_M_MED_Zamorak_Mage_Grimoire_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "d44b9e8ccbd0a69a2b896183.webp",
+      "uri": "../../../textures/webp_1024/d44b9e8ccbd0a69a2b896183.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "216c430d12ca2a764a31415c.webp",
+      "uri": "../../../textures/webp_1024/216c430d12ca2a764a31415c.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "26a94345722c3d8ffa3e03b5.webp",
+      "uri": "../../../textures/webp_1024/26a94345722c3d8ffa3e03b5.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 2495,
+      "max": [
+        0.21688327193260193,
+        0.1000339612364769,
+        0.11729052662849426
+      ],
+      "min": [
+        -0.2129906415939331,
+        -0.022952821105718613,
+        -0.126240536570549
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2495,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2495,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 2495,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 4188,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 24902,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 24904,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Longbow_OakWood_2H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Longbow_OakWood",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Longbow_OakWood_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "7408ddea23032c83d8d44d55.webp",
+      "uri": "../../../textures/webp_1024/7408ddea23032c83d8d44d55.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "cbadb51d36b99ef1d7d8387e.webp",
+      "uri": "../../../textures/webp_1024/cbadb51d36b99ef1d7d8387e.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "e500f5327d0e6cf4a6592795.webp",
+      "uri": "../../../textures/webp_1024/e500f5327d0e6cf4a6592795.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1459,
+      "max": [
+        0.18393337726593018,
+        0.9151974320411682,
+        0.04143096134066582
+      ],
+      "min": [
+        -0.09897825121879578,
+        -0.9106339812278748,
+        -0.041488055139780045
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1459,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1459,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1459,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 6867,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 14369,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 14372,
+      "uri": "model.bin"
+    }
+  ]
+}

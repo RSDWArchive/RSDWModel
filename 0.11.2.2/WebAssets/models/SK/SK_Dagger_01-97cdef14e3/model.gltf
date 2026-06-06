@@ -1,0 +1,411 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "KHR_materials_specular"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Dagger_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Dagger_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.3840000033378601
+        }
+      },
+      "name": "MI_Leather",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08854199945926666,
+          0.04814299941062927,
+          0.022135000675916672,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "name": "MI_Blade",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.12562499940395355,
+          0.14120499789714813,
+          0.15625,
+          1
+        ],
+        "roughnessFactor": 0.20000000298023224
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "name": "MI_Steel",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.3766869902610779,
+          0.42821401357650757,
+          0.4375,
+          1
+        ],
+        "roughnessFactor": 0.2680000066757202
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Dagger_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "JOINTS_0": 9,
+            "WEIGHTS_0": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 12,
+            "NORMAL": 13,
+            "TEXCOORD_0": 14,
+            "JOINTS_0": 15,
+            "WEIGHTS_0": 16
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 17,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 18,
+            "NORMAL": 19,
+            "TEXCOORD_0": 20,
+            "JOINTS_0": 21,
+            "WEIGHTS_0": 22
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 3,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 23,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 24,
+      "joints": [
+        0
+      ],
+      "name": "SK_Dagger_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 56,
+      "max": [
+        0.02279765158891678,
+        0.09455505013465881,
+        0.023142630234360695
+      ],
+      "min": [
+        -0.02278512716293335,
+        -0.0612281896173954,
+        -0.023143334314227104
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 56,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 108,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 16,
+      "max": [
+        0.025215046480298042,
+        0.10092860460281372,
+        0.010371528565883636
+      ],
+      "min": [
+        -0.023785602301359177,
+        0.10092860460281372,
+        -0.010371526703238487
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 16,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 54,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        0.025215046480298042,
+        0.442576140165329,
+        0.010371528565883636
+      ],
+      "min": [
+        -0.023785602301359177,
+        0.10092860460281372,
+        -0.010371526703238487
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 96,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 96,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 96,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 96,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 342,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 210,
+      "max": [
+        0.0799502357840538,
+        0.10121192783117294,
+        0.0326802022755146
+      ],
+      "min": [
+        -0.07870227098464966,
+        -0.11916251480579376,
+        -0.032680217176675797
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 210,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 210,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 210,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 210,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 720,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 689,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 374,
+      "byteOffset": 692
+    },
+    {
+      "buffer": 0,
+      "byteLength": 987,
+      "byteOffset": 1068
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2019,
+      "byteOffset": 2056
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 4076
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4140,
+      "uri": "model.bin"
+    }
+  ]
+}

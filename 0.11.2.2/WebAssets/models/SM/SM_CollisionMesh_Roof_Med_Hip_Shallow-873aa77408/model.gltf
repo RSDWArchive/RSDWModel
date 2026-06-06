@@ -1,0 +1,117 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_CollisionMesh_Roof_Med_Hip_Shallow_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "lambert1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.20104199647903442,
+          0.1954140067100525,
+          0.1673250049352646,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_CollisionMesh_Roof_Med_Hip_Shallow_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 50,
+      "max": [
+        0.899655818939209,
+        0.5624050498008728,
+        0.899655818939209
+      ],
+      "min": [
+        -0.7500557899475098,
+        -0.5623050332069397,
+        -0.7500557899475098
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 50,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 50,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 54,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 591,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 592,
+      "uri": "model.bin"
+    }
+  ]
+}

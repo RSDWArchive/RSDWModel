@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_DummyShield_1H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DummyShield_1H_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_DummyShield_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "55ec07ba95075fcb7f55fe93.webp",
+      "uri": "../../../textures/webp_1024/55ec07ba95075fcb7f55fe93.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "f230a9f5488c9bec21ed33f7.webp",
+      "uri": "../../../textures/webp_1024/f230a9f5488c9bec21ed33f7.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "11b23be93234c8a2d2df3452.webp",
+      "uri": "../../../textures/webp_1024/11b23be93234c8a2d2df3452.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 485,
+      "max": [
+        0.23569732904434204,
+        0.2368660420179367,
+        0.11703863739967346
+      ],
+      "min": [
+        -0.13961990177631378,
+        -0.2606106996536255,
+        -0.020095936954021454
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 485,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 485,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 485,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2484,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6020,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6020,
+      "uri": "model.bin"
+    }
+  ]
+}

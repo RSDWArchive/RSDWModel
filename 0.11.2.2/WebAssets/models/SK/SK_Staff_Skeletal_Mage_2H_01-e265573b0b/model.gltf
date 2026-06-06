@@ -1,0 +1,241 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Staff_Skeletal_Mage_2H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Staff_Skeletal_Mage_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Staff_Skeletal_Mage_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Staff_Skeletal_Mage_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "119897fd2fac1ede94c6e344.webp",
+      "uri": "../../../textures/webp_1024/119897fd2fac1ede94c6e344.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "c5bae9c5c5acb9595605ee89.webp",
+      "uri": "../../../textures/webp_1024/c5bae9c5c5acb9595605ee89.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "105f758ef57fbf98217fbc8a.webp",
+      "uri": "../../../textures/webp_1024/105f758ef57fbf98217fbc8a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "cbaa8dc027c22bb679e8e258.webp",
+      "uri": "../../../textures/webp_1024/cbaa8dc027c22bb679e8e258.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_Staff_Skeletal_Mage_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1391,
+      "max": [
+        0.10518747568130493,
+        0.8620109558105469,
+        0.09208165854215622
+      ],
+      "min": [
+        -0.08406355232000351,
+        -1.2679862976074219,
+        -0.07170864939689636
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1391,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1391,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1391,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1391,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 7482,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 10257,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 10260
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 10324,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_WiseOldMan_Staff_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_WiseOldMan_Staff_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_WiseOldMan_Staff_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_WiseOldMan_Staff_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "060923ddb33ebe94bb428a66.webp",
+      "uri": "../../../textures/webp_1024/060923ddb33ebe94bb428a66.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "2790df927eeb756b35db1d4b.webp",
+      "uri": "../../../textures/webp_1024/2790df927eeb756b35db1d4b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7e835c7116961301e429340c.webp",
+      "uri": "../../../textures/webp_1024/7e835c7116961301e429340c.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_WiseOldMan_Staff_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1527,
+      "max": [
+        0.1380038559436798,
+        0.8798844218254089,
+        0.13816596567630768
+      ],
+      "min": [
+        -0.1371428370475769,
+        -1.286319375038147,
+        -0.13816596567630768
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1527,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1527,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1527,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1527,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 6888,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 11338,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 11340
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 11404,
+      "uri": "model.bin"
+    }
+  ]
+}

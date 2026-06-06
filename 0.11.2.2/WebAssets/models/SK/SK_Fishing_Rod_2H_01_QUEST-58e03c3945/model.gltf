@@ -1,0 +1,314 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        8
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Rod_Spine_05",
+      "translation": [
+        0.5469999313354492,
+        0,
+        7.993605777301127e-15
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "Rod_Spine_04",
+      "translation": [
+        0.5469999313354492,
+        0,
+        8.881784197001252e-16
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "Rod_Spine_03",
+      "translation": [
+        0.546999990940094,
+        0,
+        2.6645352591003757e-15
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "Rod_Spine_02",
+      "translation": [
+        0.546999990940094,
+        -3.725290298461914e-09,
+        1.7763568394002505e-15
+      ]
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "Rod_Spine_01",
+      "rotation": [
+        -0.5,
+        -0.5,
+        -0.5,
+        0.5
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0.20943963527679443
+      ]
+    },
+    {
+      "name": "Rod_Reel",
+      "rotation": [
+        -0.7071067690849304,
+        -0.7071067690849304,
+        -5.338507591545749e-08,
+        5.338507591545749e-08
+      ],
+      "translation": [
+        -0.1063566654920578,
+        0,
+        0.20948806405067444
+      ]
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Fishing_Rod_2H_01_QUEST_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        7,
+        6
+      ],
+      "name": "SK_Fishing_Rod_2H_01_QUEST_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Fishing_Rod_2H_01_QUEST",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Fishing_Rod_2H_01_QUEST_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "JOINTS_0": 4,
+            "WEIGHTS_0": 5
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "JOINTS_0": 4,
+                "WEIGHTS_0": 5
+              }
+            }
+          },
+          "indices": 6,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "41a84920498b93d4c4685bd2.webp",
+      "uri": "../../../textures/webp_1024/41a84920498b93d4c4685bd2.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "8341dd5b224f2675997ae610.webp",
+      "uri": "../../../textures/webp_1024/8341dd5b224f2675997ae610.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "44ac0c53bc6a1b1e6834e605.webp",
+      "uri": "../../../textures/webp_1024/44ac0c53bc6a1b1e6834e605.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 7,
+      "joints": [
+        6,
+        4,
+        3,
+        2,
+        1,
+        0,
+        5
+      ],
+      "name": "SK_Fishing_Rod_2H_01_QUEST_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 3292,
+      "max": [
+        0.032132551074028015,
+        2.4211597442626953,
+        0.06249013915657997
+      ],
+      "min": [
+        -0.18497410416603088,
+        -0.2678774297237396,
+        -0.11554017663002014
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3292,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3292,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 3292,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 3292,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 3292,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 13392,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 7,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 27477,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 448,
+      "byteOffset": 27480
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 27928,
+      "uri": "model.bin"
+    }
+  ]
+}

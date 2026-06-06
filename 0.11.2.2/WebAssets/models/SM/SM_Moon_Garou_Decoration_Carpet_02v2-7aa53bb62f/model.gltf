@@ -1,0 +1,117 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Moon_Garou_Decoration_Carpet_02v2_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MI_Proxy",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.20104199647903442,
+          0.1954140067100525,
+          0.1673250049352646,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Moon_Garou_Decoration_Carpet_02v2_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 447,
+      "max": [
+        0.7371909618377686,
+        0.3645828366279602,
+        0.6956650018692017
+      ],
+      "min": [
+        -0.7252508401870728,
+        -0.03650733456015587,
+        -0.4323786199092865
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 447,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 447,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2196,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4131,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4132,
+      "uri": "model.bin"
+    }
+  ]
+}

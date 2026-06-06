@@ -1,0 +1,199 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Fracture_Thick_Plate_04_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MI_Standard_Black",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.03999999910593033,
+          0.03999999910593033,
+          0.03999999910593033,
+          1
+        ],
+        "metallicFactor": 0
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Fracture_Thick_Plate_04_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "TEXCOORD_1": 9,
+            "TEXCOORD_2": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1215,
+      "max": [
+        29.00311279296875,
+        18.8471622467041,
+        24.840538024902344
+      ],
+      "min": [
+        -29.003101348876953,
+        0.5528417825698853,
+        -24.840551376342773
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1215,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1215,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1215,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1215,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 1239,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 43,
+      "max": [
+        28.11431121826172,
+        18.8471622467041,
+        24.529193878173828
+      ],
+      "min": [
+        -29.003101348876953,
+        18.397340774536133,
+        -23.0718936920166
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 43,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 43,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 43,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 43,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 123,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 15850,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 939,
+      "byteOffset": 15852
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 16792,
+      "uri": "model.bin"
+    }
+  ]
+}

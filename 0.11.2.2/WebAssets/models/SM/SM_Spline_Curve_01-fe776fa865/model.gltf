@@ -1,0 +1,123 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Spline_Curve_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MI_DR_Spline_Inst",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "BLEND"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Spline_Curve_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 52,
+      "max": [
+        2.044497489929199,
+        1.231273889541626,
+        1.4098467826843262
+      ],
+      "min": [
+        -1.5642238855361938,
+        -0.2900869846343994,
+        -6.019676685333252
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 52,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 150,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 504,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 504,
+      "uri": "model.bin"
+    }
+  ]
+}

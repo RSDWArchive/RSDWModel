@@ -1,0 +1,183 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_God_Statue_Base_01v1_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_God_Statue_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_God_Statue_Base_01v1_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "a06244708548013464deb46b.webp",
+      "uri": "../../../textures/webp_1024/a06244708548013464deb46b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5ea75f4531c655b75f1088fa.webp",
+      "uri": "../../../textures/webp_1024/5ea75f4531c655b75f1088fa.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "2944c5a723d8252a16931ddd.webp",
+      "uri": "../../../textures/webp_1024/2944c5a723d8252a16931ddd.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 562,
+      "max": [
+        0.7265069484710693,
+        1.404868721961975,
+        0.7220107316970825
+      ],
+      "min": [
+        -0.723832368850708,
+        -0.007958769798278809,
+        -0.7246065735816956
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 562,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 562,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 562,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2004,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7026,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7028,
+      "uri": "model.bin"
+    }
+  ]
+}

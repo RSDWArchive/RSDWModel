@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Moon_Garou_Banner_01v1_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MI_Proxy",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.20104199647903442,
+          0.1954140067100525,
+          0.1673250049352646,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Moon_Garou_Banner_01v1_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 2289,
+      "max": [
+        0.7290651202201843,
+        10.064189910888672,
+        0.22427421808242798
+      ],
+      "min": [
+        -3.1598753929138184,
+        -0.010944591835141182,
+        -0.23924590647220612
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2289,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2289,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 2289,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 9708,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 21276,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 21276,
+      "uri": "model.bin"
+    }
+  ]
+}

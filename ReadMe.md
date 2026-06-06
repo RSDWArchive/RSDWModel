@@ -15,10 +15,9 @@ The tooling scans the source tree on disk. Asset names are not hardcoded into
 the pipeline.
 
 Only the newest versioned folder is kept in this repo. It is a commit-ready
-artifact containing extracted data, inventories, and manifests. Generated web
-assets are ignored while their full optimized size is measured. Transient logs,
-pipeline run summaries, caches, `.glb`, `.blend`, and `.blend1` outputs are
-ignored.
+artifact containing extracted data, inventories, manifests, and generated
+website assets. Transient logs, pipeline run summaries, caches, `.glb`,
+`.blend`, and `.blend1` outputs are ignored.
 
 The upstream package cache is also versioned outside the repo:
 
@@ -257,9 +256,8 @@ Useful flags:
   discovered by Blender during export, default `1`.
 - `--dry-run` - list planned work and exit.
 
-`WebAssetSizeReport.json` is the source of truth for deciding whether generated
-web assets should stay ignored, be committed directly, or be published through a
-separate website/deploy artifact.
+`WebAssetSizeReport.json` is the source of truth for checking generated website
+asset size before committing or pushing.
 
 ## Website
 
@@ -280,16 +278,10 @@ assets into the Pages artifact. On localhost, the site reads
 URLs to raw GitHub content under
 `https://raw.githubusercontent.com/RSDWArchive/RSDWModel/main/0.11.2.2/WebAssets`.
 
-`0.*/WebAssets/` is still ignored intentionally. Before the public viewer can
-load models from the deployed site, choose one publication strategy:
-
-- commit the optimized `WebAssets/` corpus to the repository,
-- publish the corpus through release/deploy storage, or
-- point `assetBaseUrl` at an external asset host.
-
-The latest measured generated corpus is about `784 MiB`, with no generated file
-over `50 MiB`. Keep checking `WebAssetSizeReport.json` after clean rebuilds
-before deciding that generated assets belong directly in git.
+The optimized `WebAssets/` corpus is tracked in git so the deployed static site
+can load model payloads from raw GitHub URLs. The latest measured generated
+corpus is about `784 MiB`, with no generated file over `50 MiB`. Keep checking
+`WebAssetSizeReport.json` after clean rebuilds before pushing.
 
 The oversized extracted source normal
 `T_Dragon_Imaru_01_N.png` is intentionally excluded from git because it is over

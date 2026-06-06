@@ -1,0 +1,241 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Club_Zombie_1H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Club_Zombie_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.10000000149011612,
+        0.10000000149011612,
+        0.10000000149011612
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Club_Zombie_1H_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Club_Zombie_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "138c4065d2a1d62a305af61d.webp",
+      "uri": "../../../textures/webp_1024/138c4065d2a1d62a305af61d.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "1738d4c783f39048b4c9a95f.webp",
+      "uri": "../../../textures/webp_1024/1738d4c783f39048b4c9a95f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5717e4359160d24ef71207d8.webp",
+      "uri": "../../../textures/webp_1024/5717e4359160d24ef71207d8.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "290b990fc4639e62d5f78475.webp",
+      "uri": "../../../textures/webp_1024/290b990fc4639e62d5f78475.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_Club_Zombie_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1535,
+      "max": [
+        0.0533534400165081,
+        0.6348877549171448,
+        0.05077935755252838
+      ],
+      "min": [
+        -0.14275924861431122,
+        -0.19561758637428284,
+        -0.07357422262430191
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1535,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1535,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1535,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1535,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 7506,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 12861,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 12864
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 12928,
+      "uri": "model.bin"
+    }
+  ]
+}

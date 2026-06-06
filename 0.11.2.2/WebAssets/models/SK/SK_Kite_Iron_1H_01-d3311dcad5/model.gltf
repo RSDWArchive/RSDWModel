@@ -1,0 +1,220 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Kite_Iron_1H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Kite_Iron_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Kite_Iron_1H_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Kite_Iron_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "77546bd0c205cc3375de7c77.webp",
+      "uri": "../../../textures/webp_1024/77546bd0c205cc3375de7c77.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ff051a2a9854d22239d5ece2.webp",
+      "uri": "../../../textures/webp_1024/ff051a2a9854d22239d5ece2.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "8c2d1f701b10d637ac914e60.webp",
+      "uri": "../../../textures/webp_1024/8c2d1f701b10d637ac914e60.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_Kite_Iron_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 690,
+      "max": [
+        0.5622003078460693,
+        0.4475768804550171,
+        0.14514105021953583
+      ],
+      "min": [
+        -0.2621992230415344,
+        -0.5781449675559998,
+        -0.01690341904759407
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 690,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 690,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 690,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 690,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 3468,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6475,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 6476
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6540,
+      "uri": "model.bin"
+    }
+  ]
+}

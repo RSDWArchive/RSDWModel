@@ -1,0 +1,257 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_M_MED_Black_Knight_Melee_Kite_1H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_M_MED_Black_Knight_Melee_Kite_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.2160000056028366,
+        0.2160000056028366,
+        0.2160000056028366
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_M_MED_Black_Knight_Melee_Kite_1H",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_M_MED_Black_Knight_Melee_Kite_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4,
+            "JOINTS_0": 5,
+            "WEIGHTS_0": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "604b88dfd790889db8217d48.webp",
+      "uri": "../../../textures/webp_1024/604b88dfd790889db8217d48.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "eab65713cf19947eddda9d15.webp",
+      "uri": "../../../textures/webp_1024/eab65713cf19947eddda9d15.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "fc1dc7364260295e48f87352.webp",
+      "uri": "../../../textures/webp_1024/fc1dc7364260295e48f87352.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "80d797e1e3ccb59e9611c3d3.webp",
+      "uri": "../../../textures/webp_1024/80d797e1e3ccb59e9611c3d3.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 8,
+      "joints": [
+        0
+      ],
+      "name": "SK_M_MED_Black_Knight_Melee_Kite_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1633,
+      "max": [
+        0.3983128070831299,
+        0.401032030582428,
+        0.27043136954307556
+      ],
+      "min": [
+        -0.16702373325824738,
+        -0.5053203701972961,
+        -0.003179951338097453
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1633,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1633,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1633,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1633,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5121,
+      "count": 1633,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1633,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 8394,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13969,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 13972
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 14036,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_U_MED_Skeleton_Human_Melee_Heavy_Shield_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_U_MED_Skeleton_Human_Melee_Heavy_Shield_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_U_MED_Skeleton_Human_Melee_Heavy_Shield",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_U_MED_Skeleton_Human_Melee_Heavy_Shield_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "ea36832018cfbe885fdbf2b7.webp",
+      "uri": "../../../textures/webp_1024/ea36832018cfbe885fdbf2b7.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ce49c6ebb9f9f068d5ff2bed.webp",
+      "uri": "../../../textures/webp_1024/ce49c6ebb9f9f068d5ff2bed.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5c3b0e49efca0f3c91954876.webp",
+      "uri": "../../../textures/webp_1024/5c3b0e49efca0f3c91954876.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_U_MED_Skeleton_Human_Melee_Heavy_Shield_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 661,
+      "max": [
+        0.6117308735847473,
+        0.4559639096260071,
+        0.24299871921539307
+      ],
+      "min": [
+        -0.31665879487991333,
+        -0.6541655659675598,
+        -0.022924594581127167
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 661,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 661,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 661,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 661,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 3084,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6028,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 6028
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6092,
+      "uri": "model.bin"
+    }
+  ]
+}

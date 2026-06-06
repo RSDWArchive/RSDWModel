@@ -1,0 +1,402 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        13
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "string_aimer_C1_0_jnt",
+      "rotation": [
+        -0.9630853533744812,
+        1.0718115068579474e-25,
+        0.2691962718963623,
+        8.393575365083813e-28
+      ],
+      "translation": [
+        0.25796493887901306,
+        3.725290298461914e-09,
+        0.0065401047468185425
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "bow_arm_C1_2_jnt",
+      "rotation": [
+        0.9622694849967957,
+        3.964356692388437e-26,
+        0.2720983326435089,
+        2.2875884649152574e-26
+      ],
+      "translation": [
+        0.45715704560279846,
+        -3.3101330814220656e-26,
+        0
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "bow_arm_C1_1_jnt",
+      "rotation": [
+        -6.17244099734384e-27,
+        -0.3291349709033966,
+        1.5158102501521693e-26,
+        0.9442828893661499
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.3806847631931305,
+        -1.5537333515011095e-26,
+        1.4901161193847656e-08
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "bow_arm_C1_0_jnt",
+      "rotation": [
+        9.7392048866598e-19,
+        0.7750946283340454,
+        -7.939249533986755e-19,
+        0.6318451762199402
+      ],
+      "translation": [
+        9.076236789696259e-18,
+        0,
+        -0.17766277492046356
+      ]
+    },
+    {
+      "name": "string_aimer_C0_0_jnt",
+      "rotation": [
+        -0.9446647763252258,
+        9.029976397233665e-25,
+        -0.3280373215675354,
+        3.0510372884323674e-24
+      ],
+      "translation": [
+        0.35115349292755127,
+        -7.450580596923828e-09,
+        7.450580596923828e-08
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "bow_arm_C0_2_jnt",
+      "rotation": [
+        -0.9700610041618347,
+        3.410840099962518e-24,
+        0.2428615838289261,
+        8.527100249906295e-25
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.3929230272769928,
+        3.308722450212111e-24,
+        3.725290298461914e-08
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "bow_arm_C0_1_jnt",
+      "rotation": [
+        0.9501948356628418,
+        -2.611613562446902e-24,
+        0.3116565942764282,
+        0
+      ],
+      "translation": [
+        0.34101271629333496,
+        1.1580528575742387e-23,
+        -1.4901161193847656e-08
+      ]
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "bow_arm_C0_0_jnt",
+      "rotation": [
+        -0.6218506693840027,
+        7.615474705416402e-17,
+        -0.7831358313560486,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0.1891820728778839
+      ]
+    },
+    {
+      "name": "bow_string_C0_jnt",
+      "translation": [
+        0.3597782254219055,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arrow_C0_0_jnt",
+      "translation": [
+        0.3597782254219055,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arrow_aim_C0_0_jnt",
+      "translation": [
+        -0.10555925965309143,
+        0,
+        0
+      ]
+    },
+    {
+      "children": [
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "name": "prop_plug_C0_0_jnt",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_M_MED_Beast_Hunter_Bow_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        12,
+        11
+      ],
+      "name": "SK_M_MED_Beast_Hunter_Bow_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_MED_Beast_Hunter_Bow_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_M_MED_Beast_Hunter_Bow_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "81ccef38206b7fd018e16324.webp",
+      "uri": "../../../textures/webp_1024/81ccef38206b7fd018e16324.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5271e04f7764aa7dddbc48cd.webp",
+      "uri": "../../../textures/webp_1024/5271e04f7764aa7dddbc48cd.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "2ad11684cf04c6466a145b07.webp",
+      "uri": "../../../textures/webp_1024/2ad11684cf04c6466a145b07.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        11,
+        3,
+        2,
+        1,
+        0,
+        7,
+        6,
+        5,
+        4,
+        8,
+        9,
+        10
+      ],
+      "name": "SK_M_MED_Beast_Hunter_Bow_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 4362,
+      "max": [
+        0.45700356364250183,
+        1.304669976234436,
+        0.04819140583276749
+      ],
+      "min": [
+        -0.29403334856033325,
+        -1.3057042360305786,
+        -0.08051367104053497
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4362,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4362,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 4362,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 4362,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 21918,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 12,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 38733,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 768,
+      "byteOffset": 38736
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 39504,
+      "uri": "model.bin"
+    }
+  ]
+}
