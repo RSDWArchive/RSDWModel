@@ -1,0 +1,113 @@
+{
+  "Textures": {
+    "PM_Normals": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_NRM_Array.T_Tier2_Roof_NRM_Array",
+    "Normal": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_NRM.T_Tier2_Roof_NRM",
+    "Normal Array": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_NRM_Array.T_Tier2_Roof_NRM_Array",
+    "Virtual Normal": "RSDragonwilds/Content/Materials/DefaultTextures/T_VT_Default_NA.T_VT_Default_NA",
+    "Normal Map": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal Map Array": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_NA_array1.T_Default_NA_array1",
+    "Virtual Normal Map": "RSDragonwilds/Content/Materials/DefaultTextures/T_VT_Default_NA1.T_VT_Default_NA1",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_BCC_Array.T_Tier2_Roof_BCC_Array",
+    "BaseColor": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_BCC.T_Tier2_Roof_BCC",
+    "BaseColor Array": "RSDragonwilds/Content/Art/Env/Base_Building/BuildingKit/Tier2/Textures/T_Tier2_Roof_BCC_Array.T_Tier2_Roof_BCC_Array",
+    "Virtual BaseColor": "RSDragonwilds/Content/Materials/DefaultTextures/T_VT_Default_White_D.T_VT_Default_White_D",
+    "PM_SpecularMasks": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_ORM.T_Default_ORM",
+    "ORM": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_ORM.T_Default_ORM"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Puddle Tint And Opacity": {
+        "R": 0.147,
+        "G": 0.091,
+        "B": 0.054,
+        "A": 0.5,
+        "Hex": "7F6B5541"
+      },
+      "UVScaleOffset": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FFFF00"
+      },
+      "Color Multiplier": {
+        "R": 0.218636,
+        "G": 0.296875,
+        "B": 0.24937,
+        "A": 1.0,
+        "Hex": "819489"
+      },
+      "DamageData01": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "NoiseScale": 0.4,
+      "Rain Ripples Normal Intensity": 0.8,
+      "Puddles Height Mask": 80.0,
+      "Puddles AO Mask opacity": 1.0,
+      "Puddles AO Mask power": 1.0,
+      "CanOverrideWetness": 0.0,
+      "WetnessOverride": 0.0,
+      "Puddles Tiling Mult": 1.0,
+      "Wetness BC Darkening": 0.45,
+      "Wetness Roughness": 0.3,
+      "Wetness Specular": 0.124,
+      "Wetness Porousness (Darken Opacity)": 0.68,
+      "Debug Wetness Amount": 1.0,
+      "Debug Rain Amount": 1.0,
+      "Rain Drip Surface Porousness": 0.6,
+      "Rain Flow Normal Intensity": 1.0,
+      "Rain Drip Normal Intensity": 1.5,
+      "Debug Rain Flow Speed": 50.0,
+      "Debug Wind Intensity": 0.8,
+      "Puddles Scale": 0.6,
+      "Normal Scale": 1.0,
+      "Metallic Scale": 1.0,
+      "AO BaseColor Influence": 1.0,
+      "Roughness Scale": 1.0,
+      "AO Multiply": 1.0,
+      "Brightness": 1.0,
+      "Roughness Min": 0.0,
+      "Roughness Max": 1.0,
+      "Hue Shift": 0.0,
+      "Desaturate": 0.0,
+      "XYCoordinatesScale": 200.0,
+      "Specular": 0.5,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Support Damage": true,
+      "UseAO": true
+    },
+    "Properties": {
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUsedWithNanite": true,
+      "bAutomaticallySetUsageInEditor": false,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "227B5928-4D70BDB3-D6112E89-7F5960D6",
+      "bIncludedInBaseGame": true,
+      "PhysMaterial": {
+        "ObjectName": "DominionPhysicalMaterial'Wood_Boards_Creaky'",
+        "ObjectPath": "RSDragonwilds/Content/Audio/PhysMats/Wood_Boards_Creaky.0"
+      },
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": true,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

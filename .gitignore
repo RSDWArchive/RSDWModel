@@ -1,0 +1,34 @@
+# Python/tool caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+**/*.py[cod]
+
+# .NET build outputs
+tools/CueExtract/RsdwCueExtract/bin/
+tools/CueExtract/RsdwCueExtract/obj/
+
+# Pipeline logs and run summaries
+*.log
+*.tmp
+**/PipelineLogs/
+**/PipelineRun.json
+
+# Generated model delivery artifacts
+0.*/WebAssets/
+0.*/**/*.glb
+0.*/**/*.blend
+0.*/BuildProgress_*.json
+
+# Blender overwrite backups
+*.blend1
+*.pdb
+
+# Oversized extracted source texture excluded from normal git publishing.
+0.11.2.2/RSDragonwilds/Content/Art/Skeleton/NPC/Reptilian/Dragon_Imaru_01/Textures/T_Dragon_Imaru_01_N.png
+
+# Retoc coordination lock files
+.retoc.lock
+
+# Removed external/vendor checkouts
+UEFormat-main/
