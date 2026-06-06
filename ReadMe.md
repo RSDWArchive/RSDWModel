@@ -1,6 +1,6 @@
 # RSDWModel
 
-RSDWModel is an unofficial searchable model viewer and asset pipeline for
+RSDWModel is a searchable model viewer and asset pipeline for
 RuneScape: Dragonwilds. It publishes versioned model data as web-ready glTF
 assets and serves them through a static viewer at
 [rsdwmodel.com](https://rsdwmodel.com/).
