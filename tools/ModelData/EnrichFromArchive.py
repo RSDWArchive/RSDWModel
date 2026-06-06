@@ -155,6 +155,54 @@ def _add_texture_aliases(textures: dict[str, str], name: str, value: str) -> Non
         textures.setdefault("PM_Emissive", value)
 
 
+def _role_from_referenced_texture(rel: str) -> str:
+    stem = Path(rel).name.lower()
+    compact = stem.replace("-", "_")
+    if any(token in compact for token in ("normal", "_n", "_na")):
+        return "Normal"
+    if any(token in compact for token in ("orm", "specularmask", "specular_mask", "_mra", "_arm")):
+        return "ORM"
+    if any(token in compact for token in ("emissive", "_e")):
+        return "Emission"
+    return "BaseColor"
+
+
+def _add_texture_role_aliases(textures: dict[str, str], role: str, value: str) -> None:
+    if role == "BaseColor":
+        textures.setdefault("BaseColor", value)
+        textures.setdefault("PM_Diffuse", value)
+    elif role == "Normal":
+        textures.setdefault("Normal", value)
+        textures.setdefault("PM_Normals", value)
+    elif role == "ORM":
+        textures.setdefault("ORM", value)
+        textures.setdefault("PM_SpecularMasks", value)
+    elif role == "Emission":
+        textures.setdefault("Emissive", value)
+        textures.setdefault("PM_Emissive", value)
+
+
+def _referenced_texture_rels(material: dict) -> list[tuple[str, str]]:
+    rows: list[dict] = []
+    for value in (material.get("ReferencedTextures"), (material.get("CachedExpressionData") or {}).get("ReferencedTextures")):
+        if isinstance(value, list):
+            rows.extend(row for row in value if isinstance(row, dict))
+
+    found: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for row in rows:
+        object_path = row.get("ObjectPath")
+        if not object_path:
+            continue
+        for rel in _package_path_to_relatives(str(object_path)):
+            if rel in seen:
+                continue
+            seen.add(rel)
+            found.append((_role_from_referenced_texture(rel), rel))
+            break
+    return found
+
+
 def _convert_archive_material(path: Path, archive_root: Path) -> tuple[dict, list[str]]:
     data = _load_json(path)
     material = next(
@@ -188,6 +236,14 @@ def _convert_archive_material(path: Path, archive_root: Path) -> tuple[dict, lis
         textures[name] = texture_value
         _add_texture_aliases(textures, name, texture_value)
         texture_rels.append(rel)
+
+    if not textures:
+        for role, rel in _referenced_texture_rels(material):
+            if not rel:
+                continue
+            texture_value = _texture_value_for_rel(rel)
+            _add_texture_role_aliases(textures, role, texture_value)
+            texture_rels.append(rel)
 
     parameters: dict = {
         "Colors": {},
@@ -229,6 +285,15 @@ def _copy_file(src: Path, dest: Path, *, force: bool, dry_run: bool) -> bool:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
     return True
+
+
+def _existing_material_has_textures(path: Path) -> bool:
+    try:
+        data = _load_json(path)
+    except (OSError, ValueError, json.JSONDecodeError):
+        return False
+    textures = data.get("Textures") if isinstance(data, dict) else None
+    return bool(textures) if isinstance(textures, dict) else False
 
 
 def _load_existing_model_material_refs(source_root: Path) -> dict[str, dict]:
@@ -324,7 +389,15 @@ def enrich(source_root: Path, archive_root: Path, only: str | None, limit: int |
                 }
             )
             dest_json = source_root / f"{material_rel}.json"
-            if dest_json.is_file() and not force:
+            should_write = force or not dest_json.is_file()
+            if (
+                not should_write
+                and converted.get("Textures")
+                and not _existing_material_has_textures(dest_json)
+            ):
+                should_write = True
+
+            if not should_write:
                 report["materials_skipped"] += 1
             else:
                 if not dry_run:

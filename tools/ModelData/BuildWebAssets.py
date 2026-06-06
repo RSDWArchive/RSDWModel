@@ -29,7 +29,7 @@ PROGRESS_SCHEMA = "RSDWModel.WebAssetProgress.v1"
 MANIFEST_SCHEMA = "RSDWModel.WebAssetManifest.v1"
 SIZE_REPORT_SCHEMA = "RSDWModel.WebAssetSizeReport.v1"
 TEXTURE_EXTENSIONS = (".png", ".tga", ".dds", ".jpg", ".jpeg", ".exr", ".bmp", ".hdr", ".webp")
-WEB_ASSET_EXPORT_REVISION = "material-v6"
+WEB_ASSET_EXPORT_REVISION = "material-v7"
 
 
 def _repo_root() -> Path:
@@ -1071,6 +1071,119 @@ def _dragon_basecolor_override(
     }
 
 
+def _color_mask_basecolor_override(
+    *,
+    mat_rel: str,
+    mat_path: Path,
+    textures: dict,
+    parameters: dict,
+    source_root: Path,
+    output_root: Path,
+    texture_size: int,
+    texture_quality: int,
+) -> dict | None:
+    base_pkg = _best_role_package(textures, parameters, "BaseColor")
+    mask_pkg = _first_texture(
+        textures,
+        "Mask_BaseColor",
+        "Mask BaseColor",
+        "Mask Base Color",
+        "BaseColor Mask",
+        "Base Color Mask",
+    )
+    tint = _first_color(parameters, "Tint", "Tint Color", "Tint Colour")
+    if not base_pkg or not mask_pkg or tint is None:
+        return None
+
+    base_resolved = _resolve_source_texture(source_root, base_pkg)
+    mask_resolved = _resolve_source_texture(source_root, mask_pkg)
+    if base_resolved is None or mask_resolved is None:
+        return {
+            "textures": {},
+            "diagnostics": [
+                {
+                    "code": "ColorMaskSourceMissing",
+                    "base": base_pkg,
+                    "mask": mask_pkg,
+                }
+            ],
+            "records": [],
+        }
+
+    base_abs, base_rel = base_resolved
+    mask_abs, mask_rel = mask_resolved
+    params = {
+        "tint": tint,
+        "color_multiplier": _first_color(parameters, "Color Multiplier", "ColorMultiplier"),
+        "brightness": _first_scalar(parameters, "Brightness") or 1.0,
+    }
+    texture_hash = _generated_texture_hash(
+        source_root=source_root,
+        label=f"color-mask-base:{mat_rel}",
+        sources=[base_abs, mask_abs],
+        params=params,
+        texture_size=texture_size,
+        texture_quality=texture_quality,
+    )
+    out_abs = output_root / _generated_texture_rel(texture_hash, texture_size)
+    if not out_abs.is_file():
+        from PIL import Image, ImageOps
+
+        with Image.open(base_abs) as img:
+            base_img = _resize_max(img.convert("RGBA"), texture_size)
+        with Image.open(mask_abs) as img:
+            mask_img = ImageOps.fit(img.convert("L"), base_img.size, method=Image.Resampling.LANCZOS)
+
+        multiplier = params["color_multiplier"]
+        rgb_factors = [max(0.0, float(tint[idx])) for idx in range(3)]
+        if multiplier is not None:
+            rgb_factors = [
+                factor * max(0.0, float(multiplier[idx]))
+                for idx, factor in enumerate(rgb_factors)
+            ]
+        brightness = max(0.0, float(params["brightness"]))
+        luma = base_img.convert("L")
+        channels = [
+            luma.point(
+                lambda px, factor=rgb_factors[idx] * brightness: max(0, min(255, round(px * factor)))
+            )
+            for idx in range(3)
+        ]
+        tinted_img = Image.merge("RGBA", (*channels, base_img.getchannel("A")))
+        baked = Image.composite(tinted_img, base_img, mask_img)
+        _save_generated_webp(baked, out_abs, texture_quality)
+
+    source_label = f"generated:color-mask-basecolor:{mat_rel}"
+    rec = _record_generated_texture(
+        source_root=source_root,
+        output_root=output_root,
+        source_label=source_label,
+        out_abs=out_abs,
+        texture_hash=texture_hash,
+        source_paths=[base_abs, mask_abs],
+        source_rels=[base_rel, mask_rel],
+        generated_type="color_mask_basecolor_bake",
+    )
+    return {
+        "textures": {
+            "BaseColor": {
+                "role": "BaseColor",
+                "path": str(out_abs.resolve()),
+                "source": source_label,
+                "params": ["ColorMaskBaseColorBake"],
+            }
+        },
+        "diagnostics": [
+            {
+                "code": "ColorMaskBaseColorBakeGenerated",
+                "sources": [base_rel, mask_rel],
+                "optimized": rec["optimized"],
+            }
+        ],
+        "records": [rec],
+    }
+
+
 def _merge_material_override(current: dict | None, incoming: dict | None) -> dict | None:
     if incoming is None:
         return current
@@ -1115,6 +1228,19 @@ def _generated_override_for_material(
     override = _merge_material_override(
         override,
         _eye_composite_override(
+            mat_rel=mat_rel,
+            mat_path=mat_path,
+            textures=textures,
+            parameters=parameters,
+            source_root=source_root,
+            output_root=output_root,
+            texture_size=texture_size,
+            texture_quality=texture_quality,
+        ),
+    )
+    override = _merge_material_override(
+        override,
+        _color_mask_basecolor_override(
             mat_rel=mat_rel,
             mat_path=mat_path,
             textures=textures,
@@ -1401,6 +1527,15 @@ def _write_size_report(
 ) -> None:
     all_texture_records = dict(texture_records)
     manifest_path = output_root / "WebAssetManifest.json"
+    previous_report: dict = {}
+    report_path = output_root / "WebAssetSizeReport.json"
+    if report_path.is_file():
+        try:
+            previous = json.loads(report_path.read_text(encoding="utf-8"))
+            if isinstance(previous, dict):
+                previous_report = previous
+        except Exception:
+            previous_report = {}
     if manifest_path.is_file():
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -1441,8 +1576,10 @@ def _write_size_report(
             row for row in all_texture_records.values() if row.get("status") == "failed"
         ],
     }
-    path = output_root / "WebAssetSizeReport.json"
-    _write_json_atomic(path, report)
+    variants_present = any((output_root / "models").glob("*/*/variants/*/model.gltf"))
+    if previous_report.get("equipment_variants_included") or variants_present:
+        report["equipment_variants_included"] = True
+    _write_json_atomic(report_path, report)
 
 
 # ---------------------------------------------------------------------------

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
 (function () {
@@ -299,6 +300,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.0;
     els.stage.appendChild(renderer.domElement);
+
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    pmrem.dispose();
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;

@@ -543,6 +543,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--force-retoc", action="store_true", help="Run retoc even if the cache looks populated.")
     parser.add_argument("--skip-extract", action="store_true")
     parser.add_argument("--force-extract", action="store_true", help="Re-export .uemodel files instead of resuming.")
+    parser.add_argument(
+        "--skip-archive-enrich",
+        action="store_true",
+        help="Skip Archive-backed material reference enrichment before inventory compilation.",
+    )
     parser.add_argument("--skip-inventory", action="store_true")
 
     parser.add_argument("--extract-limit", type=int, default=None, help="Limit CUE extraction for smoke tests.")
@@ -762,6 +767,28 @@ def main(argv: list[str] | None = None) -> int:
             cmd,
             cwd=root,
             log_path=log_dir / "02_cue_extract.log" if log_dir else None,
+            dry_run=args.dry_run,
+        )
+
+    print_section("Archive material enrichment")
+    archive_available = (archive_root / "json").is_dir() and (archive_root / "textures").is_dir()
+    if args.skip_archive_enrich:
+        print("Skipped by --skip-archive-enrich")
+    elif not archive_available:
+        print(f"Skipped; archive json/ and textures/ not found at: {archive_root}")
+    else:
+        run_command(
+            "Enrich material refs from Archive",
+            [
+                sys.executable,
+                str(root / "tools" / "ModelData" / "EnrichFromArchive.py"),
+                "--source-root",
+                str(output_root),
+                "--archive-root",
+                str(archive_root),
+            ],
+            cwd=root,
+            log_path=log_dir / "02b_archive_enrich.log" if log_dir else None,
             dry_run=args.dry_run,
         )
 

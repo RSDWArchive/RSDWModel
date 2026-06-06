@@ -125,7 +125,7 @@ def _hash_generated_texture(
     texture_size: int,
     texture_quality: int,
 ) -> str:
-    parts = ["material-v6", label, str(texture_size), str(texture_quality), json.dumps(params, sort_keys=True)]
+    parts = ["material-v7", label, str(texture_size), str(texture_quality), json.dumps(params, sort_keys=True)]
     for path in sources:
         stat = path.stat()
         parts.extend([_source_rel(source_root, path), str(stat.st_size), str(stat.st_mtime_ns)])
