@@ -8,6 +8,8 @@ assets and serves them through a static viewer at
 ## What This Repo Provides
 
 - A static model browser with search and interactive 3D viewing.
+- A Three.js Avatar page for assembling player body, head, hair, beard, armor,
+  helmet, cape, and color options from the exported model set.
 - Versioned exported model data for the current dataset, `0.11.2.2`.
 - Optimized web assets: separate `.gltf` / `.bin` models and shared 1024px WebP
   textures.
@@ -19,7 +21,8 @@ assets and serves them through a static viewer at
 The viewer lives in `website/` and deploys through GitHub Pages to
 [rsdwmodel.com](https://rsdwmodel.com/). The Pages artifact contains the static
 site and lightweight search index; model payloads load from this repository's
-versioned `WebAssets/` folder through raw GitHub URLs.
+versioned `WebAssets/` folder through raw GitHub URLs. The Avatar creator lives
+at [rsdwmodel.com/Avatar/](https://rsdwmodel.com/Avatar/).
 
 ## Current Dataset
 

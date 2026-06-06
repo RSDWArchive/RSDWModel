@@ -10,6 +10,7 @@ Default behavior:
 - Run the CUE4Parse extractor, which resumes existing .uemodel exports.
 - Compile SM_Data.json and SK_Data.json into the version folder.
 - Build one SM and one SK shared web asset as smoke tests.
+- Generate the website model index and Avatar assembly index.
 - For full web-asset runs, generate a safe Git commit batch plan. Optional
   flags can create and push those batches.
 
@@ -486,6 +487,10 @@ def write_pipeline_summary(
         "web_asset_targets": args.web_asset_targets,
         "web_texture_size": args.web_texture_size,
         "web_texture_quality": args.web_texture_quality,
+        "website_index": {
+            "skipped": args.skip_website_index,
+            "archive_json_root": str(args.archive_json_root) if args.archive_json_root else None,
+        },
         "glb": args.glb,
         "counts_by_extension": extension_counts(output_root),
         "inventory": {
@@ -540,6 +545,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--web-smoke-limit", type=int, default=1)
     parser.add_argument("--web-texture-size", type=int, default=1024)
     parser.add_argument("--web-texture-quality", type=int, default=75)
+    parser.add_argument(
+        "--skip-website-index",
+        action="store_true",
+        help="Skip regenerating website/model-index.json and website/avatar-index.json.",
+    )
+    parser.add_argument(
+        "--archive-json-root",
+        type=Path,
+        default=None,
+        help="Optional RSDWArchive <version>\\json root used for Avatar color curve palettes.",
+    )
 
     parser.add_argument(
         "--glb",
@@ -761,6 +777,46 @@ def main(argv: list[str] | None = None) -> int:
             cmd,
             cwd=root,
             log_path=log_dir / "04_web_assets.log" if log_dir else None,
+            dry_run=args.dry_run,
+        )
+
+    if args.skip_website_index:
+        print_section("Website indexes")
+        print("Skipped by --skip-website-index")
+    else:
+        run_command(
+            "Generate website model index",
+            [
+                sys.executable,
+                str(root / "tools" / "generate_model_index.py"),
+                "--repo-root",
+                str(root),
+                "--dataset-version",
+                version,
+            ],
+            cwd=root,
+            log_path=log_dir / "05a_website_model_index.log" if log_dir else None,
+            dry_run=args.dry_run,
+        )
+
+        avatar_cmd = [
+            sys.executable,
+            str(root / "tools" / "generate_avatar_index.py"),
+            "--repo-root",
+            str(root),
+            "--dataset-version",
+            version,
+            "--texture-quality",
+            str(args.web_texture_quality),
+        ]
+        if args.archive_json_root is not None:
+            avatar_cmd.extend(["--archive-json-root", str(args.archive_json_root)])
+
+        run_command(
+            "Generate website avatar index",
+            avatar_cmd,
+            cwd=root,
+            log_path=log_dir / "05b_website_avatar_index.log" if log_dir else None,
             dry_run=args.dry_run,
         )
 

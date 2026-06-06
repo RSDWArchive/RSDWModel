@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="rsdw">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSDWModel Avatar</title>
+  <meta name="description" content="RSDWModel Avatar - assemble RuneScape: Dragonwilds player models." />
+  <link rel="apple-touch-icon" sizes="180x180" href="../shared/assets/favicon_io/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../shared/assets/favicon_io/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../shared/assets/favicon_io/favicon-16x16.png" />
+  <link rel="icon" href="../shared/assets/favicon_io/favicon.ico" />
+  <link rel="manifest" href="../shared/assets/favicon_io/site.webmanifest" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/sofiasans/v20/Yq6T-LCVXSLy9uPBwlATrORKkzApcb8.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./avatar.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.184.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="avatar-page">
+  <header class="rsdw-header">
+    <a class="rsdw-brand" href="../index.html" aria-label="RSDWModel home">
+      <span class="rsdw-brand__logo">
+        <img src="../shared/assets/logo.png" alt="" />
+      </span>
+      <span class="rsdw-brand__title">RSDWModel</span>
+    </a>
+
+    <nav class="avatar-nav" aria-label="RSDWModel sections">
+      <a href="../index.html">Models</a>
+      <a class="is-active" href="./index.html" aria-current="page">Avatar</a>
+    </nav>
+
+    <div class="rsdw-actions">
+      <div class="rsdw-menu">
+        <button id="discord-toggle" class="rsdw-iconbtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Open Discord menu" title="Discord">
+          <img src="../shared/assets/tool-icons/discord.png" alt="" />
+        </button>
+        <div id="discord-menu" class="rsdw-menu__panel" role="menu" hidden>
+          <a href="https://discord.com/invite/rsdragonwilds" target="_blank" rel="noopener noreferrer" role="menuitem">Official</a>
+          <a href="https://discord.com/invite/rsdwwiki" target="_blank" rel="noopener noreferrer" role="menuitem">Wiki</a>
+          <a href="https://discord.gg/hPJfrZxPss" target="_blank" rel="noopener noreferrer" role="menuitem">Creative &amp; Sharing</a>
+        </div>
+      </div>
+      <a class="rsdw-iconbtn" href="https://github.com/RSDWArchive/RSDWModel" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository" title="GitHub">
+        <img src="../shared/assets/github.svg" alt="" />
+      </a>
+    </div>
+  </header>
+
+  <main class="avatar-shell">
+    <section class="avatar-layout" aria-label="Avatar creator">
+      <aside class="avatar-controls">
+        <div class="avatar-title">
+          <h1>Avatar</h1>
+          <p id="avatar-status">Loading avatar data...</p>
+        </div>
+
+        <div class="control-section">
+          <h2>Build</h2>
+          <div class="segmented" aria-label="Body type">
+            <button id="sex-m" type="button" data-sex="M_MED">M</button>
+            <button id="sex-f" type="button" data-sex="F_MED">F</button>
+          </div>
+        </div>
+
+        <div class="control-section slot-grid" aria-label="Avatar slots">
+          <label>
+            Body
+            <select id="slot-baseBody" data-slot="baseBody"></select>
+          </label>
+          <label>
+            Head
+            <select id="slot-baseHead" data-slot="baseHead"></select>
+          </label>
+          <label>
+            Hair
+            <select id="slot-hair" data-slot="hair"></select>
+          </label>
+          <label>
+            Beard
+            <select id="slot-beard" data-slot="beard"></select>
+          </label>
+          <label>
+            Torso
+            <select id="slot-torso" data-slot="torso"></select>
+          </label>
+          <label>
+            Legs
+            <select id="slot-legs" data-slot="legs"></select>
+          </label>
+          <label>
+            Helmet
+            <select id="slot-helmet" data-slot="helmet"></select>
+          </label>
+          <label>
+            Cape
+            <select id="slot-cape" data-slot="cape"></select>
+          </label>
+        </div>
+
+        <div class="control-section">
+          <h2>Skin</h2>
+          <div id="skin-swatches" class="swatches" aria-label="Skin colors"></div>
+        </div>
+
+        <div class="control-section">
+          <h2>Hair</h2>
+          <div id="hair-swatches" class="swatches" aria-label="Hair colors"></div>
+        </div>
+
+        <div class="control-section">
+          <h2>Eyes</h2>
+          <div id="eye-swatches" class="swatches" aria-label="Eye colors"></div>
+        </div>
+      </aside>
+
+      <section class="avatar-viewer-panel">
+        <div class="avatar-toolbar">
+          <div class="selected-meta">
+            <h2 id="avatar-title">Player Avatar</h2>
+            <p id="avatar-summary">Default loadout</p>
+          </div>
+          <div class="viewer-actions">
+            <button id="reset-view" class="panel-action-btn" type="button" disabled>Reset</button>
+            <button id="avatar-screenshot" class="panel-action-btn" type="button" disabled>Screenshot</button>
+            <button id="open-current-model" class="panel-action-btn" type="button" disabled>Open Model</button>
+            <button id="copy-avatar-link" class="panel-action-btn" type="button" disabled>Copy Link</button>
+          </div>
+        </div>
+
+        <div id="avatar-warning" class="missing-warning" hidden></div>
+        <div id="avatar-stage" class="avatar-stage" aria-label="Avatar preview">
+          <div id="avatar-loading" class="avatar-loading">Loading...</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="rsdw-footer">
+    <p>Game files &amp; assets are property of Jagex Ltd.</p>
+    <p>
+      <a href="../index.html">Models</a>
+      -
+      <a href="https://rsdwarchive.com" target="_blank" rel="noopener">Archive</a>
+      -
+      <a href="https://rsdwbuilds.com" target="_blank" rel="noopener">Builds</a>
+      -
+      <a href="https://rsdwtools.com" target="_blank" rel="noopener">Tools</a>
+    </p>
+  </footer>
+
+  <script type="module" src="./avatar.js?v=20260606-avatar"></script>
+</body>
+</html>
