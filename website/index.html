@@ -12,7 +12,7 @@
   <link rel="manifest" href="./shared/assets/favicon_io/site.webmanifest" />
   <link rel="preload" href="https://fonts.gstatic.com/s/sofiasans/v20/Yq6T-LCVXSLy9uPBwlATrORKkzApcb8.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="./styles.css" />
-  <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@4.2.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <header class="rsdw-header">
@@ -91,6 +91,7 @@
           <div class="viewer-actions">
             <button id="auto-rotate-toggle" class="panel-action-btn" type="button" disabled>Auto Rotate</button>
             <button id="reset-camera" class="panel-action-btn" type="button" disabled>Reset</button>
+            <button id="save-screenshot" class="panel-action-btn" type="button" disabled>Screenshot</button>
             <a id="open-raw" class="panel-action-btn is-link" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Raw</a>
             <a id="open-github" class="panel-action-btn is-link" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">GitHub</a>
             <button id="copy-link" class="panel-action-btn" type="button" disabled>Copy Link</button>
@@ -133,6 +134,6 @@
     </p>
   </footer>
 
-  <script src="./app.js?v=20260605-material-cache" defer></script>
+  <script src="./app.js?v=20260605-screenshot" defer></script>
 </body>
 </html>

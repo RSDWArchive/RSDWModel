@@ -28,6 +28,7 @@
     loadProgress: document.getElementById("load-progress"),
     autoRotate: document.getElementById("auto-rotate-toggle"),
     resetCamera: document.getElementById("reset-camera"),
+    saveScreenshot: document.getElementById("save-screenshot"),
     openRaw: document.getElementById("open-raw"),
     openGithub: document.getElementById("open-github"),
     copyLink: document.getElementById("copy-link"),
@@ -223,6 +224,50 @@
     anchor.tabIndex = href ? 0 : -1;
   }
 
+  function screenshotFileName(model) {
+    const baseName = String(model.displayName || model.name || "RSDWModel")
+      .replace(/\.[^.]+$/, "")
+      .replace(/[^a-z0-9_-]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 96);
+    return `${baseName || "RSDWModel"}_${model.kind || "Model"}.png`;
+  }
+
+  async function saveCurrentScreenshot() {
+    if (!selectedModel || els.saveScreenshot.disabled) return;
+    if (typeof els.viewer.toDataURL !== "function") {
+      els.warning.hidden = false;
+      els.warning.textContent = "Screenshot capture is not available in this browser.";
+      return;
+    }
+
+    const previousText = els.saveScreenshot.textContent;
+    els.saveScreenshot.disabled = true;
+    els.saveScreenshot.textContent = "Saving";
+    try {
+      const dataUrl = await Promise.resolve(els.viewer.toDataURL("image/png"));
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = screenshotFileName(selectedModel);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      els.saveScreenshot.textContent = "Saved";
+      window.setTimeout(() => {
+        if (selectedModel) {
+          els.saveScreenshot.textContent = previousText;
+          els.saveScreenshot.disabled = !els.viewer.loaded;
+        }
+      }, 1200);
+    } catch (error) {
+      els.warning.hidden = false;
+      els.warning.textContent = "Screenshot capture failed. Try again after the model finishes loading.";
+      els.saveScreenshot.textContent = previousText;
+      els.saveScreenshot.disabled = !els.viewer.loaded;
+      console.error(error);
+    }
+  }
+
   function selectModel(model, options = {}) {
     selectedModel = model;
     if (selectedButton) selectedButton.classList.remove("is-active");
@@ -237,6 +282,8 @@
     els.loadProgress.style.width = "0";
     els.autoRotate.disabled = false;
     els.resetCamera.disabled = false;
+    els.saveScreenshot.disabled = true;
+    els.saveScreenshot.textContent = "Screenshot";
     els.copyLink.disabled = false;
     els.autoRotate.textContent = "Auto Rotate";
     setActionLink(els.openRaw, rawUrl);
@@ -360,6 +407,7 @@
         els.viewer.jumpCameraToGoal();
       }
     });
+    els.saveScreenshot.addEventListener("click", saveCurrentScreenshot);
     els.copyLink.addEventListener("click", async () => {
       if (!selectedModel) return;
       const url = `${window.location.origin}${window.location.pathname}#${modelHash(selectedModel)}`;
@@ -381,8 +429,13 @@
     });
     els.viewer.addEventListener("load", () => {
       els.loadProgress.style.width = "100%";
+      if (selectedModel) {
+        els.saveScreenshot.disabled = false;
+        els.saveScreenshot.textContent = "Screenshot";
+      }
     });
     els.viewer.addEventListener("error", () => {
+      els.saveScreenshot.disabled = true;
       els.warning.hidden = false;
       els.warning.textContent = "The selected model could not be loaded. If this is deployed, confirm the WebAssets folder has been pushed to the configured repository branch.";
     });
