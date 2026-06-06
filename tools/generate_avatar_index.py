@@ -11,10 +11,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from PIL import Image, ImageColor, ImageEnhance
+from PIL import Image, ImageColor, ImageEnhance, ImageFilter
 
 
 THREE_AVATAR_SCHEMA = "RSDWModel.WebsiteAvatarIndex.v1"
+HAIR_TEXTURE_REVISION = "hair-v2"
+BROW_TEXTURE_REVISION = "brow-v1"
 PLAYER_PREFIX = "RSDragonwilds/Content/Art/Skeleton/Player/"
 ARMOUR_PREFIXES = (
     "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/",
@@ -302,11 +304,15 @@ def _material_role(name: str) -> str | None:
     return None
 
 
-def _colorize_image(img: Image.Image, color: tuple[int, int, int], role: str) -> Image.Image:
+def _colorize_image(img: Image.Image, color: tuple[int, int, int], role: str, variant_style: str | None = None) -> Image.Image:
     rgba = img.convert("RGBA")
     gray = rgba.convert("L")
+    if role == "hair" and variant_style == "brow":
+        return _brow_tint_image(rgba, color)
     if role == "skin":
         return _skin_tint_image(rgba, color)
+    if role == "hair":
+        return _hair_tint_image(rgba, color)
     if role == "eyes":
         # Tint only saturated/non-white pixels so sclera stays readable.
         pixels = rgba.load()
@@ -339,6 +345,63 @@ def _colorize_image(img: Image.Image, color: tuple[int, int, int], role: str) ->
     tinted = Image.merge("RGBA", (*tinted_rgb.split(), rgba.getchannel("A")))
     tinted = ImageEnhance.Contrast(tinted).enhance(1.08)
     return tinted
+
+
+def _hair_tint_image(rgba: Image.Image, color: tuple[int, int, int]) -> Image.Image:
+    try:
+        import numpy as np
+    except Exception:
+        gray = rgba.convert("L")
+        low = tuple(_clamp_byte(c * 0.22) for c in color)
+        high = tuple(_clamp_byte(c * 1.42 + 18) for c in color)
+        tinted = Image.merge("RGBA", (*ImageOps_colorize(gray, low, high).split(), rgba.getchannel("A")))
+        return ImageEnhance.Contrast(tinted).enhance(0.96)
+
+    arr = np.asarray(rgba).astype(np.float32)
+    rgb = arr[:, :, :3]
+    alpha = arr[:, :, 3:4]
+    lum = rgb[:, :, 0] * 0.2126 + rgb[:, :, 1] * 0.7152 + rgb[:, :, 2] * 0.0722
+    shade = np.clip((lum / 128.0) ** 0.88, 0.26, 1.58)
+    target = np.array(color, dtype=np.float32)
+    tinted = np.clip(target[None, None, :] * shade[:, :, None], 0, 255)
+
+    # Keep a little original atlas variation so strand cards do not become flat,
+    # but do not let bright gray atlas highlights wash the hair back to white.
+    detail = np.clip((rgb - lum[:, :, None]) * 0.18, -18.0, 18.0)
+    out_rgb = np.clip(tinted + detail, 0, 255)
+    out = np.concatenate([out_rgb, alpha], axis=2).astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
+
+
+def _brow_tint_image(rgba: Image.Image, color: tuple[int, int, int]) -> Image.Image:
+    blur_radius = max(4, min(rgba.size) // 28)
+    smooth = rgba.filter(ImageFilter.GaussianBlur(radius=blur_radius))
+    try:
+        import numpy as np
+    except Exception:
+        gray = smooth.convert("L")
+        low = tuple(_clamp_byte(c * 0.46) for c in color)
+        high = tuple(_clamp_byte(c * 1.16 + 8) for c in color)
+        tinted = Image.merge("RGBA", (*ImageOps_colorize(gray, low, high).split(), rgba.getchannel("A")))
+        return ImageEnhance.Contrast(tinted).enhance(0.72)
+
+    arr = np.asarray(rgba).astype(np.float32)
+    smooth_arr = np.asarray(smooth).astype(np.float32)
+    rgb = arr[:, :, :3]
+    smooth_rgb = smooth_arr[:, :, :3]
+    alpha = arr[:, :, 3:4]
+    lum = smooth_rgb[:, :, 0] * 0.2126 + smooth_rgb[:, :, 1] * 0.7152 + smooth_rgb[:, :, 2] * 0.0722
+    avg = max(float(lum.mean()), 1.0)
+    shade = np.clip((lum / avg) ** 0.55, 0.58, 1.22)
+    target = np.array(color, dtype=np.float32)
+    tinted = np.clip(target[None, None, :] * shade[:, :, None], 0, 255)
+
+    # Head brows use the hair atlas, but they should read as compact brows, not
+    # full hair-card strand strips. Keep only a whisper of local detail.
+    detail = np.clip((rgb - smooth_rgb) * 0.035, -5.0, 5.0)
+    out_rgb = np.clip(tinted + detail, 0, 255)
+    out = np.concatenate([out_rgb, alpha], axis=2).astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
 
 
 def _skin_tint_image(rgba: Image.Image, color: tuple[int, int, int]) -> Image.Image:
@@ -402,19 +465,26 @@ def _save_variant(
     quality: int,
     cache: dict[tuple[str, str, str], str],
     force: bool,
+    variant_style: str | None = None,
 ) -> str | None:
-    key = (source_rel, role, color.id)
+    key = (source_rel, f"{role}:{variant_style or 'default'}", color.id)
     if key in cache:
         return cache[key]
     source_abs = webassets_root / Path(source_rel)
     if not source_abs.is_file():
         return None
-    out_rel = f"avatar/textures/{role}/{_asset_hash(source_rel)}/{color.id}.webp"
+    if role == "hair" and variant_style == "brow":
+        hash_source = f"{BROW_TEXTURE_REVISION}:{source_rel}"
+    elif role == "hair":
+        hash_source = f"{HAIR_TEXTURE_REVISION}:{source_rel}"
+    else:
+        hash_source = source_rel
+    out_rel = f"avatar/textures/{role}/{_asset_hash(hash_source)}/{color.id}.webp"
     out_abs = webassets_root / Path(out_rel)
     out_abs.parent.mkdir(parents=True, exist_ok=True)
     if force or not out_abs.is_file():
         img = Image.open(source_abs)
-        baked = _colorize_image(img, color.rgb, role)
+        baked = _colorize_image(img, color.rgb, role, variant_style)
         baked.save(out_abs, "WEBP", quality=quality, method=6)
     cache[key] = out_rel
     return out_rel
@@ -429,6 +499,7 @@ def _material_variants(
     quality: int,
     cache: dict[tuple[str, str, str], str],
     force_textures: bool,
+    slot: str | None = None,
 ) -> dict[str, dict[str, dict[str, str]]]:
     gltf_abs = webassets_root / Path(gltf_rel)
     if not gltf_abs.is_file():
@@ -449,6 +520,7 @@ def _material_variants(
         source_rel = _texture_rel_for_material(gltf, gltf_rel, material)
         if not source_rel:
             continue
+        variant_style = "brow" if slot == "baseHead" and role == "hair" else None
         role_variants: dict[str, str] = {}
         for color in palettes.get(role, []):
             if color.id == "skinOriginal":
@@ -461,6 +533,7 @@ def _material_variants(
                 quality=quality,
                 cache=cache,
                 force=force_textures,
+                variant_style=variant_style,
             )
             if variant_rel:
                 role_variants[color.id] = variant_rel
@@ -511,6 +584,7 @@ def _candidate_rows(
                 quality=quality,
                 cache=variant_cache,
                 force_textures=force_textures,
+                slot=slot,
             ),
         }
         slots[slot].append(row)
@@ -579,6 +653,7 @@ def _append_equipment_variant_rows(
                     quality=quality,
                     cache=variant_cache,
                     force_textures=force_textures,
+                    slot=slot,
                 ),
             }
             slots[slot].append(row)
@@ -647,6 +722,7 @@ def build_avatar_index(
         "defaults": {
             "sex": "M_MED",
             "bodyVisible": True,
+            "headVisible": True,
             "slots": {
                 "baseBody": _default_for(slots, "baseBody", "SK_M_MED_Body_A_01"),
                 "baseHead": _default_for(slots, "baseHead", "SK_M_MED_Head_A_01"),

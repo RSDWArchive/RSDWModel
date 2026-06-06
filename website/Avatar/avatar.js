@@ -39,6 +39,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     sexM: document.getElementById("sex-m"),
     sexF: document.getElementById("sex-f"),
     bodyVisible: document.getElementById("body-visible"),
+    headVisible: document.getElementById("head-visible"),
     slotControls: Object.fromEntries(SLOT_ORDER.map((slot) => [slot, document.getElementById(`slot-${slot}`)])),
     swatches: {
       skin: document.getElementById("skin-swatches"),
@@ -161,6 +162,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       slots: { ...(defaults.slots || {}) },
       colors: { ...(defaults.colors || {}) },
       bodyVisible: defaults.bodyVisible !== false,
+      headVisible: defaults.headVisible !== false,
     };
   }
 
@@ -172,6 +174,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     if (sex === "M_MED" || sex === "F_MED") next.sex = sex;
     if (params.get("bodyVisible") === "0" || params.get("bodyVisible") === "false") {
       next.bodyVisible = false;
+    }
+    if (params.get("headVisible") === "0" || params.get("headVisible") === "false") {
+      next.headVisible = false;
     }
     for (const slot of SLOT_ORDER) {
       if (params.has(slot)) {
@@ -201,6 +206,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       if (state.colors[role]) params.set(COLOR_HASH_KEYS[role], state.colors[role]);
     }
     if (!state.bodyVisible) params.set("bodyVisible", "0");
+    if (!state.headVisible) params.set("headVisible", "0");
     window.history.replaceState(null, "", `#${params.toString()}`);
   }
 
@@ -256,6 +262,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     els.sexM.classList.toggle("is-active", state.sex === "M_MED");
     els.sexF.classList.toggle("is-active", state.sex === "F_MED");
     els.bodyVisible.checked = state.bodyVisible;
+    els.headVisible.checked = state.headVisible;
     for (const slot of SLOT_ORDER) fillSlotSelect(slot);
     for (const role of COLOR_ROLES) {
       const container = els.swatches[role];
@@ -424,6 +431,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function selectedRows() {
     return SLOT_ORDER
       .filter((slot) => slot !== "baseBody" || state.bodyVisible)
+      .filter((slot) => slot !== "baseHead" || state.headVisible)
       .map((slot) => [slot, rowById(state.slots[slot])])
       .filter(([, row]) => row);
   }
@@ -454,6 +462,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       .map(([slot, row]) => `${slot.replace("base", "")}: ${row.label}`)
       .slice(0, 5);
     if (!state.bodyVisible) parts.unshift("Body: hidden");
+    if (!state.headVisible) parts.unshift("Head: hidden");
     els.summary.textContent = parts.join(" | ") || "Default loadout";
   }
 
@@ -523,6 +532,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
     els.bodyVisible.addEventListener("change", () => {
       state.bodyVisible = els.bodyVisible.checked;
+      updateAvatar();
+    });
+    els.headVisible.addEventListener("change", () => {
+      state.headVisible = els.headVisible.checked;
       updateAvatar();
     });
     els.resetView.addEventListener("click", () => {

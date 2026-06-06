@@ -73,7 +73,7 @@ body {
   height: 76px;
   padding: 0 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   align-items: center;
   border-bottom: 1px solid var(--rsdw-border);
@@ -87,6 +87,7 @@ body {
   align-items: center;
   gap: 0.7rem;
   min-width: 0;
+  flex: 0 0 auto;
   color: inherit;
   text-decoration: none;
 }
@@ -118,11 +119,37 @@ body {
   white-space: nowrap;
 }
 
+.mode-nav {
+  display: flex;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--rsdw-border);
+  border-radius: 10px;
+  background: rgba(20, 20, 24, 0.88);
+  padding: 0.25rem;
+}
+
+.mode-nav a {
+  min-width: 92px;
+  color: var(--rsdw-muted);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.48rem 0.75rem;
+  font-weight: 700;
+}
+
+.mode-nav a:hover,
+.mode-nav a.is-active {
+  color: var(--rsdw-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .header-search {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(720px, 54vw);
+  flex: 1 1 420px;
+  width: 100%;
+  max-width: 720px;
+  min-width: 220px;
 }
 
 #model-search {
@@ -611,10 +638,8 @@ model-viewer {
 
 @media (max-width: 980px) {
   .header-search {
-    position: static;
-    transform: none;
-    flex: 1;
-    width: auto;
+    flex: 1 1 300px;
+    max-width: none;
   }
 
   .rsdw-brand__title {
@@ -644,18 +669,38 @@ model-viewer {
 
 @media (max-width: 640px) {
   body {
-    padding-top: 136px;
+    padding-top: 184px;
   }
 
   .rsdw-header {
-    height: 124px;
+    height: auto;
+    padding: 0.65rem 1rem;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: flex-start;
+    gap: 0.55rem 1rem;
+  }
+
+  .rsdw-brand,
+  .rsdw-actions {
+    order: 1;
+  }
+
+  .mode-nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .mode-nav a {
+    min-width: 76px;
+    padding: 0.46rem 0.55rem;
   }
 
   .header-search {
     order: 3;
     flex-basis: 100%;
+    min-width: 0;
   }
 
   .landing-panel h1 {

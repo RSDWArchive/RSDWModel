@@ -6,28 +6,6 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 0.45rem;
-  border: 1px solid var(--rsdw-border);
-  border-radius: 10px;
-  background: rgba(20, 20, 24, 0.88);
-  padding: 0.25rem;
-}
-
-.avatar-nav a {
-  min-width: 92px;
-  color: var(--rsdw-muted);
-  text-decoration: none;
-  text-align: center;
-  border-radius: 8px;
-  padding: 0.48rem 0.75rem;
-  font-weight: 700;
-}
-
-.avatar-nav a:hover,
-.avatar-nav a.is-active {
-  color: var(--rsdw-text);
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .avatar-shell {
