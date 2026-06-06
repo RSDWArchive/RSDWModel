@@ -4,7 +4,7 @@
   const CONFIG_URL = "./data.config.json";
   const INDEX_URL = "./model-index.json";
   const VARIANT_INDEX_URL = "./equipment-variants.json";
-  const MAX_RESULTS = 120;
+  const RESULTS_PAGE_SIZE = 120;
   const SEARCH_DEBOUNCE_MS = 80;
   const DEFAULT_CONFIG = {
     repoOwner: "RSDWArchive",
@@ -22,6 +22,8 @@
     statVersion: document.getElementById("stat-version"),
     resultStatus: document.getElementById("result-status"),
     results: document.getElementById("results"),
+    resultsFooter: document.getElementById("results-footer"),
+    loadMoreResults: document.getElementById("load-more-results"),
     selectedTitle: document.getElementById("selected-title"),
     selectedPath: document.getElementById("selected-path"),
     warning: document.getElementById("missing-warning"),
@@ -45,6 +47,7 @@
   let selectedVariant = null;
   let selectedButton = null;
   let debounceTimer = null;
+  let visibleResultCount = RESULTS_PAGE_SIZE;
 
   function isLocalHost() {
     return ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
@@ -210,21 +213,44 @@
     };
   }
 
-  function filteredModels() {
+  function allFilteredModels() {
     const { positives, negatives } = parseQuery(els.search.value);
     return models
       .map((model) => ({ model, score: scoreModel(model, positives, negatives) }))
       .filter((row) => row.score >= 0)
       .sort((a, b) => b.score - a.score || a.model.displayName.localeCompare(b.model.displayName))
-      .slice(0, MAX_RESULTS)
       .map((row) => row.model);
   }
 
+  function resetVisibleResults() {
+    visibleResultCount = RESULTS_PAGE_SIZE;
+  }
+
+  function updateLoadMoreState(totalCount, shownCount) {
+    if (!els.resultsFooter || !els.loadMoreResults) return;
+    const remaining = Math.max(0, totalCount - shownCount);
+    els.resultsFooter.hidden = remaining <= 0;
+    els.loadMoreResults.hidden = remaining <= 0;
+    if (remaining > 0) {
+      const nextCount = Math.min(RESULTS_PAGE_SIZE, remaining);
+      els.loadMoreResults.textContent = `Load ${nextCount.toLocaleString()} More`;
+      els.loadMoreResults.title = `${remaining.toLocaleString()} more matching models available`;
+    }
+  }
+
   function renderResults() {
-    const rows = filteredModels();
+    const allRows = allFilteredModels();
+    const rows = allRows.slice(0, visibleResultCount);
     els.results.textContent = "";
+    selectedButton = null;
     const query = els.search.value.trim();
-    setStatus(`${rows.length} result${rows.length === 1 ? "" : "s"}${query ? "" : " shown"}${models.length > rows.length ? ` of ${models.length}` : ""}`);
+    const totalCount = allRows.length;
+    const shownCount = rows.length;
+    const totalLabel = `${totalCount.toLocaleString()} result${totalCount === 1 ? "" : "s"}`;
+    const shownLabel = totalCount > shownCount
+      ? `, showing ${shownCount.toLocaleString()}`
+      : "";
+    setStatus(`${totalLabel}${shownLabel}${query || activeKind !== "all" ? "" : ` of ${models.length.toLocaleString()}`}`);
     for (const model of rows) {
       const li = document.createElement("li");
       const button = document.createElement("button");
@@ -256,6 +282,7 @@
       li.textContent = "No matching models.";
       els.results.appendChild(li);
     }
+    updateLoadMoreState(totalCount, shownCount);
   }
 
   function setActionLink(anchor, href) {
@@ -460,6 +487,7 @@
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         els.landing.classList.toggle("is-compact", Boolean(els.search.value.trim()));
+        resetVisibleResults();
         updateLandingDensity();
         renderResults();
       }, SEARCH_DEBOUNCE_MS);
@@ -470,9 +498,17 @@
         document.querySelectorAll(".kind-filter").forEach((btn) => btn.classList.remove("is-active"));
         button.classList.add("is-active");
         activeKind = button.dataset.kind || "all";
+        resetVisibleResults();
         renderResults();
       });
     });
+
+    if (els.loadMoreResults) {
+      els.loadMoreResults.addEventListener("click", () => {
+        visibleResultCount += RESULTS_PAGE_SIZE;
+        renderResults();
+      });
+    }
 
     els.variantSelect.addEventListener("change", () => {
       if (!selectedModel) return;
