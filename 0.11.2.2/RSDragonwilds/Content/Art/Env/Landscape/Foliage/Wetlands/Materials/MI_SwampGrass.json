@@ -1,0 +1,138 @@
+{
+  "Textures": {
+    "Subsurface Color": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_SS.T_Swamp_Grass_SS",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_BC.T_Swamp_Grass_BC",
+    "BaseColor": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_BC.T_Swamp_Grass_BC",
+    "PM_Normals": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_NR.T_Swamp_Grass_NR",
+    "Normal": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_NR.T_Swamp_Grass_NR",
+    "PM_Emissive": "Engine/Content/EngineResources/DefaultTexture.DefaultTexture",
+    "EmissiveMap": "Engine/Content/EngineResources/DefaultTexture.DefaultTexture",
+    "T_Swamp_Grass_SS": "RSDragonwilds/Content/Art/Env/Landscape/Foliage/Wetlands/Textures/T_Swamp_Grass_SS.T_Swamp_Grass_SS"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 6,
+    "Colors": {
+      "EmissiveColor": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color_Mult_A": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color_Mult_B": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Color_Add_A": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Color_Add_B": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Color Multiplier": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "Glint Transition Time": 0.25,
+      "Glint Time Variance": 0.2,
+      "Glint Time To Distance": 1.0,
+      "Subsurface Amount scale": 1.0,
+      "Color_Mult_Blend": 0.0,
+      "Color_Add_Blend": 0.0,
+      "RandomColorVariation_Amount": 0.0,
+      "RandomColor_HueShift_1": 0.08,
+      "RandomColor_HueShift_2": -0.08,
+      "RandomColor_HueShift_3": -0.015,
+      "RandomColor_Noise Scale": 1.0,
+      "RandomColor_UsePivotForSampling": 0.0,
+      "RandomColor_Noise_Smoothstep_Min": 0.0,
+      "RandomColor_Noise_Smoothstep_Max": 1.0,
+      "Near Fade Distance": 50.0,
+      "Blend Range": 25.0,
+      "Roughness Clamp Min": 0.05,
+      "Roughness Clamp Max": 0.98,
+      "Roughness": 0.8,
+      "Emissive Power": 1.0,
+      "HalfLambert": 0.0,
+      "NoiseScale": 0.4,
+      "Wetness BC Darkening": 0.45,
+      "Wetness Roughness": 0.4,
+      "Wetness Specular": 0.15,
+      "Wetness Porousness (Darken Opacity)": 0.4,
+      "Debug Wetness Amount": 1.0,
+      "ObjectHeightMask_Offset": 0.0,
+      "ObjectHeightMask": 32.0,
+      "ObjectHeightMask_Contrast": 1.0,
+      "DeformBendiness": 0.02,
+      "DeformSpringiness": 0.02,
+      "Gust Pattern Size": 500.0,
+      "Wind Scale": 0.1,
+      "GlowProximityRadius": 75.0,
+      "Desaturate": 0.0,
+      "Brightness": 1.0,
+      "ShowMagicOverlay": 0.0,
+      "Param_3": 1.5,
+      "Param_4": 0.1,
+      "Param_5": 1.607654,
+      "Param_6": 0.186812,
+      "Tile1": 10.0,
+      "Tile2": 12.0,
+      "PanningSpeed": 0.2,
+      "Param_7": 12.0,
+      "Param_8": 1.0,
+      "DEBUG Gradient Position": -21.433094,
+      "DEBUG Gradient Falloff": 70.85857,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 64
+      },
+      "TwoSided": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUsedWithNanite": true,
+      "bUseMaterialAttributes": true,
+      "bCastRayTracedShadows": false,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "95B48DD3-407ED1AB-A7060892-3AF0D12C",
+      "bIncludedInBaseGame": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "ShadingModel": "EMaterialShadingModel::MSM_TwoSidedFoliage",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
