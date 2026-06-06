@@ -1,43 +1,38 @@
-﻿{
-    "schema":  "RSDWModel.WebAssetSizeReport.v1",
-    "updated_utc":  "2026-06-06T03:30:12.7459887Z",
-    "source_root":  "0.11.2.2",
-    "output_root":  "0.11.2.2/WebAssets",
-    "texture_profile":  {
-                            "format":  "webp",
-                            "max_dimension":  1024,
-                            "quality":  75,
-                            "upscale":  false
-                        },
-    "source_texture_bytes":  8366945076,
-    "optimized_texture_bytes":  508234352,
-    "model_bytes":  246552851,
-    "total_web_asset_bytes":  822067044,
-    "file_counts":  {
-                        ".bin":  {
-                                     "count":  4894,
-                                     "bytes":  216140508
-                                 },
-                        ".gltf":  {
-                                      "count":  4894,
-                                      "bytes":  30412343
-                                  },
-                        ".webp":  {
-                                      "count":  3483,
-                                      "bytes":  508234352
-                                  },
-                        ".json":  {
-                                      "count":  3,
-                                      "bytes":  67279841
-                                  }
-                    },
-    "output_files_over_50_mib":  [
-
-                                 ],
-    "output_files_over_100_mib":  [
-
-                                  ],
-    "texture_failures":  [
-
-                         ]
+{
+  "schema": "RSDWModel.WebAssetSizeReport.v1",
+  "updated_utc": "2026-06-06T12:04:30.756739+00:00",
+  "source_root": "0.11.2.2",
+  "output_root": "0.11.2.2/WebAssets",
+  "texture_profile": {
+    "format": "webp",
+    "max_dimension": 1024,
+    "quality": 75,
+    "upscale": false
+  },
+  "source_texture_bytes": 8816162926,
+  "optimized_texture_bytes": 523591230,
+  "model_bytes": 247947974,
+  "total_web_asset_bytes": 846310558,
+  "file_counts": {
+    ".webp": {
+      "count": 3855,
+      "bytes": 530982632
+    },
+    ".bin": {
+      "count": 4894,
+      "bytes": 216140508
+    },
+    ".json": {
+      "count": 3,
+      "bytes": 67379952
+    },
+    ".gltf": {
+      "count": 5002,
+      "bytes": 31807466
+    }
+  },
+  "output_files_over_50_mib": [],
+  "output_files_over_100_mib": [],
+  "texture_failures": [],
+  "equipment_variants_included": true
 }

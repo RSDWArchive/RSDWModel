@@ -520,6 +520,74 @@ def _candidate_rows(
     return slots
 
 
+def _append_equipment_variant_rows(
+    *,
+    repo_root: Path,
+    webassets_root: Path,
+    slots: dict[str, list[dict]],
+    equipment_variants_path: Path | None,
+    palettes: dict[str, list[ColorOption]],
+    quality: int,
+    force_textures: bool,
+) -> None:
+    if equipment_variants_path is None or not equipment_variants_path.is_file():
+        return
+    try:
+        variants_index = _read_json(equipment_variants_path)
+    except Exception:
+        return
+    variant_cache: dict[tuple[str, str, str], str] = {}
+    valid_slots = set(slots)
+    seen_ids = {str(row.get("id")) for rows in slots.values() for row in rows}
+    for group in (variants_index.get("byModel") or {}).values():
+        if not isinstance(group, dict):
+            continue
+        for variant in group.get("variants") or []:
+            if not isinstance(variant, dict):
+                continue
+            slot = str(variant.get("slot") or "")
+            if slot not in valid_slots:
+                continue
+            variant_id = str(variant.get("id") or "")
+            gltf_path = str(variant.get("gltfPath") or "")
+            if not variant_id or variant_id in seen_ids or not gltf_path:
+                continue
+            if not (webassets_root / Path(gltf_path)).is_file():
+                continue
+            label = str(variant.get("label") or variant_id)
+            row = {
+                "id": variant_id,
+                "name": label,
+                "displayName": label,
+                "label": label,
+                "slot": slot,
+                "sex": variant.get("sex") or "U_MED",
+                "headFamily": None,
+                "path": variant.get("baseModelPath") or variant.get("meshDataPath") or "",
+                "gltfPath": gltf_path,
+                "assetDir": str(Path(gltf_path).parent).replace("\\", "/"),
+                "baseModelId": variant.get("baseModelId"),
+                "equipmentVariantId": variant_id,
+                "equipmentMeshDataPath": variant.get("meshDataPath"),
+                "materialOverridePaths": variant.get("materialOverridePaths") or [],
+                "missingTextureCount": variant.get("missingTextureCount") or 0,
+                "materialVariants": _material_variants(
+                    repo_root=repo_root,
+                    webassets_root=webassets_root,
+                    gltf_rel=gltf_path,
+                    palettes=palettes,
+                    quality=quality,
+                    cache=variant_cache,
+                    force_textures=force_textures,
+                ),
+            }
+            slots[slot].append(row)
+            seen_ids.add(variant_id)
+
+    for slot, rows in slots.items():
+        rows.sort(key=lambda item: (item["sex"], item["label"].lower(), item["path"].lower()))
+
+
 def _default_for(slots: dict[str, list[dict]], slot: str, display_name: str | None = None) -> str | None:
     if display_name:
         for row in slots.get(slot, []):
@@ -543,6 +611,7 @@ def build_avatar_index(
     model_index_path: Path,
     output_path: Path,
     archive_json_root: Path | None,
+    equipment_variants_path: Path | None,
     texture_quality: int,
     force_textures: bool,
 ) -> dict:
@@ -558,12 +627,22 @@ def build_avatar_index(
         quality=texture_quality,
         force_textures=force_textures,
     )
+    _append_equipment_variant_rows(
+        repo_root=repo_root,
+        webassets_root=webassets_root,
+        slots=slots,
+        equipment_variants_path=equipment_variants_path,
+        palettes=palettes,
+        quality=texture_quality,
+        force_textures=force_textures,
+    )
 
     out = {
         "schema": THREE_AVATAR_SCHEMA,
         "datasetVersion": dataset_version,
         "generatedUtc": _utc_now(),
         "sourceModelIndex": "website/model-index.json",
+        "sourceEquipmentVariants": "website/equipment-variants.json" if equipment_variants_path and equipment_variants_path.is_file() else None,
         "sourceWebAssets": f"{dataset_version}/WebAssets",
         "defaults": {
             "sex": "M_MED",
@@ -599,6 +678,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--model-index", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--archive-json-root", type=Path, default=None)
+    parser.add_argument("--equipment-variants", type=Path, default=None)
     parser.add_argument("--texture-quality", type=int, default=75)
     parser.add_argument("--force-textures", action="store_true", help="Rewrite existing generated avatar texture variants.")
     args = parser.parse_args(argv)
@@ -612,6 +692,12 @@ def main(argv: list[str] | None = None) -> int:
         archive_json_root = candidate if candidate.is_dir() else None
     elif not archive_json_root.is_dir():
         archive_json_root = None
+    equipment_variants = args.equipment_variants
+    if equipment_variants is None:
+        candidate = repo / "website" / "equipment-variants.json"
+        equipment_variants = candidate if candidate.is_file() else None
+    elif not equipment_variants.is_file():
+        equipment_variants = None
 
     result = build_avatar_index(
         repo_root=repo,
@@ -619,6 +705,7 @@ def main(argv: list[str] | None = None) -> int:
         model_index_path=model_index.resolve(),
         output_path=output.resolve(),
         archive_json_root=archive_json_root.resolve() if archive_json_root else None,
+        equipment_variants_path=equipment_variants.resolve() if equipment_variants else None,
         texture_quality=args.texture_quality,
         force_textures=args.force_textures,
     )

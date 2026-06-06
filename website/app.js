@@ -3,6 +3,7 @@
 
   const CONFIG_URL = "./data.config.json";
   const INDEX_URL = "./model-index.json";
+  const VARIANT_INDEX_URL = "./equipment-variants.json";
   const MAX_RESULTS = 120;
   const SEARCH_DEBOUNCE_MS = 80;
   const DEFAULT_CONFIG = {
@@ -25,6 +26,8 @@
     selectedPath: document.getElementById("selected-path"),
     warning: document.getElementById("missing-warning"),
     viewer: document.getElementById("model-viewer"),
+    variantPanel: document.getElementById("variant-panel"),
+    variantSelect: document.getElementById("model-variant-select"),
     loadProgress: document.getElementById("load-progress"),
     autoRotate: document.getElementById("auto-rotate-toggle"),
     resetCamera: document.getElementById("reset-camera"),
@@ -36,8 +39,10 @@
 
   let config = { ...DEFAULT_CONFIG };
   let models = [];
+  let variantsByModel = {};
   let activeKind = "all";
   let selectedModel = null;
+  let selectedVariant = null;
   let selectedButton = null;
   let debounceTimer = null;
 
@@ -71,22 +76,32 @@
     return `${rawRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets`;
   }
 
-  function modelRawUrl(model) {
-    return `${webAssetBase()}/${encodePath(model.gltfPath)}`;
+  function modelGltfPath(model, variant = selectedVariant) {
+    return (variant && variant.gltfPath) || model.gltfPath;
   }
 
-  function modelGithubUrl(model) {
-    return `${githubRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets/${encodePath(model.gltfPath)}`;
+  function modelRawUrl(model, variant = selectedVariant) {
+    return `${webAssetBase()}/${encodePath(modelGltfPath(model, variant))}`;
   }
 
-  function modelHash(model) {
-    return `model=${encodeURIComponent(model.id)}`;
+  function modelGithubUrl(model, variant = selectedVariant) {
+    return `${githubRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets/${encodePath(modelGltfPath(model, variant))}`;
+  }
+
+  function modelHash(model, variant = selectedVariant) {
+    const params = new URLSearchParams();
+    params.set("model", model.id);
+    if (variant && variant.id) params.set("variant", variant.id);
+    return params.toString();
   }
 
   function parseHash() {
     const raw = window.location.hash.replace(/^#/, "");
     const params = new URLSearchParams(raw);
-    return params.get("model");
+    return {
+      modelId: params.get("model"),
+      variantId: params.get("variant"),
+    };
   }
 
   function setStatus(message) {
@@ -171,6 +186,30 @@
     };
   }
 
+  function variantsForModel(model) {
+    if (!model || !model.id) return [];
+    const group = variantsByModel[model.id];
+    return (group && Array.isArray(group.variants)) ? group.variants : [];
+  }
+
+  function variantById(model, id) {
+    if (!id) return null;
+    return variantsForModel(model).find((variant) => variant.id === id) || null;
+  }
+
+  function attachVariantSearch(model) {
+    const variants = variantsForModel(model);
+    if (!variants.length) return model;
+    const variantTerms = variants
+      .map((variant) => `${variant.label || ""} ${variant.slot || ""} ${variant.sex || ""} ${variant.meshDataPath || ""}`)
+      .join(" ");
+    return {
+      ...model,
+      variantCount: variants.length,
+      searchText: `${model.searchText} ${variantTerms}`.toLowerCase(),
+    };
+  }
+
   function filteredModels() {
     const { positives, negatives } = parseQuery(els.search.value);
     return models
@@ -203,6 +242,7 @@
         <span class="result-path">${escapeHtml(pathHint(model.path))}</span>
         <span class="result-meta">
           ${model.optimizedTextureCount || 0} texture${model.optimizedTextureCount === 1 ? "" : "s"}
+          ${model.variantCount ? `- ${model.variantCount} variant${model.variantCount === 1 ? "" : "s"}` : ""}
           ${model.missingTextureCount ? `<span class="warn">- ${model.missingTextureCount} missing</span>` : ""}
         </span>
       `;
@@ -225,7 +265,8 @@
   }
 
   function screenshotFileName(model) {
-    const baseName = String(model.displayName || model.name || "RSDWModel")
+    const variantSuffix = selectedVariant && selectedVariant.label ? `_${selectedVariant.label}` : "";
+    const baseName = `${model.displayName || model.name || "RSDWModel"}${variantSuffix}`
       .replace(/\.[^.]+$/, "")
       .replace(/[^a-z0-9_-]+/gi, "_")
       .replace(/^_+|_+$/g, "")
@@ -268,16 +309,46 @@
     }
   }
 
+  function renderVariantPanel() {
+    if (!selectedModel) {
+      els.variantPanel.hidden = true;
+      els.variantSelect.textContent = "";
+      return;
+    }
+    const variants = variantsForModel(selectedModel);
+    if (!variants.length) {
+      els.variantPanel.hidden = true;
+      els.variantSelect.textContent = "";
+      selectedVariant = null;
+      return;
+    }
+    els.variantPanel.hidden = false;
+    els.variantSelect.textContent = "";
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Default Material";
+    els.variantSelect.appendChild(defaultOption);
+    for (const variant of variants) {
+      const option = document.createElement("option");
+      option.value = variant.id;
+      option.textContent = variant.label || variant.id;
+      els.variantSelect.appendChild(option);
+    }
+    els.variantSelect.value = selectedVariant ? selectedVariant.id : "";
+  }
+
   function selectModel(model, options = {}) {
     selectedModel = model;
+    selectedVariant = variantById(model, options.variantId) || null;
     if (selectedButton) selectedButton.classList.remove("is-active");
     selectedButton = null;
-    els.selectedTitle.textContent = model.displayName;
-    els.selectedPath.textContent = model.path;
-    const rawUrl = modelRawUrl(model);
+    renderVariantPanel();
+    els.selectedTitle.textContent = selectedVariant ? `${model.displayName} - ${selectedVariant.label}` : model.displayName;
+    els.selectedPath.textContent = selectedVariant ? `${model.path} | ${selectedVariant.meshDataPath || "equipment variant"}` : model.path;
+    const rawUrl = modelRawUrl(model, selectedVariant);
     els.viewer.setAttribute("src", rawUrl);
     els.viewer.src = rawUrl;
-    els.viewer.alt = model.displayName;
+    els.viewer.alt = selectedVariant ? `${model.displayName} ${selectedVariant.label}` : model.displayName;
     els.viewer.autoRotate = false;
     els.loadProgress.style.width = "0";
     els.autoRotate.disabled = false;
@@ -287,8 +358,11 @@
     els.copyLink.disabled = false;
     els.autoRotate.textContent = "Auto Rotate";
     setActionLink(els.openRaw, rawUrl);
-    setActionLink(els.openGithub, modelGithubUrl(model));
-    if (model.missingTextureCount) {
+    setActionLink(els.openGithub, modelGithubUrl(model, selectedVariant));
+    if (selectedVariant && selectedVariant.missingTextureCount) {
+      els.warning.hidden = false;
+      els.warning.textContent = `${selectedVariant.missingTextureCount} variant texture reference${selectedVariant.missingTextureCount === 1 ? "" : "s"} could not be converted.`;
+    } else if (model.missingTextureCount) {
       els.warning.hidden = false;
       const sample = (model.missingTextures || []).slice(0, 2).join(", ");
       els.warning.textContent = `${model.missingTextureCount} texture reference${model.missingTextureCount === 1 ? "" : "s"} could not be converted, usually tiny HDR helper/curve-atlas files. ${sample}`;
@@ -297,18 +371,18 @@
       els.warning.textContent = "";
     }
     if (options.updateHash) {
-      window.history.replaceState(null, "", `#${modelHash(model)}`);
+      window.history.replaceState(null, "", `#${modelHash(model, selectedVariant)}`);
     }
     updateLandingDensity();
     renderResults();
   }
 
   function selectInitialModel() {
-    const id = parseHash();
-    if (id) {
-      const match = models.find((model) => model.id === id);
+    const parsed = parseHash();
+    if (parsed.modelId) {
+      const match = models.find((model) => model.id === parsed.modelId);
       if (match) {
-        selectModel(match, { updateHash: false });
+        selectModel(match, { updateHash: false, variantId: parsed.variantId });
         els.search.value = match.displayName;
         updateLandingDensity();
         renderResults();
@@ -333,7 +407,13 @@
     }
     els.statVersion.textContent = config.datasetVersion;
     const index = await loadJson(INDEX_URL);
-    models = (index.models || []).map(enrichModel);
+    try {
+      const variantIndex = await loadJson(VARIANT_INDEX_URL);
+      variantsByModel = variantIndex.byModel || {};
+    } catch {
+      variantsByModel = {};
+    }
+    models = (index.models || []).map(enrichModel).map(attachVariantSearch);
     els.homeStatus.textContent = "Model index ready.";
     els.statTotal.textContent = `${models.length.toLocaleString()} models`;
     selectInitialModel();
@@ -394,6 +474,14 @@
       });
     });
 
+    els.variantSelect.addEventListener("change", () => {
+      if (!selectedModel) return;
+      selectModel(selectedModel, {
+        updateHash: true,
+        variantId: els.variantSelect.value || null,
+      });
+    });
+
     els.autoRotate.addEventListener("click", () => {
       els.viewer.autoRotate = !els.viewer.autoRotate;
       els.autoRotate.textContent = els.viewer.autoRotate ? "Stop Rotate" : "Auto Rotate";
@@ -410,7 +498,7 @@
     els.saveScreenshot.addEventListener("click", saveCurrentScreenshot);
     els.copyLink.addEventListener("click", async () => {
       if (!selectedModel) return;
-      const url = `${window.location.origin}${window.location.pathname}#${modelHash(selectedModel)}`;
+      const url = `${window.location.origin}${window.location.pathname}#${modelHash(selectedModel, selectedVariant)}`;
       try {
         await navigator.clipboard.writeText(url);
         els.copyLink.textContent = "Copied";

@@ -37,6 +37,7 @@ from typing import Iterable, Sequence
 GAME_NAME = "RSDragonwilds"
 DEFAULT_RETOC_BASE = Path(r"E:\Github\Retoc\RSDragonwilds")
 DEFAULT_CUE4PARSE_ROOT = Path(r"E:\Github\CUE4Parse")
+DEFAULT_ARCHIVE_BASE = Path(r"E:\Github\RSDWArchive")
 PROJECT_VERSION_RE = re.compile(r'ProjectVersion\s*=\s*TEXT\("([^"]+)"\)')
 RETOC_MANIFEST_NAME = "retoc-manifest.json"
 RETOC_LOCK_NAME = ".retoc.lock"
@@ -458,6 +459,12 @@ def should_run_completion_stages(args: argparse.Namespace) -> bool:
     )
 
 
+def resolve_equipment_variants_mode(args: argparse.Namespace) -> str:
+    if args.equipment_variants != "auto":
+        return args.equipment_variants
+    return {"none": "none", "smoke": "smoke", "full": "full"}[args.web_assets]
+
+
 def write_pipeline_summary(
     *,
     path: Path,
@@ -467,6 +474,8 @@ def write_pipeline_summary(
     retoc_version_root: Path,
     usmap: Path,
     output_root: Path,
+    archive_root: Path,
+    equipment_variants_mode: str,
     log_dir: Path | None,
     dry_run: bool,
     completion_stages: bool,
@@ -482,14 +491,16 @@ def write_pipeline_summary(
         "retoc_root": str(retoc_version_root),
         "usmap": str(usmap),
         "output_root": str(output_root),
+        "archive_root": str(archive_root),
         "log_dir": str(log_dir) if log_dir else None,
         "web_assets": args.web_assets,
+        "equipment_variants": equipment_variants_mode,
         "web_asset_targets": args.web_asset_targets,
         "web_texture_size": args.web_texture_size,
         "web_texture_quality": args.web_texture_quality,
         "website_index": {
             "skipped": args.skip_website_index,
-            "archive_json_root": str(args.archive_json_root) if args.archive_json_root else None,
+            "archive_json_root": str(args.archive_json_root) if args.archive_json_root else str(archive_root / "json"),
         },
         "glb": args.glb,
         "counts_by_extension": extension_counts(output_root),
@@ -511,6 +522,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--version", default=None, help="Game version folder name. Defaults to detected ProjectVersion.")
     parser.add_argument("--retoc-base", type=Path, default=DEFAULT_RETOC_BASE)
     parser.add_argument("--output-root", type=Path, default=None, help="Output data root. Defaults to <repo>/<version>.")
+    parser.add_argument(
+        "--archive-root",
+        type=Path,
+        default=None,
+        help=r"RSDWArchive version root. Defaults to E:\Github\RSDWArchive\<version>.",
+    )
     parser.add_argument("--usmap", type=Path, default=None, help="Explicit .usmap path.")
     parser.add_argument(
         "--usmap-search-root",
@@ -546,6 +563,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--web-texture-size", type=int, default=1024)
     parser.add_argument("--web-texture-quality", type=int, default=75)
     parser.add_argument(
+        "--equipment-variants",
+        choices=("auto", "none", "smoke", "full"),
+        default="auto",
+        help="Generate equipment material variant glTFs/index. Auto follows --web-assets.",
+    )
+    parser.add_argument(
         "--skip-website-index",
         action="store_true",
         help="Skip regenerating website/model-index.json and website/avatar-index.json.",
@@ -554,7 +577,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--archive-json-root",
         type=Path,
         default=None,
-        help="Optional RSDWArchive <version>\\json root used for Avatar color curve palettes.",
+        help="Optional legacy RSDWArchive <version>\\json root used for Avatar color curve palettes.",
     )
 
     parser.add_argument(
@@ -594,6 +617,9 @@ def main(argv: list[str] | None = None) -> int:
     version = detect_game_version(game_root, args.version)
     retoc_version_root = (args.retoc_base / version).resolve()
     output_root = (args.output_root or (root / version)).resolve()
+    archive_root = (args.archive_root or (DEFAULT_ARCHIVE_BASE / version)).resolve()
+    archive_json_root = args.archive_json_root.resolve() if args.archive_json_root else (archive_root / "json").resolve()
+    equipment_variants_mode = resolve_equipment_variants_mode(args)
     cue4parse_root = (
         args.cue4parse_root
         or (Path(os.environ["CUE4PARSE_ROOT"]) if os.environ.get("CUE4PARSE_ROOT") else None)
@@ -623,7 +649,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"retoc:      {retoc_version_root}")
     print(f"usmap:      {usmap}")
     print(f"output:     {output_root}")
+    print(f"archive:    {archive_root}")
     print(f"cue4parse:  {cue4parse_root}")
+    print(f"variants:   {equipment_variants_mode}")
     print(f"completion: {completion_stages}")
     print(f"git plan:   {git_plan_output if git_plan_stage else '<skipped>'}")
     if log_dir:
@@ -640,6 +668,13 @@ def main(argv: list[str] | None = None) -> int:
             )
     if git_plan_stage:
         require_tool("git")
+    if equipment_variants_mode != "none" and not args.skip_website_index:
+        if not (archive_root / "json").is_dir() or not (archive_root / "textures").is_dir():
+            raise SystemExit(
+                "Equipment variants require an RSDWArchive version root with json/ and textures/.\n"
+                f"Expected: {archive_root}\n"
+                "Pass --archive-root, use --equipment-variants none, or build/sync RSDWArchive first."
+            )
 
     if not args.dry_run:
         output_root.mkdir(parents=True, exist_ok=True)
@@ -799,6 +834,33 @@ def main(argv: list[str] | None = None) -> int:
             dry_run=args.dry_run,
         )
 
+        if equipment_variants_mode == "none":
+            print_section("Equipment variants")
+            print("Skipped by --equipment-variants none")
+        else:
+            run_command(
+                f"Generate equipment variants ({equipment_variants_mode})",
+                [
+                    sys.executable,
+                    str(root / "tools" / "generate_equipment_variants.py"),
+                    "--repo-root",
+                    str(root),
+                    "--dataset-version",
+                    version,
+                    "--archive-root",
+                    str(archive_root),
+                    "--mode",
+                    equipment_variants_mode,
+                    "--texture-size",
+                    str(args.web_texture_size),
+                    "--texture-quality",
+                    str(args.web_texture_quality),
+                ],
+                cwd=root,
+                log_path=log_dir / "05b_equipment_variants.log" if log_dir else None,
+                dry_run=args.dry_run,
+            )
+
         avatar_cmd = [
             sys.executable,
             str(root / "tools" / "generate_avatar_index.py"),
@@ -810,14 +872,16 @@ def main(argv: list[str] | None = None) -> int:
             str(args.web_texture_quality),
             "--force-textures",
         ]
-        if args.archive_json_root is not None:
-            avatar_cmd.extend(["--archive-json-root", str(args.archive_json_root)])
+        if archive_json_root.is_dir():
+            avatar_cmd.extend(["--archive-json-root", str(archive_json_root)])
+        if equipment_variants_mode != "none":
+            avatar_cmd.extend(["--equipment-variants", str(root / "website" / "equipment-variants.json")])
 
         run_command(
             "Generate website avatar index",
             avatar_cmd,
             cwd=root,
-            log_path=log_dir / "05b_website_avatar_index.log" if log_dir else None,
+            log_path=log_dir / "05c_website_avatar_index.log" if log_dir else None,
             dry_run=args.dry_run,
         )
 
@@ -913,6 +977,8 @@ def main(argv: list[str] | None = None) -> int:
             retoc_version_root=retoc_version_root,
             usmap=usmap,
             output_root=output_root,
+            archive_root=archive_root,
+            equipment_variants_mode=equipment_variants_mode,
             log_dir=log_dir,
             dry_run=False,
             completion_stages=completion_stages,

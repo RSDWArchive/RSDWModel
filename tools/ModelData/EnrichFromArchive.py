@@ -87,18 +87,25 @@ def _load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _archive_objects(data) -> list[dict]:
+    if isinstance(data, list):
+        return [row for row in data if isinstance(row, dict)]
+    if isinstance(data, dict):
+        value = data.get("value")
+        if isinstance(value, list):
+            return [row for row in value if isinstance(row, dict)]
+        return [data]
+    return []
+
+
 def _iter_uemodels(source_root: Path):
     yield from sorted(source_root.rglob("*.uemodel"), key=lambda path: path.as_posix().lower())
 
 
 def _material_refs_from_mesh_json(path: Path) -> list[dict]:
     data = _load_json(path)
-    if not isinstance(data, list):
-        return []
     refs: list[dict] = []
-    for obj in data:
-        if not isinstance(obj, dict):
-            continue
+    for obj in _archive_objects(data):
         obj_type = obj.get("Type")
         if obj_type == "StaticMesh":
             for row in ((obj.get("Properties") or {}).get("StaticMaterials") or []):
@@ -150,11 +157,9 @@ def _add_texture_aliases(textures: dict[str, str], name: str, value: str) -> Non
 
 def _convert_archive_material(path: Path, archive_root: Path) -> tuple[dict, list[str]]:
     data = _load_json(path)
-    if not isinstance(data, list):
-        raise ValueError(f"Archive material JSON is not a list: {path}")
     material = next(
         (
-            row for row in data
+            row for row in _archive_objects(data)
             if isinstance(row, dict) and "Material" in str(row.get("Type", ""))
         ),
         None,
