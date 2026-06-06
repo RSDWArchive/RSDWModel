@@ -1,0 +1,98 @@
+{
+  "Textures": {
+    "PM_Normals": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_N.T_MI_GoblinBody_N",
+    "Normal": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_N.T_MI_GoblinBody_N",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_D.T_MI_GoblinBody_D",
+    "BaseColor Map": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_D.T_MI_GoblinBody_D",
+    "PM_SpecularMasks": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_ORM.T_MI_GoblinBody_ORM",
+    "ORM Map": "RSDragonwilds/Content/Art/Skeleton/NPC/Humanoid/M_MED_Goblin_Melee_01/Textures/T_MI_GoblinBody_ORM.T_MI_GoblinBody_ORM",
+    "BodyMask": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "LegMask": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "HeadMask": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "SkinGradient": "RSDragonwilds/Content/Art/Skeleton/Shared/Skin/T_SkinTone_DeadGoblin_ColorBar_D1.T_SkinTone_DeadGoblin_ColorBar_D1",
+    "MaskTexture": "Engine/Content/OpenWorldTemplate/LandscapeMaterial/T_GridChecker_A.T_GridChecker_A",
+    "FlowMap": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_ORM.T_Default_ORM",
+    "T_SkinTone_DeadGoblin_ColorBar_D1": "RSDragonwilds/Content/Art/Skeleton/Shared/Skin/T_SkinTone_DeadGoblin_ColorBar_D1.T_SkinTone_DeadGoblin_ColorBar_D1"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 5,
+    "Colors": {
+      "GlowColor": {
+        "R": 0.890625,
+        "G": 0.164154,
+        "B": 0.398161,
+        "A": 1.0,
+        "Hex": "F371A9"
+      }
+    },
+    "Scalars": {
+      "IOR": 1.4,
+      "SkinFresnelExponent": 5.0,
+      "BodyMaskAlpha": 0.0,
+      "LegMaskAlpha": 0.0,
+      "HeadMaskAlpha": 0.0,
+      "DesiredCullRange": 0.0,
+      "Dither Width": 0.0,
+      "Glow Width": 0.0,
+      "Glow Intensity": 0.0,
+      "Dissolve": 0.0,
+      "SourceU": 0.5,
+      "SourceV": 0.5,
+      "AlbedoDataMult": 0.284,
+      "SA_CheeksRedness": 0.7,
+      "SA_CheeksSaturation": 0.5,
+      "SA_CheeksLightness": 0.6,
+      "SA_BaseRedness": 0.008,
+      "SA_BaseSaturation": 0.5,
+      "SA_BaseLightness": 3.0,
+      "SA_EarsRedness": 0.6,
+      "SA_EarsSaturation": 0.5,
+      "SA_EarsLightness": 0.5,
+      "SA_CurvatureRedness": 0.4,
+      "SA_CurvatureSaturation": 0.4,
+      "SA_CurvatureLightness": 0.75,
+      "CurveID": 0.0,
+      "CurveID_ShaderParameter": 0.0,
+      "WetnessParameter": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "UseArmourSlotMaks": false,
+      "UseCustomPrimitiveData": false
+    },
+    "Properties": {
+      "MaterialDecalResponse": "EMaterialDecalResponse::MDR_None",
+      "ShadingModels": {
+        "ShadingModelField": 32
+      },
+      "bUsedWithSkeletalMesh": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "8335B834-49238111-3AE78B92-5D667434",
+      "SubsurfaceProfile": {
+        "ObjectName": "SubsurfaceProfile'SSP_Player_Skin'",
+        "ObjectPath": "RSDragonwilds/Content/Art/Skeleton/Shared/Skin/SSP_Player_Skin.0"
+      },
+      "SubsurfaceProfiles": [
+        {
+          "ObjectName": "SubsurfaceProfile'SSP_Player_Skin'",
+          "ObjectPath": "RSDragonwilds/Content/Art/Skeleton/Shared/Skin/SSP_Player_Skin.0"
+        }
+      ],
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "ShadingModel": "EMaterialShadingModel::MSM_SubsurfaceProfile",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

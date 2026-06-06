@@ -1,0 +1,124 @@
+{
+  "Textures": {
+    "Shell Texture": "RSDragonwilds/Content/Materials/Character/Fur_Hair/shell_texture.shell_texture",
+    "BaseTexture": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Ram_01/Texture/T_Ram_01_D.T_Ram_01_D",
+    "PM_Normals": "Engine/Content/EngineMaterials/DefaultNormal.DefaultNormal",
+    "Baked Normal": "Engine/Content/EngineMaterials/DefaultNormal.DefaultNormal",
+    "PM_SpecularMasks": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Ram_01/Texture/T_Ram_01_ORM.T_Ram_01_ORM",
+    "ORM Map": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Ram_01/Texture/T_Ram_01_ORM.T_Ram_01_ORM",
+    "Fur mask": "RSDragonwilds/Content/Materials/DefaultTextures/T_DefaultBlack_D.T_DefaultBlack_D",
+    "HAir Scale Mask": "RSDragonwilds/Content/Materials/DefaultTextures/T_DefaultBlack_D.T_DefaultBlack_D"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 2,
+    "Colors": {
+      "OverlayColor": {
+        "R": 0.005208,
+        "G": 0.005208,
+        "B": 0.005208,
+        "A": 1.0,
+        "Hex": "101010"
+      },
+      "MixColor": {
+        "R": 0.098958,
+        "G": 0.090712,
+        "B": 0.090712,
+        "A": 1.0,
+        "Hex": "585555"
+      },
+      "SSS Emisive": {
+        "R": 0.026042,
+        "G": 0.011903,
+        "B": 0.009766,
+        "A": 1.0,
+        "Hex": "2C1C19"
+      },
+      "SSS Color": {
+        "R": 1.0,
+        "G": 0.445135,
+        "B": 0.212663,
+        "A": 1.0,
+        "Hex": "FFB27F"
+      },
+      "GlowColor": {
+        "R": 1.0,
+        "G": 0.211286,
+        "B": 0.65415,
+        "A": 1.0,
+        "Hex": "FF7FD4"
+      }
+    },
+    "Scalars": {
+      "Roughness": 0.0,
+      "Density": 1.0,
+      "Random Width": 0.0,
+      "Hair Sacle": 87.2509,
+      "Shell Contrast": 0.7,
+      "Hair Thickness": 0.6,
+      "NormalMap Intensity": 0.0,
+      "Base color power": 1.0,
+      "AO Strength Diffuse": 0.5,
+      "AO Strength": 1.0,
+      "Roughness Influence": 0.0,
+      "Depth Offset": 2.0,
+      "Spec": 0.0,
+      "Spec Range (set to -0.015)": 0.0,
+      "Spec Tips (set to 0.2)": 1.0,
+      "Desaturation": 0.0,
+      "Luminosity": 0.5,
+      "HUeShift": 0.0,
+      "Contrast": 0.648,
+      "Power": 1.184338,
+      "Compensation Clamping": 0.25,
+      "Compensation Amount": 0.15,
+      "Compensation Power": 2.0,
+      "AO roughness inf": 1.0,
+      "fur mask Desity influence": 0.0,
+      "Fur Mask Denstiy": 1.0,
+      "Hair Scale Mask": 21.084278,
+      "ShadowBIas Offset": -0.6,
+      "Thickness Strength": 1.0,
+      "SSS Color Travel (High = iso color)": 1.25,
+      "Sub Surface color": 0.75,
+      "Thickness Color Strength": 1.0,
+      "DesiredCullRange": 0.0,
+      "Dither Width": 0.2,
+      "Glow Width": 0.2,
+      "Glow Intensity": 0.0,
+      "Dissolve": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Shell Normals?": false,
+      "UseTexture?": false
+    },
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 4
+      },
+      "TwoSided": true,
+      "DitheredLODTransition": true,
+      "DitherOpacityMask": true,
+      "bUsedWithSkeletalMesh": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "35D5D19A-47FBEB37-409BCBB2-645B161B",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "DitheredLODTransition": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "ShadingModel": "EMaterialShadingModel::MSM_Subsurface",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
