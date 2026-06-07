@@ -331,8 +331,9 @@ URLs to raw GitHub content under
 
 The optimized `WebAssets/` corpus is tracked in git so the deployed static site
 can load model payloads from raw GitHub URLs. The latest measured generated
-corpus is about `808 MiB`, with no generated file over `50 MiB`. Keep checking
-`WebAssetSizeReport.json` after clean rebuilds before pushing.
+corpus is about `1.8 GiB` (`1,903,207,875` bytes), with equipment variants and
+web animations included and no generated file over `50 MiB` or `100 MiB`. Keep
+checking `WebAssetSizeReport.json` after clean rebuilds before pushing.
 
 ### Avatar Creator
 
