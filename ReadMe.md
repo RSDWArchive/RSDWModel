@@ -8,8 +8,10 @@ assets and serves them through a static viewer at
 ## What This Repo Provides
 
 - A static model browser with search and interactive 3D viewing.
+- Play/pause animation support for generated skeletal-model animation variants.
 - A Three.js Avatar page for assembling player body, head, hair, beard, armor,
-  helmet, cape, and color options from the exported model set.
+  helmet, cape, color options, and compatible player animations from the
+  exported model set.
 - Versioned exported model data for the current dataset, `0.11.2.2`.
 - Optimized web assets: separate `.gltf` / `.bin` models and shared 1024px WebP
   textures.
@@ -28,8 +30,9 @@ at [rsdwmodel.com/Avatar/](https://rsdwmodel.com/Avatar/).
 
 - Game data version: `0.11.2.2`
 - Model inventory: `4,394` static meshes and `500` skeletal meshes
-- Web output: `4,894` glTF/bin pairs and `3,483` shared WebP textures
-- Latest generated asset corpus: about `784 MiB`, with no generated file over
+- Web output: `4,894` base glTF/bin pairs, `2,107` animated SK variants, and `3,876`
+  shared WebP textures
+- Latest generated asset corpus: about `1.8 GiB`, with no generated file over
   `50 MiB`
 
 ## Repository Layout

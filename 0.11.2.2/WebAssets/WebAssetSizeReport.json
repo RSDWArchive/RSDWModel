@@ -1,6 +1,6 @@
 {
   "schema": "RSDWModel.WebAssetSizeReport.v1",
-  "updated_utc": "2026-06-06T21:20:48.446200+00:00",
+  "updated_utc": "2026-06-07T04:02:50.913017+00:00",
   "source_root": "0.11.2.2",
   "output_root": "0.11.2.2/WebAssets",
   "texture_profile": {
@@ -12,27 +12,29 @@
   "source_texture_bytes": 8810229602,
   "optimized_texture_bytes": 523602940,
   "model_bytes": 247948778,
-  "total_web_asset_bytes": 846474376,
+  "animation_bytes": 1056208789,
+  "total_web_asset_bytes": 1903207875,
   "file_counts": {
-    ".webp": {
-      "count": 3857,
-      "bytes": 531105822
-    },
     ".bin": {
-      "count": 4894,
-      "bytes": 216140508
+      "count": 7001,
+      "bytes": 944772428
+    },
+    ".webp": {
+      "count": 3876,
+      "bytes": 531630338
+    },
+    ".gltf": {
+      "count": 7109,
+      "bytes": 359385139
     },
     ".json": {
       "count": 3,
-      "bytes": 67419776
-    },
-    ".gltf": {
-      "count": 5002,
-      "bytes": 31808270
+      "bytes": 67419970
     }
   },
   "output_files_over_50_mib": [],
   "output_files_over_100_mib": [],
   "texture_failures": [],
-  "equipment_variants_included": true
+  "equipment_variants_included": true,
+  "web_animations_included": true
 }

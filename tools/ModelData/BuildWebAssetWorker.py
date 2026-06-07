@@ -23,6 +23,12 @@ import bpy  # type: ignore
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
+for _extension_parent in (
+    Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender" / "4.5" / "extensions" / "user_default",
+    Path.home() / "AppData" / "Roaming" / "Blender Foundation" / "Blender" / "5.0" / "extensions" / "user_default",
+):
+    if _extension_parent.is_dir() and str(_extension_parent) not in sys.path:
+        sys.path.insert(0, str(_extension_parent))
 
 import BuildGLBWorker as base  # noqa: E402
 from WebTextureRules import is_web_texture_candidate  # noqa: E402
@@ -565,7 +571,7 @@ def _patch_image_loader(
     base._load_image = _load_web_image
 
 
-def _export_gltf(gltf_path: Path) -> None:
+def _export_gltf(gltf_path: Path, *, include_animations: bool = False) -> None:
     gltf_path.parent.mkdir(parents=True, exist_ok=True)
     try:
         bpy.ops.object.select_all(action="SELECT")
@@ -579,6 +585,7 @@ def _export_gltf(gltf_path: Path) -> None:
         export_image_format="AUTO",
         export_keep_originals=True,
         export_yup=True,
+        export_animations=include_animations,
         use_selection=False,
         export_draco_mesh_compression_enable=True,
         export_draco_mesh_compression_level=6,
@@ -610,6 +617,62 @@ def _remove_flat_white_color_attributes(*, remove_all: bool) -> list[dict]:
             removed.append({"object": obj.name, "attribute": attr.name, "count": len(data)})
             mesh.color_attributes.remove(attr)
     return removed
+
+
+def _import_task_animations(animation_rows: list[dict]) -> list[dict]:
+    if not animation_rows:
+        return []
+
+    from io_scene_ueformat.importer.logic import UEFormatImport
+    from io_scene_ueformat.options import UEAnimOptions
+
+    armatures = [obj for obj in bpy.context.scene.objects if obj.type == "ARMATURE"]
+    if not armatures:
+        raise RuntimeError("Animation import requested, but the model has no armature")
+
+    armature = max(armatures, key=lambda obj: len(obj.data.bones))
+    bpy.context.view_layer.objects.active = armature
+    armature.select_set(True)
+
+    imported: list[dict] = []
+    for row in animation_rows:
+        path = Path(row["ueanim_path"]).resolve()
+        if not path.is_file():
+            raise FileNotFoundError(f".ueanim not found: {path}")
+
+        before_actions = set(bpy.data.actions)
+        UEFormatImport(
+            UEAnimOptions(
+                scale_factor=0.01,
+                link=True,
+                rotation_only=False,
+                import_curves=True,
+                override_skeleton=armature,
+            )
+        ).import_file(path)
+
+        new_actions = [action for action in bpy.data.actions if action not in before_actions]
+        active_action = armature.animation_data.action if armature.animation_data else None
+        if active_action is None and new_actions:
+            armature.animation_data_create()
+            armature.animation_data.action = new_actions[0]
+            active_action = new_actions[0]
+        if active_action is None:
+            raise RuntimeError(f"Animation import did not create an action: {path}")
+
+        start, end = active_action.frame_range
+        bpy.context.scene.frame_start = min(bpy.context.scene.frame_start, int(start))
+        bpy.context.scene.frame_end = max(bpy.context.scene.frame_end, int(end))
+        imported.append(
+            {
+                "id": row.get("id"),
+                "name": row.get("name") or active_action.name,
+                "ueanim_path": str(path),
+                "action": active_action.name,
+                "frame_range": [float(start), float(end)],
+            }
+        )
+    return imported
 
 
 def _uses_unreal_vertex_color_masks(source_root: Path, mi_paths_rel: list[str]) -> bool:
@@ -723,6 +786,7 @@ def main() -> int:
         texture_map = dict(task.get("texture_map") or {})
         texture_profile = dict(task.get("texture_profile") or {})
         generated_texture_overrides = dict(task.get("generated_texture_overrides") or {})
+        animation_rows = list(task.get("animations") or [])
 
         model_rel = entry["path"]
         uemodel_abs = (source_root / model_rel).resolve()
@@ -765,11 +829,12 @@ def main() -> int:
             for row in reports
         ) or _uses_unreal_vertex_color_masks(source_root, mi_paths_rel)
         removed_color_attributes = _remove_flat_white_color_attributes(remove_all=remove_all_color_attributes)
+        imported_animations = _import_task_animations(animation_rows)
 
         _clean_asset_dir(asset_dir)
         gltf_abs = asset_dir / "model.gltf"
         bin_abs = asset_dir / "model.bin"
-        _export_gltf(gltf_abs)
+        _export_gltf(gltf_abs, include_animations=bool(imported_animations))
         _patch_gltf_alpha_modes(gltf_abs, reports)
         _patch_gltf_webp_textures(gltf_abs)
 
@@ -798,6 +863,7 @@ def main() -> int:
                 "slot_count": len(mat_slots),
                 "slots": reports,
                 "removed_color_attributes": removed_color_attributes,
+                "animations_imported": imported_animations,
                 "generated_textures": sorted(generated_textures.values(), key=lambda row: row["optimized"]),
                 "material_diagnostics": material_diagnostics,
                 "used_textures": sorted(

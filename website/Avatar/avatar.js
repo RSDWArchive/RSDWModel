@@ -10,6 +10,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   const CONFIG_URL = "../data.config.json";
   const AVATAR_INDEX_URL = "../avatar-index.json";
+  const ANIMATION_INDEX_URL = "../animation-index.json";
   const DEFAULT_CONFIG = {
     repoOwner: "RSDWArchive",
     repoName: "RSDWModel",
@@ -40,6 +41,8 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     sexF: document.getElementById("sex-f"),
     bodyVisible: document.getElementById("body-visible"),
     headVisible: document.getElementById("head-visible"),
+    animationSelect: document.getElementById("avatar-animation-select"),
+    animationPlay: document.getElementById("avatar-animation-play"),
     slotControls: Object.fromEntries(SLOT_ORDER.map((slot) => [slot, document.getElementById(`slot-${slot}`)])),
     swatches: {
       skin: document.getElementById("skin-swatches"),
@@ -50,6 +53,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   let config = { ...DEFAULT_CONFIG };
   let avatarIndex = null;
+  let animationIndex = null;
   let state = null;
   let activeSlot = "baseHead";
   let renderer = null;
@@ -59,9 +63,12 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   let avatarRoot = null;
   let loader = null;
   let hasFitCamera = false;
+  let clock = null;
+  let animationPlaying = true;
   const gltfCache = new Map();
   const textureCache = new Map();
   const activeObjects = new Map();
+  const activeMixers = [];
   const textureLoader = new THREE.TextureLoader();
   textureLoader.setCrossOrigin("anonymous");
 
@@ -140,6 +147,23 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     return null;
   }
 
+  function baseAnimationRow() {
+    return rowById(state && state.slots && state.slots.baseBody);
+  }
+
+  function animationsForAvatar(testState = state) {
+    const body = rowById(testState && testState.slots && testState.slots.baseBody);
+    if (!body || !animationIndex || !animationIndex.byModel) return [];
+    const group = animationIndex.byModel[body.id];
+    const rows = group && Array.isArray(group.animations) ? group.animations : [];
+    return rows.filter((row) => row && row.status === "success" && row.gltfPath);
+  }
+
+  function animationById(id, testState = state) {
+    if (!id) return null;
+    return animationsForAvatar(testState).find((row) => row.id === id) || null;
+  }
+
   function compatibleRows(slot) {
     const rows = slotRows(slot);
     if (slot === "hair") return rows;
@@ -163,6 +187,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       colors: { ...(defaults.colors || {}) },
       bodyVisible: defaults.bodyVisible !== false,
       headVisible: defaults.headVisible !== false,
+      animation: defaults.animation || null,
     };
   }
 
@@ -192,6 +217,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
         next.colors[role] = params.get(role);
       }
     }
+    if (params.has("animation")) {
+      const value = params.get("animation");
+      next.animation = value === "none" ? null : value;
+    }
     return normalizeState(next);
   }
 
@@ -207,6 +236,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     }
     if (!state.bodyVisible) params.set("bodyVisible", "0");
     if (!state.headVisible) params.set("headVisible", "0");
+    if (state.animation) params.set("animation", state.animation);
     window.history.replaceState(null, "", `#${params.toString()}`);
   }
 
@@ -225,6 +255,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       if (!colors.some((color) => color.id === next.colors[role])) {
         next.colors[role] = colors[0]?.id || "";
       }
+    }
+    if (next.animation && !animationById(next.animation, next)) {
+      next.animation = null;
     }
     return next;
   }
@@ -258,12 +291,33 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     select.value = state.slots[slot] || "";
   }
 
+  function fillAnimationSelect() {
+    const select = els.animationSelect;
+    const rows = animationsForAvatar();
+    select.textContent = "";
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = "None";
+    select.appendChild(none);
+    for (const row of rows) {
+      const option = document.createElement("option");
+      option.value = row.id;
+      option.textContent = row.label || row.name || row.id;
+      select.appendChild(option);
+    }
+    select.value = state.animation || "";
+    select.disabled = rows.length === 0;
+    els.animationPlay.disabled = !state.animation;
+    els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
+  }
+
   function renderControls() {
     els.sexM.classList.toggle("is-active", state.sex === "M_MED");
     els.sexF.classList.toggle("is-active", state.sex === "F_MED");
     els.bodyVisible.checked = state.bodyVisible;
     els.headVisible.checked = state.headVisible;
     for (const slot of SLOT_ORDER) fillSlotSelect(slot);
+    fillAnimationSelect();
     for (const role of COLOR_ROLES) {
       const container = els.swatches[role];
       container.querySelectorAll(".swatch").forEach((button) => {
@@ -297,6 +351,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function initThree() {
     scene = new THREE.Scene();
+    clock = new THREE.Clock();
     scene.background = null;
     camera = new THREE.PerspectiveCamera(35, 1, 0.01, 100);
     camera.position.set(0, 1.2, 4.2);
@@ -350,6 +405,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function animate() {
     requestAnimationFrame(animate);
+    const delta = clock ? clock.getDelta() : 0;
+    for (const mixer of activeMixers) {
+      mixer.update(delta);
+    }
     controls.update();
     renderer.render(scene, camera);
   }
@@ -359,6 +418,14 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       gltfCache.set(gltfPath, loader.loadAsync(assetUrl(gltfPath)));
     }
     return gltfCache.get(gltfPath);
+  }
+
+  async function loadAnimationClip(row) {
+    if (!row || !row.gltfPath) return null;
+    const gltf = await loadGltf(row.gltfPath);
+    if (!gltf.animations || !gltf.animations.length) return null;
+    const preferred = row.animationName || row.name;
+    return gltf.animations.find((clip) => clip.name === preferred) || gltf.animations[0];
   }
 
   async function loadTexture(relPath) {
@@ -428,6 +495,43 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     activeObjects.set(slot, cloned);
   }
 
+  function clearAnimationMixers() {
+    while (activeMixers.length) {
+      const mixer = activeMixers.pop();
+      mixer.stopAllAction();
+      mixer.uncacheRoot(mixer.getRoot());
+    }
+  }
+
+  async function applySelectedAnimation() {
+    clearAnimationMixers();
+    if (!state.animation) {
+      els.animationPlay.disabled = true;
+      els.animationPlay.textContent = "Play";
+      return;
+    }
+    const row = animationById(state.animation);
+    if (!row) {
+      els.animationPlay.disabled = true;
+      return;
+    }
+    const clip = await loadAnimationClip(row);
+    if (!clip) {
+      setWarning("The selected animation did not contain playable clip data.");
+      els.animationPlay.disabled = true;
+      return;
+    }
+    for (const root of activeObjects.values()) {
+      const mixer = new THREE.AnimationMixer(root);
+      const action = mixer.clipAction(clip);
+      action.reset().play();
+      mixer.timeScale = animationPlaying ? 1 : 0;
+      activeMixers.push(mixer);
+    }
+    els.animationPlay.disabled = activeMixers.length === 0;
+    els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
+  }
+
   function selectedRows() {
     return SLOT_ORDER
       .filter((slot) => slot !== "baseBody" || state.bodyVisible)
@@ -463,6 +567,8 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       .slice(0, 5);
     if (!state.bodyVisible) parts.unshift("Body: hidden");
     if (!state.headVisible) parts.unshift("Head: hidden");
+    const animation = animationById(state.animation);
+    if (animation) parts.push(`Animation: ${animation.label || animation.name}`);
     els.summary.textContent = parts.join(" | ") || "Default loadout";
   }
 
@@ -479,6 +585,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       for (const slot of SLOT_ORDER) {
         if (!visibleSlots.has(slot)) await loadSlot(slot, null);
       }
+      await applySelectedAnimation();
       if (!hasFitCamera) {
         fitCamera();
         hasFitCamera = true;
@@ -538,6 +645,19 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       state.headVisible = els.headVisible.checked;
       updateAvatar();
     });
+    els.animationSelect.addEventListener("change", () => {
+      state.animation = els.animationSelect.value || null;
+      animationPlaying = Boolean(state.animation);
+      updateAvatar();
+    });
+    els.animationPlay.addEventListener("click", () => {
+      if (!state.animation) return;
+      animationPlaying = !animationPlaying;
+      for (const mixer of activeMixers) {
+        mixer.timeScale = animationPlaying ? 1 : 0;
+      }
+      els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
+    });
     els.resetView.addEventListener("click", () => {
       fitCamera();
       hasFitCamera = true;
@@ -576,6 +696,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     bindEvents();
     config = { ...DEFAULT_CONFIG, ...(await loadJson(CONFIG_URL).catch(() => ({}))) };
     avatarIndex = await loadJson(AVATAR_INDEX_URL);
+    animationIndex = await loadJson(ANIMATION_INDEX_URL).catch(() => null);
     config.datasetVersion = avatarIndex.datasetVersion || config.datasetVersion;
     state = parseHash() || defaultState();
     initThree();

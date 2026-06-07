@@ -465,6 +465,12 @@ def resolve_equipment_variants_mode(args: argparse.Namespace) -> str:
     return {"none": "none", "smoke": "smoke", "full": "full"}[args.web_assets]
 
 
+def resolve_web_animations_mode(args: argparse.Namespace) -> str:
+    if args.web_animations != "auto":
+        return args.web_animations
+    return {"none": "none", "smoke": "smoke", "full": "full"}[args.web_assets]
+
+
 def write_pipeline_summary(
     *,
     path: Path,
@@ -476,6 +482,7 @@ def write_pipeline_summary(
     output_root: Path,
     archive_root: Path,
     equipment_variants_mode: str,
+    web_animations_mode: str,
     log_dir: Path | None,
     dry_run: bool,
     completion_stages: bool,
@@ -495,6 +502,7 @@ def write_pipeline_summary(
         "log_dir": str(log_dir) if log_dir else None,
         "web_assets": args.web_assets,
         "equipment_variants": equipment_variants_mode,
+        "web_animations": web_animations_mode,
         "web_asset_targets": args.web_asset_targets,
         "web_texture_size": args.web_texture_size,
         "web_texture_quality": args.web_texture_quality,
@@ -574,6 +582,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Generate equipment material variant glTFs/index. Auto follows --web-assets.",
     )
     parser.add_argument(
+        "--web-animations",
+        choices=("auto", "none", "smoke", "full"),
+        default="auto",
+        help="Generate animated SK glTF variants/index. Auto follows --web-assets.",
+    )
+    parser.add_argument(
+        "--web-animation-limit",
+        type=int,
+        default=None,
+        help="Optional total animation build limit for --web-animations full.",
+    )
+    parser.add_argument(
         "--skip-website-index",
         action="store_true",
         help="Skip regenerating website/model-index.json and website/avatar-index.json.",
@@ -625,6 +645,7 @@ def main(argv: list[str] | None = None) -> int:
     archive_root = (args.archive_root or (DEFAULT_ARCHIVE_BASE / version)).resolve()
     archive_json_root = args.archive_json_root.resolve() if args.archive_json_root else (archive_root / "json").resolve()
     equipment_variants_mode = resolve_equipment_variants_mode(args)
+    web_animations_mode = resolve_web_animations_mode(args)
     cue4parse_root = (
         args.cue4parse_root
         or (Path(os.environ["CUE4PARSE_ROOT"]) if os.environ.get("CUE4PARSE_ROOT") else None)
@@ -657,6 +678,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"archive:    {archive_root}")
     print(f"cue4parse:  {cue4parse_root}")
     print(f"variants:   {equipment_variants_mode}")
+    print(f"animations: {web_animations_mode}")
     print(f"completion: {completion_stages}")
     print(f"git plan:   {git_plan_output if git_plan_stage else '<skipped>'}")
     if log_dir:
@@ -679,6 +701,13 @@ def main(argv: list[str] | None = None) -> int:
                 "Equipment variants require an RSDWArchive version root with json/ and textures/.\n"
                 f"Expected: {archive_root}\n"
                 "Pass --archive-root, use --equipment-variants none, or build/sync RSDWArchive first."
+            )
+    if web_animations_mode != "none" and not args.skip_website_index:
+        if not archive_json_root.is_dir():
+            raise SystemExit(
+                "Web animations require an RSDWArchive json/ root for skeleton/animation metadata.\n"
+                f"Expected: {archive_json_root}\n"
+                "Pass --archive-json-root, use --web-animations none, or build/sync RSDWArchive first."
             )
 
     if not args.dry_run:
@@ -888,6 +917,49 @@ def main(argv: list[str] | None = None) -> int:
                 dry_run=args.dry_run,
             )
 
+        if web_animations_mode == "none":
+            print_section("Web animations")
+            print("Skipped by --web-animations none")
+        else:
+            animation_cmd = [
+                sys.executable,
+                str(root / "tools" / "ModelData" / "BuildWebAnimations.py"),
+                "--repo-root",
+                str(root),
+                "--dataset-version",
+                version,
+                "--source-root",
+                str(output_root),
+                "--output-root",
+                str(output_root / "WebAssets"),
+                "--archive-json-root",
+                str(archive_json_root),
+                "--retoc-root",
+                str(retoc_version_root),
+                "--usmap",
+                str(usmap),
+                "--cue4parse-root",
+                str(cue4parse_root),
+                "--mode",
+                web_animations_mode,
+                "--texture-size",
+                str(args.web_texture_size),
+                "--texture-quality",
+                str(args.web_texture_quality),
+            ]
+            if args.web_animation_limit is not None:
+                animation_cmd.extend(["--limit", str(args.web_animation_limit)])
+            if web_animations_mode == "smoke":
+                animation_cmd.append("--force")
+
+            run_command(
+                f"Build web animations ({web_animations_mode})",
+                animation_cmd,
+                cwd=root,
+                log_path=log_dir / "05c_web_animations.log" if log_dir else None,
+                dry_run=args.dry_run,
+            )
+
         avatar_cmd = [
             sys.executable,
             str(root / "tools" / "generate_avatar_index.py"),
@@ -908,7 +980,7 @@ def main(argv: list[str] | None = None) -> int:
             "Generate website avatar index",
             avatar_cmd,
             cwd=root,
-            log_path=log_dir / "05c_website_avatar_index.log" if log_dir else None,
+            log_path=log_dir / "05d_website_avatar_index.log" if log_dir else None,
             dry_run=args.dry_run,
         )
 
@@ -1006,6 +1078,7 @@ def main(argv: list[str] | None = None) -> int:
             output_root=output_root,
             archive_root=archive_root,
             equipment_variants_mode=equipment_variants_mode,
+            web_animations_mode=web_animations_mode,
             log_dir=log_dir,
             dry_run=False,
             completion_stages=completion_stages,

@@ -4,6 +4,7 @@
   const CONFIG_URL = "./data.config.json";
   const INDEX_URL = "./model-index.json";
   const VARIANT_INDEX_URL = "./equipment-variants.json";
+  const ANIMATION_INDEX_URL = "./animation-index.json";
   const RESULTS_PAGE_SIZE = 120;
   const SEARCH_DEBOUNCE_MS = 80;
   const DEFAULT_CONFIG = {
@@ -30,6 +31,9 @@
     viewer: document.getElementById("model-viewer"),
     variantPanel: document.getElementById("variant-panel"),
     variantSelect: document.getElementById("model-variant-select"),
+    animationPanel: document.getElementById("animation-panel"),
+    animationSelect: document.getElementById("model-animation-select"),
+    animationPlay: document.getElementById("animation-play-toggle"),
     loadProgress: document.getElementById("load-progress"),
     autoRotate: document.getElementById("auto-rotate-toggle"),
     resetCamera: document.getElementById("reset-camera"),
@@ -42,9 +46,11 @@
   let config = { ...DEFAULT_CONFIG };
   let models = [];
   let variantsByModel = {};
+  let animationsByModel = {};
   let activeKind = "all";
   let selectedModel = null;
   let selectedVariant = null;
+  let selectedAnimation = null;
   let selectedButton = null;
   let debounceTimer = null;
   let visibleResultCount = RESULTS_PAGE_SIZE;
@@ -79,22 +85,24 @@
     return `${rawRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets`;
   }
 
-  function modelGltfPath(model, variant = selectedVariant) {
+  function modelGltfPath(model, variant = selectedVariant, animation = selectedAnimation) {
+    if (animation && animation.gltfPath && !variant) return animation.gltfPath;
     return (variant && variant.gltfPath) || model.gltfPath;
   }
 
-  function modelRawUrl(model, variant = selectedVariant) {
-    return `${webAssetBase()}/${encodePath(modelGltfPath(model, variant))}`;
+  function modelRawUrl(model, variant = selectedVariant, animation = selectedAnimation) {
+    return `${webAssetBase()}/${encodePath(modelGltfPath(model, variant, animation))}`;
   }
 
-  function modelGithubUrl(model, variant = selectedVariant) {
-    return `${githubRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets/${encodePath(modelGltfPath(model, variant))}`;
+  function modelGithubUrl(model, variant = selectedVariant, animation = selectedAnimation) {
+    return `${githubRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets/${encodePath(modelGltfPath(model, variant, animation))}`;
   }
 
-  function modelHash(model, variant = selectedVariant) {
+  function modelHash(model, variant = selectedVariant, animation = selectedAnimation) {
     const params = new URLSearchParams();
     params.set("model", model.id);
     if (variant && variant.id) params.set("variant", variant.id);
+    if (animation && animation.id && !variant) params.set("animation", animation.id);
     return params.toString();
   }
 
@@ -104,6 +112,7 @@
     return {
       modelId: params.get("model"),
       variantId: params.get("variant"),
+      animationId: params.get("animation"),
     };
   }
 
@@ -200,6 +209,18 @@
     return variantsForModel(model).find((variant) => variant.id === id) || null;
   }
 
+  function animationsForModel(model) {
+    if (!model || !model.id) return [];
+    const group = animationsByModel[model.id];
+    const rows = (group && Array.isArray(group.animations)) ? group.animations : [];
+    return rows.filter((row) => row && row.status === "success" && row.gltfPath);
+  }
+
+  function animationById(model, id) {
+    if (!id) return null;
+    return animationsForModel(model).find((animation) => animation.id === id) || null;
+  }
+
   function attachVariantSearch(model) {
     const variants = variantsForModel(model);
     if (!variants.length) return model;
@@ -210,6 +231,19 @@
       ...model,
       variantCount: variants.length,
       searchText: `${model.searchText} ${variantTerms}`.toLowerCase(),
+    };
+  }
+
+  function attachAnimationSearch(model) {
+    const animations = animationsForModel(model);
+    if (!animations.length) return model;
+    const animationTerms = animations
+      .map((animation) => `${animation.label || ""} ${animation.name || ""} ${animation.packagePath || ""}`)
+      .join(" ");
+    return {
+      ...model,
+      animationCount: animations.length,
+      searchText: `${model.searchText} ${animationTerms}`.toLowerCase(),
     };
   }
 
@@ -269,6 +303,7 @@
         <span class="result-meta">
           ${model.optimizedTextureCount || 0} texture${model.optimizedTextureCount === 1 ? "" : "s"}
           ${model.variantCount ? `- ${model.variantCount} variant${model.variantCount === 1 ? "" : "s"}` : ""}
+          ${model.animationCount ? `- ${model.animationCount} animation${model.animationCount === 1 ? "" : "s"}` : ""}
           ${model.missingTextureCount ? `<span class="warn">- ${model.missingTextureCount} missing</span>` : ""}
         </span>
       `;
@@ -293,7 +328,8 @@
 
   function screenshotFileName(model) {
     const variantSuffix = selectedVariant && selectedVariant.label ? `_${selectedVariant.label}` : "";
-    const baseName = `${model.displayName || model.name || "RSDWModel"}${variantSuffix}`
+    const animationSuffix = selectedAnimation && selectedAnimation.label ? `_${selectedAnimation.label}` : "";
+    const baseName = `${model.displayName || model.name || "RSDWModel"}${variantSuffix}${animationSuffix}`
       .replace(/\.[^.]+$/, "")
       .replace(/[^a-z0-9_-]+/gi, "_")
       .replace(/^_+|_+$/g, "")
@@ -364,19 +400,73 @@
     els.variantSelect.value = selectedVariant ? selectedVariant.id : "";
   }
 
+  function renderAnimationPanel() {
+    if (!selectedModel || selectedVariant) {
+      els.animationPanel.hidden = true;
+      els.animationSelect.textContent = "";
+      selectedAnimation = null;
+      els.animationPlay.disabled = true;
+      return;
+    }
+    const animations = animationsForModel(selectedModel);
+    if (!animations.length) {
+      els.animationPanel.hidden = true;
+      els.animationSelect.textContent = "";
+      selectedAnimation = null;
+      els.animationPlay.disabled = true;
+      return;
+    }
+    els.animationPanel.hidden = false;
+    els.animationSelect.textContent = "";
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Static Model";
+    els.animationSelect.appendChild(defaultOption);
+    for (const animation of animations) {
+      const option = document.createElement("option");
+      option.value = animation.id;
+      option.textContent = animation.label || animation.name || animation.id;
+      els.animationSelect.appendChild(option);
+    }
+    els.animationSelect.value = selectedAnimation ? selectedAnimation.id : "";
+    els.animationPlay.disabled = !selectedAnimation;
+    els.animationPlay.textContent = selectedAnimation ? "Pause" : "Play";
+  }
+
   function selectModel(model, options = {}) {
     selectedModel = model;
     selectedVariant = variantById(model, options.variantId) || null;
+    selectedAnimation = selectedVariant ? null : (animationById(model, options.animationId) || null);
     if (selectedButton) selectedButton.classList.remove("is-active");
     selectedButton = null;
     renderVariantPanel();
-    els.selectedTitle.textContent = selectedVariant ? `${model.displayName} - ${selectedVariant.label}` : model.displayName;
-    els.selectedPath.textContent = selectedVariant ? `${model.path} | ${selectedVariant.meshDataPath || "equipment variant"}` : model.path;
-    const rawUrl = modelRawUrl(model, selectedVariant);
+    renderAnimationPanel();
+    els.selectedTitle.textContent = selectedVariant
+      ? `${model.displayName} - ${selectedVariant.label}`
+      : selectedAnimation
+        ? `${model.displayName} - ${selectedAnimation.label || selectedAnimation.name}`
+        : model.displayName;
+    els.selectedPath.textContent = selectedVariant
+      ? `${model.path} | ${selectedVariant.meshDataPath || "equipment variant"}`
+      : selectedAnimation
+        ? `${model.path} | ${selectedAnimation.packagePath || "animation"}`
+        : model.path;
+    const rawUrl = modelRawUrl(model, selectedVariant, selectedAnimation);
     els.viewer.setAttribute("src", rawUrl);
     els.viewer.src = rawUrl;
-    els.viewer.alt = selectedVariant ? `${model.displayName} ${selectedVariant.label}` : model.displayName;
+    els.viewer.alt = selectedVariant
+      ? `${model.displayName} ${selectedVariant.label}`
+      : selectedAnimation
+        ? `${model.displayName} ${selectedAnimation.label || selectedAnimation.name}`
+        : model.displayName;
     els.viewer.autoRotate = false;
+    if (selectedAnimation) {
+      els.viewer.setAttribute("autoplay", "");
+      els.viewer.animationName = selectedAnimation.animationName || selectedAnimation.name || null;
+    } else {
+      els.viewer.removeAttribute("autoplay");
+      els.viewer.animationName = null;
+    }
     els.loadProgress.style.width = "0";
     els.autoRotate.disabled = false;
     els.resetCamera.disabled = false;
@@ -385,7 +475,7 @@
     els.copyLink.disabled = false;
     els.autoRotate.textContent = "Auto Rotate";
     setActionLink(els.openRaw, rawUrl);
-    setActionLink(els.openGithub, modelGithubUrl(model, selectedVariant));
+    setActionLink(els.openGithub, modelGithubUrl(model, selectedVariant, selectedAnimation));
     if (selectedVariant && selectedVariant.missingTextureCount) {
       els.warning.hidden = false;
       els.warning.textContent = `${selectedVariant.missingTextureCount} variant texture reference${selectedVariant.missingTextureCount === 1 ? "" : "s"} could not be converted.`;
@@ -398,7 +488,7 @@
       els.warning.textContent = "";
     }
     if (options.updateHash) {
-      window.history.replaceState(null, "", `#${modelHash(model, selectedVariant)}`);
+      window.history.replaceState(null, "", `#${modelHash(model, selectedVariant, selectedAnimation)}`);
     }
     updateLandingDensity();
     renderResults();
@@ -409,7 +499,7 @@
     if (parsed.modelId) {
       const match = models.find((model) => model.id === parsed.modelId);
       if (match) {
-        selectModel(match, { updateHash: false, variantId: parsed.variantId });
+        selectModel(match, { updateHash: false, variantId: parsed.variantId, animationId: parsed.animationId });
         els.search.value = match.displayName;
         updateLandingDensity();
         renderResults();
@@ -440,7 +530,13 @@
     } catch {
       variantsByModel = {};
     }
-    models = (index.models || []).map(enrichModel).map(attachVariantSearch);
+    try {
+      const animationIndex = await loadJson(ANIMATION_INDEX_URL);
+      animationsByModel = animationIndex.byModel || {};
+    } catch {
+      animationsByModel = {};
+    }
+    models = (index.models || []).map(enrichModel).map(attachVariantSearch).map(attachAnimationSearch);
     els.homeStatus.textContent = "Model index ready.";
     els.statTotal.textContent = `${models.length.toLocaleString()} models`;
     selectInitialModel();
@@ -517,6 +613,23 @@
         variantId: els.variantSelect.value || null,
       });
     });
+    els.animationSelect.addEventListener("change", () => {
+      if (!selectedModel) return;
+      selectModel(selectedModel, {
+        updateHash: true,
+        animationId: els.animationSelect.value || null,
+      });
+    });
+    els.animationPlay.addEventListener("click", () => {
+      if (!selectedAnimation) return;
+      if (els.viewer.paused) {
+        els.viewer.play();
+        els.animationPlay.textContent = "Pause";
+      } else {
+        els.viewer.pause();
+        els.animationPlay.textContent = "Play";
+      }
+    });
 
     els.autoRotate.addEventListener("click", () => {
       els.viewer.autoRotate = !els.viewer.autoRotate;
@@ -534,7 +647,7 @@
     els.saveScreenshot.addEventListener("click", saveCurrentScreenshot);
     els.copyLink.addEventListener("click", async () => {
       if (!selectedModel) return;
-      const url = `${window.location.origin}${window.location.pathname}#${modelHash(selectedModel, selectedVariant)}`;
+      const url = `${window.location.origin}${window.location.pathname}#${modelHash(selectedModel, selectedVariant, selectedAnimation)}`;
       try {
         await navigator.clipboard.writeText(url);
         els.copyLink.textContent = "Copied";
@@ -553,6 +666,14 @@
     });
     els.viewer.addEventListener("load", () => {
       els.loadProgress.style.width = "100%";
+      if (selectedAnimation) {
+        els.viewer.animationName = selectedAnimation.animationName || selectedAnimation.name || null;
+        if (typeof els.viewer.play === "function") {
+          els.viewer.play();
+        }
+        els.animationPlay.disabled = false;
+        els.animationPlay.textContent = "Pause";
+      }
       if (selectedModel) {
         els.saveScreenshot.disabled = false;
         els.saveScreenshot.textContent = "Screenshot";

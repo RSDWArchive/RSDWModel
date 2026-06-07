@@ -1557,6 +1557,10 @@ def _write_size_report(
     models_root = output_root / "models"
     if models_root.is_dir():
         model_bytes = sum(path.stat().st_size for path in models_root.rglob("*") if path.is_file())
+    animation_bytes = 0
+    animations_root = output_root / "animations"
+    if animations_root.is_dir():
+        animation_bytes = sum(path.stat().st_size for path in animations_root.rglob("*") if path.is_file())
     report = {
         "schema": SIZE_REPORT_SCHEMA,
         "updated_utc": _now_utc(),
@@ -1566,6 +1570,7 @@ def _write_size_report(
         "source_texture_bytes": source_texture_bytes,
         "optimized_texture_bytes": optimized_texture_bytes,
         "model_bytes": model_bytes,
+        "animation_bytes": animation_bytes,
         "total_web_asset_bytes": sum(
             path.stat().st_size for path in output_root.rglob("*") if path.is_file()
         ) if output_root.is_dir() else 0,
@@ -1579,6 +1584,9 @@ def _write_size_report(
     variants_present = any((output_root / "models").glob("*/*/variants/*/model.gltf"))
     if previous_report.get("equipment_variants_included") or variants_present:
         report["equipment_variants_included"] = True
+    animations_present = any((output_root / "animations").glob("*/*/model.gltf"))
+    if previous_report.get("web_animations_included") or animations_present:
+        report["web_animations_included"] = True
     _write_json_atomic(report_path, report)
 
 

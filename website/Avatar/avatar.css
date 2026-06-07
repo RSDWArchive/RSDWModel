@@ -129,6 +129,36 @@
   box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
 }
 
+.animation-control-section {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.animation-select-row {
+  display: grid;
+  gap: 0.32rem;
+  color: var(--rsdw-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.animation-select-row select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--rsdw-border);
+  border-radius: 8px;
+  background: rgba(18, 18, 22, 0.94);
+  color: var(--rsdw-text);
+  font: inherit;
+  padding: 0.45rem 0.5rem;
+  outline: none;
+}
+
+.animation-select-row select:focus {
+  border-color: var(--rsdw-border-strong);
+  box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
+}
+
 .swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));

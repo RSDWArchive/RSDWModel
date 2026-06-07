@@ -133,6 +133,8 @@ Useful update flags:
 - `--web-asset-targets sm|sk|both` - choose SM/SK web asset targets.
 - `--web-texture-size N` - max WebP texture dimension, default `1024`.
 - `--web-texture-quality N` - WebP quality, default `75`.
+- `--web-animations auto|none|smoke|full` - build animated SK web variants.
+  `auto` follows `--web-assets`.
 - `--glb none|smoke|full` - legacy standalone GLB build scope, default `none`.
 - `--run-git-plan` - run commit planning even for a partial/smoke update.
 - `--skip-git-plan` - skip the final commit planning stage.
@@ -185,6 +187,9 @@ Useful flags:
 - `--prefix SM_,SK_` - choose package filename prefixes.
 - `--force` - re-export existing `.uemodel` files.
 - `--no-materials` - export meshes only.
+- `--animations` - export `.ueanim` animation files in addition to meshes.
+- `--animations-only` - export `.ueanim` animation files without mesh/material
+  output.
 
 The extractor writes `CueExtractManifest.json` and resumes by skipping packages
 whose expected `.uemodel` output already exists.
@@ -265,6 +270,46 @@ Useful flags:
 `WebAssetSizeReport.json` is the source of truth for checking generated website
 asset size before committing or pushing.
 
+### Web Animations
+
+`tools/ModelData/BuildWebAnimations.py` builds animated SK glTF variants under
+`<version>/WebAssets/animations/` and writes `website/animation-index.json`.
+RSDWArchive supplies skeleton/animation metadata from exported JSON, while
+CUE4Parse extracts the actual Unreal animation data from retoc packages as
+temporary `.ueanim` files. The runtime website depends only on RSDWModel output.
+The generator skips Unreal additive animation clips by default because those
+clips are intended to layer on top of another animation and are not useful as
+standalone web animations.
+CUE4Parse extraction can also report unsupported compressed animation data for
+some clips; those clips are recorded as unsupported during the run, pruned from
+the published website index, and do not fail the full animation build.
+
+Smoke example:
+
+```powershell
+python tools\ModelData\BuildWebAnimations.py `
+  --source-root E:\Github\RSDWModel\0.11.2.2 `
+  --output-root E:\Github\RSDWModel\0.11.2.2\WebAssets `
+  --archive-json-root E:\Github\RSDWArchive\0.11.2.2\json `
+  --retoc-root E:\Github\Retoc\RSDragonwilds\0.11.2.2 `
+  --usmap E:\Github\Retoc\RSDragonwilds\0.11.2.2\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap `
+  --cue4parse-root E:\Github\CUE4Parse `
+  --mode smoke `
+  --force
+```
+
+Full web asset builds include the full discovered animation set by default.
+Animated variants stay split into separate `.gltf` / `.bin` files, and
+`WebAssetSizeReport.json` should be checked after generation to confirm no
+generated file exceeds GitHub's `100 MiB` hard limit.
+
+The model viewer shows an Animation selector for models listed in
+`website/animation-index.json`. Selecting an animation swaps the viewer source
+to the generated animated glTF and enables play/pause controls. The `/Avatar/`
+page also reads the same index; player body animation clips are applied at
+runtime with Three.js `AnimationMixer` to each visible avatar layer whose bones
+match the clip.
+
 ## Website
 
 The static model viewer lives in `website/`. It is designed for GitHub Pages
@@ -286,7 +331,7 @@ URLs to raw GitHub content under
 
 The optimized `WebAssets/` corpus is tracked in git so the deployed static site
 can load model payloads from raw GitHub URLs. The latest measured generated
-corpus is about `784 MiB`, with no generated file over `50 MiB`. Keep checking
+corpus is about `808 MiB`, with no generated file over `50 MiB`. Keep checking
 `WebAssetSizeReport.json` after clean rebuilds before pushing.
 
 ### Avatar Creator

@@ -5,10 +5,12 @@ using CUE4Parse.FileProvider;
 using CUE4Parse.FileProvider.Objects;
 using CUE4Parse.MappingsProvider;
 using CUE4Parse.UE4.Assets;
+using CUE4Parse.UE4.Assets.Exports.Animation;
 using CUE4Parse.UE4.Assets.Exports.Material;
 using CUE4Parse.UE4.Assets.Exports.SkeletalMesh;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Exports.Texture;
+using CUE4Parse.UE4.Objects.UObject;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Animations;
@@ -119,7 +121,8 @@ internal static class Program
         Directory.CreateDirectory(outputRoot!);
         var outputDirectory = new DirectoryInfo(outputRoot!);
         var results = new List<ExportResult>();
-        var exportedCount = 0;
+        var exportedMeshCount = 0;
+        var exportedAnimationCount = 0;
         var failedCount = 0;
         var skippedCount = 0;
         var startedAt = DateTimeOffset.UtcNow;
@@ -129,12 +132,16 @@ internal static class Program
             Console.WriteLine($"[{index}/{files.Count}] {file.Path}");
             try
             {
-                var expectedMeshPath = ExpectedMeshPath(outputRoot!, file.Path);
-                if (!options.Force && File.Exists(expectedMeshPath))
+                var expectedPath = options.ExportMeshes && !options.ExportAnimations
+                    ? ExpectedMeshPath(outputRoot!, file.Path)
+                    : options.ExportAnimations && !options.ExportMeshes
+                        ? ExpectedAnimationPath(outputRoot!, file.Path)
+                        : null;
+                if (expectedPath is not null && !options.Force && File.Exists(expectedPath))
                 {
                     skippedCount++;
-                    results.Add(ExportResult.Skip(file.Path, expectedMeshPath));
-                    Console.WriteLine($"  skipped existing: {Path.GetRelativePath(outputRoot!, expectedMeshPath)}");
+                    results.Add(ExportResult.Skip(file.Path, expectedPath, options.ExportAnimations && !options.ExportMeshes));
+                    Console.WriteLine($"  skipped existing: {Path.GetRelativePath(outputRoot!, expectedPath)}");
                     continue;
                 }
 
@@ -146,18 +153,24 @@ internal static class Program
                     continue;
                 }
 
-                var exports = ExportMeshesFromPackage(package, outputDirectory, options.ExportMaterials).ToList();
-                if (exports.Count == 0)
+                var meshExports = options.ExportMeshes
+                    ? ExportMeshesFromPackage(package, outputDirectory, options.ExportMaterials).ToList()
+                    : [];
+                var animationExports = options.ExportAnimations
+                    ? ExportAnimationsFromPackage(package, outputDirectory).ToList()
+                    : [];
+                if (meshExports.Count == 0 && animationExports.Count == 0)
                 {
                     failedCount++;
-                    results.Add(ExportResult.Fail(file.Path, "no static or skeletal mesh exports found"));
-                    Console.WriteLine("  failed: no static or skeletal mesh exports found");
+                    results.Add(ExportResult.Fail(file.Path, "no supported exports found"));
+                    Console.WriteLine("  failed: no supported exports found");
                     continue;
                 }
 
-                exportedCount += exports.Count;
-                results.Add(ExportResult.CreateSuccess(file.Path, exports));
-                foreach (var exported in exports)
+                exportedMeshCount += meshExports.Count;
+                exportedAnimationCount += animationExports.Count;
+                results.Add(ExportResult.CreateSuccess(file.Path, meshExports, animationExports));
+                foreach (var exported in meshExports)
                 {
                     Console.WriteLine($"  wrote: {Path.GetRelativePath(outputRoot!, exported.MeshPath)}");
                     if (exported.MaterialJsonCount > 0 || exported.TextureCount.GetValueOrDefault() > 0)
@@ -165,6 +178,11 @@ internal static class Program
                         var textureSummary = exported.TextureCount?.ToString() ?? "not-tracked";
                         Console.WriteLine($"         materials: {exported.MaterialJsonCount}, textures: {textureSummary}");
                     }
+                }
+                foreach (var exported in animationExports)
+                {
+                    Console.WriteLine($"  wrote: {Path.GetRelativePath(outputRoot!, exported.AnimationPath)}");
+                    Console.WriteLine($"         skeleton: {exported.SkeletonPath ?? "unknown"}");
                 }
             }
             catch (Exception ex)
@@ -184,7 +202,9 @@ internal static class Program
             Usmap = usmapPath,
             Output = outputRoot!,
             SelectedPackageCount = files.Count,
-            ExportedMeshCount = exportedCount,
+            ExportedMeshCount = exportedMeshCount,
+            ExportedAnimationCount = exportedAnimationCount,
+            ExportedFileCount = exportedMeshCount + exportedAnimationCount,
             FailedPackageCount = failedCount,
             SkippedPackageCount = skippedCount,
             Results = results
@@ -192,7 +212,7 @@ internal static class Program
 
         File.WriteAllText(manifestPath, System.Text.Json.JsonSerializer.Serialize(manifest, ManifestJsonOptions));
         Console.WriteLine($"manifest: {manifestPath}");
-        Console.WriteLine($"done: exported {exportedCount:N0} mesh file(s), skipped {skippedCount:N0}, failed {failedCount:N0} package(s)");
+        Console.WriteLine($"done: exported {exportedMeshCount + exportedAnimationCount:N0} file(s) ({exportedMeshCount:N0} mesh, {exportedAnimationCount:N0} animation), skipped {skippedCount:N0}, failed {failedCount:N0} package(s)");
         return failedCount == 0 ? 0 : 1;
     }
 
@@ -256,6 +276,66 @@ internal static class Program
                     TextureCount = null
                 };
             }
+        }
+    }
+
+    private static IEnumerable<AnimationExport> ExportAnimationsFromPackage(IPackage package, DirectoryInfo outputDirectory)
+    {
+        var options = new ExporterOptions
+        {
+            AnimFormat = EAnimFormat.UEFormat,
+            CompressionFormat = EFileCompressionFormat.None,
+            Platform = ETexturePlatform.DesktopMobile
+        };
+
+        foreach (var export in package.GetExports())
+        {
+            AnimExporter animExporter = export switch
+            {
+                UAnimSequence animSequence => new AnimExporter(animSequence, options),
+                UAnimMontage animMontage => new AnimExporter(animMontage, options),
+                UAnimComposite animComposite => new AnimExporter(animComposite, options),
+                _ => null!
+            };
+
+            if (animExporter is null) continue;
+
+            foreach (var anim in animExporter.AnimSequences)
+            {
+                var animationPath = CombineUnderRoot(outputDirectory.FullName, anim.FileName);
+                Directory.CreateDirectory(Path.GetDirectoryName(animationPath)!);
+                File.WriteAllBytes(animationPath, anim.FileData);
+
+                yield return new AnimationExport
+                {
+                    ExportName = export.Name,
+                    ExportType = export.GetType().Name,
+                    AnimationPath = animationPath,
+                    SkeletonPath = GetAnimationSkeletonPath(export)
+                };
+            }
+        }
+    }
+
+    private static string? GetAnimationSkeletonPath(object export) => export switch
+    {
+        UAnimSequence animSequence => TryGetSkeletonPath(animSequence.Skeleton),
+        UAnimMontage animMontage => TryGetSkeletonPath(animMontage.Skeleton),
+        UAnimComposite animComposite => TryGetSkeletonPath(animComposite.Skeleton),
+        _ => null
+    };
+
+    private static string? TryGetSkeletonPath(FPackageIndex? skeletonRef)
+    {
+        try
+        {
+            return skeletonRef is not null && skeletonRef.TryLoad<USkeleton>(out var skeleton)
+                ? skeleton.GetPathName()
+                : null;
+        }
+        catch
+        {
+            return null;
         }
     }
 
@@ -450,6 +530,12 @@ internal static class Program
         return CombineUnderRoot(outputRoot, relative);
     }
 
+    private static string ExpectedAnimationPath(string outputRoot, string packagePath)
+    {
+        var relative = StripPackageExtension(NormalizeSeparators(packagePath)).TrimStart('/') + ".ueanim";
+        return CombineUnderRoot(outputRoot, relative);
+    }
+
     private static bool IsPackageFile(GameFile file)
     {
         var path = NormalizeSeparators(file.Path);
@@ -563,6 +649,8 @@ Selection:
 Mode:
   --dry-run             Print selected package paths without exporting.
   --force               Re-export meshes even when the output .uemodel already exists.
+  --animations          Export .ueanim animation files in addition to meshes.
+  --animations-only     Export .ueanim animation files without mesh/material output.
   --no-materials        Export .uemodel files only.
   --manifest <path>     Manifest path. Default: <out>/CueExtractManifest.json.
   --help                Show this help.
@@ -586,6 +674,8 @@ internal sealed class CliOptions
     public bool Force { get; private set; }
     public bool ShowHelp { get; private set; }
     public bool ExportMaterials { get; private set; } = true;
+    public bool ExportMeshes { get; private set; } = true;
+    public bool ExportAnimations { get; private set; }
     public int? Limit { get; private set; }
     public List<string> AssetSelectors { get; } = [];
     public List<string> NameSelectors { get; } = [];
@@ -624,6 +714,14 @@ internal sealed class CliOptions
                     break;
                 case "--force":
                     options.Force = true;
+                    break;
+                case "--animations":
+                    options.ExportAnimations = true;
+                    break;
+                case "--animations-only":
+                    options.ExportMeshes = false;
+                    options.ExportAnimations = true;
+                    options.ExportMaterials = false;
                     break;
                 case "--no-materials":
                     options.ExportMaterials = false;
@@ -672,6 +770,11 @@ internal sealed class CliOptions
         {
             throw new CliException("broad export requires --limit, --asset, --name, or --all");
         }
+
+        if (!ExportMeshes && !ExportAnimations)
+        {
+            throw new CliException("nothing to export");
+        }
     }
 
     private static string RequireValue(string[] args, ref int index, string optionName)
@@ -704,18 +807,28 @@ internal sealed class MeshExport
     public int? TextureCount { get; init; }
 }
 
+internal sealed class AnimationExport
+{
+    public required string ExportName { get; init; }
+    public required string ExportType { get; init; }
+    public required string AnimationPath { get; init; }
+    public string? SkeletonPath { get; init; }
+}
+
 internal sealed class ExportResult
 {
     public required string PackagePath { get; init; }
     public required bool Succeeded { get; init; }
     public string? Error { get; init; }
     public List<MeshExport> Meshes { get; init; } = [];
+    public List<AnimationExport> Animations { get; init; } = [];
 
-    public static ExportResult CreateSuccess(string packagePath, List<MeshExport> meshes) => new()
+    public static ExportResult CreateSuccess(string packagePath, List<MeshExport> meshes, List<AnimationExport> animations) => new()
     {
         PackagePath = packagePath,
         Succeeded = true,
-        Meshes = meshes
+        Meshes = meshes,
+        Animations = animations
     };
 
     public static ExportResult Fail(string packagePath, string error) => new()
@@ -725,22 +838,36 @@ internal sealed class ExportResult
         Error = error
     };
 
-    public static ExportResult Skip(string packagePath, string meshPath) => new()
+    public static ExportResult Skip(string packagePath, string outputPath, bool isAnimation) => new()
     {
         PackagePath = packagePath,
         Succeeded = true,
         Error = "skipped existing output",
-        Meshes =
-        [
-            new MeshExport
-            {
-                ExportName = Path.GetFileNameWithoutExtension(meshPath),
-                ExportType = "Existing",
-                MeshPath = meshPath,
-                MaterialJsonCount = 0,
-                TextureCount = 0
-            }
-        ]
+        Meshes = isAnimation
+            ? []
+            :
+            [
+                new MeshExport
+                {
+                    ExportName = Path.GetFileNameWithoutExtension(outputPath),
+                    ExportType = "Existing",
+                    MeshPath = outputPath,
+                    MaterialJsonCount = 0,
+                    TextureCount = 0
+                }
+            ],
+        Animations = isAnimation
+            ?
+            [
+                new AnimationExport
+                {
+                    ExportName = Path.GetFileNameWithoutExtension(outputPath),
+                    ExportType = "Existing",
+                    AnimationPath = outputPath,
+                    SkeletonPath = null
+                }
+            ]
+            : []
     };
 }
 
@@ -753,6 +880,8 @@ internal sealed class ExportManifest
     public required string Output { get; init; }
     public int SelectedPackageCount { get; init; }
     public int ExportedMeshCount { get; init; }
+    public int ExportedAnimationCount { get; init; }
+    public int ExportedFileCount { get; init; }
     public int FailedPackageCount { get; init; }
     public int SkippedPackageCount { get; init; }
     public List<ExportResult> Results { get; init; } = [];
