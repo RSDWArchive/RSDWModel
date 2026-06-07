@@ -7,6 +7,9 @@
   const ANIMATION_INDEX_URL = "./animation-index.json";
   const RESULTS_PAGE_SIZE = 120;
   const SEARCH_DEBOUNCE_MS = 80;
+  const ANIMATION_CAPTURE_TARGET_FPS = 12;
+  const ANIMATION_CAPTURE_MAX_FRAMES = 180;
+  const ANIMATION_CAPTURE_QUALITY = 0.82;
   const DEFAULT_CONFIG = {
     repoOwner: "RSDWArchive",
     repoName: "RSDWModel",
@@ -34,6 +37,7 @@
     animationPanel: document.getElementById("animation-panel"),
     animationSelect: document.getElementById("model-animation-select"),
     animationPlay: document.getElementById("animation-play-toggle"),
+    captureAnimation: document.getElementById("capture-animation-webp"),
     loadProgress: document.getElementById("load-progress"),
     autoRotate: document.getElementById("auto-rotate-toggle"),
     resetCamera: document.getElementById("reset-camera"),
@@ -337,6 +341,217 @@
     return `${baseName || "RSDWModel"}_${model.kind || "Model"}.png`;
   }
 
+  function animationCaptureFileName(model) {
+    const animationSuffix = selectedAnimation && selectedAnimation.label ? `_${selectedAnimation.label}` : "";
+    const baseName = `${model.displayName || model.name || "RSDWModel"}${animationSuffix}`
+      .replace(/\.[^.]+$/, "")
+      .replace(/[^a-z0-9_-]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 96);
+    return `${baseName || "RSDWModel"}_${model.kind || "Model"}_animation.webp`;
+  }
+
+  function dataUrlToBytes(dataUrl) {
+    const comma = dataUrl.indexOf(",");
+    if (comma < 0) throw new Error("Invalid data URL.");
+    const binary = window.atob(dataUrl.slice(comma + 1));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i += 1) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    return bytes;
+  }
+
+  function asciiBytes(value) {
+    const bytes = new Uint8Array(value.length);
+    for (let i = 0; i < value.length; i += 1) bytes[i] = value.charCodeAt(i);
+    return bytes;
+  }
+
+  function writeUint24(bytes, offset, value) {
+    bytes[offset] = value & 0xff;
+    bytes[offset + 1] = (value >> 8) & 0xff;
+    bytes[offset + 2] = (value >> 16) & 0xff;
+  }
+
+  function writeUint32(bytes, offset, value) {
+    bytes[offset] = value & 0xff;
+    bytes[offset + 1] = (value >> 8) & 0xff;
+    bytes[offset + 2] = (value >> 16) & 0xff;
+    bytes[offset + 3] = (value >> 24) & 0xff;
+  }
+
+  function concatBytes(parts) {
+    const total = parts.reduce((sum, part) => sum + part.length, 0);
+    const out = new Uint8Array(total);
+    let offset = 0;
+    for (const part of parts) {
+      out.set(part, offset);
+      offset += part.length;
+    }
+    return out;
+  }
+
+  function makeRiffChunk(type, payload) {
+    const pad = payload.length % 2;
+    const chunk = new Uint8Array(8 + payload.length + pad);
+    chunk.set(asciiBytes(type), 0);
+    writeUint32(chunk, 4, payload.length);
+    chunk.set(payload, 8);
+    return chunk;
+  }
+
+  function parseWebpChunks(bytes) {
+    const text = (offset, length) => String.fromCharCode(...bytes.slice(offset, offset + length));
+    if (text(0, 4) !== "RIFF" || text(8, 4) !== "WEBP") {
+      throw new Error("Frame is not a WebP image.");
+    }
+    const chunks = [];
+    let offset = 12;
+    while (offset + 8 <= bytes.length) {
+      const type = text(offset, 4);
+      const size =
+        bytes[offset + 4] |
+        (bytes[offset + 5] << 8) |
+        (bytes[offset + 6] << 16) |
+        (bytes[offset + 7] << 24);
+      const start = offset + 8;
+      const end = start + size;
+      if (end > bytes.length) break;
+      chunks.push({ type, payload: bytes.slice(start, end) });
+      offset = end + (size % 2);
+    }
+    return chunks;
+  }
+
+  function framePayloadFromWebp(dataUrl) {
+    if (!dataUrl.startsWith("data:image/webp")) {
+      throw new Error("This browser did not return WebP frame data.");
+    }
+    const chunks = parseWebpChunks(dataUrlToBytes(dataUrl));
+    const imageChunks = chunks
+      .filter((chunk) => chunk.type === "VP8 " || chunk.type === "VP8L" || chunk.type === "ALPH")
+      .map((chunk) => makeRiffChunk(chunk.type, chunk.payload));
+    if (!imageChunks.length) throw new Error("No WebP image payload was found.");
+    return {
+      payload: concatBytes(imageChunks),
+      hasAlpha: chunks.some((chunk) => chunk.type === "ALPH" || chunk.type === "VP8L"),
+    };
+  }
+
+  async function imageSizeFromDataUrl(dataUrl) {
+    const image = new Image();
+    image.decoding = "async";
+    image.src = dataUrl;
+    await image.decode();
+    return { width: image.naturalWidth, height: image.naturalHeight };
+  }
+
+  function makeAnimatedWebp(frames, width, height, frameDelayMs) {
+    const hasAlpha = frames.some((frame) => frame.hasAlpha);
+    const vp8x = new Uint8Array(10);
+    vp8x[0] = 0x02 | (hasAlpha ? 0x10 : 0);
+    writeUint24(vp8x, 4, width - 1);
+    writeUint24(vp8x, 7, height - 1);
+
+    const anim = new Uint8Array(6);
+    const chunks = [makeRiffChunk("VP8X", vp8x), makeRiffChunk("ANIM", anim)];
+
+    for (const frame of frames) {
+      const header = new Uint8Array(16);
+      writeUint24(header, 6, width - 1);
+      writeUint24(header, 9, height - 1);
+      writeUint24(header, 12, frameDelayMs);
+      const payload = concatBytes([header, frame.payload]);
+      chunks.push(makeRiffChunk("ANMF", payload));
+    }
+
+    const riffPayload = concatBytes([asciiBytes("WEBP"), ...chunks]);
+    const out = new Uint8Array(8 + riffPayload.length);
+    out.set(asciiBytes("RIFF"), 0);
+    writeUint32(out, 4, riffPayload.length);
+    out.set(riffPayload, 8);
+    return new Blob([out], { type: "image/webp" });
+  }
+
+  function waitForViewerFrame() {
+    return new Promise((resolve) => {
+      window.requestAnimationFrame(() => window.requestAnimationFrame(resolve));
+    });
+  }
+
+  async function captureCurrentAnimationWebp() {
+    if (!selectedModel || !selectedAnimation || els.captureAnimation.disabled) return;
+    if (typeof els.viewer.toDataURL !== "function") {
+      els.warning.hidden = false;
+      els.warning.textContent = "Animation capture is not available in this browser.";
+      return;
+    }
+
+    const duration = Number(els.viewer.duration || selectedAnimation.duration_s || 0);
+    if (!Number.isFinite(duration) || duration <= 0) {
+      els.warning.hidden = false;
+      els.warning.textContent = "The selected animation does not report a capturable duration.";
+      return;
+    }
+
+    const wasPaused = els.viewer.paused;
+    const previousTime = Number(els.viewer.currentTime || 0);
+    const previousText = els.captureAnimation.textContent;
+    const frameRate = Math.max(
+      4,
+      Math.min(ANIMATION_CAPTURE_TARGET_FPS, Math.floor(ANIMATION_CAPTURE_MAX_FRAMES / duration) || ANIMATION_CAPTURE_TARGET_FPS),
+    );
+    const frameCount = Math.max(2, Math.ceil(duration * frameRate));
+    const frameDelayMs = Math.max(20, Math.round((duration * 1000) / frameCount));
+
+    els.captureAnimation.disabled = true;
+    els.animationPlay.disabled = true;
+    els.captureAnimation.textContent = "Capturing 0%";
+    try {
+      els.viewer.pause();
+      const frames = [];
+      let size = null;
+      for (let frameIndex = 0; frameIndex < frameCount; frameIndex += 1) {
+        els.viewer.currentTime = (duration * frameIndex) / frameCount;
+        await waitForViewerFrame();
+        const dataUrl = await Promise.resolve(els.viewer.toDataURL("image/webp", ANIMATION_CAPTURE_QUALITY));
+        if (!size) size = await imageSizeFromDataUrl(dataUrl);
+        frames.push(framePayloadFromWebp(dataUrl));
+        els.captureAnimation.textContent = `Capturing ${Math.round(((frameIndex + 1) / frameCount) * 100)}%`;
+      }
+      const blob = makeAnimatedWebp(frames, size.width, size.height, frameDelayMs);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = animationCaptureFileName(selectedModel);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 4000);
+      els.captureAnimation.textContent = "Captured";
+      window.setTimeout(() => {
+        if (selectedAnimation) els.captureAnimation.textContent = previousText;
+      }, 1200);
+    } catch (error) {
+      els.warning.hidden = false;
+      els.warning.textContent = "Animation capture failed. Try again after the animation finishes loading.";
+      els.captureAnimation.textContent = previousText;
+      console.error(error);
+    } finally {
+      els.viewer.currentTime = previousTime;
+      await waitForViewerFrame();
+      if (!wasPaused && typeof els.viewer.play === "function") {
+        els.viewer.play();
+      } else {
+        els.viewer.pause();
+      }
+      els.captureAnimation.disabled = !selectedAnimation || !els.viewer.loaded;
+      els.animationPlay.disabled = !selectedAnimation;
+      els.animationPlay.textContent = selectedAnimation && !els.viewer.paused ? "Pause" : "Play";
+    }
+  }
+
   async function saveCurrentScreenshot() {
     if (!selectedModel || els.saveScreenshot.disabled) return;
     if (typeof els.viewer.toDataURL !== "function") {
@@ -406,6 +621,7 @@
       els.animationSelect.textContent = "";
       selectedAnimation = null;
       els.animationPlay.disabled = true;
+      els.captureAnimation.disabled = true;
       return;
     }
     const animations = animationsForModel(selectedModel);
@@ -414,6 +630,7 @@
       els.animationSelect.textContent = "";
       selectedAnimation = null;
       els.animationPlay.disabled = true;
+      els.captureAnimation.disabled = true;
       return;
     }
     els.animationPanel.hidden = false;
@@ -430,6 +647,7 @@
     }
     els.animationSelect.value = selectedAnimation ? selectedAnimation.id : "";
     els.animationPlay.disabled = !selectedAnimation;
+    els.captureAnimation.disabled = !selectedAnimation || !els.viewer.loaded;
     els.animationPlay.textContent = selectedAnimation ? "Pause" : "Play";
   }
 
@@ -441,6 +659,7 @@
     selectedButton = null;
     renderVariantPanel();
     renderAnimationPanel();
+    els.captureAnimation.disabled = true;
     els.selectedTitle.textContent = selectedVariant
       ? `${model.displayName} - ${selectedVariant.label}`
       : selectedAnimation
@@ -630,6 +849,7 @@
         els.animationPlay.textContent = "Play";
       }
     });
+    els.captureAnimation.addEventListener("click", captureCurrentAnimationWebp);
 
     els.autoRotate.addEventListener("click", () => {
       els.viewer.autoRotate = !els.viewer.autoRotate;
@@ -673,6 +893,7 @@
         }
         els.animationPlay.disabled = false;
         els.animationPlay.textContent = "Pause";
+        els.captureAnimation.disabled = false;
       }
       if (selectedModel) {
         els.saveScreenshot.disabled = false;
@@ -681,6 +902,7 @@
     });
     els.viewer.addEventListener("error", () => {
       els.saveScreenshot.disabled = true;
+      els.captureAnimation.disabled = true;
       els.warning.hidden = false;
       els.warning.textContent = "The selected model could not be loaded. If this is deployed, confirm the WebAssets folder has been pushed to the configured repository branch.";
     });
