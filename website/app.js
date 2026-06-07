@@ -7,8 +7,8 @@
   const ANIMATION_INDEX_URL = "./animation-index.json";
   const RESULTS_PAGE_SIZE = 120;
   const SEARCH_DEBOUNCE_MS = 80;
-  const ANIMATION_CAPTURE_TARGET_FPS = 12;
-  const ANIMATION_CAPTURE_MAX_FRAMES = 180;
+  const ANIMATION_CAPTURE_TARGET_FPS = 30;
+  const ANIMATION_CAPTURE_MAX_FRAMES = 450;
   const ANIMATION_CAPTURE_QUALITY = 0.82;
   const DEFAULT_CONFIG = {
     repoOwner: "RSDWArchive",
@@ -462,6 +462,7 @@
       writeUint24(header, 6, width - 1);
       writeUint24(header, 9, height - 1);
       writeUint24(header, 12, frameDelayMs);
+      header[15] = 0x02;
       const payload = concatBytes([header, frame.payload]);
       chunks.push(makeRiffChunk("ANMF", payload));
     }
