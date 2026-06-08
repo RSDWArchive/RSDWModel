@@ -10,8 +10,8 @@ assets and serves them through a static viewer at
 - A static model browser with search and interactive 3D viewing.
 - Play/pause animation support for generated skeletal-model animation variants.
 - A Three.js Avatar page for assembling player body, head, hair, beard, armor,
-  helmet, cape, color options, and compatible player animations from the
-  exported model set.
+  helmet, cape, held weapons, color options, and compatible player animations
+  from the exported model set.
 - Versioned exported model data for the current dataset, `0.11.2.2`.
 - Optimized web assets: separate `.gltf` / `.bin` models and shared 1024px WebP
   textures.

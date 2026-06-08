@@ -129,6 +129,76 @@
   box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
 }
 
+.slot-grid select:disabled {
+  color: rgba(224, 218, 205, 0.46);
+  cursor: not-allowed;
+}
+
+.hand-adjust {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: -0.25rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(180, 164, 140, 0.28);
+  border-radius: 8px;
+  background: rgba(18, 18, 22, 0.5);
+}
+
+.hand-adjust summary {
+  color: var(--rsdw-muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.hand-adjust[open] summary {
+  color: var(--rsdw-text);
+}
+
+.hand-adjust.is-disabled {
+  opacity: 0.55;
+}
+
+.adjust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.55rem;
+}
+
+.adjust-grid label {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--rsdw-muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.adjust-grid input {
+  width: 100%;
+  min-height: 34px;
+  box-sizing: border-box;
+  border: 1px solid var(--rsdw-border);
+  border-radius: 7px;
+  background: rgba(12, 12, 15, 0.92);
+  color: var(--rsdw-text);
+  caret-color: var(--rsdw-accent);
+  font: inherit;
+  padding: 0.35rem 0.45rem;
+  outline: none;
+}
+
+.adjust-grid input:focus {
+  border-color: var(--rsdw-border-strong);
+  box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
+}
+
+.hand-adjust-reset {
+  width: 100%;
+  min-height: 34px;
+  margin-top: 0.6rem;
+}
+
 .animation-control-section {
   display: grid;
   gap: 0.65rem;
@@ -142,19 +212,37 @@
   font-weight: 700;
 }
 
+.animation-filter-input,
 .animation-select-row select {
+  appearance: none;
+  box-sizing: border-box;
   width: 100%;
   min-height: 38px;
   border: 1px solid var(--rsdw-border);
   border-radius: 8px;
   background: rgba(18, 18, 22, 0.94);
   color: var(--rsdw-text);
+  caret-color: var(--rsdw-accent);
   font: inherit;
   padding: 0.45rem 0.5rem;
   outline: none;
 }
 
+.animation-filter-input::placeholder {
+  color: var(--rsdw-muted);
+  opacity: 0.78;
+}
+
+.animation-filter-input::-webkit-search-cancel-button {
+  filter: invert(0.8) sepia(0.25) saturate(0.7);
+}
+
 .animation-select-row select:focus {
+  border-color: var(--rsdw-border-strong);
+  box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
+}
+
+.animation-filter-input:focus {
   border-color: var(--rsdw-border-strong);
   box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
 }

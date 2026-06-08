@@ -23,6 +23,13 @@ ARMOUR_PREFIXES = (
     "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/",
     "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/",
 )
+HELD_EQUIPMENT_PREFIX = "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Held/"
+HELD_SLOT_NAMES = ("rightHand", "leftHand")
+HELD_SLOT_STRATEGIES = {
+    "ELoadoutSlotStrategy::HeldOnlyRight": ("rightHand", False),
+    "ELoadoutSlotStrategy::HeldOnlyLeft": ("leftHand", False),
+    "ELoadoutSlotStrategy::HeldTwoHanded": ("rightHand", True),
+}
 SKIN_MATERIALS = (
     "DefaultCharacter_Body",
     "MI_F_MED_Head_",
@@ -267,6 +274,114 @@ def _label_for(name: str, slot: str) -> str:
     if slot in {"baseBody", "baseHead"}:
         label = label.replace("Body_", "").replace("Head_", "")
     return label.replace("_", " ").strip() or _display_name(name)
+
+
+def _clean_item_label(value: str) -> str:
+    label = _display_name(value)
+    for prefix in ("ITEM_", "BP_", "SK_", "SM_"):
+        if label.startswith(prefix):
+            label = label[len(prefix):]
+            break
+    return label.replace("_", " ").strip() or value
+
+
+def _localized_label(props: dict, fallback: str) -> str:
+    name = props.get("Name") if isinstance(props, dict) else None
+    if isinstance(name, dict):
+        for key in ("LocalizedString", "SourceString", "Key"):
+            value = name.get(key)
+            if value:
+                return str(value)
+    return _clean_item_label(fallback)
+
+
+def _archive_rel(path: Path, archive_json_root: Path) -> str:
+    return path.relative_to(archive_json_root).as_posix()
+
+
+def _asset_path_to_archive_rel(asset_path: str) -> str | None:
+    value = str(asset_path or "").replace("\\", "/")
+    if not value:
+        return None
+    if value.startswith("/Game/"):
+        value = "RSDragonwilds/Content/" + value[len("/Game/"):]
+    if "." in value:
+        value = value.split(".", 1)[0]
+    if value.endswith("_C"):
+        value = value[:-2]
+    if not value.startswith("RSDragonwilds/Content/"):
+        return None
+    return value
+
+
+def _asset_path_to_json_path(asset_path: str, archive_json_root: Path) -> Path | None:
+    rel = _asset_path_to_archive_rel(asset_path)
+    if not rel:
+        return None
+    return archive_json_root / Path(rel + ".json")
+
+
+def _asset_path_to_model_id(asset_path: str, kind: str | None = None) -> str | None:
+    rel = _asset_path_to_archive_rel(asset_path)
+    if not rel:
+        return None
+    name = posixpath.basename(rel)
+    inferred = kind
+    if inferred is None:
+        if name.startswith("SK_"):
+            inferred = "SK"
+        elif name.startswith("SM_"):
+            inferred = "SM"
+    if inferred not in {"SK", "SM"}:
+        return None
+    return f"{inferred}:{rel}.uemodel"
+
+
+def _object_path_to_model_id(object_path: str, kind: str | None = None) -> str | None:
+    value = str(object_path or "").replace("\\", "/")
+    if "." in value:
+        value = value.rsplit(".", 1)[0]
+    return _asset_path_to_model_id(value, kind)
+
+
+def _iter_dicts(value: Any):
+    if isinstance(value, dict):
+        yield value
+        for child in value.values():
+            yield from _iter_dicts(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _iter_dicts(child)
+
+
+def _find_actor_skeletal_model_id(actor_json_path: Path) -> tuple[str | None, list[str]]:
+    diagnostics: list[str] = []
+    if not actor_json_path or not actor_json_path.is_file():
+        return None, ["missing_actor_json"]
+    try:
+        data = _read_json(actor_json_path)
+    except Exception as exc:
+        return None, [f"actor_json_error:{exc}"]
+
+    for row in data if isinstance(data, list) else [data]:
+        if not isinstance(row, dict):
+            continue
+        props = row.get("Properties") or {}
+        for key in ("SkeletalMesh", "SkinnedAsset"):
+            ref = props.get(key)
+            if isinstance(ref, dict):
+                model_id = _object_path_to_model_id(ref.get("ObjectPath") or ref.get("AssetPathName") or "", "SK")
+                if model_id:
+                    return model_id, diagnostics
+
+    for item in _iter_dicts(data):
+        for key in ("SkeletalMesh", "SkinnedAsset"):
+            ref = item.get(key)
+            if isinstance(ref, dict):
+                model_id = _object_path_to_model_id(ref.get("ObjectPath") or ref.get("AssetPathName") or "", "SK")
+                if model_id:
+                    return model_id, diagnostics
+    return None, ["missing_actor_skeletal_mesh"]
 
 
 def _webasset_rel_from_uri(gltf_rel: str, uri: str) -> str:
@@ -551,7 +666,7 @@ def _candidate_rows(
     quality: int,
     force_textures: bool,
 ) -> dict[str, list[dict]]:
-    slots = {key: [] for key in ("baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape")}
+    slots = {key: [] for key in ("baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape", *HELD_SLOT_NAMES)}
     variant_cache: dict[tuple[str, str, str], str] = {}
 
     for model in model_index.get("models") or []:
@@ -591,6 +706,141 @@ def _candidate_rows(
 
     for slot, rows in slots.items():
         rows.sort(key=lambda item: (item["sex"], item["label"].lower(), item["path"].lower()))
+    return slots
+
+
+def _model_lookup(model_index: dict) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for model in model_index.get("models") or []:
+        if not isinstance(model, dict):
+            continue
+        model_id = model.get("id")
+        gltf_path = model.get("gltfPath")
+        if model_id and gltf_path:
+            out[str(model_id)] = model
+    return out
+
+
+def _category_label(props: dict) -> str | None:
+    category = props.get("Category") if isinstance(props, dict) else None
+    tag = category.get("TagName") if isinstance(category, dict) else None
+    if not tag:
+        return None
+    parts = [part for part in str(tag).split(".") if part and part not in {"Item", "Equipment", "Weapon"}]
+    return " ".join(parts) if parts else None
+
+
+def _is_left_hand_two_hander(category: str | None, item_path: Path) -> bool:
+    category_text = str(category or "").lower()
+    item_text = item_path.as_posix().lower()
+    return ("bow" in category_text and "crossbow" not in category_text) or "/held/bow/" in item_text
+
+
+def _build_held_equipment_rows(
+    *,
+    archive_json_root: Path | None,
+    webassets_root: Path,
+    model_index: dict,
+) -> dict[str, list[dict]]:
+    slots = {key: [] for key in HELD_SLOT_NAMES}
+    if archive_json_root is None or not archive_json_root.is_dir():
+        return slots
+
+    held_root = archive_json_root / Path(HELD_EQUIPMENT_PREFIX)
+    if not held_root.is_dir():
+        return slots
+
+    lookup = _model_lookup(model_index)
+    seen_ids: set[str] = set()
+    item_paths = sorted(held_root.rglob("ITEM_*.json"), key=lambda path: path.as_posix().lower())
+    for item_path in item_paths:
+        try:
+            data = _read_json(item_path)
+        except Exception:
+            continue
+        rows = data if isinstance(data, list) else [data]
+        item = next((row for row in rows if isinstance(row, dict) and isinstance(row.get("Properties"), dict)), None)
+        if not item:
+            continue
+        props = item.get("Properties") or {}
+        slot_strategy = str(props.get("Slot") or "")
+        hand_slot, is_two_handed = HELD_SLOT_STRATEGIES.get(slot_strategy, (None, False))
+        if not hand_slot:
+            continue
+        category = _category_label(props)
+        if is_two_handed and _is_left_hand_two_hander(category, item_path):
+            hand_slot = "leftHand"
+
+        diagnostics: list[str] = []
+        model_id = None
+        actor_ref = props.get("HeldEquipmentActorClass")
+        actor_json_path = None
+        if isinstance(actor_ref, dict):
+            actor_json_path = _asset_path_to_json_path(str(actor_ref.get("AssetPathName") or ""), archive_json_root)
+            actor_model_id, actor_diagnostics = _find_actor_skeletal_model_id(actor_json_path) if actor_json_path else (None, ["missing_actor_path"])
+            diagnostics.extend(actor_diagnostics)
+            if actor_model_id in lookup:
+                model_id = actor_model_id
+
+        static_ref = props.get("StaticMesh")
+        static_model_id = None
+        if isinstance(static_ref, dict):
+            static_model_id = _asset_path_to_model_id(str(static_ref.get("AssetPathName") or ""), "SM")
+        if not model_id and static_model_id in lookup:
+            model_id = static_model_id
+        if not model_id:
+            continue
+
+        model = lookup.get(model_id)
+        if not model:
+            continue
+        gltf_path = str(model.get("gltfPath") or "")
+        if not gltf_path or not (webassets_root / Path(gltf_path)).is_file():
+            continue
+
+        item_name = str(item.get("Name") or item_path.stem)
+        label = _localized_label(props, item_name)
+        item_hash = _asset_hash(_archive_rel(item_path, archive_json_root), 12)
+        for row_slot in HELD_SLOT_NAMES:
+            is_natural_slot = row_slot == hand_slot
+            row_id = f"held:{item_hash}:{model_id}" if is_natural_slot else f"held:{item_hash}:{row_slot}:{model_id}"
+            if row_id in seen_ids:
+                continue
+            seen_ids.add(row_id)
+            attach_side = "right" if row_slot == "rightHand" else "left"
+            row = {
+                "id": row_id,
+                "name": item_name,
+                "displayName": str(model.get("displayName") or model.get("name") or item_name),
+                "label": label,
+                "slot": row_slot,
+                "sex": "U_MED",
+                "path": str(model.get("path") or ""),
+                "gltfPath": gltf_path,
+                "assetDir": model.get("assetDir"),
+                "baseModelId": model_id,
+                "heldItemDataPath": _archive_rel(item_path, archive_json_root),
+                "heldActorDataPath": _archive_rel(actor_json_path, archive_json_root) if actor_json_path and actor_json_path.is_file() else None,
+                "slotStrategy": slot_strategy,
+                "defaultSlot": hand_slot,
+                "isMirroredHand": not is_natural_slot,
+                "isTwoHanded": is_two_handed,
+                "attachSide": attach_side,
+                "attachFallbacks": ["prop_r", "hand_r"] if attach_side == "right" else ["prop_l", "hand_l"],
+                "category": category,
+                "animationPoseType": props.get("AnimationPoseType"),
+                "animationPoseSequence": (props.get("AnimationPosesSequence") or {}).get("ObjectPath") if isinstance(props.get("AnimationPosesSequence"), dict) else None,
+                "itemFilterTags": [
+                    tag.get("TagName") if isinstance(tag, dict) else str(tag)
+                    for tag in (props.get("ItemFilterTags") or [])
+                ],
+                "diagnostics": diagnostics,
+                "materialVariants": {},
+            }
+            slots[row_slot].append(row)
+
+    for slot, rows in slots.items():
+        rows.sort(key=lambda item: (item.get("category") or "", item["label"].lower(), item["path"].lower()))
     return slots
 
 
@@ -702,6 +952,13 @@ def build_avatar_index(
         quality=texture_quality,
         force_textures=force_textures,
     )
+    held_slots = _build_held_equipment_rows(
+        archive_json_root=archive_json_root,
+        webassets_root=webassets_root,
+        model_index=model_index,
+    )
+    for slot, rows in held_slots.items():
+        slots.setdefault(slot, []).extend(rows)
     _append_equipment_variant_rows(
         repo_root=repo_root,
         webassets_root=webassets_root,
@@ -732,6 +989,8 @@ def build_avatar_index(
                 "legs": None,
                 "helmet": None,
                 "cape": None,
+                "rightHand": None,
+                "leftHand": None,
             },
             "colors": {
                 "skin": palettes["skin"][0].id,

@@ -174,6 +174,6 @@ The website's configured production domain is `rsdwmodel.com`, with
 `website\CNAME` containing `rsdwmodel.com`.
 
 Generated model assets are glTF-compatible approximations of Unreal materials.
-The pipeline bakes known material, avatar color, equipment variant, and
-animation data into static web outputs, but it does not promise full Unreal
-shader parity.
+The pipeline bakes known material, avatar color, held equipment, equipment
+variant, and animation data into static web outputs, but it does not promise
+full Unreal shader parity.

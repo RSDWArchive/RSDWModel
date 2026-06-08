@@ -12,7 +12,7 @@
   <link rel="manifest" href="../shared/assets/favicon_io/site.webmanifest" />
   <link rel="preload" href="https://fonts.gstatic.com/s/sofiasans/v20/Yq6T-LCVXSLy9uPBwlATrORKkzApcb8.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../styles.css?v=20260606-nav" />
-  <link rel="stylesheet" href="./avatar.css?v=20260606-nav" />
+  <link rel="stylesheet" href="./avatar.css?v=20260607-avatar-weapons-v2" />
   <script type="importmap">
     {
       "imports": {
@@ -79,11 +79,13 @@
 
         <div class="control-section animation-control-section">
           <h2>Animation</h2>
+          <input id="avatar-animation-filter" class="animation-filter-input" type="search" placeholder="Search animations" autocomplete="off" />
           <label class="animation-select-row">
             Clip
             <select id="avatar-animation-select"></select>
           </label>
           <button id="avatar-animation-play" class="panel-action-btn" type="button" disabled>Play</button>
+          <button id="avatar-animation-capture" class="panel-action-btn" type="button" disabled>Capture WebP</button>
         </div>
 
         <div class="control-section slot-grid" aria-label="Avatar slots">
@@ -119,6 +121,42 @@
             Cape
             <select id="slot-cape" data-slot="cape"></select>
           </label>
+          <label>
+            Right Hand
+            <select id="slot-rightHand" data-slot="rightHand"></select>
+          </label>
+          <details class="hand-adjust" data-hand-adjust="rightHand">
+            <summary>Right Hand Adjust</summary>
+            <div class="adjust-grid">
+              <label>X <input type="number" step="0.01" data-hand-adjust-input data-hand="rightHand" data-kind="position" data-axis="x" /></label>
+              <label>Y <input type="number" step="0.01" data-hand-adjust-input data-hand="rightHand" data-kind="position" data-axis="y" /></label>
+              <label>Z <input type="number" step="0.01" data-hand-adjust-input data-hand="rightHand" data-kind="position" data-axis="z" /></label>
+            </div>
+            <div class="adjust-grid">
+              <label>RX <input type="number" step="5" data-hand-adjust-input data-hand="rightHand" data-kind="rotation" data-axis="x" /></label>
+              <label>RY <input type="number" step="5" data-hand-adjust-input data-hand="rightHand" data-kind="rotation" data-axis="y" /></label>
+              <label>RZ <input type="number" step="5" data-hand-adjust-input data-hand="rightHand" data-kind="rotation" data-axis="z" /></label>
+            </div>
+            <button class="panel-action-btn hand-adjust-reset" type="button" data-hand-adjust-reset="rightHand">Reset Adjust</button>
+          </details>
+          <label>
+            Left Hand
+            <select id="slot-leftHand" data-slot="leftHand"></select>
+          </label>
+          <details class="hand-adjust" data-hand-adjust="leftHand">
+            <summary>Left Hand Adjust</summary>
+            <div class="adjust-grid">
+              <label>X <input type="number" step="0.01" data-hand-adjust-input data-hand="leftHand" data-kind="position" data-axis="x" /></label>
+              <label>Y <input type="number" step="0.01" data-hand-adjust-input data-hand="leftHand" data-kind="position" data-axis="y" /></label>
+              <label>Z <input type="number" step="0.01" data-hand-adjust-input data-hand="leftHand" data-kind="position" data-axis="z" /></label>
+            </div>
+            <div class="adjust-grid">
+              <label>RX <input type="number" step="5" data-hand-adjust-input data-hand="leftHand" data-kind="rotation" data-axis="x" /></label>
+              <label>RY <input type="number" step="5" data-hand-adjust-input data-hand="leftHand" data-kind="rotation" data-axis="y" /></label>
+              <label>RZ <input type="number" step="5" data-hand-adjust-input data-hand="leftHand" data-kind="rotation" data-axis="z" /></label>
+            </div>
+            <button class="panel-action-btn hand-adjust-reset" type="button" data-hand-adjust-reset="leftHand">Reset Adjust</button>
+          </details>
         </div>
 
         <div class="control-section">
@@ -172,6 +210,6 @@
     </p>
   </footer>
 
-  <script type="module" src="./avatar.js?v=20260606-full-animations"></script>
+  <script type="module" src="./avatar.js?v=20260607-avatar-weapons-v12"></script>
 </body>
 </html>

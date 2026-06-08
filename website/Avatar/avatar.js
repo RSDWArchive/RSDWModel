@@ -18,14 +18,70 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     datasetVersion: "0.11.2.2",
     assetBaseUrl: "auto",
   };
-  const SLOT_ORDER = ["baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape"];
-  const OPTIONAL_SLOTS = new Set(["hair", "beard", "torso", "legs", "helmet", "cape"]);
+  const SLOT_ORDER = ["baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape", "rightHand", "leftHand"];
+  const OPTIONAL_SLOTS = new Set(["hair", "beard", "torso", "legs", "helmet", "cape", "rightHand", "leftHand"]);
+  const HAND_SLOTS = ["rightHand", "leftHand"];
+  const HELD_SLOTS = new Set(HAND_SLOTS);
+  const ATTACHMENT_SOURCE_SLOTS = ["baseBody", "torso", "legs", "baseHead"];
+  const SLOT_LABELS = {
+    baseBody: "Body",
+    baseHead: "Head",
+    rightHand: "Right hand",
+    leftHand: "Left hand",
+  };
+  const GAME_START_DEFAULTS = {
+    sex: "M_MED",
+    slots: {
+      baseBody: "SK:RSDragonwilds/Content/Art/Skeleton/Player/Body/M_MED_Body_A_01/SK_M_MED_Body_A_01.uemodel",
+      baseHead: "SK:RSDragonwilds/Content/Art/Skeleton/Player/Heads/M_MED_Head_A_01/SK_M_MED_Head_A_01.uemodel",
+      torso: "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/LightArmour_01/SK_M_MED_Body_LightArmour_01.uemodel",
+      legs: "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/LightArmour_01/SK_M_MED_Legs_LightArmour_01.uemodel",
+    },
+    colors: {
+      skin: "skin08",
+      hair: "hair09",
+      eyes: "eye08",
+    },
+  };
   const COLOR_ROLES = ["skin", "hair", "eyes"];
   const COLOR_HASH_KEYS = {
     skin: "skinColor",
     hair: "hairColor",
     eyes: "eyeColor",
   };
+  const ANIMATION_CAPTURE_TARGET_FPS = 30;
+  const ANIMATION_CAPTURE_MAX_FRAMES = 450;
+  const ANIMATION_CAPTURE_QUALITY = 0.82;
+  const DEFAULT_ATTACH_FALLBACKS = {
+    rightHand: ["prop_r", "hand_r"],
+    leftHand: ["prop_l", "hand_l"],
+  };
+  const DEFAULT_HELD_ROTATION = {
+    x: Math.PI / 2,
+    y: 0,
+    z: 0,
+  };
+  const SHIELD_HELD_ROTATION = {
+    x: Math.PI / 2,
+    y: 0,
+    z: Math.PI,
+  };
+  const SHIELD_HELD_OFFSET = {
+    x: 0.08,
+    y: 0.05,
+    z: 0,
+  };
+  const BOW_HELD_ROTATION = {
+    x: Math.PI / 2,
+    y: 0,
+    z: Math.PI,
+  };
+  const BOW_HELD_OFFSET = {
+    x: 0.08,
+    y: 0.05,
+    z: 0,
+  };
+  const ZERO_VECTOR = { x: 0, y: 0, z: 0 };
 
   const els = {
     stage: document.getElementById("avatar-stage"),
@@ -41,9 +97,14 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     sexF: document.getElementById("sex-f"),
     bodyVisible: document.getElementById("body-visible"),
     headVisible: document.getElementById("head-visible"),
+    animationFilter: document.getElementById("avatar-animation-filter"),
     animationSelect: document.getElementById("avatar-animation-select"),
     animationPlay: document.getElementById("avatar-animation-play"),
+    animationCapture: document.getElementById("avatar-animation-capture"),
     slotControls: Object.fromEntries(SLOT_ORDER.map((slot) => [slot, document.getElementById(`slot-${slot}`)])),
+    handAdjustPanels: Object.fromEntries(HAND_SLOTS.map((slot) => [slot, document.querySelector(`[data-hand-adjust="${slot}"]`)])),
+    handAdjustInputs: Array.from(document.querySelectorAll("[data-hand-adjust-input]")),
+    handAdjustReset: Array.from(document.querySelectorAll("[data-hand-adjust-reset]")),
     swatches: {
       skin: document.getElementById("skin-swatches"),
       hair: document.getElementById("hair-swatches"),
@@ -65,6 +126,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   let hasFitCamera = false;
   let clock = null;
   let animationPlaying = true;
+  let activeAnimationDuration = 0;
+  let isCapturingAnimation = false;
+  let animationFilterText = "";
   const gltfCache = new Map();
   const textureCache = new Map();
   const activeObjects = new Map();
@@ -108,6 +172,169 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function githubModelUrl(model) {
     return `${githubRepoBase()}/${encodePath(config.datasetVersion)}/WebAssets/${encodePath(model.gltfPath)}`;
+  }
+
+  function avatarAnimationFileName() {
+    const row = animationById(state.animation);
+    const animationName = row ? (row.label || row.name || row.id) : "Animation";
+    const baseName = `RSDWModel_Avatar_${state.sex}_${animationName}`
+      .replace(/[^a-z0-9_-]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 96);
+    return `${baseName || "RSDWModel_Avatar"}_animation.webp`;
+  }
+
+  function dataUrlToBytes(dataUrl) {
+    const comma = dataUrl.indexOf(",");
+    if (comma < 0) throw new Error("Invalid data URL.");
+    const binary = window.atob(dataUrl.slice(comma + 1));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+
+  function asciiBytes(value) {
+    const bytes = new Uint8Array(value.length);
+    for (let i = 0; i < value.length; i += 1) bytes[i] = value.charCodeAt(i);
+    return bytes;
+  }
+
+  function writeUint24(bytes, offset, value) {
+    bytes[offset] = value & 0xff;
+    bytes[offset + 1] = (value >> 8) & 0xff;
+    bytes[offset + 2] = (value >> 16) & 0xff;
+  }
+
+  function writeUint32(bytes, offset, value) {
+    bytes[offset] = value & 0xff;
+    bytes[offset + 1] = (value >> 8) & 0xff;
+    bytes[offset + 2] = (value >> 16) & 0xff;
+    bytes[offset + 3] = (value >> 24) & 0xff;
+  }
+
+  function concatBytes(parts) {
+    const total = parts.reduce((sum, part) => sum + part.length, 0);
+    const out = new Uint8Array(total);
+    let offset = 0;
+    for (const part of parts) {
+      out.set(part, offset);
+      offset += part.length;
+    }
+    return out;
+  }
+
+  function makeRiffChunk(type, payload) {
+    const pad = payload.length % 2;
+    const chunk = new Uint8Array(8 + payload.length + pad);
+    chunk.set(asciiBytes(type), 0);
+    writeUint32(chunk, 4, payload.length);
+    chunk.set(payload, 8);
+    return chunk;
+  }
+
+  function parseWebpChunks(bytes) {
+    const text = (offset, length) => String.fromCharCode(...bytes.slice(offset, offset + length));
+    if (text(0, 4) !== "RIFF" || text(8, 4) !== "WEBP") {
+      throw new Error("Frame is not a WebP image.");
+    }
+    const chunks = [];
+    let offset = 12;
+    while (offset + 8 <= bytes.length) {
+      const type = text(offset, 4);
+      const size =
+        bytes[offset + 4] |
+        (bytes[offset + 5] << 8) |
+        (bytes[offset + 6] << 16) |
+        (bytes[offset + 7] << 24);
+      const start = offset + 8;
+      const end = start + size;
+      if (end > bytes.length) break;
+      chunks.push({ type, payload: bytes.slice(start, end) });
+      offset = end + (size % 2);
+    }
+    return chunks;
+  }
+
+  function framePayloadFromWebp(dataUrl) {
+    if (!dataUrl.startsWith("data:image/webp")) {
+      throw new Error("This browser did not return WebP frame data.");
+    }
+    const chunks = parseWebpChunks(dataUrlToBytes(dataUrl));
+    const imageChunks = chunks
+      .filter((chunk) => chunk.type === "VP8 " || chunk.type === "VP8L" || chunk.type === "ALPH")
+      .map((chunk) => makeRiffChunk(chunk.type, chunk.payload));
+    if (!imageChunks.length) throw new Error("No WebP image payload was found.");
+    return {
+      payload: concatBytes(imageChunks),
+      hasAlpha: chunks.some((chunk) => chunk.type === "ALPH" || chunk.type === "VP8L"),
+    };
+  }
+
+  function makeAnimatedWebp(frames, width, height, frameDelayMs) {
+    const hasAlpha = frames.some((frame) => frame.hasAlpha);
+    const vp8x = new Uint8Array(10);
+    vp8x[0] = 0x02 | (hasAlpha ? 0x10 : 0);
+    writeUint24(vp8x, 4, width - 1);
+    writeUint24(vp8x, 7, height - 1);
+
+    const anim = new Uint8Array(6);
+    const chunks = [makeRiffChunk("VP8X", vp8x), makeRiffChunk("ANIM", anim)];
+    for (const frame of frames) {
+      const header = new Uint8Array(16);
+      writeUint24(header, 6, width - 1);
+      writeUint24(header, 9, height - 1);
+      writeUint24(header, 12, frameDelayMs);
+      header[15] = 0x02;
+      chunks.push(makeRiffChunk("ANMF", concatBytes([header, frame.payload])));
+    }
+
+    const riffPayload = concatBytes([asciiBytes("WEBP"), ...chunks]);
+    const out = new Uint8Array(8 + riffPayload.length);
+    out.set(asciiBytes("RIFF"), 0);
+    writeUint32(out, 4, riffPayload.length);
+    out.set(riffPayload, 8);
+    return new Blob([out], { type: "image/webp" });
+  }
+
+  function waitForBrowserFrame() {
+    return new Promise((resolve) => window.requestAnimationFrame(resolve));
+  }
+
+  function blankHandAdjustment() {
+    return {
+      position: { ...ZERO_VECTOR },
+      rotation: { ...ZERO_VECTOR },
+    };
+  }
+
+  function defaultHandAdjustments() {
+    return Object.fromEntries(HAND_SLOTS.map((slot) => [slot, blankHandAdjustment()]));
+  }
+
+  function numericValue(value, fallback = 0) {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : fallback;
+  }
+
+  function parseVectorParam(value) {
+    const parts = String(value || "").split(",").map((part) => numericValue(part.trim(), 0));
+    return {
+      x: parts[0] || 0,
+      y: parts[1] || 0,
+      z: parts[2] || 0,
+    };
+  }
+
+  function vectorHasValue(vector) {
+    return Boolean(vector && ["x", "y", "z"].some((axis) => Math.abs(numericValue(vector[axis], 0)) > 0.000001));
+  }
+
+  function vectorHashValue(vector) {
+    return ["x", "y", "z"].map((axis) => numericValue(vector[axis], 0).toFixed(3).replace(/\.?0+$/, "") || "0").join(",");
+  }
+
+  function degreesToRadians(value) {
+    return numericValue(value, 0) * Math.PI / 180;
   }
 
   async function loadJson(url) {
@@ -164,6 +391,43 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     return animationsForAvatar(testState).find((row) => row.id === id) || null;
   }
 
+  function animationSearchText(row) {
+    return [
+      row.label,
+      row.name,
+      row.animationName,
+      row.packagePath,
+      row.gltfPath,
+    ].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  function filteredAnimationsForAvatar() {
+    const rows = animationsForAvatar();
+    const query = animationFilterText.trim().toLowerCase();
+    if (!query) return rows;
+    const terms = query.split(/\s+/).filter(Boolean);
+    return rows.filter((row) => {
+      const text = animationSearchText(row);
+      return terms.every((term) => text.includes(term));
+    });
+  }
+
+  function isTwoHandedRow(row) {
+    return Boolean(row && row.isTwoHanded);
+  }
+
+  function normalizeHeldSlots(next) {
+    const right = rowById(next.slots.rightHand);
+    if (isTwoHandedRow(right)) {
+      next.slots.leftHand = null;
+    }
+    const left = rowById(next.slots.leftHand);
+    if (isTwoHandedRow(left)) {
+      next.slots.rightHand = null;
+    }
+    return next;
+  }
+
   function compatibleRows(slot) {
     const rows = slotRows(slot);
     if (slot === "hair") return rows;
@@ -182,12 +446,13 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function defaultState() {
     const defaults = avatarIndex.defaults || {};
     return {
-      sex: defaults.sex || "M_MED",
-      slots: { ...(defaults.slots || {}) },
-      colors: { ...(defaults.colors || {}) },
+      sex: GAME_START_DEFAULTS.sex,
+      slots: { ...(defaults.slots || {}), ...GAME_START_DEFAULTS.slots },
+      colors: { ...(defaults.colors || {}), ...GAME_START_DEFAULTS.colors },
       bodyVisible: defaults.bodyVisible !== false,
       headVisible: defaults.headVisible !== false,
-      animation: defaults.animation || null,
+      animation: null,
+      handAdjustments: defaultHandAdjustments(),
     };
   }
 
@@ -221,6 +486,16 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       const value = params.get("animation");
       next.animation = value === "none" ? null : value;
     }
+    for (const slot of HAND_SLOTS) {
+      const offsetKey = `${slot}Offset`;
+      const rotationKey = `${slot}Rotation`;
+      if (params.has(offsetKey)) {
+        next.handAdjustments[slot].position = parseVectorParam(params.get(offsetKey));
+      }
+      if (params.has(rotationKey)) {
+        next.handAdjustments[slot].rotation = parseVectorParam(params.get(rotationKey));
+      }
+    }
     return normalizeState(next);
   }
 
@@ -237,6 +512,16 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     if (!state.bodyVisible) params.set("bodyVisible", "0");
     if (!state.headVisible) params.set("headVisible", "0");
     if (state.animation) params.set("animation", state.animation);
+    for (const slot of HAND_SLOTS) {
+      if (!state.slots[slot]) continue;
+      const adjustment = state.handAdjustments && state.handAdjustments[slot];
+      if (vectorHasValue(adjustment && adjustment.position)) {
+        params.set(`${slot}Offset`, vectorHashValue(adjustment.position));
+      }
+      if (vectorHasValue(adjustment && adjustment.rotation)) {
+        params.set(`${slot}Rotation`, vectorHashValue(adjustment.rotation));
+      }
+    }
     window.history.replaceState(null, "", `#${params.toString()}`);
   }
 
@@ -249,6 +534,15 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     }
     if (next.slots.helmet) {
       next.slots.hair = null;
+    }
+    normalizeHeldSlots(next);
+    next.handAdjustments = { ...defaultHandAdjustments(), ...(next.handAdjustments || {}) };
+    for (const slot of HAND_SLOTS) {
+      const adjustment = next.handAdjustments[slot] || blankHandAdjustment();
+      next.handAdjustments[slot] = {
+        position: { ...ZERO_VECTOR, ...(adjustment.position || {}) },
+        rotation: { ...ZERO_VECTOR, ...(adjustment.rotation || {}) },
+      };
     }
     for (const role of COLOR_ROLES) {
       const colors = (avatarIndex.colors && avatarIndex.colors[role]) || [];
@@ -275,29 +569,59 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function fillSlotSelect(slot) {
     const select = els.slotControls[slot];
     const rows = compatibleRows(slot);
+    const lockedByTwoHander =
+      (slot === "leftHand" && isTwoHandedRow(rowById(state.slots.rightHand))) ||
+      (slot === "rightHand" && isTwoHandedRow(rowById(state.slots.leftHand)));
     select.textContent = "";
     if (OPTIONAL_SLOTS.has(slot)) {
       const option = document.createElement("option");
       option.value = "";
-      option.textContent = "None";
+      option.textContent = lockedByTwoHander ? "Two-handed item selected" : "None";
       select.appendChild(option);
     }
-    for (const row of rows) {
+    for (const row of lockedByTwoHander ? [] : rows) {
       const option = document.createElement("option");
       option.value = row.id;
       option.textContent = row.label;
+      if (row.isTwoHanded) option.textContent = `${row.label} (2H)`;
       select.appendChild(option);
     }
     select.value = state.slots[slot] || "";
+    select.disabled = lockedByTwoHander;
+  }
+
+  function fillHandAdjustmentControls() {
+    for (const slot of HAND_SLOTS) {
+      const panel = els.handAdjustPanels[slot];
+      const disabled = !state.slots[slot];
+      if (panel) panel.classList.toggle("is-disabled", disabled);
+    }
+    for (const input of els.handAdjustInputs) {
+      const slot = input.dataset.hand;
+      const kind = input.dataset.kind;
+      const axis = input.dataset.axis;
+      const adjustment = state.handAdjustments?.[slot] || blankHandAdjustment();
+      const value = numericValue(adjustment[kind]?.[axis], 0);
+      input.value = Number.isInteger(value) ? String(value) : String(Number(value.toFixed(3)));
+      input.disabled = !state.slots[slot];
+    }
+    for (const button of els.handAdjustReset) {
+      button.disabled = !state.slots[button.dataset.hand];
+    }
   }
 
   function fillAnimationSelect() {
     const select = els.animationSelect;
-    const rows = animationsForAvatar();
+    const allRows = animationsForAvatar();
+    let rows = filteredAnimationsForAvatar();
+    const selectedRow = animationById(state.animation);
+    if (selectedRow && !rows.some((row) => row.id === selectedRow.id)) {
+      rows = [selectedRow, ...rows];
+    }
     select.textContent = "";
     const none = document.createElement("option");
     none.value = "";
-    none.textContent = "None";
+    none.textContent = animationFilterText.trim() ? `None (${rows.length}/${allRows.length})` : "None";
     select.appendChild(none);
     for (const row of rows) {
       const option = document.createElement("option");
@@ -306,8 +630,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       select.appendChild(option);
     }
     select.value = state.animation || "";
-    select.disabled = rows.length === 0;
+    select.disabled = allRows.length === 0;
     els.animationPlay.disabled = !state.animation;
+    els.animationCapture.disabled = !state.animation || activeMixers.length === 0 || !activeAnimationDuration;
     els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
   }
 
@@ -317,6 +642,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     els.bodyVisible.checked = state.bodyVisible;
     els.headVisible.checked = state.headVisible;
     for (const slot of SLOT_ORDER) fillSlotSelect(slot);
+    fillHandAdjustmentControls();
     fillAnimationSelect();
     for (const role of COLOR_ROLES) {
       const container = els.swatches[role];
@@ -406,8 +732,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function animate() {
     requestAnimationFrame(animate);
     const delta = clock ? clock.getDelta() : 0;
-    for (const mixer of activeMixers) {
-      mixer.update(delta);
+    if (!isCapturingAnimation) {
+      for (const mixer of activeMixers) {
+        mixer.update(delta);
+      }
     }
     controls.update();
     renderer.render(scene, camera);
@@ -484,7 +812,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   async function loadSlot(slot, row) {
     const previous = activeObjects.get(slot);
     if (previous) {
-      avatarRoot.remove(previous);
+      if (previous.parent) previous.parent.remove(previous);
       activeObjects.delete(slot);
     }
     if (!row) return;
@@ -493,6 +821,74 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     await applyVariants(cloned, row);
     avatarRoot.add(cloned);
     activeObjects.set(slot, cloned);
+  }
+
+  function findNamedDescendant(root, names) {
+    for (const name of names) {
+      const exact = root.getObjectByName(name);
+      if (exact) return exact;
+      const needle = String(name).toLowerCase();
+      let found = null;
+      root.traverse((obj) => {
+        if (!found && String(obj.name || "").toLowerCase() === needle) {
+          found = obj;
+        }
+      });
+      if (found) return found;
+    }
+    return null;
+  }
+
+  function findAvatarAttachment(row, slot) {
+    const names = row.attachFallbacks || DEFAULT_ATTACH_FALLBACKS[slot] || [];
+    for (const sourceSlot of ATTACHMENT_SOURCE_SLOTS) {
+      const root = activeObjects.get(sourceSlot);
+      if (!root) continue;
+      const target = findNamedDescendant(root, names);
+      if (target) return target;
+    }
+    return null;
+  }
+
+  function resetHeldTransform(root, row, slot) {
+    const category = String(row.category || "");
+    const isBow = /\bBow\b/i.test(category) && !/Crossbow/i.test(category);
+    const baseOffset = row.category === "Shield" ? SHIELD_HELD_OFFSET : isBow ? BOW_HELD_OFFSET : {};
+    const offset = { ...baseOffset, ...(row.attachOffset || {}) };
+    const baseRotation = row.category === "Shield" ? SHIELD_HELD_ROTATION : isBow ? BOW_HELD_ROTATION : DEFAULT_HELD_ROTATION;
+    const rotation = { ...baseRotation, ...(row.attachRotation || {}) };
+    const adjustment = state.handAdjustments?.[slot] || blankHandAdjustment();
+    root.position.set(
+      numericValue(offset.x, 0) + numericValue(adjustment.position.x, 0),
+      numericValue(offset.y, 0) + numericValue(adjustment.position.y, 0),
+      numericValue(offset.z, 0) + numericValue(adjustment.position.z, 0),
+    );
+    root.rotation.set(
+      numericValue(rotation.x, 0) + degreesToRadians(adjustment.rotation.x),
+      numericValue(rotation.y, 0) + degreesToRadians(adjustment.rotation.y),
+      numericValue(rotation.z, 0) + degreesToRadians(adjustment.rotation.z),
+    );
+    root.scale.setScalar(Number(row.attachScale || 1));
+    root.updateMatrixWorld(true);
+  }
+
+  function attachHeldSlots() {
+    const missing = [];
+    for (const slot of HELD_SLOTS) {
+      const row = rowById(state.slots[slot]);
+      const root = activeObjects.get(slot);
+      if (!row || !root) continue;
+      const target = findAvatarAttachment(row, slot);
+      if (!target) {
+        missing.push(row.label || row.displayName || slot);
+        continue;
+      }
+      target.add(root);
+      resetHeldTransform(root, row, slot);
+    }
+    if (missing.length) {
+      setWarning(`Could not find hand attachment bones for: ${missing.join(", ")}.`);
+    }
   }
 
   function clearAnimationMixers() {
@@ -505,6 +901,8 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   async function applySelectedAnimation() {
     clearAnimationMixers();
+    activeAnimationDuration = 0;
+    els.animationCapture.disabled = true;
     if (!state.animation) {
       els.animationPlay.disabled = true;
       els.animationPlay.textContent = "Play";
@@ -521,7 +919,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       els.animationPlay.disabled = true;
       return;
     }
-    for (const root of activeObjects.values()) {
+    activeAnimationDuration = Number(clip.duration || row.duration_s || 0);
+    for (const [slot, root] of activeObjects.entries()) {
+      if (HELD_SLOTS.has(slot)) continue;
       const mixer = new THREE.AnimationMixer(root);
       const action = mixer.clipAction(clip);
       action.reset().play();
@@ -529,7 +929,70 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       activeMixers.push(mixer);
     }
     els.animationPlay.disabled = activeMixers.length === 0;
+    els.animationCapture.disabled = activeMixers.length === 0 || !activeAnimationDuration;
     els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
+  }
+
+  async function captureAvatarAnimationWebp() {
+    if (!state.animation || !activeMixers.length || !activeAnimationDuration || els.animationCapture.disabled) return;
+    const previousText = els.animationCapture.textContent;
+    const previousTimes = activeMixers.map((mixer) => mixer.time);
+    const previousScales = activeMixers.map((mixer) => mixer.timeScale);
+    const duration = activeAnimationDuration;
+    const frameRate = Math.max(
+      4,
+      Math.min(ANIMATION_CAPTURE_TARGET_FPS, Math.floor(ANIMATION_CAPTURE_MAX_FRAMES / duration) || ANIMATION_CAPTURE_TARGET_FPS),
+    );
+    const frameCount = Math.max(2, Math.ceil(duration * frameRate));
+    const frameDelayMs = Math.max(20, Math.round((duration * 1000) / frameCount));
+
+    els.animationCapture.disabled = true;
+    els.animationPlay.disabled = true;
+    els.animationCapture.textContent = "Capturing 0%";
+    try {
+      isCapturingAnimation = true;
+      for (const mixer of activeMixers) mixer.timeScale = 1;
+      const frames = [];
+      for (let frameIndex = 0; frameIndex < frameCount; frameIndex += 1) {
+        const time = (duration * frameIndex) / frameCount;
+        for (const mixer of activeMixers) mixer.setTime(time);
+        controls.update();
+        renderer.render(scene, camera);
+        const dataUrl = renderer.domElement.toDataURL("image/webp", ANIMATION_CAPTURE_QUALITY);
+        frames.push(framePayloadFromWebp(dataUrl));
+        els.animationCapture.textContent = `Capturing ${Math.round(((frameIndex + 1) / frameCount) * 100)}%`;
+        if (frameIndex % 4 === 0) await waitForBrowserFrame();
+      }
+      const blob = makeAnimatedWebp(frames, renderer.domElement.width, renderer.domElement.height, frameDelayMs);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = avatarAnimationFileName();
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 4000);
+      els.animationCapture.textContent = "Captured";
+      window.setTimeout(() => {
+        if (state.animation) els.animationCapture.textContent = previousText;
+      }, 1200);
+    } catch (error) {
+      console.error(error);
+      setWarning("Animation capture failed. Try again after the avatar finishes loading.");
+      els.animationCapture.textContent = previousText;
+    } finally {
+      isCapturingAnimation = false;
+      activeMixers.forEach((mixer, index) => {
+        mixer.timeScale = 1;
+        mixer.setTime(previousTimes[index] || 0);
+        mixer.timeScale = previousScales[index] ?? (animationPlaying ? 1 : 0);
+      });
+      controls.update();
+      renderer.render(scene, camera);
+      els.animationPlay.disabled = !state.animation || activeMixers.length === 0;
+      els.animationCapture.disabled = !state.animation || activeMixers.length === 0 || !activeAnimationDuration;
+      els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
+    }
   }
 
   function selectedRows() {
@@ -563,7 +1026,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function updateSummary() {
     const parts = selectedRows()
-      .map(([slot, row]) => `${slot.replace("base", "")}: ${row.label}`)
+      .map(([slot, row]) => `${SLOT_LABELS[slot] || slot.replace("base", "")}: ${row.label}`)
       .slice(0, 5);
     if (!state.bodyVisible) parts.unshift("Body: hidden");
     if (!state.headVisible) parts.unshift("Head: hidden");
@@ -574,6 +1037,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   async function updateAvatar() {
     els.loading.hidden = false;
+    els.animationCapture.disabled = true;
     setWarning("");
     renderControls();
     updateHash();
@@ -585,6 +1049,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       for (const slot of SLOT_ORDER) {
         if (!visibleSlots.has(slot)) await loadSlot(slot, null);
       }
+      attachHeldSlots();
       await applySelectedAnimation();
       if (!hasFitCamera) {
         fitCamera();
@@ -628,6 +1093,18 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       select.addEventListener("change", () => {
         activeSlot = slot;
         state.slots[slot] = select.value || null;
+        if (slot === "leftHand" && state.slots.leftHand && isTwoHandedRow(rowById(state.slots.rightHand))) {
+          state.slots.rightHand = null;
+        }
+        if (slot === "rightHand" && isTwoHandedRow(rowById(state.slots.rightHand))) {
+          state.slots.leftHand = null;
+        }
+        if (slot === "leftHand" && isTwoHandedRow(rowById(state.slots.leftHand))) {
+          state.slots.rightHand = null;
+        }
+        if (slot === "rightHand" && state.slots.rightHand && isTwoHandedRow(rowById(state.slots.leftHand))) {
+          state.slots.leftHand = null;
+        }
         state = normalizeState(state);
         renderControls();
         updateAvatar();
@@ -645,10 +1122,34 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       state.headVisible = els.headVisible.checked;
       updateAvatar();
     });
+    for (const input of els.handAdjustInputs) {
+      input.addEventListener("input", () => {
+        const slot = input.dataset.hand;
+        const kind = input.dataset.kind;
+        const axis = input.dataset.axis;
+        if (!state.handAdjustments[slot]) state.handAdjustments[slot] = blankHandAdjustment();
+        state.handAdjustments[slot][kind][axis] = numericValue(input.value, 0);
+        attachHeldSlots();
+        updateHash();
+      });
+    }
+    for (const button of els.handAdjustReset) {
+      button.addEventListener("click", () => {
+        const slot = button.dataset.hand;
+        state.handAdjustments[slot] = blankHandAdjustment();
+        fillHandAdjustmentControls();
+        attachHeldSlots();
+        updateHash();
+      });
+    }
     els.animationSelect.addEventListener("change", () => {
       state.animation = els.animationSelect.value || null;
       animationPlaying = Boolean(state.animation);
       updateAvatar();
+    });
+    els.animationFilter.addEventListener("input", () => {
+      animationFilterText = els.animationFilter.value || "";
+      fillAnimationSelect();
     });
     els.animationPlay.addEventListener("click", () => {
       if (!state.animation) return;
@@ -658,6 +1159,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       }
       els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
     });
+    els.animationCapture.addEventListener("click", captureAvatarAnimationWebp);
     els.resetView.addEventListener("click", () => {
       fitCamera();
       hasFitCamera = true;
@@ -698,7 +1200,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     avatarIndex = await loadJson(AVATAR_INDEX_URL);
     animationIndex = await loadJson(ANIMATION_INDEX_URL).catch(() => null);
     config.datasetVersion = avatarIndex.datasetVersion || config.datasetVersion;
-    state = parseHash() || defaultState();
+    state = parseHash() || normalizeState(defaultState());
     initThree();
     renderSwatches();
     renderControls();
