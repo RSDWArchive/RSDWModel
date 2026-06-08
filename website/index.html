@@ -72,7 +72,7 @@
       </div>
     </section>
 
-    <section class="viewer-layout" aria-label="Model browser">
+    <section id="viewer-layout" class="viewer-layout" aria-label="Model browser">
       <aside class="results-panel">
         <div class="panel-header">
           <div>
@@ -105,6 +105,7 @@
           <div class="viewer-actions">
             <button id="auto-rotate-toggle" class="panel-action-btn" type="button" disabled>Auto Rotate</button>
             <button id="reset-camera" class="panel-action-btn" type="button" disabled>Reset</button>
+            <button id="viewer-controls-toggle" class="panel-action-btn" type="button" aria-controls="viewer-inspector" aria-expanded="true">Hide Controls</button>
             <button id="save-screenshot" class="panel-action-btn" type="button" disabled>Screenshot</button>
             <a id="open-raw" class="panel-action-btn is-link" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Raw</a>
             <a id="open-github" class="panel-action-btn is-link" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">GitHub</a>
@@ -112,35 +113,24 @@
           </div>
         </div>
 
-        <div id="missing-warning" class="missing-warning" hidden></div>
-        <div id="variant-panel" class="variant-panel" hidden>
-          <label for="model-variant-select">
-            <span>Variant</span>
-            <select id="model-variant-select"></select>
-          </label>
-        </div>
-        <div id="animation-panel" class="animation-panel" hidden>
-          <label for="model-animation-select">
-            <span>Animation</span>
-            <select id="model-animation-select"></select>
-          </label>
-          <button id="animation-play-toggle" class="panel-action-btn" type="button" disabled>Play</button>
-          <button id="capture-animation-webp" class="panel-action-btn" type="button" disabled>Capture WebP</button>
-        </div>
-
-        <div class="model-stage">
+        <div id="model-stage" class="model-stage">
           <model-viewer
             id="model-viewer"
             camera-controls
             touch-action="pan-y"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            ar-scale="auto"
+            ar-placement="floor"
+            xr-environment
             shadow-intensity="0.35"
             exposure="0.92"
-            tone-mapping="commerce"
+            tone-mapping="neutral"
             loading="eager"
             reveal="auto"
             interaction-prompt="auto"
-            ar-status="not-presenting"
           >
+            <button id="viewer-ar-button" class="viewer-ar-button" slot="ar-button" type="button">View In AR</button>
             <div class="viewer-empty" slot="poster">Select a model to begin.</div>
             <div class="progress-bar" slot="progress-bar">
               <div id="load-progress"></div>
@@ -148,6 +138,279 @@
           </model-viewer>
         </div>
       </section>
+
+      <aside id="viewer-inspector" class="viewer-inspector" aria-label="Viewer controls">
+        <div class="inspector-header">
+          <div>
+            <h2>Controls</h2>
+            <p id="inspector-summary">No model selected.</p>
+          </div>
+        </div>
+
+        <div class="inspector-tabs" role="tablist" aria-label="Viewer control sections">
+          <button class="inspector-tab is-active" id="inspector-tab-model-button" type="button" role="tab" aria-selected="true" aria-controls="inspector-tab-model" data-inspector-tab="model">Material</button>
+          <button class="inspector-tab" id="inspector-tab-animation-button" type="button" role="tab" aria-selected="false" aria-controls="inspector-tab-animation" data-inspector-tab="animation">Animation</button>
+          <button class="inspector-tab" id="inspector-tab-lighting-button" type="button" role="tab" aria-selected="false" aria-controls="inspector-tab-lighting" data-inspector-tab="lighting">Lighting</button>
+          <button class="inspector-tab" id="inspector-tab-camera-button" type="button" role="tab" aria-selected="false" aria-controls="inspector-tab-camera" data-inspector-tab="camera">Camera</button>
+          <button class="inspector-tab" id="inspector-tab-capture-button" type="button" role="tab" aria-selected="false" aria-controls="inspector-tab-capture" data-inspector-tab="capture">Capture</button>
+          <button class="inspector-tab" id="inspector-tab-ar-button" type="button" role="tab" aria-selected="false" aria-controls="inspector-tab-ar" data-inspector-tab="ar">AR</button>
+        </div>
+
+        <section id="inspector-tab-model" class="inspector-tab-panel is-active" role="tabpanel" aria-labelledby="inspector-tab-model-button" data-inspector-panel="model">
+          <div id="missing-warning" class="missing-warning" hidden></div>
+          <div id="variant-panel" class="variant-panel" hidden>
+            <label for="model-variant-select">
+              <span>Variant</span>
+              <select id="model-variant-select"></select>
+            </label>
+          </div>
+          <div id="material-empty" class="inspector-empty">Select a model to edit materials.</div>
+          <div id="material-panel" class="material-panel" hidden>
+            <label class="control-field" for="material-select">
+              <span>Material</span>
+              <select id="material-select"></select>
+            </label>
+            <label class="control-field" for="material-scope">
+              <span>Apply To</span>
+              <select id="material-scope">
+                <option value="selected">Selected Material</option>
+                <option value="all">All Materials</option>
+              </select>
+            </label>
+            <label class="control-field material-color-field" for="material-base-color">
+              <span>Base Tint</span>
+              <input id="material-base-color" type="color" value="#ffffff" />
+            </label>
+            <label class="control-field" for="material-roughness">
+              <span>Roughness <output id="material-roughness-value">1.00</output></span>
+              <input id="material-roughness" type="range" min="0" max="1" step="0.01" value="1" />
+            </label>
+            <label class="control-field" for="material-metallic">
+              <span>Metallic <output id="material-metallic-value">0.00</output></span>
+              <input id="material-metallic" type="range" min="0" max="1" step="0.01" value="0" />
+            </label>
+            <label class="control-field" for="material-base-texture">
+              <span>Base Texture</span>
+              <input id="material-base-texture" type="file" accept="image/*,.webp,.png,.jpg,.jpeg" />
+            </label>
+            <div class="material-actions">
+              <button id="reset-material" class="panel-action-btn" type="button" disabled>Reset Material</button>
+              <button id="reset-all-materials" class="panel-action-btn" type="button" disabled>Reset All</button>
+            </div>
+            <p id="material-status" class="control-note">Material controls load after the model appears.</p>
+          </div>
+        </section>
+
+        <section id="inspector-tab-animation" class="inspector-tab-panel" role="tabpanel" aria-labelledby="inspector-tab-animation-button" data-inspector-panel="animation" hidden>
+          <div id="animation-empty" class="inspector-empty">Select a model with animations.</div>
+          <div id="animation-panel" class="animation-panel" hidden>
+          <div class="animation-panel__pickers">
+            <label for="model-animation-filter">
+              <span>Find Animation</span>
+              <input id="model-animation-filter" type="search" placeholder="Search animations" autocomplete="off" />
+            </label>
+            <label for="model-animation-select">
+              <span>Animation</span>
+              <select id="model-animation-select"></select>
+            </label>
+          </div>
+          <div class="animation-panel__controls">
+            <button id="animation-prev" class="panel-action-btn" type="button" disabled>Previous</button>
+            <button id="animation-play-toggle" class="panel-action-btn" type="button" disabled>Play</button>
+            <button id="animation-restart" class="panel-action-btn" type="button" disabled>Restart</button>
+            <button id="animation-next" class="panel-action-btn" type="button" disabled>Next</button>
+            <button id="animation-step-back" class="panel-action-btn" type="button" disabled>-0.1s</button>
+            <button id="animation-step-forward" class="panel-action-btn" type="button" disabled>+0.1s</button>
+            <label class="animation-scrub" for="animation-scrub">
+              <span id="animation-time">0:00 / 0:00</span>
+              <input id="animation-scrub" type="range" min="0" max="0" step="0.01" value="0" disabled />
+            </label>
+            <label class="animation-speed" for="animation-speed">
+              <span>Speed</span>
+              <select id="animation-speed">
+                <option value="0.25">0.25x</option>
+                <option value="0.5">0.5x</option>
+                <option value="1">1x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x</option>
+              </select>
+            </label>
+            <label class="animation-loop" for="animation-loop-mode">
+              <span>Loop</span>
+              <select id="animation-loop-mode">
+                <option value="repeat">Repeat</option>
+                <option value="once">Once</option>
+                <option value="pingpong">Ping-Pong</option>
+              </select>
+            </label>
+            <button id="capture-animation-webp" class="panel-action-btn" type="button" disabled>Capture WebP</button>
+          </div>
+        </div>
+        </section>
+
+        <div id="viewer-controls" class="viewer-controls">
+          <section id="inspector-tab-lighting" class="inspector-tab-panel" role="tabpanel" aria-labelledby="inspector-tab-lighting-button" data-inspector-panel="lighting" hidden>
+            <div class="viewer-controls__section" aria-label="Lighting controls">
+            <h3>Lighting</h3>
+            <div class="viewer-controls__grid">
+              <label class="control-field" for="lighting-preset">
+                <span>Look</span>
+                <select id="lighting-preset">
+                  <option value="custom">Custom</option>
+                  <option value="neutral">Neutral</option>
+                  <option value="studio">Studio</option>
+                  <option value="soft">Soft</option>
+                  <option value="contrast">High Contrast</option>
+                  <option value="warm">Warm</option>
+                </select>
+              </label>
+              <label class="control-field" for="lighting-exposure">
+                <span>Exposure <output id="lighting-exposure-value">0.92</output></span>
+                <input id="lighting-exposure" type="range" min="0.2" max="2" step="0.02" value="0.92" />
+              </label>
+              <label class="control-field" for="lighting-shadow">
+                <span>Shadow <output id="lighting-shadow-value">0.35</output></span>
+                <input id="lighting-shadow" type="range" min="0" max="2" step="0.05" value="0.35" />
+              </label>
+              <label class="control-field" for="lighting-shadow-softness">
+                <span>Softness <output id="lighting-shadow-softness-value">1.00</output></span>
+                <input id="lighting-shadow-softness" type="range" min="0" max="1" step="0.05" value="1" />
+              </label>
+              <label class="control-field" for="lighting-tone-mapping">
+                <span>Tone Mapping</span>
+                <select id="lighting-tone-mapping">
+                  <option value="neutral">Neutral</option>
+                  <option value="aces">ACES</option>
+                  <option value="agx">AgX</option>
+                  <option value="cineon">Cineon</option>
+                  <option value="reinhard">Reinhard</option>
+                  <option value="linear">Linear</option>
+                  <option value="none">None</option>
+                </select>
+              </label>
+              <label class="control-field" for="lighting-environment">
+                <span>Environment</span>
+                <select id="lighting-environment">
+                  <option value="neutral">Neutral</option>
+                  <option value="legacy">Legacy</option>
+                </select>
+              </label>
+              <label class="control-field" for="lighting-environment-upload">
+                <span>Upload Environment</span>
+                <input id="lighting-environment-upload" type="file" accept=".hdr,.exr,.jpg,.jpeg,.png,.webp,image/*" />
+              </label>
+              <label class="toggle-control" for="lighting-show-skybox">
+                <input id="lighting-show-skybox" type="checkbox" />
+                <span>Show Skybox</span>
+              </label>
+              <button id="clear-uploaded-environment" class="panel-action-btn" type="button" disabled>Clear Upload</button>
+              <button id="reset-lighting" class="panel-action-btn" type="button">Reset Lighting</button>
+              <p id="lighting-environment-status" class="control-note">Local uploads stay in this browser session.</p>
+            </div>
+            </div>
+          </section>
+
+          <section id="inspector-tab-camera" class="inspector-tab-panel" role="tabpanel" aria-labelledby="inspector-tab-camera-button" data-inspector-panel="camera" hidden>
+            <div class="viewer-controls__section" aria-label="Camera controls">
+            <h3>Camera</h3>
+            <div class="camera-presets" aria-label="Camera preset views">
+              <button class="panel-action-btn" type="button" data-camera-orbit="0deg 75deg auto">Front</button>
+              <button class="panel-action-btn" type="button" data-camera-orbit="180deg 75deg auto">Back</button>
+              <button class="panel-action-btn" type="button" data-camera-orbit="-90deg 75deg auto">Left</button>
+              <button class="panel-action-btn" type="button" data-camera-orbit="90deg 75deg auto">Right</button>
+              <button class="panel-action-btn" type="button" data-camera-orbit="0deg 0deg auto">Top</button>
+            </div>
+            <div class="viewer-controls__grid">
+              <label class="control-field" for="camera-fov">
+                <span>Field Of View <output id="camera-fov-value">Auto</output></span>
+                <input id="camera-fov" type="range" min="15" max="70" step="1" value="30" />
+              </label>
+              <label class="control-field" for="auto-rotate-speed">
+                <span>Rotate Speed <output id="auto-rotate-speed-value">30 deg/s</output></span>
+                <input id="auto-rotate-speed" type="range" min="5" max="90" step="5" value="30" />
+              </label>
+              <label class="control-field" for="stage-background">
+                <span>Background</span>
+                <select id="stage-background">
+                  <option value="warm">Warm</option>
+                  <option value="neutral">Neutral</option>
+                  <option value="flat">Flat</option>
+                  <option value="transparent">Transparent</option>
+                </select>
+              </label>
+              <label class="toggle-control" for="stage-grid">
+                <input id="stage-grid" type="checkbox" />
+                <span>Grid</span>
+              </label>
+              <button id="fit-camera" class="panel-action-btn" type="button" disabled>Fit Model</button>
+              <button id="save-camera-view" class="panel-action-btn" type="button" disabled>Save View</button>
+              <button id="load-camera-view" class="panel-action-btn" type="button" disabled>Load View</button>
+            </div>
+            </div>
+          </section>
+
+          <section id="inspector-tab-capture" class="inspector-tab-panel" role="tabpanel" aria-labelledby="inspector-tab-capture-button" data-inspector-panel="capture" hidden>
+            <div class="viewer-controls__section" aria-label="Capture controls">
+              <h3>Capture</h3>
+              <div class="viewer-controls__grid">
+                <label class="control-field" for="capture-format">
+                  <span>Screenshot</span>
+                  <select id="capture-format">
+                    <option value="image/png">PNG</option>
+                    <option value="image/webp">WebP</option>
+                  </select>
+                </label>
+                <label class="control-field" for="capture-quality">
+                  <span>Quality <output id="capture-quality-value">0.82</output></span>
+                  <input id="capture-quality" type="range" min="0.5" max="1" step="0.01" value="0.82" />
+                </label>
+                <label class="toggle-control" for="capture-ideal-aspect" title="Use model-viewer's poster aspect instead of the visible viewport aspect.">
+                  <input id="capture-ideal-aspect" type="checkbox" />
+                  <span>Poster Aspect</span>
+                </label>
+                <button id="save-screenshot-panel" class="panel-action-btn" type="button" disabled>Screenshot</button>
+              </div>
+              <div class="viewer-controls__grid capture-animation-grid">
+                <label class="control-field" for="animation-capture-fps">
+                  <span>WebP FPS <output id="animation-capture-fps-value">30</output></span>
+                  <input id="animation-capture-fps" type="range" min="8" max="60" step="1" value="30" />
+                </label>
+                <label class="control-field" for="animation-capture-max-frames">
+                  <span>Max Frames <output id="animation-capture-max-frames-value">450</output></span>
+                  <input id="animation-capture-max-frames" type="range" min="60" max="900" step="30" value="450" />
+                </label>
+                <button id="capture-animation-webp-panel" class="panel-action-btn" type="button" disabled>Capture Animation</button>
+              </div>
+            </div>
+          </section>
+
+          <section id="inspector-tab-ar" class="inspector-tab-panel" role="tabpanel" aria-labelledby="inspector-tab-ar-button" data-inspector-panel="ar" hidden>
+            <div class="viewer-controls__section" aria-label="AR controls">
+            <h3>AR</h3>
+            <div class="viewer-controls__grid">
+              <label class="control-field" for="ar-placement">
+                <span>Placement</span>
+                <select id="ar-placement">
+                  <option value="floor">Floor</option>
+                  <option value="wall">Wall</option>
+                </select>
+              </label>
+              <label class="control-field" for="ar-scale">
+                <span>Scale</span>
+                <select id="ar-scale">
+                  <option value="auto">Auto</option>
+                  <option value="fixed">Fixed</option>
+                </select>
+              </label>
+              <button id="activate-ar" class="panel-action-btn" type="button" disabled>Launch AR</button>
+              <p id="ar-status" class="ar-status">AR appears on supported mobile devices.</p>
+            </div>
+            </div>
+          </section>
+
+          <button id="reset-viewer-preferences" class="panel-action-btn reset-viewer-preferences" type="button">Reset Viewer Preferences</button>
+        </div>
+      </aside>
     </section>
   </main>
 
@@ -164,6 +427,6 @@
     </p>
   </footer>
 
-  <script src="./app.js?v=20260607-animation-webp-v3" defer></script>
+  <script src="./app.js?v=20260608-viewer-qol-v6" defer></script>
 </body>
 </html>
