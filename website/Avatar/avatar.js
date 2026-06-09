@@ -1077,6 +1077,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function bindEvents() {
     setMenu("discord-toggle", "discord-menu");
+    setMenu("links-toggle", "links-menu");
     document.addEventListener("click", () => {
       document.querySelectorAll(".rsdw-menu__panel").forEach((panel) => {
         panel.hidden = true;
