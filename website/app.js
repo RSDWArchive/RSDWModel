@@ -148,6 +148,13 @@
     saveScreenshotPanel: document.getElementById("save-screenshot-panel"),
     openRaw: document.getElementById("open-raw"),
     openGithub: document.getElementById("open-github"),
+    downloadModel: document.getElementById("download-model"),
+    downloadDialog: document.getElementById("download-dialog"),
+    downloadBackdrop: document.getElementById("download-dialog-backdrop"),
+    downloadClose: document.getElementById("download-dialog-close"),
+    downloadGlb: document.getElementById("download-glb"),
+    downloadStl: document.getElementById("download-stl"),
+    downloadStatus: document.getElementById("download-status"),
     copyLink: document.getElementById("copy-link"),
   };
 
@@ -171,6 +178,7 @@
   let materialBaselines = [];
   let uploadedMaterialTextureUrl = null;
   let uploadedEnvironmentUrl = null;
+  let isExportingModel = false;
 
   function isLocalHost() {
     return ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
@@ -1107,6 +1115,128 @@
     return `${baseName || "RSDWModel"}_${model.kind || "Model"}_animation.webp`;
   }
 
+  function modelExportBaseName(model = selectedModel) {
+    const variantSuffix = selectedVariant && selectedVariant.label ? `_${selectedVariant.label}` : "";
+    const animationSuffix = selectedAnimation && selectedAnimation.label ? `_${selectedAnimation.label}` : "";
+    return `${(model && (model.displayName || model.name)) || "RSDWModel"}${variantSuffix}${animationSuffix}`
+      .replace(/\.[^.]+$/, "")
+      .replace(/[^a-z0-9_-]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 96) || "RSDWModel";
+  }
+
+  function downloadBlob(blob, fileName) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 4000);
+  }
+
+  function setDownloadButtons(disabled, message) {
+    const shouldDisable = disabled || !selectedModel;
+    els.downloadModel.disabled = shouldDisable;
+    els.downloadGlb.disabled = shouldDisable;
+    els.downloadStl.disabled = shouldDisable;
+    if (message) els.downloadStatus.textContent = message;
+  }
+
+  function setDownloadDialogOpen(open) {
+    els.downloadDialog.hidden = !open;
+    document.body.classList.toggle("modal-open", open);
+    if (open) {
+      els.downloadStatus.textContent = "Exports run locally in your browser.";
+      window.setTimeout(() => els.downloadGlb.focus(), 0);
+    } else {
+      window.setTimeout(() => els.downloadModel.focus(), 0);
+    }
+  }
+
+  function openDownloadDialog() {
+    if (!selectedModel || els.downloadModel.disabled) return;
+    setDownloadDialogOpen(true);
+  }
+
+  function closeDownloadDialog() {
+    if (isExportingModel) return;
+    setDownloadDialogOpen(false);
+  }
+
+  function exportedSceneToBlob(exported, mimeType) {
+    if (exported instanceof Blob) return exported;
+    if (exported instanceof ArrayBuffer) return new Blob([exported], { type: mimeType });
+    if (ArrayBuffer.isView(exported)) return new Blob([exported], { type: mimeType });
+    return new Blob([exported], { type: mimeType });
+  }
+
+  async function exportCurrentGlbBlob() {
+    if (!selectedModel || typeof els.viewer.exportScene !== "function") {
+      throw new Error("GLB export is not available in this browser.");
+    }
+    const exported = await els.viewer.exportScene({
+      binary: true,
+      trs: true,
+      onlyVisible: true,
+      maxTextureSize: Infinity,
+      forcePowerOfTwoTextures: false,
+      includeCustomExtensions: false,
+      embedImages: true,
+    });
+    return exportedSceneToBlob(exported, "model/gltf-binary");
+  }
+
+  async function downloadCurrentGlb() {
+    if (!selectedModel || isExportingModel) return;
+    isExportingModel = true;
+    setDownloadButtons(true, "Preparing GLB...");
+    try {
+      const blob = await exportCurrentGlbBlob();
+      downloadBlob(blob, `${modelExportBaseName()}.glb`);
+      setDownloadButtons(true, "GLB download started.");
+      window.setTimeout(() => {
+        if (selectedModel) setDownloadButtons(false, "Exports run locally in your browser.");
+      }, 1200);
+    } catch (error) {
+      console.error(error);
+      setDownloadButtons(false, "GLB export failed. Try again after the model finishes loading.");
+    } finally {
+      isExportingModel = false;
+    }
+  }
+
+  async function downloadCurrentStl() {
+    if (!selectedModel || isExportingModel) return;
+    isExportingModel = true;
+    setDownloadButtons(true, "Preparing scene for STL...");
+    let glbUrl = null;
+    try {
+      const glbBlob = await exportCurrentGlbBlob();
+      setDownloadButtons(true, "Converting geometry to STL...");
+      const [{ GLTFLoader }, { STLExporter }] = await Promise.all([
+        import("three/addons/loaders/GLTFLoader.js"),
+        import("three/addons/exporters/STLExporter.js"),
+      ]);
+      glbUrl = URL.createObjectURL(glbBlob);
+      const gltf = await new GLTFLoader().loadAsync(glbUrl);
+      const stl = new STLExporter().parse(gltf.scene, { binary: true });
+      const stlBlob = exportedSceneToBlob(stl, "model/stl");
+      downloadBlob(stlBlob, `${modelExportBaseName()}.stl`);
+      setDownloadButtons(true, "STL download started.");
+      window.setTimeout(() => {
+        if (selectedModel) setDownloadButtons(false, "STL is geometry-only; textures and materials are not included.");
+      }, 1200);
+    } catch (error) {
+      console.error(error);
+      setDownloadButtons(false, "STL export failed. This model may be too large or unsupported in this browser.");
+    } finally {
+      if (glbUrl) URL.revokeObjectURL(glbUrl);
+      isExportingModel = false;
+    }
+  }
+
   function dataUrlToBytes(dataUrl) {
     const comma = dataUrl.indexOf(",");
     if (comma < 0) throw new Error("Invalid data URL.");
@@ -1446,6 +1576,7 @@
     selectedButton = null;
     selectedMaterialIndex = 0;
     revokeUploadedMaterialTexture();
+    if (!els.downloadDialog.hidden) closeDownloadDialog();
     renderVariantPanel();
     renderAnimationPanel();
     renderMaterialControls("Material controls load after the model appears.");
@@ -1482,6 +1613,7 @@
     els.autoRotate.disabled = false;
     els.resetCamera.disabled = false;
     setScreenshotButtons(true, "Screenshot");
+    setDownloadButtons(true, "Model is loading...");
     els.fitCamera.disabled = false;
     els.saveCameraView.disabled = false;
     els.loadCameraView.disabled = !readStoredJson(CUSTOM_CAMERA_STORAGE_KEY);
@@ -1528,6 +1660,7 @@
     renderMaterialControls("Select a model to edit materials.");
     updateAnimationButtons();
     setScreenshotButtons(true, "Screenshot");
+    setDownloadButtons(true, "Select a model to download.");
     els.fitCamera.disabled = true;
     els.saveCameraView.disabled = true;
     els.loadCameraView.disabled = !readStoredJson(CUSTOM_CAMERA_STORAGE_KEY);
@@ -1613,6 +1746,7 @@
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
+        if (!els.downloadDialog.hidden) closeDownloadDialog();
         document.querySelectorAll(".rsdw-menu__panel").forEach((panel) => {
           panel.hidden = true;
         });
@@ -1813,6 +1947,11 @@
     });
     els.captureAnimation.addEventListener("click", captureCurrentAnimationWebp);
     els.captureAnimationPanel.addEventListener("click", captureCurrentAnimationWebp);
+    els.downloadModel.addEventListener("click", openDownloadDialog);
+    els.downloadClose.addEventListener("click", closeDownloadDialog);
+    els.downloadBackdrop.addEventListener("click", closeDownloadDialog);
+    els.downloadGlb.addEventListener("click", downloadCurrentGlb);
+    els.downloadStl.addEventListener("click", downloadCurrentStl);
 
     els.autoRotate.addEventListener("click", () => {
       els.viewer.autoRotate = !els.viewer.autoRotate;
@@ -1863,6 +2002,7 @@
       }
       if (selectedModel) {
         setScreenshotButtons(false, "Screenshot");
+        setDownloadButtons(false, "Exports run locally in your browser.");
       }
       updateAnimationButtons();
       syncArStatus();
@@ -1877,6 +2017,7 @@
       viewerIsLoading = false;
       setScreenshotButtons(true);
       setAnimationCaptureButtons(true);
+      setDownloadButtons(true, "Download unavailable because the model failed to load.");
       renderMaterialControls("Material controls are unavailable because the selected model failed to load.");
       updateAnimationButtons();
       els.warning.hidden = false;
