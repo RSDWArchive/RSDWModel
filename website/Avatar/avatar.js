@@ -1116,9 +1116,10 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       if (object.isSkinnedMesh && object.skeleton) object.skeleton.update();
       const positions = new Float32Array(sourcePositions.count * 3);
       for (let index = 0; index < sourcePositions.count; index += 1) {
-        position.fromBufferAttribute(sourcePositions, index);
-        if (object.isSkinnedMesh && typeof object.boneTransform === "function") {
-          object.boneTransform(index, position);
+        if (object.isSkinnedMesh && typeof object.getVertexPosition === "function") {
+          object.getVertexPosition(index, position);
+        } else {
+          position.fromBufferAttribute(sourcePositions, index);
         }
         object.localToWorld(position);
         positions[index * 3] = position.x;
