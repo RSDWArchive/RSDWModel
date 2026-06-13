@@ -1172,26 +1172,86 @@
     return new Blob([exported], { type: mimeType });
   }
 
-  async function exportCurrentGlbBlob() {
+  function isVisibleInHierarchy(object, root) {
+    let current = object;
+    while (current && current !== root.parent) {
+      if (!current.visible) return false;
+      current = current.parent;
+    }
+    return true;
+  }
+
+  function buildPoseBakedStlScene(root, THREE) {
+    const bakedRoot = new THREE.Group();
+    const position = new THREE.Vector3();
+    root.updateMatrixWorld(true);
+    root.traverse((object) => {
+      if ((!object.isMesh && !object.isSkinnedMesh) || !isVisibleInHierarchy(object, root)) return;
+      const source = object.geometry;
+      const sourcePositions = source && source.attributes && source.attributes.position;
+      if (!sourcePositions || sourcePositions.count <= 0) return;
+      if (object.isSkinnedMesh && object.skeleton) object.skeleton.update();
+      const positions = new Float32Array(sourcePositions.count * 3);
+      for (let index = 0; index < sourcePositions.count; index += 1) {
+        position.fromBufferAttribute(sourcePositions, index);
+        if (object.isSkinnedMesh && typeof object.boneTransform === "function") {
+          object.boneTransform(index, position);
+        }
+        object.localToWorld(position);
+        positions[index * 3] = position.x;
+        positions[index * 3 + 1] = position.y;
+        positions[index * 3 + 2] = position.z;
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      if (source.index) geometry.setIndex(source.index.clone());
+      geometry.computeVertexNormals();
+      bakedRoot.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial()));
+    });
+    return bakedRoot;
+  }
+
+  async function exportCurrentGlbBlob({ freezeCurrentPose = false } = {}) {
     if (!selectedModel || typeof els.viewer.exportScene !== "function") {
       throw new Error("GLB export is not available in this browser.");
     }
-    const exported = await els.viewer.exportScene({
-      binary: true,
-      trs: true,
-      onlyVisible: true,
-      maxTextureSize: Infinity,
-      forcePowerOfTwoTextures: false,
-      includeCustomExtensions: false,
-      embedImages: true,
-    });
-    return exportedSceneToBlob(exported, "model/gltf-binary");
+    const shouldFreezePose = freezeCurrentPose && selectedAnimation;
+    const wasPaused = shouldFreezePose ? els.viewer.paused : null;
+    const previousTime = shouldFreezePose ? Number(els.viewer.currentTime || 0) : null;
+    try {
+      if (shouldFreezePose) {
+        els.viewer.pause();
+        els.viewer.currentTime = previousTime;
+        await waitForViewerFrame();
+      }
+      const exported = await els.viewer.exportScene({
+        binary: true,
+        trs: true,
+        onlyVisible: true,
+        maxTextureSize: Infinity,
+        forcePowerOfTwoTextures: false,
+        includeCustomExtensions: false,
+        embedImages: true,
+      });
+      return exportedSceneToBlob(exported, "model/gltf-binary");
+    } finally {
+      if (shouldFreezePose) {
+        els.viewer.currentTime = previousTime;
+        await waitForViewerFrame();
+        if (!wasPaused && typeof els.viewer.play === "function") {
+          playSelectedAnimation();
+        } else {
+          els.viewer.pause();
+        }
+        updateAnimationButtons();
+      }
+    }
   }
 
   async function downloadCurrentGlb() {
     if (!selectedModel || isExportingModel) return;
     isExportingModel = true;
-    setDownloadButtons(true, "Preparing GLB...");
+    setDownloadButtons(true, selectedAnimation ? "Preparing GLB with selected animation..." : "Preparing GLB...");
     try {
       const blob = await exportCurrentGlbBlob();
       downloadBlob(blob, `${modelExportBaseName()}.glb`);
@@ -1210,18 +1270,21 @@
   async function downloadCurrentStl() {
     if (!selectedModel || isExportingModel) return;
     isExportingModel = true;
-    setDownloadButtons(true, "Preparing scene for STL...");
+    setDownloadButtons(true, selectedAnimation ? "Freezing current animation pose for STL..." : "Preparing scene for STL...");
     let glbUrl = null;
     try {
-      const glbBlob = await exportCurrentGlbBlob();
+      const glbBlob = await exportCurrentGlbBlob({ freezeCurrentPose: true });
       setDownloadButtons(true, "Converting geometry to STL...");
-      const [{ GLTFLoader }, { STLExporter }] = await Promise.all([
+      const [{ GLTFLoader }, { STLExporter }, THREE] = await Promise.all([
         import("three/addons/loaders/GLTFLoader.js"),
         import("three/addons/exporters/STLExporter.js"),
+        import("three"),
       ]);
       glbUrl = URL.createObjectURL(glbBlob);
       const gltf = await new GLTFLoader().loadAsync(glbUrl);
-      const stl = new STLExporter().parse(gltf.scene, { binary: true });
+      const bakedScene = buildPoseBakedStlScene(gltf.scene, THREE);
+      if (!bakedScene.children.length) throw new Error("No visible geometry was found.");
+      const stl = new STLExporter().parse(bakedScene, { binary: true });
       const stlBlob = exportedSceneToBlob(stl, "model/stl");
       downloadBlob(stlBlob, `${modelExportBaseName()}.stl`);
       setDownloadButtons(true, "STL download started.");

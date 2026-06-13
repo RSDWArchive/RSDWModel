@@ -11,8 +11,8 @@
   <link rel="icon" href="../shared/assets/favicon_io/favicon.ico" />
   <link rel="manifest" href="../shared/assets/favicon_io/site.webmanifest" />
   <link rel="preload" href="https://fonts.gstatic.com/s/sofiasans/v20/Yq6T-LCVXSLy9uPBwlATrORKkzApcb8.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../styles.css?v=20260606-nav" />
-  <link rel="stylesheet" href="./avatar.css?v=20260607-avatar-weapons-v2" />
+  <link rel="stylesheet" href="../styles.css?v=20260613-download-v2" />
+  <link rel="stylesheet" href="./avatar.css?v=20260613-avatar-download-v1" />
   <script type="importmap">
     {
       "imports": {
@@ -196,6 +196,7 @@
           <div class="viewer-actions">
             <button id="reset-view" class="panel-action-btn" type="button" disabled>Reset</button>
             <button id="avatar-screenshot" class="panel-action-btn" type="button" disabled>Screenshot</button>
+            <button id="avatar-download" class="panel-action-btn" type="button" disabled>Download</button>
             <button id="open-current-model" class="panel-action-btn" type="button" disabled>Open Model</button>
             <button id="copy-avatar-link" class="panel-action-btn" type="button" disabled>Copy Link</button>
           </div>
@@ -208,6 +209,30 @@
       </section>
     </section>
   </main>
+
+  <div id="avatar-download-dialog" class="modal-shell" role="dialog" aria-modal="true" aria-labelledby="avatar-download-dialog-title" hidden>
+    <div id="avatar-download-dialog-backdrop" class="modal-backdrop"></div>
+    <section class="modal-card download-dialog-card">
+      <div class="modal-card__header">
+        <div>
+          <h2 id="avatar-download-dialog-title">Download Avatar</h2>
+          <p>Choose an export format for the current assembled avatar.</p>
+        </div>
+        <button id="avatar-download-dialog-close" class="modal-close" type="button" aria-label="Close download options">Close</button>
+      </div>
+      <div class="download-options">
+        <button id="avatar-download-glb" class="download-option is-primary" type="button">
+          <span>GLB</span>
+          <small>Exports the layered avatar as one GLB. Current model choices, colors, and visible hand adjustments are included.</small>
+        </button>
+        <button id="avatar-download-stl" class="download-option" type="button">
+          <span>STL</span>
+          <small>Bakes the current visible pose into geometry. Textures, materials, and animations are not included.</small>
+        </button>
+      </div>
+      <p id="avatar-download-status" class="download-status">Exports run locally in your browser.</p>
+    </section>
+  </div>
 
   <footer class="rsdw-footer">
     <p>Game files &amp; assets are property of Jagex Ltd.</p>
@@ -224,6 +249,6 @@
     </p>
   </footer>
 
-  <script type="module" src="./avatar.js?v=20260607-avatar-weapons-v12"></script>
+  <script type="module" src="./avatar.js?v=20260613-avatar-download-v1"></script>
 </body>
 </html>

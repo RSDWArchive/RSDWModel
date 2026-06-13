@@ -11,7 +11,7 @@
   <link rel="icon" href="./shared/assets/favicon_io/favicon.ico" />
   <link rel="manifest" href="./shared/assets/favicon_io/site.webmanifest" />
   <link rel="preload" href="https://fonts.gstatic.com/s/sofiasans/v20/Yq6T-LCVXSLy9uPBwlATrORKkzApcb8.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="./styles.css?v=20260612-download-v1" />
+  <link rel="stylesheet" href="./styles.css?v=20260613-download-v2" />
   <script type="importmap">
     {
       "imports": {
@@ -437,11 +437,11 @@
       <div class="download-options">
         <button id="download-glb" class="download-option is-primary" type="button">
           <span>GLB</span>
-          <small>Best for sharing. Includes geometry, materials, textures, and current material edits.</small>
+          <small>Best for sharing. Includes geometry, materials, textures, current material edits, and the selected animation when the loaded file exposes one.</small>
         </button>
         <button id="download-stl" class="download-option" type="button">
           <span>STL</span>
-          <small>Experimental geometry-only export. Textures, materials, and animations are not included.</small>
+          <small>Geometry-only export. Bakes the current visible pose when an animation is selected. Textures, materials, and animations are not included.</small>
         </button>
       </div>
       <p id="download-status" class="download-status">Exports run locally in your browser.</p>
@@ -463,6 +463,6 @@
     </p>
   </footer>
 
-  <script src="./app.js?v=20260612-download-v1" defer></script>
+  <script src="./app.js?v=20260613-download-v2" defer></script>
 </body>
 </html>

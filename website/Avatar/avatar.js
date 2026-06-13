@@ -3,6 +3,8 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
+import { STLExporter } from "three/addons/exporters/STLExporter.js";
 import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
 (function () {
@@ -91,6 +93,13 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     summary: document.getElementById("avatar-summary"),
     resetView: document.getElementById("reset-view"),
     screenshot: document.getElementById("avatar-screenshot"),
+    download: document.getElementById("avatar-download"),
+    downloadDialog: document.getElementById("avatar-download-dialog"),
+    downloadBackdrop: document.getElementById("avatar-download-dialog-backdrop"),
+    downloadClose: document.getElementById("avatar-download-dialog-close"),
+    downloadGlb: document.getElementById("avatar-download-glb"),
+    downloadStl: document.getElementById("avatar-download-stl"),
+    downloadStatus: document.getElementById("avatar-download-status"),
     copyLink: document.getElementById("copy-avatar-link"),
     openModel: document.getElementById("open-current-model"),
     sexM: document.getElementById("sex-m"),
@@ -128,6 +137,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   let animationPlaying = true;
   let activeAnimationDuration = 0;
   let isCapturingAnimation = false;
+  let isExportingAvatar = false;
   let animationFilterText = "";
   const gltfCache = new Map();
   const textureCache = new Map();
@@ -182,6 +192,27 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       .replace(/^_+|_+$/g, "")
       .slice(0, 96);
     return `${baseName || "RSDWModel_Avatar"}_animation.webp`;
+  }
+
+  function avatarExportBaseName() {
+    const row = animationById(state.animation);
+    const animationName = row ? (row.label || row.name || row.id) : "";
+    const baseName = `RSDWModel_Avatar_${state.sex}_${animationName}`
+      .replace(/[^a-z0-9_-]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 96);
+    return baseName || "RSDWModel_Avatar";
+  }
+
+  function downloadBlob(blob, fileName) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 4000);
   }
 
   function dataUrlToBytes(dataUrl) {
@@ -298,6 +329,13 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function waitForBrowserFrame() {
     return new Promise((resolve) => window.requestAnimationFrame(resolve));
+  }
+
+  function exportedSceneToBlob(exported, mimeType) {
+    if (exported instanceof Blob) return exported;
+    if (exported instanceof ArrayBuffer) return new Blob([exported], { type: mimeType });
+    if (ArrayBuffer.isView(exported)) return new Blob([exported], { type: mimeType });
+    return new Blob([exported], { type: mimeType });
   }
 
   function blankHandAdjustment() {
@@ -732,7 +770,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   function animate() {
     requestAnimationFrame(animate);
     const delta = clock ? clock.getDelta() : 0;
-    if (!isCapturingAnimation) {
+    if (!isCapturingAnimation && !isExportingAvatar) {
       for (const mixer of activeMixers) {
         mixer.update(delta);
       }
@@ -964,14 +1002,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
         if (frameIndex % 4 === 0) await waitForBrowserFrame();
       }
       const blob = makeAnimatedWebp(frames, renderer.domElement.width, renderer.domElement.height, frameDelayMs);
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = avatarAnimationFileName();
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 4000);
+      downloadBlob(blob, avatarAnimationFileName());
       els.animationCapture.textContent = "Captured";
       window.setTimeout(() => {
         if (state.animation) els.animationCapture.textContent = previousText;
@@ -1001,6 +1032,152 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       .filter((slot) => slot !== "baseHead" || state.headVisible)
       .map((slot) => [slot, rowById(state.slots[slot])])
       .filter(([, row]) => row);
+  }
+
+  function avatarHasVisibleGeometry() {
+    return Boolean(avatarRoot && avatarRoot.children.length);
+  }
+
+  function setAvatarDownloadButtons(disabled, message) {
+    const shouldDisable = disabled || !avatarHasVisibleGeometry() || isExportingAvatar;
+    els.download.disabled = shouldDisable;
+    els.downloadGlb.disabled = shouldDisable;
+    els.downloadStl.disabled = shouldDisable;
+    if (message) els.downloadStatus.textContent = message;
+  }
+
+  function setAvatarDownloadDialogOpen(open) {
+    els.downloadDialog.hidden = !open;
+    document.body.classList.toggle("modal-open", open);
+    if (open) {
+      els.downloadStatus.textContent = state.animation
+        ? "Exports use the current visible animation pose where possible."
+        : "Exports run locally in your browser.";
+      window.setTimeout(() => els.downloadGlb.focus(), 0);
+    } else {
+      window.setTimeout(() => els.download.focus(), 0);
+    }
+  }
+
+  function openAvatarDownloadDialog() {
+    if (els.download.disabled) return;
+    setAvatarDownloadDialogOpen(true);
+  }
+
+  function closeAvatarDownloadDialog() {
+    if (isExportingAvatar) return;
+    setAvatarDownloadDialogOpen(false);
+  }
+
+  function syncAvatarPoseForExport() {
+    if (!avatarRoot || !renderer || !scene || !camera) return;
+    for (const mixer of activeMixers) mixer.update(0);
+    avatarRoot.updateMatrixWorld(true);
+    renderer.render(scene, camera);
+  }
+
+  async function exportAvatarGlbBlob() {
+    syncAvatarPoseForExport();
+    const exporter = new GLTFExporter();
+    return new Promise((resolve, reject) => {
+      exporter.parse(
+        avatarRoot,
+        (exported) => resolve(exportedSceneToBlob(exported, "model/gltf-binary")),
+        reject,
+        {
+          binary: true,
+          trs: true,
+          onlyVisible: true,
+          maxTextureSize: Infinity,
+          includeCustomExtensions: false,
+        },
+      );
+    });
+  }
+
+  function isVisibleInHierarchy(object) {
+    let current = object;
+    while (current && current !== avatarRoot.parent) {
+      if (!current.visible) return false;
+      current = current.parent;
+    }
+    return true;
+  }
+
+  function buildPoseBakedStlScene() {
+    syncAvatarPoseForExport();
+    const bakedRoot = new THREE.Group();
+    const position = new THREE.Vector3();
+    avatarRoot.traverse((object) => {
+      if ((!object.isMesh && !object.isSkinnedMesh) || !isVisibleInHierarchy(object)) return;
+      const source = object.geometry;
+      const sourcePositions = source && source.attributes && source.attributes.position;
+      if (!sourcePositions || sourcePositions.count <= 0) return;
+      if (object.isSkinnedMesh && object.skeleton) object.skeleton.update();
+      const positions = new Float32Array(sourcePositions.count * 3);
+      for (let index = 0; index < sourcePositions.count; index += 1) {
+        position.fromBufferAttribute(sourcePositions, index);
+        if (object.isSkinnedMesh && typeof object.boneTransform === "function") {
+          object.boneTransform(index, position);
+        }
+        object.localToWorld(position);
+        positions[index * 3] = position.x;
+        positions[index * 3 + 1] = position.y;
+        positions[index * 3 + 2] = position.z;
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      if (source.index) geometry.setIndex(source.index.clone());
+      geometry.computeVertexNormals();
+      bakedRoot.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial()));
+    });
+    return bakedRoot;
+  }
+
+  async function downloadAvatarGlb() {
+    if (isExportingAvatar || !avatarHasVisibleGeometry()) return;
+    isExportingAvatar = true;
+    setAvatarDownloadButtons(true, state.animation ? "Preparing GLB with the current visible pose..." : "Preparing GLB...");
+    let resultMessage = null;
+    let resetMessage = null;
+    try {
+      await waitForBrowserFrame();
+      const blob = await exportAvatarGlbBlob();
+      downloadBlob(blob, `${avatarExportBaseName()}.glb`);
+      resultMessage = "GLB download started.";
+      resetMessage = "Exports run locally in your browser.";
+    } catch (error) {
+      console.error(error);
+      resultMessage = "GLB export failed. Try again after the avatar finishes loading.";
+    } finally {
+      isExportingAvatar = false;
+      setAvatarDownloadButtons(false, resultMessage);
+      if (resetMessage) window.setTimeout(() => setAvatarDownloadButtons(false, resetMessage), 1200);
+    }
+  }
+
+  async function downloadAvatarStl() {
+    if (isExportingAvatar || !avatarHasVisibleGeometry()) return;
+    isExportingAvatar = true;
+    setAvatarDownloadButtons(true, state.animation ? "Baking current animation pose to STL..." : "Preparing geometry for STL...");
+    let resultMessage = null;
+    let resetMessage = null;
+    try {
+      await waitForBrowserFrame();
+      const bakedRoot = buildPoseBakedStlScene();
+      if (!bakedRoot.children.length) throw new Error("No visible geometry was found.");
+      const stl = new STLExporter().parse(bakedRoot, { binary: true });
+      downloadBlob(exportedSceneToBlob(stl, "model/stl"), `${avatarExportBaseName()}.stl`);
+      resultMessage = "STL download started.";
+      resetMessage = "STL is geometry-only; textures and materials are not included.";
+    } catch (error) {
+      console.error(error);
+      resultMessage = "STL export failed. This avatar may be too large or unsupported in this browser.";
+    } finally {
+      isExportingAvatar = false;
+      setAvatarDownloadButtons(false, resultMessage);
+      if (resetMessage) window.setTimeout(() => setAvatarDownloadButtons(false, resetMessage), 1200);
+    }
   }
 
   function fitCamera() {
@@ -1038,6 +1215,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   async function updateAvatar() {
     els.loading.hidden = false;
     els.animationCapture.disabled = true;
+    setAvatarDownloadButtons(true, "Avatar is loading...");
     setWarning("");
     renderControls();
     updateHash();
@@ -1058,11 +1236,13 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       els.status.textContent = `${rows.length} layered model${rows.length === 1 ? "" : "s"}.`;
       els.resetView.disabled = false;
       els.screenshot.disabled = false;
+      setAvatarDownloadButtons(false, "Exports run locally in your browser.");
       els.copyLink.disabled = false;
       els.openModel.disabled = false;
     } catch (error) {
       console.error(error);
       setWarning("The avatar could not finish loading. Confirm the selected WebAssets exist on this branch.");
+      setAvatarDownloadButtons(true, "Download unavailable because the avatar failed to load.");
     } finally {
       els.loading.hidden = true;
     }
@@ -1161,6 +1341,11 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       els.animationPlay.textContent = animationPlaying ? "Pause" : "Play";
     });
     els.animationCapture.addEventListener("click", captureAvatarAnimationWebp);
+    els.download.addEventListener("click", openAvatarDownloadDialog);
+    els.downloadClose.addEventListener("click", closeAvatarDownloadDialog);
+    els.downloadBackdrop.addEventListener("click", closeAvatarDownloadDialog);
+    els.downloadGlb.addEventListener("click", downloadAvatarGlb);
+    els.downloadStl.addEventListener("click", downloadAvatarStl);
     els.resetView.addEventListener("click", () => {
       fitCamera();
       hasFitCamera = true;
@@ -1168,13 +1353,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     els.screenshot.addEventListener("click", () => {
       renderer.domElement.toBlob((blob) => {
         if (!blob) return;
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = `RSDWModel_Avatar_${state.sex}.png`;
-        document.body.appendChild(link);
-        link.click();
-        URL.revokeObjectURL(link.href);
-        link.remove();
+        downloadBlob(blob, `RSDWModel_Avatar_${state.sex}.png`);
       }, "image/png");
     });
     els.copyLink.addEventListener("click", async () => {
