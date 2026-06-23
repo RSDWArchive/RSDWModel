@@ -1,0 +1,69 @@
+{
+  "schema": "RSDWModel.WebAssetSizeReport.v1",
+  "updated_utc": "2026-06-23T14:00:17.681924+00:00",
+  "source_root": "0.12.0.0",
+  "output_root": "0.12.0.0/WebAssets",
+  "texture_profile": {
+    "format": "webp",
+    "max_dimension": 1024,
+    "quality": 75,
+    "upscale": false
+  },
+  "source_texture_bytes": 10298800908,
+  "optimized_texture_bytes": 594124674,
+  "model_bytes": 272429422,
+  "animation_bytes": 1040748293,
+  "total_web_asset_bytes": 1985899149,
+  "file_counts": {
+    ".bin": {
+      "count": 7686,
+      "bytes": 935112072
+    },
+    ".webp": {
+      "count": 4209,
+      "bytes": 595718438
+    },
+    ".gltf": {
+      "count": 7794,
+      "bytes": 378065643
+    },
+    ".json": {
+      "count": 3,
+      "bytes": 77002996
+    }
+  },
+  "output_files_over_50_mib": [],
+  "output_files_over_100_mib": [],
+  "texture_failures": [
+    {
+      "source": "Engine/Content/MapTemplates/Sky/DaylightAmbientCubemap.hdr",
+      "source_bytes": 2242852,
+      "optimized": "textures/webp_1024/2a52bc3ebf7cd9d2418d98c0.webp",
+      "optimized_bytes": 0,
+      "hash": "2a52bc3ebf7cd9d2418d98c0",
+      "status": "failed",
+      "source_width": null,
+      "source_height": null,
+      "optimized_width": null,
+      "optimized_height": null,
+      "has_alpha": null,
+      "error": "UnidentifiedImageError: cannot identify image file 'E:\\\\Github\\\\RSDWModel\\\\0.12.0.0\\\\Engine\\\\Content\\\\MapTemplates\\\\Sky\\\\DaylightAmbientCubemap.hdr'"
+    },
+    {
+      "source": "RSDragonwilds/Content/Art/VFX/Component/Lava/CA_VFX_Lava.hdr",
+      "source_bytes": 336,
+      "optimized": "textures/webp_1024/70f3acd31c82125ea00e6a8e.webp",
+      "optimized_bytes": 0,
+      "hash": "70f3acd31c82125ea00e6a8e",
+      "status": "failed",
+      "source_width": null,
+      "source_height": null,
+      "optimized_width": null,
+      "optimized_height": null,
+      "has_alpha": null,
+      "error": "UnidentifiedImageError: cannot identify image file 'E:\\\\Github\\\\RSDWModel\\\\0.12.0.0\\\\RSDragonwilds\\\\Content\\\\Art\\\\VFX\\\\Component\\\\Lava\\\\CA_VFX_Lava.hdr'"
+    }
+  ],
+  "equipment_variants_included": true,
+  "web_animations_included": true
+}

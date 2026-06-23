@@ -1,0 +1,161 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Chinchompa_Skull_Spectral_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "MI_Chinchompa_Skull_Spectral",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Chinchompa_Skull_Spectral_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "d269e9ac2f29b95cd5d55454.webp",
+      "uri": "../../../textures/webp_1024/d269e9ac2f29b95cd5d55454.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "631531e9246f6adfadcd9db7.webp",
+      "uri": "../../../textures/webp_1024/631531e9246f6adfadcd9db7.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 401,
+      "max": [
+        0.1882442981004715,
+        0.2691427767276764,
+        0.2067246288061142
+      ],
+      "min": [
+        -0.1882292777299881,
+        -0.0015233632875606418,
+        -0.2591727674007416
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 401,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 401,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 401,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2178,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4846,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4848,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_BM_Oak_Tree_Sapling_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_GF_OakTree_Leaves",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_BM_OakTree_Leaves_Saplings",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_BM_Oak_Tree_Sapling_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "COLOR_0": 9,
+            "COLOR_1": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "57ec209fa5f1acc9603b004f.webp",
+      "uri": "../../../textures/webp_1024/57ec209fa5f1acc9603b004f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "1907a49e78aa1585421bd414.webp",
+      "uri": "../../../textures/webp_1024/1907a49e78aa1585421bd414.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "a945132bb830fc614c1d2683.webp",
+      "uri": "../../../textures/webp_1024/a945132bb830fc614c1d2683.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7709abc216c52d8f4b0896c1.webp",
+      "uri": "../../../textures/webp_1024/7709abc216c52d8f4b0896c1.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 134,
+      "max": [
+        0.037056468427181244,
+        1.1076927185058594,
+        0.02774725668132305
+      ],
+      "min": [
+        -0.1597045660018921,
+        -0.0014134639641270041,
+        -0.07788394391536713
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 134,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 134,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 134,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 134,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 489,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 99,
+      "max": [
+        0.246460422873497,
+        1.3198508024215698,
+        0.24394895136356354
+      ],
+      "min": [
+        -0.39929112792015076,
+        0.48650139570236206,
+        -0.30910584330558777
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 99,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 99,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 99,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 99,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 270,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2270,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1952,
+      "byteOffset": 2272
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4224,
+      "uri": "model.bin"
+    }
+  ]
+}

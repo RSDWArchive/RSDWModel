@@ -1,0 +1,161 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_VFX_Sandstorm_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "WorldGridMaterial",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_VFX_Sandstorm_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "0cd8ee2fc6a9ce114b52c327.webp",
+      "uri": "../../../textures/webp_1024/0cd8ee2fc6a9ce114b52c327.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ff88a3b6ee300e14d74f0940.webp",
+      "uri": "../../../textures/webp_1024/ff88a3b6ee300e14d74f0940.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 715,
+      "max": [
+        173.1889190673828,
+        247.4575958251953,
+        173.21450805664062
+      ],
+      "min": [
+        -173.21450805664062,
+        0,
+        -173.21450805664062
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 715,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 715,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 715,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3840,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 4775,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4776,
+      "uri": "model.bin"
+    }
+  ]
+}

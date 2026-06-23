@@ -1,0 +1,343 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        8
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "head",
+      "rotation": [
+        5.166512551113556e-09,
+        2.1589399157306843e-09,
+        0.14148229360580444,
+        0.9899407625198364
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.0973740965127945,
+        -0.005306700244545937,
+        -6.161577026375653e-09
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "neck_01",
+      "rotation": [
+        1.4973993600619906e-08,
+        -1.1193240778695213e-09,
+        -0.2144274115562439,
+        0.9767400026321411
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.16562451422214508,
+        -0.000711493194103241,
+        -1.4971474060487822e-10
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "spine_03",
+      "rotation": [
+        2.3332078491478114e-09,
+        -6.800116025829084e-16,
+        -4.85722573273506e-17,
+        1
+      ],
+      "translation": [
+        0.1341393142938614,
+        1.862645149230957e-08,
+        3.202379195155203e-10
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "spine_02",
+      "rotation": [
+        8.839388665471404e-10,
+        3.472726550768357e-10,
+        0.053499747067689896,
+        0.9985678791999817
+      ],
+      "translation": [
+        0.1924620270729065,
+        0.005576761439442635,
+        -5.219377818832527e-09
+      ]
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "spine_01",
+      "rotation": [
+        9.882317403633878e-13,
+        -4.899256694779197e-11,
+        0.020620157942175865,
+        0.9997873902320862
+      ],
+      "translation": [
+        0.10805690288543701,
+        -0.008909069001674652,
+        -1.279472350290689e-08
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "pelvis",
+      "rotation": [
+        0,
+        -0.7071067690849304,
+        0,
+        0.7071067690849304
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0,
+        0.010561533272266388,
+        0.9675060510635376
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_M_MED_HEAD_NecromancerRobes_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        7,
+        6
+      ],
+      "name": "SK_M_MED_HEAD_NecromancerRobes_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_U_MED_NecromancerRobes_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_M_MED_HEAD_NecromancerRobes_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "f95b915cff671a75ef3b75c4.webp",
+      "uri": "../../../textures/webp_1024/f95b915cff671a75ef3b75c4.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "d55080699df01dc2102f167b.webp",
+      "uri": "../../../textures/webp_1024/d55080699df01dc2102f167b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5b594a344a746b821ed85602.webp",
+      "uri": "../../../textures/webp_1024/5b594a344a746b821ed85602.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "name": "SK_M_MED_HEAD_NecromancerRobes_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 298,
+      "max": [
+        0.11146310716867447,
+        2.002429246902466,
+        0.140717551112175
+      ],
+      "min": [
+        -0.11146310716867447,
+        1.725471019744873,
+        -0.13162389397621155
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 298,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 298,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 298,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 298,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1248,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 7,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2948,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 448,
+      "byteOffset": 2948
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3396,
+      "uri": "model.bin"
+    }
+  ]
+}

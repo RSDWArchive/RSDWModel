@@ -1,0 +1,298 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_DungeonDestractWallFrame_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_WallDirty01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_DungeonDestractWallFrame_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4,
+            "TEXCOORD_3": 5,
+            "COLOR_0": 6,
+            "COLOR_1": 7
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "TEXCOORD_3": 5,
+                "COLOR_0": 6,
+                "COLOR_1": 7
+              }
+            }
+          },
+          "indices": 8,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 9,
+            "NORMAL": 10,
+            "TEXCOORD_0": 11,
+            "TEXCOORD_1": 12,
+            "TEXCOORD_2": 13,
+            "TEXCOORD_3": 14,
+            "COLOR_0": 15,
+            "COLOR_1": 16
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "TEXCOORD_3": 5,
+                "COLOR_0": 6,
+                "COLOR_1": 7
+              }
+            }
+          },
+          "indices": 17,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "44da5070d155c62a8b2b2d88.webp",
+      "uri": "../../../textures/webp_1024/44da5070d155c62a8b2b2d88.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "8f3b34832347e26f7dcca679.webp",
+      "uri": "../../../textures/webp_1024/8f3b34832347e26f7dcca679.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5d037b7514dde097ffeb0ccb.webp",
+      "uri": "../../../textures/webp_1024/5d037b7514dde097ffeb0ccb.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "max": [
+        0.6102184057235718,
+        4.115416049957275,
+        1.000002384185791
+      ],
+      "min": [
+        -0.15438434481620789,
+        -0.057138342410326004,
+        -1.0000027418136597
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1375,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1375,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1375,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 4728,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "max": [
+        0.5921534895896912,
+        3.8810482025146484,
+        0.7596609592437744
+      ],
+      "min": [
+        -0.13631930947303772,
+        3.7388999462127686,
+        -0.7596601843833923
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 648,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 648,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 648,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1860,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 24695,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 14758,
+      "byteOffset": 24696
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 39456,
+      "uri": "model.bin"
+    }
+  ]
+}

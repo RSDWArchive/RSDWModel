@@ -1,0 +1,169 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_DK_Crumbled_BrickWall_03_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DK_Bricks_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_DK_Crumbled_BrickWall_03_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "2f7c6b90c3ce275d846a81f2.webp",
+      "uri": "../../../textures/webp_1024/2f7c6b90c3ce275d846a81f2.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7bc72d89d113ca490cf9e804.webp",
+      "uri": "../../../textures/webp_1024/7bc72d89d113ca490cf9e804.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 188,
+      "max": [
+        2.3444994212695747e-07,
+        2.531090021133423,
+        2.3841836593874177e-07
+      ],
+      "min": [
+        -1.9999985694885254,
+        -3.2584105724708934e-07,
+        -3.9999959468841553
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 188,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 188,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 188,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 188,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 378,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2998,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3000,
+      "uri": "model.bin"
+    }
+  ]
+}

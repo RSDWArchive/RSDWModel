@@ -1,0 +1,298 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Spike_Wall_Trap_01_v2_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DK_Unique_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Spike_Head_Trap_01",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Spike_Wall_Trap_01_v2_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "COLOR_0": 4,
+            "COLOR_1": 5
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "COLOR_0": 4,
+                "COLOR_1": 5
+              }
+            }
+          },
+          "indices": 6,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 7,
+            "NORMAL": 8,
+            "TEXCOORD_0": 9,
+            "TEXCOORD_1": 10,
+            "COLOR_0": 11,
+            "COLOR_1": 12
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "COLOR_0": 4,
+                "COLOR_1": 5
+              }
+            }
+          },
+          "indices": 13,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "e1ca2bec823772e5fb0de57f.webp",
+      "uri": "../../../textures/webp_1024/e1ca2bec823772e5fb0de57f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "fee6af87600258ba35cd4ebb.webp",
+      "uri": "../../../textures/webp_1024/fee6af87600258ba35cd4ebb.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "e5b1eecb2aba6370eb957e16.webp",
+      "uri": "../../../textures/webp_1024/e5b1eecb2aba6370eb957e16.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "6907f59b56354b1c4119eb2b.webp",
+      "uri": "../../../textures/webp_1024/6907f59b56354b1c4119eb2b.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 229,
+      "max": [
+        0.36326998472213745,
+        0.48814553022384644,
+        0.18800845742225647
+      ],
+      "min": [
+        -0.3641904890537262,
+        -0.4890674352645874,
+        -0.0008199389558285475
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 229,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 229,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 229,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 229,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 229,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 558,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 794,
+      "max": [
+        0.07164795696735382,
+        0.10232465714216232,
+        0.042344093322753906
+      ],
+      "min": [
+        -0.07164795696735382,
+        -0.10232511162757874,
+        -5.704999923706055
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 794,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 794,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 794,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 794,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 794,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 3030,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3069,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 8092,
+      "byteOffset": 3072
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 11164,
+      "uri": "model.bin"
+    }
+  ]
+}

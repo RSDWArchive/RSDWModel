@@ -1,0 +1,391 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        7
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "joint_spit",
+      "translation": [
+        1.3157451152801514,
+        0.011529590934515,
+        1.820957899093628
+      ]
+    },
+    {
+      "name": "joint_spoon_end",
+      "rotation": [
+        0,
+        0,
+        4.470348358154297e-08,
+        1
+      ],
+      "translation": [
+        5.587935447692871e-09,
+        0,
+        -0.38132309913635254
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "joint_spoon",
+      "rotation": [
+        0,
+        0,
+        -0.45599693059921265,
+        0.8899813294410706
+      ],
+      "translation": [
+        0.3489954471588135,
+        0.012660181149840355,
+        1.7430343627929688
+      ]
+    },
+    {
+      "name": "joint_handle",
+      "rotation": [
+        -0.26885658502578735,
+        0,
+        0,
+        0.9631802439689636
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        1.0241823196411133,
+        -0.09476711601018906,
+        1.4229220151901245
+      ]
+    },
+    {
+      "children": [
+        0,
+        2,
+        3
+      ],
+      "name": "joint_root"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "Joints_GRP",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Cooking_Range_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        6,
+        5
+      ],
+      "name": "SK_Cooking_Range_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Cooking_Range_02",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Cooking_Range_01",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Cooking_Range_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "JOINTS_0": 9,
+            "WEIGHTS_0": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "777ac0828bb0497f8c1b0dfb.webp",
+      "uri": "../../../textures/webp_1024/777ac0828bb0497f8c1b0dfb.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "07fbcc4de3e98a945c269bc3.webp",
+      "uri": "../../../textures/webp_1024/07fbcc4de3e98a945c269bc3.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "8b107a11d3c7436d4c6c5cb5.webp",
+      "uri": "../../../textures/webp_1024/8b107a11d3c7436d4c6c5cb5.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7f9a6e1fbdb61e5d18e06167.webp",
+      "uri": "../../../textures/webp_1024/7f9a6e1fbdb61e5d18e06167.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 12,
+      "joints": [
+        5,
+        4,
+        0,
+        2,
+        1,
+        3
+      ],
+      "name": "SK_Cooking_Range_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 7203,
+      "max": [
+        1.5125352144241333,
+        2.1508147716522217,
+        0.5154986381530762
+      ],
+      "min": [
+        -1.1376166343688965,
+        0.15572644770145416,
+        -0.3668765127658844
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 7203,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 7203,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 7203,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 7203,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 28425,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 1305,
+      "max": [
+        1.1891071796417236,
+        1.1401463747024536,
+        0.5918335914611816
+      ],
+      "min": [
+        -1.2243863344192505,
+        0.0010841810144484043,
+        -0.3966587781906128
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1305,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1305,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1305,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1305,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 4494,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 6,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 56179,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 10832,
+      "byteOffset": 56180
+    },
+    {
+      "buffer": 0,
+      "byteLength": 384,
+      "byteOffset": 67012
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 67396,
+      "uri": "model.bin"
+    }
+  ]
+}

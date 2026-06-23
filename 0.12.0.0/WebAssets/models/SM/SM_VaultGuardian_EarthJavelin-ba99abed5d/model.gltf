@@ -1,0 +1,190 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_VaultGuardian_EarthJavelin_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_VaultGuardian_EarthJavelin",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_VaultGuardian_EarthJavelin_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "5765c916ab3ce64444d1348e.webp",
+      "uri": "../../../textures/webp_1024/5765c916ab3ce64444d1348e.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "38312b2b7e0d21f783844c38.webp",
+      "uri": "../../../textures/webp_1024/38312b2b7e0d21f783844c38.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "cd0f4b4e858908446cf06658.webp",
+      "uri": "../../../textures/webp_1024/cd0f4b4e858908446cf06658.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1237,
+      "max": [
+        1.571008563041687,
+        2.7594404220581055,
+        1.6129547357559204
+      ],
+      "min": [
+        -1.3423959016799927,
+        -2.376516580581665,
+        -1.3405107259750366
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1237,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1237,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1237,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1237,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 6006,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 17168,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 17168,
+      "uri": "model.bin"
+    }
+  ]
+}

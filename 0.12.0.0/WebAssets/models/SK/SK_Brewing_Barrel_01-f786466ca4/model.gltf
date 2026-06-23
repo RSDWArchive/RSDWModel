@@ -1,0 +1,286 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        7
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "joint_ladder",
+      "translation": [
+        -0.9607275128364563,
+        0,
+        -0.3590950667858124
+      ]
+    },
+    {
+      "name": "joint3_end",
+      "rotation": [
+        -0.5649479031562805,
+        0.825126588344574,
+        -4.200039782631393e-08,
+        6.229532800716697e-08
+      ],
+      "scale": [
+        0.9999998211860657,
+        0.9999995827674866,
+        1
+      ],
+      "translation": [
+        0.1323089450597763,
+        -2.095489337605727e-09,
+        -0.004496342036873102
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "joint_link",
+      "rotation": [
+        0.5649478435516357,
+        -0.8251266479492188,
+        4.2652374077079e-08,
+        6.229533511259433e-08
+      ],
+      "scale": [
+        0.9999999403953552,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        0.09984557330608368,
+        0.045701369643211365,
+        0.016469717025756836
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "joint_lid",
+      "translation": [
+        0.030402762815356255,
+        0.0870625227689743,
+        1.5320992469787598
+      ]
+    },
+    {
+      "children": [
+        0,
+        3
+      ],
+      "name": "joint_barrel",
+      "translation": [
+        0,
+        0,
+        0.3594662547111511
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "joint_root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Brewing_Barrel_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        6,
+        5
+      ],
+      "name": "SK_Brewing_Barrel_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Brewing_Barrel_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Brewing_Barrel_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "c846ef24d054d9abb4f50bae.webp",
+      "uri": "../../../textures/webp_1024/c846ef24d054d9abb4f50bae.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3afae6b588ea503f3b51f1c8.webp",
+      "uri": "../../../textures/webp_1024/3afae6b588ea503f3b51f1c8.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        5,
+        4,
+        0,
+        3,
+        2,
+        1
+      ],
+      "name": "SK_Brewing_Barrel_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 5166,
+      "max": [
+        0.7734102606773376,
+        2.3128654956817627,
+        0.8058778643608093
+      ],
+      "min": [
+        -1.0465192794799805,
+        -0.010850632563233376,
+        -0.8058776259422302
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 5166,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 5166,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 5166,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 5166,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 24081,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 6,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 40306,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 384,
+      "byteOffset": 40308
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 40692,
+      "uri": "model.bin"
+    }
+  ]
+}

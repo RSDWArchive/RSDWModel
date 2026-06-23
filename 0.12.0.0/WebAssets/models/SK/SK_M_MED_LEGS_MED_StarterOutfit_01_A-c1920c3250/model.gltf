@@ -1,0 +1,349 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        8
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "spine_01",
+      "rotation": [
+        9.882317403633878e-13,
+        -4.899256694779197e-11,
+        0.020620157942175865,
+        0.9997873902320862
+      ],
+      "translation": [
+        0.10805690288543701,
+        -0.008909069001674652,
+        -1.2794728831977409e-08
+      ]
+    },
+    {
+      "name": "thigh_twist_01_l",
+      "rotation": [
+        2.3283066141743802e-08,
+        -3.695458872243762e-08,
+        6.475602276623249e-10,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.21258895099163055,
+        2.7939677238464355e-09,
+        4.997127689421177e-08
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "thigh_l",
+      "rotation": [
+        -0.049253884702920914,
+        0.0018500186270102859,
+        0.9986883997917175,
+        0.013862616382539272
+      ],
+      "scale": [
+        1.000000238418579,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        -0.014592234045267105,
+        -0.005258921533823013,
+        -0.09006647020578384
+      ]
+    },
+    {
+      "name": "thigh_twist_01_r",
+      "rotation": [
+        2.3283066141743802e-08,
+        -1.069565880307266e-09,
+        1.8643187615907664e-07,
+        1
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999998807907104
+      ],
+      "translation": [
+        -0.21258893609046936,
+        -6.353366188704967e-08,
+        -9.66247171163559e-09
+      ]
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "thigh_r",
+      "rotation": [
+        0.0018500883597880602,
+        0.04925624281167984,
+        -0.01386335864663124,
+        0.998688280582428
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        -0.014592226594686508,
+        -0.005258921533823013,
+        0.09006647020578384
+      ]
+    },
+    {
+      "children": [
+        0,
+        2,
+        4
+      ],
+      "name": "pelvis",
+      "rotation": [
+        -1.0919259808268859e-24,
+        -0.7071067690849304,
+        9.080571963542278e-25,
+        0.7071067690849304
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        8.271806125530277e-25,
+        0.01056152954697609,
+        0.9675060510635376
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "root",
+      "rotation": [
+        -0.7071067690849304,
+        1.3312889623889743e-16,
+        2.388034197929761e-17,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_M_MED_LEGS_MED_StarterOutfit_01_A_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        7,
+        6
+      ],
+      "name": "SK_M_MED_LEGS_MED_StarterOutfit_01_A_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_M_MED_StarterOutfit_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_M_MED_LEGS_MED_StarterOutfit_01_A_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "9a57ff56180a88f47a9762b0.webp",
+      "uri": "../../../textures/webp_1024/9a57ff56180a88f47a9762b0.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "84d3ffec3664c3d42dabb283.webp",
+      "uri": "../../../textures/webp_1024/84d3ffec3664c3d42dabb283.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "9a72ccc2246e42518fe3cdab.webp",
+      "uri": "../../../textures/webp_1024/9a72ccc2246e42518fe3cdab.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        6,
+        5,
+        0,
+        2,
+        1,
+        4,
+        3
+      ],
+      "name": "SK_M_MED_LEGS_MED_StarterOutfit_01_A_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 998,
+      "max": [
+        0.22283419966697693,
+        1.1264781951904297,
+        0.13413557410240173
+      ],
+      "min": [
+        -0.22545850276947021,
+        0.595133364200592,
+        -0.1496051847934723
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 998,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 998,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 998,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 998,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 5376,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 7,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13167,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 448,
+      "byteOffset": 13168
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 13616,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Dragon_Rib_Bones_Single_04_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Dragon_Rib_Bones_02",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Dragon_Rib_Bones_03",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Dragon_Rib_Bones_07",
+      "normalTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Dragon_Rib_Bones_Single_04_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "TEXCOORD_1": 9,
+            "TEXCOORD_2": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 12,
+            "NORMAL": 13,
+            "TEXCOORD_0": 14,
+            "TEXCOORD_1": 15,
+            "TEXCOORD_2": 16
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 17,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 5
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "b9c19718aed78cec487a2c64.webp",
+      "uri": "../../../textures/webp_1024/b9c19718aed78cec487a2c64.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "efb00efefc2556d5d31a0411.webp",
+      "uri": "../../../textures/webp_1024/efb00efefc2556d5d31a0411.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ea03d4702ee9e946c8eddf16.webp",
+      "uri": "../../../textures/webp_1024/ea03d4702ee9e946c8eddf16.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "98bac0c6ba3f326c33b248b6.webp",
+      "uri": "../../../textures/webp_1024/98bac0c6ba3f326c33b248b6.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "dfeb97954139a392c7a95182.webp",
+      "uri": "../../../textures/webp_1024/dfeb97954139a392c7a95182.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "06d7fdf99524874b829325e1.webp",
+      "uri": "../../../textures/webp_1024/06d7fdf99524874b829325e1.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 688,
+      "max": [
+        1.6780955791473389,
+        6.555720806121826,
+        3.279256820678711
+      ],
+      "min": [
+        -2.7205605506896973,
+        0.5608267784118652,
+        -3.1626315116882324
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 688,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 688,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 688,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 688,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3420,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 786,
+      "max": [
+        2.884807825088501,
+        2.068772315979004,
+        4.44823694229126
+      ],
+      "min": [
+        -2.3472397327423096,
+        -3.5189614295959473,
+        -4.286475658416748
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 786,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 786,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 786,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 786,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3438,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 292,
+      "max": [
+        1.7288974523544312,
+        5.8477935791015625,
+        2.4372377395629883
+      ],
+      "min": [
+        -2.848015546798706,
+        1.4360744953155518,
+        -2.2853899002075195
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 292,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 292,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 292,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 292,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 1392,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7694,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9017,
+      "byteOffset": 7696
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3683,
+      "byteOffset": 16716
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 20400,
+      "uri": "model.bin"
+    }
+  ]
+}

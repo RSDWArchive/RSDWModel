@@ -1,0 +1,197 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_HallWayCeilingTile_v1_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_GraveRecess02",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_HallWayCeilingTile_v1_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4,
+            "TEXCOORD_3": 5,
+            "TEXCOORD_4": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "TEXCOORD_3": 5,
+                "TEXCOORD_4": 6
+              }
+            }
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "86b7dacda5cc97c8add7818e.webp",
+      "uri": "../../../textures/webp_1024/86b7dacda5cc97c8add7818e.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "516356cd1376ced30e0ddc76.webp",
+      "uri": "../../../textures/webp_1024/516356cd1376ced30e0ddc76.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "07c66238c5578c5d95470061.webp",
+      "uri": "../../../textures/webp_1024/07c66238c5578c5d95470061.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 320,
+      "max": [
+        2.995363473892212,
+        0.138856902718544,
+        2.9953649044036865
+      ],
+      "min": [
+        -2.995363473892212,
+        -0.00056033133296296,
+        -2.9953653812408447
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 320,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 336,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5682,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 5684,
+      "uri": "model.bin"
+    }
+  ]
+}

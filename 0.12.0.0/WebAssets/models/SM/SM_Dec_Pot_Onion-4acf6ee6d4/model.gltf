@@ -1,0 +1,285 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Dec_Pot_Onion_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Pots",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "name": "MI_Onion_Fruit_NoSway",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Dec_Pot_Onion_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "TEXCOORD_1": 9,
+            "TEXCOORD_2": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "7ae8cf3a2588c2ec3e57a18b.webp",
+      "uri": "../../../textures/webp_1024/7ae8cf3a2588c2ec3e57a18b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3b3c581e9aafd333becb578b.webp",
+      "uri": "../../../textures/webp_1024/3b3c581e9aafd333becb578b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "203c3398adce31159a5188e1.webp",
+      "uri": "../../../textures/webp_1024/203c3398adce31159a5188e1.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "44841b4f049c58dbd8f4813d.webp",
+      "uri": "../../../textures/webp_1024/44841b4f049c58dbd8f4813d.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 435,
+      "max": [
+        0.16679687798023224,
+        0.22363990545272827,
+        0.200439453125
+      ],
+      "min": [
+        -0.1668359339237213,
+        -0.007554503157734871,
+        -0.1332373023033142
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 435,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 435,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 435,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 435,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2028,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 993,
+      "max": [
+        0.14738281071186066,
+        0.8977693319320679,
+        0.18735839426517487
+      ],
+      "min": [
+        -0.16277343034744263,
+        0.03431537002325058,
+        -0.18946777284145355
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 993,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 993,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 993,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 993,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3966,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5396,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 12559,
+      "byteOffset": 5396
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 17956,
+      "uri": "model.bin"
+    }
+  ]
+}

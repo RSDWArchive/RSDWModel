@@ -1,0 +1,412 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        12
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "string_aimer_C1_0_jnt",
+      "rotation": [
+        0.917570948600769,
+        4.2140986534761383e-26,
+        -0.39757201075553894,
+        3.6187268393783746e-27
+      ],
+      "scale": [
+        1.0000001192092896,
+        0.9999999403953552,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.17705637216567993,
+        -2.8761856278406446e-26,
+        3.725290298461914e-08
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "bow_arm_C1_2_jnt",
+      "rotation": [
+        -3.6122501680869936e-26,
+        -0.20293988287448883,
+        -3.8506294506516016e-26,
+        0.9791911840438843
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.34747010469436646,
+        -5.447242939029713e-26,
+        3.725290298461914e-09
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "bow_arm_C1_1_jnt",
+      "rotation": [
+        1.2799566475240703e-25,
+        -0.32900986075401306,
+        5.152546383403311e-26,
+        0.9443265199661255
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.2693782448768616,
+        6.135146904714737e-26,
+        0
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "bow_arm_C1_0_jnt",
+      "rotation": [
+        2.6162701206995762e-18,
+        0.8124131560325623,
+        -1.8777401087550816e-18,
+        0.5830821990966797
+      ],
+      "translation": [
+        9.156601522108848e-18,
+        0,
+        -0.10396658629179001
+      ]
+    },
+    {
+      "name": "string_aimer_C0_0_jnt",
+      "rotation": [
+        0.905364453792572,
+        3.583197135852899e-24,
+        0.42463546991348267,
+        3.2655632784417902e-24
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.1941913664340973,
+        -1.1118716948476482e-16,
+        1.6495585441589355e-05
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "bow_arm_C0_2_jnt",
+      "rotation": [
+        0,
+        -0.1681576520204544,
+        2.5173892549141362e-24,
+        0.9857601523399353
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.2961701452732086,
+        -8.246557926257198e-17,
+        -1.4901161193847656e-08
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "bow_arm_C0_1_jnt",
+      "rotation": [
+        2.0732351381695695e-31,
+        -0.308439701795578,
+        8.695780405117441e-25,
+        0.9512439370155334
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.28160709142684937,
+        -3.725290298461914e-09,
+        0
+      ]
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "bow_arm_C0_0_jnt",
+      "rotation": [
+        -0.6044304370880127,
+        7.402138869738565e-17,
+        -0.796657919883728,
+        0
+      ],
+      "translation": [
+        1.014847420821149e-18,
+        0,
+        0.1298171877861023
+      ]
+    },
+    {
+      "name": "bow_string_C0_jnt",
+      "translation": [
+        0.15202489495277405,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arrow_C0_0_jnt",
+      "translation": [
+        0.15204940736293793,
+        0,
+        0
+      ]
+    },
+    {
+      "children": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "name": "prop_plug_C0_0_jnt",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Longbow_HunterStag_2H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        11,
+        10
+      ],
+      "name": "SK_Longbow_HunterStag_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_MED_Beast_Hunter_Bow_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Longbow_HunterStag_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "03bc3c89289f345b2f02345d.webp",
+      "uri": "../../../textures/webp_1024/03bc3c89289f345b2f02345d.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "40cdabe90e9b4725122f577f.webp",
+      "uri": "../../../textures/webp_1024/40cdabe90e9b4725122f577f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "01fc5f35df68f393bc17166a.webp",
+      "uri": "../../../textures/webp_1024/01fc5f35df68f393bc17166a.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        10,
+        3,
+        2,
+        1,
+        0,
+        7,
+        6,
+        5,
+        4,
+        8,
+        9
+      ],
+      "name": "SK_Longbow_HunterStag_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 4336,
+      "max": [
+        0.22480115294456482,
+        0.9831111431121826,
+        0.031451135873794556
+      ],
+      "min": [
+        -0.21780993044376373,
+        -0.9838904738426208,
+        -0.05254560336470604
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4336,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4336,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 4336,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 4336,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 21762,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 11,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 39183,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 704,
+      "byteOffset": 39184
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 39888,
+      "uri": "model.bin"
+    }
+  ]
+}

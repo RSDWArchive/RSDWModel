@@ -1,0 +1,231 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_PoisonRockStack_light_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_BO_Poison_Rock_Stack",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        0.08982700109481812,
+        0.13648100197315216
+      ],
+      "name": "MI_KalphiteEmissive_UMS_01",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_PoisonRockStack_light_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "e9a4b4f59908cff4d28db228.webp",
+      "uri": "../../../textures/webp_1024/e9a4b4f59908cff4d28db228.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "a96de6110610c697f2339636.webp",
+      "uri": "../../../textures/webp_1024/a96de6110610c697f2339636.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 3370,
+      "max": [
+        1.4204226732254028,
+        4.298793792724609,
+        1.4432240724563599
+      ],
+      "min": [
+        -1.4464287757873535,
+        -0.8253592848777771,
+        -1.4723857641220093
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3370,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3370,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 13596,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 443,
+      "max": [
+        1.2325503826141357,
+        3.980658769607544,
+        1.320752739906311
+      ],
+      "min": [
+        -1.23154616355896,
+        0.47141405940055847,
+        -1.2130827903747559
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 443,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 443,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 1161,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 30475,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4466,
+      "byteOffset": 30476
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 34944,
+      "uri": "model.bin"
+    }
+  ]
+}

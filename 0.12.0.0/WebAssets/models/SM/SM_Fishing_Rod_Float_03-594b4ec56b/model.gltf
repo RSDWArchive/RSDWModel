@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Fishing_Rod_Float_03_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Fishing_Rod_2H_03",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Fishing_Rod_Float_03_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "82e84a906b8fa8766c15efd3.webp",
+      "uri": "../../../textures/webp_1024/82e84a906b8fa8766c15efd3.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "e5e891a15ad42e60bfae64ec.webp",
+      "uri": "../../../textures/webp_1024/e5e891a15ad42e60bfae64ec.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "95e9c780f9fb11705b216db1.webp",
+      "uri": "../../../textures/webp_1024/95e9c780f9fb11705b216db1.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 742,
+      "max": [
+        0.0003608703555073589,
+        0.03209875524044037,
+        0.03215200826525688
+      ],
+      "min": [
+        -0.2167380154132843,
+        -0.032424405217170715,
+        -0.0323711596429348
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 742,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 742,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 742,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 2718,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7774,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7776,
+      "uri": "model.bin"
+    }
+  ]
+}
