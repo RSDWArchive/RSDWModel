@@ -1,0 +1,64 @@
+{
+  "Textures": {
+    "BaseColor": "RSDragonwilds/Content/Art/Item/Resources/Melon/Textures/T_Melon_BCC.T_Melon_BCC",
+    "Normal": "RSDragonwilds/Content/Art/Item/Resources/Melon/Textures/T_Melon_NRM.T_Melon_NRM",
+    "PM_Normals": "RSDragonwilds/Content/Art/Item/Resources/Melon/Textures/T_Melon_NRM.T_Melon_NRM",
+    "Subsurface Color": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Black_D.T_Default_Black_D"
+  },
+  "Parameters": {
+    "Colors": {
+      "Color_Add_A": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      },
+      "Color_Add_B": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      },
+      "Color_Mult_A": {
+        "R": 0.479167,
+        "G": 0.479167,
+        "B": 0.479167,
+        "A": 0.0,
+        "Hex": "B8B8B8"
+      },
+      "Color_Mult_B": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "Blend Range": 0.0,
+      "Near Fade Distance": 0.0,
+      "Roughness Clamp Min": 0.05,
+      "Roughness Clamp Max": 0.98,
+      "RandomColor_Noise Scale": 0.0,
+      "ObjectHeightMask": 0.0,
+      "ObjectHeightMask_Offset": 0.0,
+      "ObjectHeightMask_Contrast": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "RoughnessFromNormalAlpha": true,
+      "CollapseUnderBuilding": false
+    },
+    "Properties": {
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "ShadingModel": "EMaterialShadingModel::MSM_TwoSidedFoliage",
+        "OpacityMaskClipValue": 0.3333
+      }
+    }
+  },
+  "ArchiveSource": "E:/Github/RSDWArchive/0.12.0.0/json/RSDragonwilds/Content/Art/Item/Resources/Melon/Materials/MI_Melon_NoSway.json"
+}
