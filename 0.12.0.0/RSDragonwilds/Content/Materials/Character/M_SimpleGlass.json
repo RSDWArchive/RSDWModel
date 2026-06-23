@@ -1,0 +1,50 @@
+{
+  "Textures": {
+    "HDRI_Reflection": "Engine/Content/MapTemplates/Sky/DaylightAmbientCubemap.DaylightAmbientCubemap",
+    "PM_Normals": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "TintGlass": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "TintGlass2": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "OpacityMin": 0.3,
+      "OpacityMax": 0.6,
+      "ReflectionFresnelExponentIn": 5.0,
+      "ExponentIn": 1.0,
+      "BaseReflectFractionIn": 0.04,
+      "Flatness (S)": 0.0,
+      "Emissive Rim Amount": -1.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bUsedWithSkeletalMesh": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "30F511AC-453ADFD2-CFBA71AD-53AF147B",
+      "bIncludedInBaseGame": true
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}
