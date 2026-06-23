@@ -47,7 +47,7 @@ def _default_source_root() -> Path:
         if len(parts) >= 2 and all(part.isdigit() for part in parts):
             candidates.append((tuple(int(part) for part in parts), child))
     if not candidates:
-        return _repo_root() / "0.11.2.2"
+        return _repo_root() / "0.12.0.0"
     return max(candidates, key=lambda item: item[0])[1]
 
 

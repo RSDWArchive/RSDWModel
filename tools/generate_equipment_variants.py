@@ -31,7 +31,7 @@ SCHEMA = "RSDWModel.EquipmentVariants.v1"
 TEXTURE_EXTENSIONS = (".png", ".hdr", ".tga", ".jpg", ".jpeg", ".webp", ".dds", ".bmp")
 WEBP_ALPHA_REVISION = "equipment-variant-webp-v1"
 VARIANT_GLTF_REVISION = "equipment-variant-gltf-v1"
-DEFAULT_DATASET_VERSION = "0.11.2.2"
+DEFAULT_DATASET_VERSION = "0.12.0.0"
 PLAYER_EQUIPMENT_REL = "RSDragonwilds/Content/Gameplay/Character/Player/Equipment"
 ITEM_NAMES_REL = "RSDragonwilds/Content/Gameplay/Items/ST_ItemNames.json"
 

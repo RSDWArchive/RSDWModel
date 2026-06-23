@@ -15,7 +15,7 @@ assets with shared WebP textures.
 
 Game data is kept in versioned folders at the repo root:
 
-- `0.11.2.2/` - current extracted/exported data.
+- `0.12.0.0/` - current extracted/exported data.
 
 The tooling scans the source tree on disk. Asset names are not hardcoded into
 the pipeline.
@@ -55,7 +55,7 @@ Python/Blender conversion path.
 
 This repository owns the RSDW-specific model pipeline:
 
-- versioned RSDW output folders such as `0.11.2.2/`
+- versioned RSDW output folders such as `0.12.0.0/`
 - model inventories and web asset conversion scripts
 - the `RsdwCueExtract` wrapper that selects RSDW packages and exports
   `.uemodel` / material / texture data
@@ -173,9 +173,9 @@ Example full export:
 dotnet run --project tools\CueExtract\RsdwCueExtract `
   /p:Cue4ParseRoot=E:\Github\CUE4Parse `
   -- `
-  --retoc-root E:\Github\Retoc\RSDragonwilds\0.11.2.2 `
-  --usmap E:\Github\Retoc\RSDragonwilds\0.11.2.2\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap `
-  --out E:\Github\RSDWModel\0.11.2.2 `
+  --retoc-root E:\Github\Retoc\RSDragonwilds\0.12.0.0 `
+  --usmap E:\Github\Retoc\RSDragonwilds\0.12.0.0\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap `
+  --out E:\Github\RSDWModel\0.12.0.0 `
   --all
 ```
 
@@ -211,8 +211,8 @@ Example:
 
 ```powershell
 python tools\ModelData\CompileModelData.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
-  --output-dir E:\Github\RSDWModel\0.11.2.2\ModelData
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
+  --output-dir E:\Github\RSDWModel\0.12.0.0\ModelData
 ```
 
 ## Web Asset Build
@@ -236,7 +236,7 @@ Examples:
 
 ```powershell
 python tools\ModelData\BuildWebAssets.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
   --targets both `
   --limit 1 `
   --prefer-textured `
@@ -244,7 +244,7 @@ python tools\ModelData\BuildWebAssets.py `
   --workers 1
 
 python tools\ModelData\BuildWebAssets.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
   --targets both `
   --texture-size 1024 `
   --texture-quality 75 `
@@ -288,11 +288,11 @@ Smoke example:
 
 ```powershell
 python tools\ModelData\BuildWebAnimations.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
-  --output-root E:\Github\RSDWModel\0.11.2.2\WebAssets `
-  --archive-json-root E:\Github\RSDWArchive\0.11.2.2\json `
-  --retoc-root E:\Github\Retoc\RSDragonwilds\0.11.2.2 `
-  --usmap E:\Github\Retoc\RSDragonwilds\0.11.2.2\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap `
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
+  --output-root E:\Github\RSDWModel\0.12.0.0\WebAssets `
+  --archive-json-root E:\Github\RSDWArchive\0.12.0.0\json `
+  --retoc-root E:\Github\Retoc\RSDragonwilds\0.12.0.0 `
+  --usmap E:\Github\Retoc\RSDragonwilds\0.12.0.0\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap `
   --cue4parse-root E:\Github\CUE4Parse `
   --mode smoke `
   --force
@@ -320,18 +320,18 @@ Current publish config:
 
 - Repository: `RSDWArchive/RSDWModel`
 - Branch: `main`
-- Dataset: `0.11.2.2`
+- Dataset: `0.12.0.0`
 - Custom domain: `rsdwmodel.com`
 
 The Pages workflow deploys only `website/`; it does not copy generated model
 assets into the Pages artifact. On localhost, the site reads
-`../0.11.2.2/WebAssets`. When deployed, `assetBaseUrl: "auto"` resolves model
+`../0.12.0.0/WebAssets`. When deployed, `assetBaseUrl: "auto"` resolves model
 URLs to raw GitHub content under
-`https://raw.githubusercontent.com/RSDWArchive/RSDWModel/main/0.11.2.2/WebAssets`.
+`https://raw.githubusercontent.com/RSDWArchive/RSDWModel/main/0.12.0.0/WebAssets`.
 
 The optimized `WebAssets/` corpus is tracked in git so the deployed static site
 can load model payloads from raw GitHub URLs. The latest measured generated
-corpus is about `1.8 GiB` (`1,903,207,875` bytes), with equipment variants and
+corpus is about `1.9 GiB` (`1,985,899,149` bytes), with equipment variants and
 web animations included and no generated file over `50 MiB` or `100 MiB`. Keep
 checking `WebAssetSizeReport.json` after clean rebuilds before pushing.
 
@@ -421,15 +421,15 @@ Examples:
 
 ```powershell
 python tools\ModelData\BuildGLB.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
-  --data-file E:\Github\RSDWModel\0.11.2.2\ModelData\SM_Data.json `
-  --progress-file E:\Github\RSDWModel\0.11.2.2\BuildProgress_SM.json `
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
+  --data-file E:\Github\RSDWModel\0.12.0.0\ModelData\SM_Data.json `
+  --progress-file E:\Github\RSDWModel\0.12.0.0\BuildProgress_SM.json `
   --workers 8
 
 python tools\ModelData\BuildGLB.py `
-  --source-root E:\Github\RSDWModel\0.11.2.2 `
-  --data-file E:\Github\RSDWModel\0.11.2.2\ModelData\SK_Data.json `
-  --progress-file E:\Github\RSDWModel\0.11.2.2\BuildProgress_SK.json `
+  --source-root E:\Github\RSDWModel\0.12.0.0 `
+  --data-file E:\Github\RSDWModel\0.12.0.0\ModelData\SK_Data.json `
+  --progress-file E:\Github\RSDWModel\0.12.0.0\BuildProgress_SK.json `
   --limit 1 `
   --workers 1
 ```
@@ -448,22 +448,22 @@ Useful flags:
 Progress manifests use schema `RSDWModel.BuildProgress.v1` and allow reruns to
 resume from completed entries.
 
-## Current 0.11.2.2 Status
+## Current 0.12.0.0 Status
 
-The current local game install reports `ProjectVersion = "0.11.2.2"` from the
+The current local game install reports `ProjectVersion = "0.12.0.0"` from the
 UE4SS header dump. The corresponding retoc cache and CUE4Parse export have been
 created side-by-side with the old data set, not as an overwrite.
 
 Latest smoke-test results:
 
-- CUE4Parse export: `4,894` `.uemodel` files in `0.11.2.2/`.
-- Inventory: `4,394` `SM_` entries and `500` `SK_` entries.
-- Full web asset build: all `4,894` inventory entries successfully converted to
+- CUE4Parse export: `5,447` `.uemodel` files in `0.12.0.0/`.
+- Inventory: `4,851` `SM_` entries and `596` `SK_` entries.
+- Full web asset build: all `5,447` inventory entries successfully converted to
   shared web assets.
-- Full size report: `4,894` `.gltf`, `4,894` `.bin`, `3,483` `.webp`, about
-  `783.98 MiB` / `822,067,044` bytes total, with no generated files over
-  `50 MiB`.
-- Latest texture report: no current texture conversion failures in
-  `WebAssetSizeReport.json`. Shader features that cannot be represented
-  directly in glTF are recorded as material diagnostics instead of silent
-  failures.
+- Full size report: `7,794` `.gltf`, `7,686` `.bin`, `4,209` `.webp`, about
+  `1.9 GiB` / `1,985,899,149` bytes total, with no generated files over
+  `50 MiB` or `100 MiB`.
+- Latest texture report: the size report records two unsupported `.hdr`
+  conversion failures, both non-blocking. Shader features that cannot be
+  represented directly in glTF are recorded as material diagnostics instead of
+  silent failures.

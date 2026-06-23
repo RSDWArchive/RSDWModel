@@ -1009,7 +1009,7 @@ def build_avatar_index(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Generate the Avatar page index and avatar-only color texture variants.")
     parser.add_argument("--repo-root", type=Path, default=_repo_root())
-    parser.add_argument("--dataset-version", default="0.11.2.2")
+    parser.add_argument("--dataset-version", default="0.12.0.0")
     parser.add_argument("--model-index", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--archive-json-root", type=Path, default=None)

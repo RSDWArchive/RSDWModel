@@ -87,7 +87,7 @@ def build_index(manifest_path: Path, output_path: Path, dataset_version: str) ->
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate the website model search index.")
     parser.add_argument("--repo-root", type=Path, default=_default_repo_root())
-    parser.add_argument("--dataset-version", default="0.11.2.2")
+    parser.add_argument("--dataset-version", default="0.12.0.0")
     parser.add_argument("--manifest", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()

@@ -656,9 +656,9 @@ Mode:
   --help                Show this help.
 
 Examples:
-  dotnet run --project tools/CueExtract/RsdwCueExtract -- --dry-run --retoc-root E:\Github\Retoc\RSDragonwilds\0.11.2.2 --usmap E:\Github\Retoc\RSDragonwilds\0.11.2.2\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap --name SM_Campfire_01
+  dotnet run --project tools/CueExtract/RsdwCueExtract -- --dry-run --retoc-root E:\Github\Retoc\RSDragonwilds\0.12.0.0 --usmap E:\Github\Retoc\RSDragonwilds\0.12.0.0\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap --name SM_Campfire_01
 
-  dotnet run --project tools/CueExtract/RsdwCueExtract -- --retoc-root E:\Github\Retoc\RSDragonwilds\0.11.2.2 --usmap E:\Github\Retoc\RSDragonwilds\0.11.2.2\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap --out E:\Github\RSDWModel\0.11.2.2 --all
+  dotnet run --project tools/CueExtract/RsdwCueExtract -- --retoc-root E:\Github\Retoc\RSDragonwilds\0.12.0.0 --usmap E:\Github\Retoc\RSDragonwilds\0.12.0.0\RSDragonwilds-5.6.1-203193+++dominion+staging-0196ef29.usmap --out E:\Github\RSDWModel\0.12.0.0 --all
 """);
     }
 }

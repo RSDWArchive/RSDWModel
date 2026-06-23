@@ -51,13 +51,13 @@ python .\tools\PlanGitCommits.py commit-batches
 Actually create commits:
 
 ```powershell
-python .\tools\PlanGitCommits.py commit-batches --execute --message-prefix "Update RSDWModel 0.11.2.2"
+python .\tools\PlanGitCommits.py commit-batches --execute --message-prefix "Update RSDWModel 0.12.0.0"
 ```
 
 Create and push each batch one at a time:
 
 ```powershell
-python .\tools\PlanGitCommits.py commit-batches --execute --push-each --message-prefix "Update RSDWModel 0.11.2.2"
+python .\tools\PlanGitCommits.py commit-batches --execute --push-each --message-prefix "Update RSDWModel 0.12.0.0"
 ```
 
 ## Safety

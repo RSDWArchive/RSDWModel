@@ -48,7 +48,7 @@
     repoOwner: "RSDWArchive",
     repoName: "RSDWModel",
     repoBranch: "main",
-    datasetVersion: "0.11.2.2",
+    datasetVersion: "0.12.0.0",
     assetBaseUrl: "auto",
   };
 

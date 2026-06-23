@@ -12,7 +12,7 @@ Launched by tools/ModelData/BuildGLB.py via:
 
 Task file shape:
 {
-    "source_root": "<absolute path to a versioned data root (e.g. 0.11.2.2)>",
+    "source_root": "<absolute path to a versioned data root (e.g. 0.12.0.0)>",
     "entry": {
         "name": "SM_Foo.uemodel",
         "path": "RSDragonwilds/.../SM_Foo.uemodel",

@@ -25,7 +25,7 @@ def _default_source_root() -> Path:
         parts = child.name.split(".")
         if len(parts) >= 2 and all(part.isdigit() for part in parts):
             candidates.append((tuple(int(part) for part in parts), child))
-    return max(candidates, key=lambda item: item[0])[1] if candidates else _repo_root() / "0.11.2.2"
+    return max(candidates, key=lambda item: item[0])[1] if candidates else _repo_root() / "0.12.0.0"
 
 
 def _default_archive_root(source_root: Path) -> Path:

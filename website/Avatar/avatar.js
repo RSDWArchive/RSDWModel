@@ -17,7 +17,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     repoOwner: "RSDWArchive",
     repoName: "RSDWModel",
     repoBranch: "main",
-    datasetVersion: "0.11.2.2",
+    datasetVersion: "0.12.0.0",
     assetBaseUrl: "auto",
   };
   const SLOT_ORDER = ["baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape", "rightHand", "leftHand"];

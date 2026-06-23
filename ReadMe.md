@@ -12,7 +12,7 @@ assets and serves them through a static viewer at
 - A Three.js Avatar page for assembling player body, head, hair, beard, armor,
   helmet, cape, held weapons, color options, and compatible player animations
   from the exported model set.
-- Versioned exported model data for the current dataset, `0.11.2.2`.
+- Versioned exported model data for the current dataset, `0.12.0.0`.
 - Optimized web assets: separate `.gltf` / `.bin` models and shared 1024px WebP
   textures.
 - CLI tooling used by maintainers to refresh the model data when the game
@@ -28,16 +28,16 @@ at [rsdwmodel.com/Avatar/](https://rsdwmodel.com/Avatar/).
 
 ## Current Dataset
 
-- Game data version: `0.11.2.2`
-- Model inventory: `4,394` static meshes and `500` skeletal meshes
-- Web output: `4,894` base glTF/bin pairs, `2,107` animated SK variants, and `3,876`
+- Game data version: `0.12.0.0`
+- Model inventory: `4,851` static meshes and `596` skeletal meshes
+- Web output: `5,447` base glTF/bin pairs, `2,239` animated SK variants, and `4,209`
   shared WebP textures
-- Latest generated asset corpus: about `1.8 GiB`, with no generated file over
-  `50 MiB`
+- Latest generated asset corpus: about `1.9 GiB` / `1,985,899,149` bytes, with
+  no generated file over `50 MiB`
 
 ## Repository Layout
 
-- `0.11.2.2/` - current exported model data, inventories, manifests, and web
+- `0.12.0.0/` - current exported model data, inventories, manifests, and web
   assets.
 - `website/` - static GitHub Pages viewer.
 - `tools/` - extraction, inventory, web asset, icon, and publishing pipeline
