@@ -1,0 +1,66 @@
+{
+  "Textures": {},
+  "Parameters": {
+    "Colors": {
+      "CausticsColour": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 0.099035,
+        "A": 1.0,
+        "Hex": "00FF58"
+      },
+      "ColorScaleBehindWaterBase": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 0.329904,
+        "A": 1.0,
+        "Hex": "00FF9C"
+      },
+      "AbsorptionCoefficientBase": {
+        "R": 0.276042,
+        "G": 0.0,
+        "B": 0.022083,
+        "A": 1.0,
+        "Hex": "8F0029"
+      },
+      "BaseColour": {
+        "R": 0.0,
+        "G": 0.270833,
+        "B": 0.065848,
+        "A": 1.0,
+        "Hex": "008E48"
+      },
+      "CloudyEmissiveAdd": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "CausticMaskMultiply": 328.91882,
+      "CausticMaskSubtract": 0.112,
+      "CausticsScaleA": 0.006,
+      "CausticsScaleB": 0.008,
+      "OverallEmissiveStrength": 0.288,
+      "Normal1Strength": 0.3,
+      "Normal2Strength": 0.3,
+      "NormalScaleA": 134.48328,
+      "NormalScaleB": 134.48328,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Enable Caustics": true,
+      "UseBaseAsEmissive": true,
+      "UseFlatBaseColour?": true
+    },
+    "Properties": {
+      "BasePropertyOverrides": {
+        "ShadingModel": "EMaterialShadingModel::MSM_SingleLayerWater",
+        "OpacityMaskClipValue": 0.3333
+      }
+    }
+  },
+  "ArchiveSource": "E:/Github/RSDWArchive/0.12.0.8/json/RSDragonwilds/Content/Art/VFX/Library/Env/Fellhollow/CleansingPool/MI_VFX_CleansingPoolWater.json"
+}
