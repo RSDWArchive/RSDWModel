@@ -1,0 +1,65 @@
+{
+  "Textures": {
+    "BasicColor": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Gray2_D.T_Default_Gray2_D",
+    "PM_Normals": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Mask Map": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Black_D.T_Default_Black_D",
+    "PM_Emissive": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Black_D.T_Default_Black_D",
+    "Emissive": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Black_D.T_Default_Black_D",
+    "Subsurface mask": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "FuzzMask": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "Cavity": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "PM_Diffuse": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Gray2_D.T_Default_Gray2_D",
+    "T_Default_Gray2_D": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Gray2_D.T_Default_Gray2_D"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 14,
+    "Colors": {
+      "FuzzColor": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "Spec": 0.5,
+      "Specular Occlussion": 1.0,
+      "Core Darkness": 0.85,
+      "Power": 6.0,
+      "Edge Brightness": 10.0,
+      "Fuzz base color tint": 1.0,
+      "Subsurface mask Strength": 0.0,
+      "Custom Fuzz MAsk Strgth": 1.0,
+      "Spec Base (Defualt 0.5)": 0.5,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 290
+      },
+      "OpacityMaskClipValue": 0.9,
+      "TwoSided": true,
+      "bUsedWithSkeletalMesh": true,
+      "bUsedWithClothing": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "778C5F32-AB666626-464D27A1-903182CC",
+      "bIncludedInBaseGame": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "ShadingModel": "EMaterialShadingModel::MSM_FromMaterialExpression",
+        "OpacityMaskClipValue": 0.9
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": true,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
