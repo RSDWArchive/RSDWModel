@@ -96,26 +96,28 @@ python tools\UpdateGameData.py
 Run the full shared web asset build after extraction and inventory:
 
 ```powershell
-python tools\UpdateGameData.py --web-assets full --web-asset-workers 8 --glb none
+python tools\UpdateGameData.py --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max
 ```
 
 Run the full update and write a safe commit plan at the end:
 
 ```powershell
-python tools\UpdateGameData.py --web-assets full --web-asset-workers 8 --glb none --run-git-plan
+python tools\UpdateGameData.py --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max --run-git-plan
 ```
 
 Run the full update, create commit batches, and push after each batch:
 
 ```powershell
-python tools\UpdateGameData.py --web-assets full --web-asset-workers 8 --glb none --git-commit-batches --git-push-each
+python tools\UpdateGameData.py --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max --git-commit-batches --git-push-each
 ```
 
-For the current already-built working tree, skip data rebuild stages and only
-plan/commit/push the repo state:
+For the current already-built working tree, publish existing validated artifacts
+without rebuilding:
 
 ```powershell
-python tools\UpdateGameData.py --skip-retoc --skip-extract --skip-inventory --web-assets none --glb none --git-commit-batches --git-push-each
+python tools\UpdateGameData.py publish --git-mode plan-only --version 0.12.0.0
+python tools\UpdateGameData.py publish --git-mode commit-only --version 0.12.0.0
+python tools\UpdateGameData.py publish --git-mode push-each --version 0.12.0.0
 ```
 
 Useful update flags:
@@ -125,16 +127,26 @@ Useful update flags:
 - `--usmap PATH` - use a specific `.usmap`.
 - `--retoc-base PATH` - override the shared retoc cache root.
 - `--cue4parse-root PATH` - override the CUE4Parse source checkout.
+- `--blender PATH` - override the bundled Blender executable used by web,
+  animation, and legacy GLB stages.
+- `--resource-profile conservative|balanced|max` - choose default worker/shard
+  counts when a count is not explicit. Direct human commands default to
+  `balanced`; master release commands should pass `max`.
 - `--skip-retoc` - reuse the retoc cache.
 - `--force-retoc` - run retoc even if the cache looks populated.
 - `--force-extract` - re-export existing `.uemodel` files.
 - `--extract-limit N` - smoke-test the CUE extraction.
 - `--web-assets none|smoke|full` - choose shared web asset build scope.
 - `--web-asset-targets sm|sk|both` - choose SM/SK web asset targets.
+- `--web-asset-workers N|max` - set web asset Blender workers.
 - `--web-texture-size N` - max WebP texture dimension, default `1024`.
 - `--web-texture-quality N` - WebP quality, default `75`.
 - `--web-animations auto|none|smoke|full` - build animated SK web variants.
   `auto` follows `--web-assets`.
+- `--web-animation-shards N|max` - split full animation builds into parallel
+  top-level shards. Shards write isolated indexes, then `UpdateGameData.py`
+  merges the final `website\animation-index.json` and refreshes the size
+  report.
 - `--glb none|smoke|full` - legacy standalone GLB build scope, default `none`.
 - `--run-git-plan` - run commit planning even for a partial/smoke update.
 - `--skip-git-plan` - skip the final commit planning stage.
@@ -144,7 +156,9 @@ Useful update flags:
 - `--git-file-limit-mb N` - hard per-file warning limit, default `100`.
 
 The script writes logs under `<version>\PipelineLogs\<timestamp>\` and a compact
-summary to `<version>\PipelineRun.json`.
+summary to `<version>\PipelineRun.json`. That summary includes explicit
+`game_version`, `dataset_version`, `archive_version`, `retoc_version`, resolved
+Blender path, resource settings, and CUE warning policy evidence.
 
 Update safeguards:
 
@@ -159,6 +173,14 @@ Update safeguards:
 - While retoc is writing, `.retoc.lock` prevents another pipeline from writing
   to the same game/version cache.
 - Successful retoc runs write `retoc-manifest.json` into the cache.
+- CUE extraction is prebuilt once before `dotnet run --no-build` extraction and
+  animation stages. This avoids build races when animation shards run in
+  parallel.
+- CUE warning/error categories are checked against
+  `tools\PipelinePolicies\CueWarningPolicy.json`. Unknown categories block
+  unattended releases until reviewed and explicitly classified.
+- `pipeline.contract.json` exposes the current master-facing command templates
+  and publish modes.
 
 ## CUE4Parse Extraction
 
@@ -365,10 +387,12 @@ use it explicitly for Avatar skin, hair, and eye palette generation. Without
 that path, the generator falls back to `E:\Github\RSDWArchive\<version>\json`
 when present, then to baked fallback colors.
 
-The oversized extracted source normal
-`T_Dragon_Imaru_01_N.png` is intentionally excluded from git because it is over
-GitHub's normal file limit. The optimized website output can still carry its
-current baked texture as long as the generated `WebAssets/` cache is preserved.
+Oversized extracted source textures are intentionally excluded from git through
+version-agnostic `.gitignore` rules when they are over GitHub's normal file
+limit. The known dragon normal
+`RSDragonwilds/Content/Art/Skeleton/NPC/Reptilian/Dragon_Imaru_01/Textures/T_Dragon_Imaru_01_N.png`
+is one example. The optimized website output can still carry its current baked
+texture as long as the generated `WebAssets/` cache is preserved.
 
 ## Git Commit Planning
 

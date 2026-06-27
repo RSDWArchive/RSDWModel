@@ -28,6 +28,7 @@ import re
 import shutil
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -44,6 +45,8 @@ RETOC_LOCK_NAME = ".retoc.lock"
 DEFAULT_GIT_BATCH_GB = 1.9
 DEFAULT_GIT_FILE_LIMIT_MB = 100.0
 DEFAULT_GIT_PLAN_OUTPUT = Path("PipelineLogs") / "GitCommitPlan.json"
+DEFAULT_BLENDER = Path("blender-5.0.0-windows-x64") / "blender.exe"
+CUE_WARNING_POLICY = Path("tools") / "PipelinePolicies" / "CueWarningPolicy.json"
 
 
 @dataclass(frozen=True)
@@ -51,6 +54,15 @@ class RetocCacheStatus:
     state: str
     detail: str
     manifest: dict | None = None
+
+
+@dataclass(frozen=True)
+class ResourceSettings:
+    profile: str
+    cpu_count: int
+    web_asset_workers: int
+    glb_workers: int
+    web_animation_shards: int
 
 
 def repo_root() -> Path:
@@ -67,6 +79,74 @@ def now_iso() -> str:
 
 def print_section(title: str) -> None:
     print(f"\n== {title} ==")
+
+
+def parse_positive_int_or_max(value: str) -> int | str:
+    text = str(value).strip().lower()
+    if text == "max":
+        return "max"
+    try:
+        parsed = int(text)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("expected a positive integer or 'max'") from exc
+    if parsed <= 0:
+        raise argparse.ArgumentTypeError("value must be positive")
+    return parsed
+
+
+def default_blender(root: Path) -> Path:
+    return root / DEFAULT_BLENDER
+
+
+def resolve_count(value: int | str | None, *, default: int, max_value: int) -> int:
+    if value == "max":
+        return max(1, max_value)
+    if isinstance(value, int):
+        return max(1, value)
+    return max(1, default)
+
+
+def resolve_resource_settings(args: argparse.Namespace) -> ResourceSettings:
+    cpu_count = os.cpu_count() or 4
+    profile_defaults = {
+        "conservative": {
+            "web_asset_workers": max(1, min(2, cpu_count)),
+            "glb_workers": max(1, min(2, cpu_count)),
+            "web_animation_shards": 1,
+        },
+        "balanced": {
+            "web_asset_workers": max(1, cpu_count // 2),
+            "glb_workers": max(1, cpu_count // 2),
+            "web_animation_shards": max(1, min(4, cpu_count // 2)),
+        },
+        "max": {
+            "web_asset_workers": max(1, cpu_count),
+            "glb_workers": max(1, cpu_count),
+            # Eight Blender animation shards is the current proven high-throughput
+            # ceiling for this project. Explicit numeric input can override it.
+            "web_animation_shards": max(1, min(8, cpu_count)),
+        },
+    }
+    defaults = profile_defaults[args.resource_profile]
+    return ResourceSettings(
+        profile=args.resource_profile,
+        cpu_count=cpu_count,
+        web_asset_workers=resolve_count(
+            args.web_asset_workers,
+            default=defaults["web_asset_workers"],
+            max_value=cpu_count,
+        ),
+        glb_workers=resolve_count(
+            args.glb_workers,
+            default=defaults["glb_workers"],
+            max_value=cpu_count,
+        ),
+        web_animation_shards=resolve_count(
+            args.web_animation_shards,
+            default=defaults["web_animation_shards"],
+            max_value=profile_defaults["max"]["web_animation_shards"],
+        ),
+    )
 
 
 def candidate_game_roots() -> list[Path]:
@@ -336,11 +416,12 @@ def run_command(
     cwd: Path,
     log_path: Path | None,
     dry_run: bool,
-) -> None:
+    allow_failure: bool = False,
+) -> int:
     print_section(title)
     print(command_text(cmd))
     if dry_run:
-        return
+        return 0
 
     assert log_path is not None
     log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -368,8 +449,9 @@ def run_command(
         rc = proc.wait()
         log.write(f"\n# finished_utc: {now_iso()}\n")
         log.write(f"# exit_code: {rc}\n")
-        if rc != 0:
+        if rc != 0 and not allow_failure:
             raise SystemExit(f"{title} failed with exit code {rc}. Log: {log_path}")
+        return rc
 
 
 def require_tool(name: str, *, allow_missing: bool = False) -> str | None:
@@ -413,7 +495,11 @@ def summarize_cue_manifest(path: Path) -> dict:
         if not err:
             continue
         errors[err] = errors.get(err, 0) + 1
-        if err not in {"skipped existing output", "no static or skeletal mesh exports found"}:
+        if err not in {
+            "skipped existing output",
+            "no static or skeletal mesh exports found",
+            "no supported exports found",
+        }:
             package_path = row.get("PackagePath")
             if package_path:
                 exceptions.append(f"{err}: {package_path}")
@@ -422,6 +508,108 @@ def summarize_cue_manifest(path: Path) -> dict:
         "errors": dict(sorted(errors.items(), key=lambda item: (-item[1], item[0]))),
         "exceptions": exceptions,
     }
+
+
+def load_cue_warning_policy(root: Path) -> dict:
+    path = root / CUE_WARNING_POLICY
+    if not path.is_file():
+        return {"rules": []}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise SystemExit(f"CUE warning policy is not an object: {path}")
+    rules = data.get("rules")
+    if not isinstance(rules, list):
+        raise SystemExit(f"CUE warning policy has no rules list: {path}")
+    return data
+
+
+def cue_policy_rule_for(policy: dict, *, error: str, version: str) -> dict | None:
+    for rule in policy.get("rules") or []:
+        if not isinstance(rule, dict) or rule.get("error") != error:
+            continue
+        scope = rule.get("scope", "global")
+        if scope == "global":
+            return rule
+        if scope == "version" and str(rule.get("version") or "") == version:
+            return rule
+    return None
+
+
+def classify_cue_manifest(path: Path, *, root: Path, version: str) -> dict:
+    if not path.is_file():
+        return {
+            "policy": str((root / CUE_WARNING_POLICY).resolve()),
+            "status": "missing_manifest",
+            "errors": {},
+            "known_nonfatal": {},
+            "unknown_warning": {},
+            "blocking": {},
+        }
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    policy = load_cue_warning_policy(root)
+    known_nonfatal: dict[str, list[str]] = {}
+    unknown_warning: dict[str, list[str]] = {}
+    blocking: dict[str, list[str]] = {}
+    errors: dict[str, int] = {}
+    for row in data.get("Results") or []:
+        error = row.get("Error")
+        if not error:
+            continue
+        error = str(error)
+        package = str(row.get("PackagePath") or "")
+        errors[error] = errors.get(error, 0) + 1
+        rule = cue_policy_rule_for(policy, error=error, version=version)
+        classification = str((rule or {}).get("classification") or "unknown_warning")
+        target = (
+            known_nonfatal
+            if classification == "known_nonfatal"
+            else blocking
+            if classification == "blocking"
+            else unknown_warning
+        )
+        target.setdefault(error, []).append(package)
+
+    status = "pass"
+    if blocking:
+        status = "blocking"
+    elif unknown_warning:
+        status = "unknown_warning"
+    return {
+        "policy": str((root / CUE_WARNING_POLICY).resolve()),
+        "status": status,
+        "errors": dict(sorted(errors.items(), key=lambda item: (-item[1], item[0]))),
+        "known_nonfatal": {key: value[:10] for key, value in sorted(known_nonfatal.items())},
+        "unknown_warning": {key: value[:10] for key, value in sorted(unknown_warning.items())},
+        "blocking": {key: value[:10] for key, value in sorted(blocking.items())},
+    }
+
+
+def enforce_cue_policy(path: Path, *, root: Path, version: str, command_rc: int) -> dict:
+    result = classify_cue_manifest(path, root=root, version=version)
+    if result["status"] == "missing_manifest":
+        if command_rc != 0:
+            raise SystemExit(
+                "CUE4Parse extract failed and did not produce CueExtractManifest.json.\n"
+                f"Manifest expected: {path}"
+            )
+        return result
+    if result["status"] != "pass":
+        unknown = result.get("unknown_warning") or {}
+        blocking = result.get("blocking") or {}
+        details = []
+        for label, rows in (("blocking", blocking), ("unknown", unknown)):
+            for error, packages in rows.items():
+                preview = "; ".join(packages[:3])
+                details.append(f"{label}: {error} ({len(packages)} shown: {preview})")
+        raise SystemExit(
+            "CUE4Parse extract produced unapproved warning/error categories.\n"
+            + "\n".join(details)
+            + f"\nReview or update {root / CUE_WARNING_POLICY} before unattended release."
+        )
+    if command_rc != 0:
+        print("CUE4Parse returned nonzero, but all manifest errors are classified known_nonfatal.")
+    return result
 
 
 def load_git_plan_summary(path: Path) -> dict:
@@ -437,6 +625,143 @@ def load_git_plan_summary(path: Path) -> dict:
         "max_batch_bytes": data.get("max_batch_bytes"),
         "file_limit_bytes": data.get("file_limit_bytes"),
     }
+
+
+def run_parallel_commands(
+    title: str,
+    jobs: list[tuple[str, Sequence[str], Path | None]],
+    *,
+    cwd: Path,
+    dry_run: bool,
+) -> None:
+    print_section(title)
+    for label, cmd, _log_path in jobs:
+        print(f"[{label}] {command_text(cmd)}")
+    if dry_run:
+        return
+
+    def task(label: str, cmd: Sequence[str], log_path: Path | None) -> tuple[str, int]:
+        assert log_path is not None
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with log_path.open("w", encoding="utf-8", errors="replace") as log:
+            log.write(f"# {title} {label}\n")
+            log.write(f"# cwd: {cwd}\n")
+            log.write(f"# started_utc: {now_iso()}\n")
+            log.write(f"$ {command_text(cmd)}\n\n")
+            log.flush()
+            proc = subprocess.Popen(
+                [str(c) for c in cmd],
+                cwd=str(cwd),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                bufsize=1,
+            )
+            assert proc.stdout is not None
+            for line in proc.stdout:
+                print(f"[{label}] {line}", end="")
+                log.write(line)
+            rc = proc.wait()
+            log.write(f"\n# finished_utc: {now_iso()}\n")
+            log.write(f"# exit_code: {rc}\n")
+            return label, rc
+
+    failed: list[tuple[str, int]] = []
+    with ThreadPoolExecutor(max_workers=len(jobs)) as pool:
+        futures = [pool.submit(task, label, cmd, log_path) for label, cmd, log_path in jobs]
+        for future in as_completed(futures):
+            label, rc = future.result()
+            if rc != 0:
+                failed.append((label, rc))
+    if failed:
+        detail = ", ".join(f"{label}={rc}" for label, rc in failed)
+        raise SystemExit(f"{title} failed: {detail}")
+
+
+def merge_animation_indexes(
+    *,
+    shard_paths: list[Path],
+    output_index: Path,
+    dataset_version: str,
+    source_root: Path,
+    output_root: Path,
+    archive_json_root: Path,
+    texture_size: int,
+    texture_quality: int,
+) -> None:
+    merged = {
+        "schema": "RSDWModel.WebsiteAnimationIndex.v1",
+        "datasetVersion": dataset_version,
+        "generatedUtc": now_iso(),
+        "exportRevision": "animation-v1",
+        "sourceModelIndex": "website/model-index.json",
+        "sourceArchiveJson": str(archive_json_root),
+        "sourceWebAssets": f"{dataset_version}/WebAssets",
+        "sourceShards": [str(path.resolve()) for path in shard_paths],
+        "byModel": {},
+    }
+    for path in shard_paths:
+        if not path.is_file():
+            raise SystemExit(f"Animation shard index missing: {path}")
+        data = json.loads(path.read_text(encoding="utf-8"))
+        by_model = data.get("byModel") if isinstance(data, dict) else None
+        if not isinstance(by_model, dict):
+            continue
+        for model_id, group in by_model.items():
+            if not isinstance(group, dict):
+                continue
+            target = merged["byModel"].setdefault(
+                model_id,
+                {
+                    "modelId": group.get("modelId") or model_id,
+                    "modelName": group.get("modelName"),
+                    "modelPath": group.get("modelPath"),
+                    "skeletonPath": group.get("skeletonPath"),
+                    "animations": [],
+                },
+            )
+            existing_ids = {row.get("id") for row in target["animations"] if isinstance(row, dict)}
+            for animation in group.get("animations") or []:
+                if not isinstance(animation, dict) or animation.get("status") != "success":
+                    continue
+                if animation.get("id") in existing_ids:
+                    continue
+                target["animations"].append(animation)
+                existing_ids.add(animation.get("id"))
+    for group in merged["byModel"].values():
+        group["animations"].sort(key=lambda item: str(item.get("label") or item.get("name") or "").lower())
+    merged["totals"] = {
+        "modelGroups": len(merged["byModel"]),
+        "animations": sum(len(group.get("animations") or []) for group in merged["byModel"].values()),
+        "success": sum(len(group.get("animations") or []) for group in merged["byModel"].values()),
+        "unsupported": 0,
+    }
+    output_index.parent.mkdir(parents=True, exist_ok=True)
+    output_index.write_text(json.dumps(merged, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    modeldata_dir = repo_root() / "tools" / "ModelData"
+    if str(modeldata_dir) not in sys.path:
+        sys.path.insert(0, str(modeldata_dir))
+    import BuildWebAssets as web_assets  # type: ignore
+
+    manifest_path = output_root / "WebAssetManifest.json"
+    if manifest_path.is_file():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            if isinstance(manifest, dict):
+                manifest["web_animations"] = "website/animation-index.json"
+                manifest["web_animations_updated_utc"] = now_iso()
+                manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        except Exception:
+            pass
+    web_assets._write_size_report(
+        output_root=output_root,
+        source_root=source_root,
+        texture_records={},
+        texture_profile={"format": "webp", "max_dimension": texture_size, "quality": texture_quality, "upscale": False},
+    )
 
 
 def normalized_prefixes(value: str | None) -> tuple[str, ...]:
@@ -487,22 +812,42 @@ def write_pipeline_summary(
     dry_run: bool,
     completion_stages: bool,
     git_commit_plan: dict | None = None,
+    resource_settings: ResourceSettings | None = None,
+    blender: Path | None = None,
 ) -> None:
+    cue_manifest_path = output_root / "CueExtractManifest.json"
     summary = {
         "schema": "RSDWModel.UpdatePipeline.v1",
         "updated_utc": now_iso(),
         "dry_run": dry_run,
         "completion_stages": completion_stages,
         "version": version,
+        "game_version": version,
+        "dataset_version": version,
+        "archive_version": archive_root.name,
+        "retoc_version": retoc_version_root.name,
         "game_root": str(game_root),
         "retoc_root": str(retoc_version_root),
         "usmap": str(usmap),
         "output_root": str(output_root),
         "archive_root": str(archive_root),
         "log_dir": str(log_dir) if log_dir else None,
+        "blender": str(blender) if blender else None,
+        "resource_settings": (
+            {
+                "profile": resource_settings.profile,
+                "cpu_count": resource_settings.cpu_count,
+                "web_asset_workers": resource_settings.web_asset_workers,
+                "glb_workers": resource_settings.glb_workers,
+                "web_animation_shards": resource_settings.web_animation_shards,
+            }
+            if resource_settings
+            else None
+        ),
         "web_assets": args.web_assets,
         "equipment_variants": equipment_variants_mode,
         "web_animations": web_animations_mode,
+        "web_animation_shards": resource_settings.web_animation_shards if resource_settings else 1,
         "web_asset_targets": args.web_asset_targets,
         "web_texture_size": args.web_texture_size,
         "web_texture_quality": args.web_texture_quality,
@@ -516,7 +861,8 @@ def write_pipeline_summary(
             "SM_Data.json": load_inventory_count(output_root / "ModelData" / "SM_Data.json"),
             "SK_Data.json": load_inventory_count(output_root / "ModelData" / "SK_Data.json"),
         },
-        "cue_extract": summarize_cue_manifest(output_root / "CueExtractManifest.json"),
+        "cue_extract": summarize_cue_manifest(cue_manifest_path),
+        "cue_extract_policy": classify_cue_manifest(cue_manifest_path, root=repo_root().resolve(), version=version),
         "git_commit_plan": git_commit_plan or {"skipped": True},
     }
     path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -545,6 +891,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Additional folder to search recursively for .usmap files. Repeatable.",
     )
     parser.add_argument("--cue4parse-root", type=Path, default=None)
+    parser.add_argument(
+        "--blender",
+        type=Path,
+        default=None,
+        help="Blender executable used by web assets, animations, and legacy GLB stages.",
+    )
+    parser.add_argument(
+        "--resource-profile",
+        choices=("conservative", "balanced", "max"),
+        default="balanced",
+        help="Default worker/shard policy when a stage count is not set explicitly.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Print planned work without running commands.")
 
     parser.add_argument("--skip-retoc", action="store_true")
@@ -571,7 +929,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Shared web asset build mode. Default smoke builds one textured SM and one textured SK.",
     )
     parser.add_argument("--web-asset-targets", choices=("sm", "sk", "both"), default="both")
-    parser.add_argument("--web-asset-workers", type=int, default=None)
+    parser.add_argument("--web-asset-workers", type=parse_positive_int_or_max, default=None)
     parser.add_argument("--web-smoke-limit", type=int, default=1)
     parser.add_argument("--web-texture-size", type=int, default=1024)
     parser.add_argument("--web-texture-quality", type=int, default=75)
@@ -594,6 +952,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Optional total animation build limit for --web-animations full.",
     )
     parser.add_argument(
+        "--web-animation-shards",
+        type=parse_positive_int_or_max,
+        default=None,
+        help="Parallel animation shard count for full animation builds. Use 'max' for the profile maximum.",
+    )
+    parser.add_argument(
         "--skip-website-index",
         action="store_true",
         help="Skip regenerating website/model-index.json and website/avatar-index.json.",
@@ -612,7 +976,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Legacy standalone GLB build mode. Default is none.",
     )
     parser.add_argument("--glb-targets", choices=("sm", "sk", "both"), default="both")
-    parser.add_argument("--glb-workers", type=int, default=None)
+    parser.add_argument("--glb-workers", type=parse_positive_int_or_max, default=None)
     parser.add_argument("--glb-smoke-limit", type=int, default=1)
     parser.add_argument("--no-blend", action="store_true", help="Deprecated legacy GLB option; .blend output is disabled.")
 
@@ -635,7 +999,125 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def parse_publish_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Publish an already-built RSDWModel dataset through git planning/commit/push.",
+    )
+    parser.add_argument(
+        "--git-mode",
+        choices=("plan-only", "commit-only", "push-each", "project-commit", "project-push"),
+        required=True,
+        help="Master-facing git behavior. project-* aliases are accepted for compatibility.",
+    )
+    parser.add_argument("--version", required=True, help="Already-built dataset version to validate before publishing.")
+    parser.add_argument("--repo", type=Path, default=None, help="Repo root. Defaults to this checkout.")
+    parser.add_argument("--git-plan-output", type=Path, default=None, help="Git commit plan JSON output path.")
+    parser.add_argument("--git-max-batch-gb", type=float, default=DEFAULT_GIT_BATCH_GB)
+    parser.add_argument("--git-file-limit-mb", type=float, default=DEFAULT_GIT_FILE_LIMIT_MB)
+    parser.add_argument("--dry-run", action="store_true", help="Print validation and git command without executing it.")
+    return parser.parse_args(argv)
+
+
+def normalize_publish_git_mode(mode: str) -> tuple[str, bool, bool]:
+    aliases = {
+        "plan-only": ("plan", False, False),
+        "commit-only": ("commit-batches", True, False),
+        "push-each": ("commit-batches", True, True),
+        "project-commit": ("commit-batches", True, False),
+        "project-push": ("commit-batches", True, True),
+    }
+    return aliases[mode]
+
+
+def validate_publish_existing(*, root: Path, version: str, file_limit_mb: float) -> dict:
+    output_root = root / version
+    required = [
+        output_root / "PipelineRun.json",
+        output_root / "WebAssets" / "WebAssetManifest.json",
+        output_root / "WebAssets" / "WebAssetSizeReport.json",
+        root / "website" / "model-index.json",
+        root / "website" / "avatar-index.json",
+        root / "website" / "equipment-variants.json",
+        root / "website" / "animation-index.json",
+    ]
+    missing = [str(path) for path in required if not path.is_file()]
+    if missing:
+        raise SystemExit("Publish-existing validation failed; missing required artifact(s):\n" + "\n".join(missing))
+
+    pipeline_run = json.loads((output_root / "PipelineRun.json").read_text(encoding="utf-8"))
+    dataset_version = pipeline_run.get("dataset_version") or pipeline_run.get("version")
+    if dataset_version != version:
+        raise SystemExit(
+            f"Publish-existing validation failed; PipelineRun dataset version {dataset_version!r} "
+            f"does not match requested {version!r}."
+        )
+
+    size_report_path = output_root / "WebAssets" / "WebAssetSizeReport.json"
+    size_report = json.loads(size_report_path.read_text(encoding="utf-8"))
+    oversized = size_report.get("output_files_over_100_mib") or []
+    if oversized:
+        preview = "\n".join(f"{row.get('path')} ({row.get('bytes')} bytes)" for row in oversized[:20])
+        raise SystemExit(
+            "Publish-existing validation failed; generated WebAssets include files over GitHub's "
+            f"{file_limit_mb:g} MiB file limit:\n{preview}"
+        )
+    return {
+        "output_root": str(output_root),
+        "pipeline_run": str(output_root / "PipelineRun.json"),
+        "size_report": str(size_report_path),
+        "total_web_asset_bytes": size_report.get("total_web_asset_bytes"),
+        "file_counts": size_report.get("file_counts"),
+    }
+
+
+def publish_existing_main(argv: list[str] | None = None) -> int:
+    args = parse_publish_args(argv)
+    root = (args.repo or repo_root()).resolve()
+    git_plan_output = args.git_plan_output or (root / DEFAULT_GIT_PLAN_OUTPUT)
+    if not git_plan_output.is_absolute():
+        git_plan_output = (root / git_plan_output).resolve()
+    git_command, execute, push_each = normalize_publish_git_mode(args.git_mode)
+
+    print_section("Publish Existing Validation")
+    validation = validate_publish_existing(root=root, version=args.version, file_limit_mb=args.git_file_limit_mb)
+    print(json.dumps(validation, indent=2))
+
+    require_tool("git")
+    git_cmd = [
+        sys.executable,
+        str(root / "tools" / "PlanGitCommits.py"),
+        git_command,
+        "--repo",
+        str(root),
+        "--out",
+        str(git_plan_output),
+        "--max-batch-gb",
+        str(args.git_max_batch_gb),
+        "--file-limit-mb",
+        str(args.git_file_limit_mb),
+        "--message-prefix",
+        f"Update RSDWModel {args.version}",
+    ]
+    if execute:
+        git_cmd.append("--execute")
+    if push_each:
+        git_cmd.append("--push-each")
+
+    run_command(
+        "Publish existing git plan" if not execute else "Publish existing git batches",
+        git_cmd,
+        cwd=root,
+        log_path=root / "PipelineLogs" / f"publish-existing-{utc_stamp()}.log",
+        dry_run=args.dry_run,
+    )
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
+    if argv is None:
+        argv = sys.argv[1:]
+    if argv and argv[0] == "publish":
+        return publish_existing_main(argv[1:])
     args = parse_args(argv)
     root = repo_root().resolve()
     game_root = detect_game_root(args.game_root)
@@ -646,6 +1128,9 @@ def main(argv: list[str] | None = None) -> int:
     archive_json_root = args.archive_json_root.resolve() if args.archive_json_root else (archive_root / "json").resolve()
     equipment_variants_mode = resolve_equipment_variants_mode(args)
     web_animations_mode = resolve_web_animations_mode(args)
+    web_animations_stage = web_animations_mode != "none" and not args.skip_website_index
+    resource_settings = resolve_resource_settings(args)
+    blender = (args.blender or default_blender(root)).resolve()
     cue4parse_root = (
         args.cue4parse_root
         or (Path(os.environ["CUE4PARSE_ROOT"]) if os.environ.get("CUE4PARSE_ROOT") else None)
@@ -677,6 +1162,14 @@ def main(argv: list[str] | None = None) -> int:
     print(f"output:     {output_root}")
     print(f"archive:    {archive_root}")
     print(f"cue4parse:  {cue4parse_root}")
+    print(f"blender:    {blender}")
+    print(
+        "resources:  "
+        f"profile={resource_settings.profile}, cpu={resource_settings.cpu_count}, "
+        f"web_workers={resource_settings.web_asset_workers}, "
+        f"animation_shards={resource_settings.web_animation_shards}, "
+        f"glb_workers={resource_settings.glb_workers}"
+    )
     print(f"variants:   {equipment_variants_mode}")
     print(f"animations: {web_animations_mode}")
     print(f"completion: {completion_stages}")
@@ -686,15 +1179,24 @@ def main(argv: list[str] | None = None) -> int:
 
     if not args.skip_retoc:
         require_tool("retoc")
-    if not args.skip_extract:
+    if not args.skip_extract or web_animations_stage:
         require_tool("dotnet")
+    if not args.skip_extract:
         if not cue4parse_root.is_dir():
             raise SystemExit(
                 f"CUE4Parse source checkout not found: {cue4parse_root}\n"
                 "Clone FabianFG/CUE4Parse there or pass --cue4parse-root."
             )
+    if web_animations_stage and not cue4parse_root.is_dir():
+        raise SystemExit(
+            f"CUE4Parse source checkout not found: {cue4parse_root}\n"
+            "Clone FabianFG/CUE4Parse there or pass --cue4parse-root."
+        )
     if git_plan_stage:
         require_tool("git")
+    if any((args.web_assets != "none", web_animations_stage, args.glb != "none")) and not args.dry_run:
+        if not blender.is_file():
+            raise SystemExit(f"blender.exe not found: {blender}")
     if equipment_variants_mode != "none" and not args.skip_website_index:
         if not (archive_root / "json").is_dir() or not (archive_root / "textures").is_dir():
             raise SystemExit(
@@ -712,6 +1214,22 @@ def main(argv: list[str] | None = None) -> int:
 
     if not args.dry_run:
         output_root.mkdir(parents=True, exist_ok=True)
+
+    cue_project = root / "tools" / "CueExtract" / "RsdwCueExtract" / "RsdwCueExtract.csproj"
+    cue_prebuilt = not args.skip_extract or web_animations_stage
+    if cue_prebuilt:
+        run_command(
+            "CUE4Parse extractor build",
+            [
+                "dotnet",
+                "build",
+                str(cue_project),
+                f"/p:Cue4ParseRoot={cue4parse_root}",
+            ],
+            cwd=root,
+            log_path=log_dir / "00_cue_extract_build.log" if log_dir else None,
+            dry_run=args.dry_run,
+        )
 
     if args.skip_retoc:
         print_section("retoc")
@@ -761,10 +1279,10 @@ def main(argv: list[str] | None = None) -> int:
         print_section("CUE4Parse extract")
         print("Skipped by --skip-extract")
     else:
-        cue_project = root / "tools" / "CueExtract" / "RsdwCueExtract" / "RsdwCueExtract.csproj"
         cmd: list[str] = [
             "dotnet",
             "run",
+            "--no-build",
             "--project",
             str(cue_project),
             f"/p:Cue4ParseRoot={cue4parse_root}",
@@ -791,13 +1309,15 @@ def main(argv: list[str] | None = None) -> int:
         if args.no_materials:
             cmd.append("--no-materials")
 
-        run_command(
+        cue_rc = run_command(
             "CUE4Parse extract",
             cmd,
             cwd=root,
             log_path=log_dir / "02_cue_extract.log" if log_dir else None,
             dry_run=args.dry_run,
+            allow_failure=True,
         )
+        enforce_cue_policy(output_root / "CueExtractManifest.json", root=root, version=version, command_rc=cue_rc)
 
     print_section("Archive material enrichment")
     archive_available = (archive_root / "json").is_dir() and (archive_root / "textures").is_dir()
@@ -857,11 +1377,13 @@ def main(argv: list[str] | None = None) -> int:
             str(args.web_texture_size),
             "--texture-quality",
             str(args.web_texture_quality),
+            "--blender",
+            str(blender),
         ]
         if args.web_assets == "smoke":
             cmd.extend(["--limit", str(args.web_smoke_limit), "--force", "--workers", "1", "--prefer-textured"])
-        elif args.web_asset_workers is not None:
-            cmd.extend(["--workers", str(args.web_asset_workers)])
+        else:
+            cmd.extend(["--workers", str(resource_settings.web_asset_workers)])
 
         run_command(
             f"Web asset build ({args.web_assets})",
@@ -946,19 +1468,77 @@ def main(argv: list[str] | None = None) -> int:
                 str(args.web_texture_size),
                 "--texture-quality",
                 str(args.web_texture_quality),
+                "--blender",
+                str(blender),
             ]
+            if cue_prebuilt:
+                animation_cmd.append("--cue-no-build")
             if args.web_animation_limit is not None:
                 animation_cmd.extend(["--limit", str(args.web_animation_limit)])
             if web_animations_mode == "smoke":
                 animation_cmd.append("--force")
 
-            run_command(
-                f"Build web animations ({web_animations_mode})",
-                animation_cmd,
-                cwd=root,
-                log_path=log_dir / "05c_web_animations.log" if log_dir else None,
-                dry_run=args.dry_run,
+            animation_shards = (
+                resource_settings.web_animation_shards
+                if web_animations_mode == "full" and args.web_animation_limit is None
+                else 1
             )
+            if animation_shards <= 1:
+                run_command(
+                    f"Build web animations ({web_animations_mode})",
+                    animation_cmd,
+                    cwd=root,
+                    log_path=log_dir / "05c_web_animations.log" if log_dir else None,
+                    dry_run=args.dry_run,
+                )
+            else:
+                shard_root = root / "PipelineLogs" / "AnimationShards" / version / utc_stamp()
+                shard_jobs: list[tuple[str, Sequence[str], Path | None]] = []
+                shard_paths: list[Path] = []
+                for shard_index in range(animation_shards):
+                    shard_dir = shard_root / f"shard-{shard_index:02d}"
+                    shard_index_path = shard_dir / "animation-index.json"
+                    shard_paths.append(shard_index_path)
+                    shard_cmd = [
+                        *animation_cmd,
+                        "--shard-index",
+                        str(shard_index),
+                        "--shard-count",
+                        str(animation_shards),
+                        "--output-index",
+                        str(shard_index_path),
+                        "--animation-cache-root",
+                        str(shard_dir / "AnimationExtract"),
+                        "--skip-manifest-mark",
+                        "--skip-size-report",
+                    ]
+                    shard_jobs.append(
+                        (
+                            f"shard-{shard_index:02d}",
+                            shard_cmd,
+                            log_dir / f"05c_web_animations_shard_{shard_index:02d}.log" if log_dir else None,
+                        )
+                    )
+                run_parallel_commands(
+                    f"Build web animations ({web_animations_mode}, {animation_shards} shards)",
+                    shard_jobs,
+                    cwd=root,
+                    dry_run=args.dry_run,
+                )
+                if args.dry_run:
+                    print_section("Merge web animation shards")
+                    print(f"Would merge {animation_shards} shard index file(s) into {root / 'website' / 'animation-index.json'}")
+                else:
+                    merge_animation_indexes(
+                        shard_paths=shard_paths,
+                        output_index=root / "website" / "animation-index.json",
+                        dataset_version=version,
+                        source_root=output_root,
+                        output_root=output_root / "WebAssets",
+                        archive_json_root=archive_json_root,
+                        texture_size=args.web_texture_size,
+                        texture_quality=args.web_texture_quality,
+                    )
 
         avatar_cmd = [
             sys.executable,
@@ -1001,11 +1581,13 @@ def main(argv: list[str] | None = None) -> int:
                 str(data_file),
                 "--progress-file",
                 str(progress_file),
+                "--blender",
+                str(blender),
             ]
             if args.glb == "smoke":
                 cmd.extend(["--limit", str(args.glb_smoke_limit), "--force", "--workers", "1"])
-            elif args.glb_workers is not None:
-                cmd.extend(["--workers", str(args.glb_workers)])
+            else:
+                cmd.extend(["--workers", str(resource_settings.glb_workers)])
             if args.no_blend:
                 cmd.append("--no-blend")
 
@@ -1083,6 +1665,8 @@ def main(argv: list[str] | None = None) -> int:
             dry_run=False,
             completion_stages=completion_stages,
             git_commit_plan=git_commit_plan_summary,
+            resource_settings=resource_settings,
+            blender=blender,
         )
         print_section("Summary")
         print(f"Wrote {summary_path}")

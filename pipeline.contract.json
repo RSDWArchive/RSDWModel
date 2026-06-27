@@ -1,0 +1,95 @@
+{
+  "schema": "RSDWMasterPipeline.ProjectContract.v1",
+  "project": "RSDWModel",
+  "contractVersion": 1,
+  "defaultBranch": "main",
+  "datasetVersionSource": "UE4SS ProjectVersion or explicit --version",
+  "inputs": {
+    "gameRoot": "F:\\SteamLibrary\\steamapps\\common\\RSDragonwilds\\RSDragonwilds",
+    "retocRootTemplate": "E:\\Github\\Retoc\\RSDragonwilds\\{game_version}",
+    "cue4parseRoot": "E:\\Github\\CUE4Parse",
+    "archiveRootTemplate": "E:\\Github\\RSDWArchive\\{game_version}",
+    "blenderDefault": "E:\\Github\\RSDWModel\\blender-5.0.0-windows-x64\\blender.exe"
+  },
+  "commands": {
+    "dryRunFull": {
+      "status": "implemented",
+      "template": "python tools\\UpdateGameData.py --version {game_version} --dry-run --web-assets full --web-animations full --equipment-variants full --glb none"
+    },
+    "buildFull": {
+      "status": "implemented",
+      "template": "python tools\\UpdateGameData.py --version {game_version} --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max --run-git-plan"
+    },
+    "publishPlanOnly": {
+      "status": "implemented",
+      "template": "python tools\\UpdateGameData.py publish --git-mode plan-only --version {game_version}"
+    },
+    "publishCommitOnly": {
+      "status": "implemented",
+      "template": "python tools\\UpdateGameData.py publish --git-mode commit-only --version {game_version}"
+    },
+    "publishPushEach": {
+      "status": "implemented",
+      "template": "python tools\\UpdateGameData.py publish --git-mode push-each --version {game_version}"
+    },
+    "validateLocal": {
+      "status": "planned",
+      "template": null,
+      "notes": "Publish mode currently performs read-only artifact validation before git planning/commit/push. A dedicated validate-local command is still planned."
+    }
+  },
+  "publishExistingBridge": {
+    "status": "implemented",
+    "preferred": "publish --git-mode ...",
+    "legacyFlags": [
+      "--version {game_version}",
+      "--skip-retoc",
+      "--skip-extract",
+      "--skip-archive-enrich",
+      "--skip-inventory",
+      "--web-assets none",
+      "--web-animations none",
+      "--equipment-variants none",
+      "--skip-website-index",
+      "--glb none"
+    ]
+  },
+  "resourceProfiles": {
+    "directHumanDefault": "balanced",
+    "masterReleaseDefault": "max",
+    "profiles": {
+      "conservative": {
+        "webAnimationShards": 1
+      },
+      "balanced": {
+        "webAnimationShardsMax": 4
+      },
+      "max": {
+        "webAssetWorkers": "cpu_count",
+        "webAnimationShardsMax": 8,
+        "glbWorkers": "cpu_count"
+      }
+    }
+  },
+  "successArtifacts": [
+    "{game_version}\\PipelineRun.json",
+    "{game_version}\\CueExtractManifest.json",
+    "{game_version}\\WebAssets\\WebAssetManifest.json",
+    "{game_version}\\WebAssets\\WebAssetSizeReport.json",
+    "website\\model-index.json",
+    "website\\avatar-index.json",
+    "website\\equipment-variants.json",
+    "website\\animation-index.json"
+  ],
+  "limits": {
+    "githubFileLimitMiB": 100,
+    "generatedWebAssetsMustHaveNoFilesOver100MiB": true,
+    "rawOversizedSourceTexturesIgnoredByGit": true
+  },
+  "cueWarningPolicy": "tools\\PipelinePolicies\\CueWarningPolicy.json",
+  "notes": [
+    "GitHub Pages deploys only website/; model payloads are served from same-repo raw GitHub WebAssets.",
+    "Unsupported animation compression is acceptable only when recorded and pruned from the published website animation index.",
+    "Unknown CUE warning categories block unattended release until reviewed and added to policy."
+  ]
+}

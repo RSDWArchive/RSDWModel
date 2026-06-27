@@ -317,6 +317,7 @@ def _extract_animation(
     animation: dict,
     force: bool,
     dry_run: bool,
+    cue_no_build: bool,
 ) -> Path:
     out_path = _ueanim_path(animation_cache_root, animation["packagePath"])
     if out_path.is_file() and not force:
@@ -324,20 +325,26 @@ def _extract_animation(
     cmd = [
         "dotnet",
         "run",
-        "--project",
-        str(repo_root / "tools" / "CueExtract" / "RsdwCueExtract" / "RsdwCueExtract.csproj"),
-        f"/p:Cue4ParseRoot={cue4parse_root}",
-        "--",
-        "--retoc-root",
-        str(retoc_root),
-        "--usmap",
-        str(usmap),
-        "--out",
-        str(animation_cache_root),
-        "--animations-only",
-        "--asset",
-        animation["packagePath"],
     ]
+    if cue_no_build:
+        cmd.append("--no-build")
+    cmd.extend(
+        [
+            "--project",
+            str(repo_root / "tools" / "CueExtract" / "RsdwCueExtract" / "RsdwCueExtract.csproj"),
+            f"/p:Cue4ParseRoot={cue4parse_root}",
+            "--",
+            "--retoc-root",
+            str(retoc_root),
+            "--usmap",
+            str(usmap),
+            "--out",
+            str(animation_cache_root),
+            "--animations-only",
+            "--asset",
+            animation["packagePath"],
+        ]
+    )
     if force:
         cmd.append("--force")
     if dry_run:
@@ -606,6 +613,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--timeout-s", type=int, default=360)
     parser.add_argument("--texture-size", type=int, default=1024)
     parser.add_argument("--texture-quality", type=int, default=75)
+    parser.add_argument("--shard-index", type=int, default=0, help="Zero-based shard index for parallel full builds.")
+    parser.add_argument("--shard-count", type=int, default=1, help="Total shard count for parallel full builds.")
+    parser.add_argument("--cue-no-build", action="store_true", help="Use dotnet run --no-build for CUE extraction.")
+    parser.add_argument("--skip-manifest-mark", action="store_true", help="Do not mark WebAssetManifest.json at the end.")
+    parser.add_argument("--skip-size-report", action="store_true", help="Do not refresh WebAssetSizeReport.json at the end.")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args(argv)
@@ -613,6 +625,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.shard_count < 1:
+        raise SystemExit("--shard-count must be at least 1")
+    if args.shard_index < 0 or args.shard_index >= args.shard_count:
+        raise SystemExit("--shard-index must be between 0 and --shard-count - 1")
     if args.mode == "none":
         _log("Skipped by --mode none")
         return 0
@@ -663,13 +679,26 @@ def main(argv: list[str] | None = None) -> int:
     )
     animations_by_skeleton = _discover_animations(archive_json_root)
     pairs = _select_pairs(models, animations_by_skeleton, args.mode, args.limit)
+    total_pairs = len(pairs)
+    if args.shard_count > 1:
+        pairs = [
+            pair
+            for index, pair in enumerate(pairs)
+            if index % args.shard_count == args.shard_index
+        ]
 
     _log(f"Animation models: {len(models)} compatible SK model(s)")
     _log(f"Animation skeletons: {len(animations_by_skeleton)} skeleton group(s)")
     if UNSUPPORTED_ANIMATION_COUNTS:
         summary = ", ".join(f"{reason}: {count}" for reason, count in sorted(UNSUPPORTED_ANIMATION_COUNTS.items()))
         _log(f"Skipped unsupported animation clip(s): {summary}")
-    _log(f"Selected {len(pairs)} animation build(s)")
+    if args.shard_count > 1:
+        _log(
+            f"Selected {len(pairs)} animation build(s) for shard "
+            f"{args.shard_index + 1}/{args.shard_count} from {total_pairs} total pair(s)"
+        )
+    else:
+        _log(f"Selected {len(pairs)} animation build(s)")
     if not pairs:
         return 0
 
@@ -725,6 +754,7 @@ def main(argv: list[str] | None = None) -> int:
                         animation=animation,
                         force=args.force,
                         dry_run=args.dry_run,
+                        cue_no_build=args.cue_no_build,
                     )
                     generated_overrides = generated_overrides_by_entry.get(web_assets._progress_key("SK", model["entry"]), {})
                     result = _run_worker(
@@ -777,13 +807,15 @@ def main(argv: list[str] | None = None) -> int:
     }
     if not args.dry_run:
         _write_json(output_index, index)
-        _mark_webasset_manifest(output_root)
-        web_assets._write_size_report(
-            output_root=output_root,
-            source_root=source_root,
-            texture_records={},
-            texture_profile=texture_profile,
-        )
+        if not args.skip_manifest_mark:
+            _mark_webasset_manifest(output_root)
+        if not args.skip_size_report:
+            web_assets._write_size_report(
+                output_root=output_root,
+                source_root=source_root,
+                texture_records={},
+                texture_profile=texture_profile,
+            )
         _log(f"Wrote {output_index}")
     if RUNTIME_UNSUPPORTED_ANIMATION_COUNTS:
         summary = ", ".join(

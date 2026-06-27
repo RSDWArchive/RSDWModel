@@ -56,7 +56,9 @@ Default expected locations:
 
 `tools\UpdateGameData.py` can override these with `--game-root`,
 `--retoc-base`, `--cue4parse-root`, `--archive-root`, `--archive-json-root`,
-`--usmap`, and `--version`.
+`--usmap`, `--version`, and `--blender`.
+
+Machine-readable orchestration metadata lives in `pipeline.contract.json`.
 
 ## Orchestration Commands
 
@@ -65,26 +67,45 @@ Run commands from `E:\Github\RSDWModel`.
 Preview the full pipeline without changing data:
 
 ```powershell
-python tools\UpdateGameData.py --dry-run --web-assets full --web-animations full --equipment-variants full --glb none
+python tools\UpdateGameData.py --version 0.12.0.0 --dry-run --web-assets full --web-animations full --equipment-variants full --glb none
 ```
 
 Run a full build and write a git commit plan without committing or pushing:
 
 ```powershell
-python tools\UpdateGameData.py --web-assets full --web-asset-workers 8 --web-animations full --equipment-variants full --glb none --run-git-plan
+python tools\UpdateGameData.py --version 0.12.0.0 --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max --run-git-plan
 ```
 
 Run a full build, create planned commit batches, and push each batch:
 
 ```powershell
-python tools\UpdateGameData.py --web-assets full --web-asset-workers 8 --web-animations full --equipment-variants full --glb none --git-commit-batches --git-push-each
+python tools\UpdateGameData.py --version 0.12.0.0 --web-assets full --web-asset-workers max --web-animations full --web-animation-shards max --equipment-variants full --glb none --resource-profile max --git-commit-batches --git-push-each
 ```
 
-For a repo state that is already fully built, skip rebuild stages and only plan,
-commit, and push current changes:
+For a repo state that is already fully built and locally validated, use the
+publish-existing command. It validates required artifacts and the generated
+`100 MiB` file limit before git planning, committing, or pushing:
 
 ```powershell
-python tools\UpdateGameData.py --skip-retoc --skip-extract --skip-inventory --web-assets none --glb none --git-commit-batches --git-push-each
+python tools\UpdateGameData.py publish --git-mode plan-only --version 0.12.0.0
+python tools\UpdateGameData.py publish --git-mode commit-only --version 0.12.0.0
+python tools\UpdateGameData.py publish --git-mode push-each --version 0.12.0.0
+```
+
+Temporary bridge commands for older orchestrators must be publish-existing only.
+They should include all of these skip flags before adding git flags:
+
+```powershell
+--version 0.12.0.0
+--skip-retoc
+--skip-extract
+--skip-archive-enrich
+--skip-inventory
+--web-assets none
+--web-animations none
+--equipment-variants none
+--skip-website-index
+--glb none
 ```
 
 ## Success Artifacts
@@ -101,6 +122,7 @@ A successful full update should refresh or validate these files:
 - `website\avatar-index.json`
 - `website\equipment-variants.json`
 - `website\animation-index.json`
+- `pipeline.contract.json`
 
 Current measured generated WebAssets:
 
@@ -149,6 +171,8 @@ Treat these as blocking orchestration failures:
 - Non-empty incomplete Retoc cache unless the operator explicitly chooses
   `--force-retoc`.
 - Any generated file over `100 MiB`.
+- Any unclassified CUE warning/error category not approved in
+  `tools\PipelinePolicies\CueWarningPolicy.json`.
 - Failed git commit or push when `--git-commit-batches` / `--git-push-each` are
   requested.
 
@@ -158,6 +182,8 @@ Useful retry behavior:
 - CUE extraction resumes by skipping existing `.uemodel` outputs.
 - Web asset and animation builders skip existing successful outputs unless
   forced.
+- Full animation builds can be parallelized with `--web-animation-shards`; `max`
+  currently resolves to the project's proven high-throughput shard count.
 - Animation packages known to have unsupported compression are cached during a
   run so the same unsupported package is not retried repeatedly.
 

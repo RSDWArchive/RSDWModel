@@ -1,0 +1,45 @@
+{
+  "schema": "RSDWModel.CueWarningPolicy.v1",
+  "updated_utc": "2026-06-26T00:00:00+00:00",
+  "rules": [
+    {
+      "error": "no supported exports found",
+      "classification": "known_nonfatal",
+      "scope": "global",
+      "reason": "The selected package matched the pipeline prefix but did not contain an exportable static mesh, skeletal mesh, or requested animation payload. This is expected for skeleton, physics, foliage type, icon helper, and placeholder packages.",
+      "required_artifact_checks": [
+        "CueExtractManifest.json exists",
+        "Model inventories are generated",
+        "Website indexes are generated"
+      ],
+      "examples": [
+        "RSDragonwilds/Content/Art/Skeleton/Prop/Template/SK_Bow_01_Skeleton.uasset",
+        "RSDragonwilds/Content/Art/UI/Icons/GeneratedIcons/SM_Double_Banner_Armadyl_01v2.uasset"
+      ],
+      "reviewed_utc": "2026-06-26T00:00:00+00:00",
+      "reviewer": "RSDWModel maintainers"
+    },
+    {
+      "error": "Index was outside the bounds of the array.",
+      "classification": "known_nonfatal",
+      "scope": "version",
+      "version": "0.12.0.0",
+      "reason": "Observed during the 0.12.0.0 release on three packages. The release produced complete inventories, website indexes, WebAssets, and a clean generated-file size report. Keep this version-scoped until the package cause is understood across multiple releases.",
+      "required_artifact_checks": [
+        "CueExtractManifest.json exists",
+        "SM_Data.json and SK_Data.json exist",
+        "website/model-index.json exists",
+        "website/animation-index.json exists",
+        "WebAssetSizeReport.json has no files over 100 MiB"
+      ],
+      "examples": [
+        "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Weapons/Ranged/Crossbow_Mithril_1H_01/SK_Crossbow_Mithril_1H_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Mount/Vehicle/Carpet_01/SK_Carpet_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/NPC/Reptilian/Dragon_Fuzan_01/SK_Dragon_Fuzan_01.uasset"
+      ],
+      "reviewed_utc": "2026-06-26T00:00:00+00:00",
+      "reviewer": "RSDWModel maintainers",
+      "expires_after_version": "0.12.0.0"
+    }
+  ]
+}
