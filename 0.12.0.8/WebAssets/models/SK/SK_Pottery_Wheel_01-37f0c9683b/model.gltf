@@ -1,0 +1,426 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        18
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "joint_wheel",
+      "translation": [
+        0,
+        0.24622339010238647,
+        0.1837727129459381
+      ]
+    },
+    {
+      "name": "joint_tool1_end",
+      "rotation": [
+        -0.06959620118141174,
+        0.9975752830505371,
+        -5.254365831319774e-09,
+        7.531483703360209e-08
+      ],
+      "translation": [
+        0.25651252269744873,
+        -4.493631422519684e-08,
+        5.242133127580928e-08
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "joint_tool1",
+      "rotation": [
+        0.06959974020719528,
+        -0.997575044631958,
+        5.254634505291733e-09,
+        7.531481571732002e-08
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.2445286512374878,
+        0.44595250487327576,
+        0.6466701030731201
+      ]
+    },
+    {
+      "name": "joint_tool2_end",
+      "rotation": [
+        -0.19048595428466797,
+        0.9816899299621582,
+        -1.4381334345614505e-08,
+        7.411553326619469e-08
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        0.25059646368026733,
+        -4.656612873077393e-10,
+        8.894903658074327e-08
+      ]
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "joint_tool2",
+      "rotation": [
+        0.19048342108726501,
+        -0.9816904067993164,
+        1.4381098090154865e-08,
+        7.411557589875883e-08
+      ],
+      "translation": [
+        0.25289788842201233,
+        0.5787708759307861,
+        0.6504133343696594
+      ]
+    },
+    {
+      "name": "joint_tool3_end",
+      "rotation": [
+        -0.15127705037593842,
+        0.988491415977478,
+        -1.1421042778181345e-08,
+        7.462903539590116e-08
+      ],
+      "scale": [
+        0.9999999403953552,
+        1.000000238418579,
+        1
+      ],
+      "translation": [
+        0.2526065707206726,
+        -3.3527612686157227e-08,
+        3.8419763370711735e-08
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "joint_tool3",
+      "rotation": [
+        0.1512780636548996,
+        -0.9884912371635437,
+        1.14211760049443e-08,
+        7.462901407961908e-08
+      ],
+      "translation": [
+        0.21451915800571442,
+        0.6292992234230042,
+        0.6554753184318542
+      ]
+    },
+    {
+      "name": "joint_pot_rim1",
+      "translation": [
+        0.0005921870470046997,
+        -0.08474361896514893,
+        0.07359260320663452
+      ]
+    },
+    {
+      "name": "joint_pot_rim2",
+      "translation": [
+        0.0005921870470046997,
+        0.08143800497055054,
+        0.07359260320663452
+      ]
+    },
+    {
+      "name": "joint_pot_rim3",
+      "translation": [
+        0.08443429321050644,
+        0,
+        0.07359260320663452
+      ]
+    },
+    {
+      "name": "joint_pot_rim4",
+      "translation": [
+        -0.07363361120223999,
+        0,
+        0.07359260320663452
+      ]
+    },
+    {
+      "children": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "name": "joint_pot_upper_centre",
+      "translation": [
+        0,
+        0,
+        0.16250866651535034
+      ]
+    },
+    {
+      "name": "joint_pot_edge1",
+      "translation": [
+        -0.1154889464378357,
+        0,
+        0.09413295984268188
+      ]
+    },
+    {
+      "name": "joint_pot_edge2",
+      "translation": [
+        0.1187824234366417,
+        0,
+        0.09413295984268188
+      ]
+    },
+    {
+      "children": [
+        11,
+        12,
+        13
+      ],
+      "name": "joint_pot",
+      "translation": [
+        -0.13213014602661133,
+        0.546195924282074,
+        0.6484328508377075
+      ]
+    },
+    {
+      "children": [
+        0,
+        2,
+        4,
+        6,
+        14
+      ],
+      "name": "joint_root"
+    },
+    {
+      "children": [
+        15
+      ],
+      "name": "Joints_GRP",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Pottery_Wheel_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        17,
+        16
+      ],
+      "name": "SK_Pottery_Wheel_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Pottery_Wheel_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Pottery_Wheel_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "90a13d8e302cb0b36bd7050c.webp",
+      "uri": "../../../textures/webp_1024/90a13d8e302cb0b36bd7050c.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "baa631829e784a2f59140343.webp",
+      "uri": "../../../textures/webp_1024/baa631829e784a2f59140343.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        16,
+        15,
+        0,
+        2,
+        1,
+        4,
+        3,
+        6,
+        5,
+        14,
+        11,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13
+      ],
+      "name": "SK_Pottery_Wheel_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 3203,
+      "max": [
+        0.3411889672279358,
+        0.8954606056213379,
+        0.9452314972877502
+      ],
+      "min": [
+        -0.3456254303455353,
+        0.007102680392563343,
+        -0.9606342911720276
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3203,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3203,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 3203,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 3203,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 14298,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 17,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 29090,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1088,
+      "byteOffset": 29092
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 30180,
+      "uri": "model.bin"
+    }
+  ]
+}

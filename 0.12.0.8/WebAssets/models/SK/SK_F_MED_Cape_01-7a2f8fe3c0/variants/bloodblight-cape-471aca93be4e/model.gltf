@@ -1,0 +1,587 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "EXT_texture_webp",
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        17
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "neck_01",
+      "rotation": [
+        1.4973993600619906e-08,
+        -1.1193240778695213e-09,
+        -0.2144274115562439,
+        0.9767400026321411
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.16562451422214508,
+        -0.000711493194103241,
+        -1.4971474060487822e-10
+      ]
+    },
+    {
+      "name": "lowerarm_r",
+      "rotation": [
+        0.00012667513510677963,
+        -3.2558378734393045e-05,
+        -0.27346381545066833,
+        0.9618822932243347
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999998807907104
+      ],
+      "translation": [
+        -0.3138085901737213,
+        0.00027271173894405365,
+        -2.7531059458851814e-06
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "upperarm_r",
+      "rotation": [
+        0.07496609538793564,
+        0.2720831334590912,
+        -0.1836128979921341,
+        0.9416141510009766
+      ],
+      "scale": [
+        1,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        -0.15789780020713806,
+        1.917034387588501e-05,
+        3.393157385289669e-05
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "clavicle_r",
+      "rotation": [
+        0.7366728186607361,
+        -0.23419278860092163,
+        -0.6277015805244446,
+        0.09196536242961884
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.11928829550743103,
+        -0.02527785860002041,
+        0.03781996667385101
+      ]
+    },
+    {
+      "name": "lowerarm_l",
+      "rotation": [
+        0.00012434094969648868,
+        -3.195416502421722e-05,
+        -0.27346327900886536,
+        0.961882472038269
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999998807907104
+      ],
+      "translation": [
+        0.31380748748779297,
+        -0.0002728365361690521,
+        -4.0512531995773315e-08
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "upperarm_l",
+      "rotation": [
+        0.07496633380651474,
+        0.27208688855171204,
+        -0.1836128532886505,
+        0.9416130781173706
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.1578979641199112,
+        -1.9103288650512695e-05,
+        -3.412424121052027e-05
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "clavicle_l",
+      "rotation": [
+        0.2341926544904709,
+        0.7366744875907898,
+        0.09196606278419495,
+        0.627699613571167
+      ],
+      "scale": [
+        1,
+        1.0000001192092896,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.11928829550743103,
+        -0.02527785860002041,
+        -0.03781983256340027
+      ]
+    },
+    {
+      "children": [
+        0,
+        3,
+        6
+      ],
+      "name": "spine_03",
+      "rotation": [
+        2.3332078491478114e-09,
+        -6.800116025829084e-16,
+        -4.85722573273506e-17,
+        1
+      ],
+      "translation": [
+        0.1341393142938614,
+        1.862645149230957e-08,
+        3.202379195155203e-10
+      ]
+    },
+    {
+      "children": [
+        7
+      ],
+      "name": "spine_02",
+      "rotation": [
+        8.839388665471404e-10,
+        3.472726550768357e-10,
+        0.053499747067689896,
+        0.9985678791999817
+      ],
+      "translation": [
+        0.1924620270729065,
+        0.005576761439442635,
+        -5.219377818832527e-09
+      ]
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "spine_01",
+      "rotation": [
+        9.882317403633878e-13,
+        -4.899256694779197e-11,
+        0.020620157942175865,
+        0.9997873902320862
+      ],
+      "translation": [
+        0.10805690288543701,
+        -0.008909069001674652,
+        -1.279472350290689e-08
+      ]
+    },
+    {
+      "name": "calf_l",
+      "rotation": [
+        -3.563814487961281e-08,
+        9.001984722090128e-07,
+        -0.06408485770225525,
+        0.9979444742202759
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999998807907104,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.4260612428188324,
+        -0.00010294286767020822,
+        8.616189006716013e-08
+      ]
+    },
+    {
+      "children": [
+        10
+      ],
+      "name": "thigh_l",
+      "rotation": [
+        -0.049253884702920914,
+        0.0018500186270102859,
+        0.9986883997917175,
+        0.013862616382539272
+      ],
+      "scale": [
+        1.000000238418579,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        -0.014592234045267105,
+        -0.005258921533823013,
+        -0.09006647020578384
+      ]
+    },
+    {
+      "name": "calf_r",
+      "rotation": [
+        3.400496950689558e-08,
+        -1.9722007493783167e-07,
+        -0.06408559530973434,
+        0.9979444146156311
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        0.9999999403953552
+      ],
+      "translation": [
+        -0.4260611832141876,
+        0.0001028146652970463,
+        -1.5192199498414993e-08
+      ]
+    },
+    {
+      "children": [
+        12
+      ],
+      "name": "thigh_r",
+      "rotation": [
+        0.0018500883597880602,
+        0.04925624281167984,
+        -0.01386335864663124,
+        0.998688280582428
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        -0.014592226594686508,
+        -0.005258921533823013,
+        0.09006647020578384
+      ]
+    },
+    {
+      "children": [
+        9,
+        11,
+        13
+      ],
+      "name": "pelvis",
+      "rotation": [
+        0,
+        -0.7071067690849304,
+        0,
+        0.7071067690849304
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0,
+        0.010561533272266388,
+        0.9675060510635376
+      ]
+    },
+    {
+      "children": [
+        14
+      ],
+      "name": "root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_F_MED_Cape_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        16,
+        15
+      ],
+      "name": "SK_F_MED_Cape_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_BloodBlightCape_01",
+      "normalTexture": {
+        "index": 5
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        },
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_F_MED_Cape_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      }
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 5
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "5d1cc3481bf1194ddd3d774f.webp",
+      "uri": "../../../../../textures/webp_1024/5d1cc3481bf1194ddd3d774f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "81f7018c9970afeb96f21083.webp",
+      "uri": "../../../../../textures/webp_1024/81f7018c9970afeb96f21083.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "5c92cf8bc4d24b3030ad7716.webp",
+      "uri": "../../../../../textures/webp_1024/5c92cf8bc4d24b3030ad7716.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "32e7a10620d937c60264ae82.webp",
+      "uri": "../../../../../textures/webp_1024/32e7a10620d937c60264ae82.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "b48ca47719134429d734db7d.webp",
+      "uri": "../../../../../textures/webp_1024/b48ca47719134429d734db7d.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ad93b26c1e1f8419ad7360b8.webp",
+      "uri": "../../../../../textures/webp_1024/ad93b26c1e1f8419ad7360b8.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        15,
+        14,
+        9,
+        8,
+        7,
+        0,
+        3,
+        2,
+        1,
+        6,
+        5,
+        4,
+        11,
+        10,
+        13,
+        12
+      ],
+      "name": "SK_F_MED_Cape_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 377,
+      "max": [
+        0.27150118350982666,
+        1.6283001899719238,
+        -0.026705313473939896
+      ],
+      "min": [
+        -0.2736347019672394,
+        0.5021700859069824,
+        -0.2428903430700302
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 377,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 377,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 377,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 377,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1998,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 16,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5335,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1024,
+      "byteOffset": 5336
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6360,
+      "uri": "../../model.bin"
+    }
+  ]
+}

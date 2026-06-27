@@ -1,0 +1,452 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        13
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "head",
+      "rotation": [
+        1.0887207579912683e-08,
+        -5.5894592065897086e-08,
+        0.11402229219675064,
+        0.9934782385826111
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.0830228254199028,
+        0.0046668825671076775,
+        -4.53542359224457e-09
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "neck_01",
+      "rotation": [
+        9.25974852350464e-09,
+        -3.718698016186295e-09,
+        -0.18544936180114746,
+        0.9826538562774658
+      ],
+      "translation": [
+        0.06476181000471115,
+        -0.005878498312085867,
+        -1.4530392888900678e-08
+      ]
+    },
+    {
+      "name": "arm_01_r",
+      "rotation": [
+        0.9480012655258179,
+        -0.1253768503665924,
+        -0.2908206880092621,
+        0.03158450126647949
+      ],
+      "scale": [
+        1,
+        0.9999998807907104,
+        0.9999999403953552
+      ],
+      "translation": [
+        -0.21120233833789825,
+        -2.9802322387695312e-08,
+        -4.506146069616079e-06
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "clavicle_r",
+      "rotation": [
+        -0.7433567047119141,
+        0.1099974736571312,
+        0.6590604782104492,
+        0.03099389746785164
+      ],
+      "scale": [
+        1.0000063180923462,
+        1.0000004768371582,
+        1.0000014305114746
+      ],
+      "translation": [
+        -0.027481386438012123,
+        -0.0011506852461025119,
+        0.03781994432210922
+      ]
+    },
+    {
+      "name": "arm_01_l",
+      "rotation": [
+        0.947999119758606,
+        -0.12537728250026703,
+        -0.2908271253108978,
+        0.03158640116453171
+      ],
+      "scale": [
+        1.0000019073486328,
+        1.0000001192092896,
+        1.0000008344650269
+      ],
+      "translation": [
+        0.21120081841945648,
+        -9.313225746154785e-09,
+        -1.3434328138828278e-07
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "clavicle_l",
+      "rotation": [
+        0.10999692231416702,
+        0.7433594465255737,
+        -0.030993014574050903,
+        0.6590574979782104
+      ],
+      "scale": [
+        1,
+        0.9999998807907104,
+        1.0000001192092896
+      ],
+      "translation": [
+        -0.02748139016330242,
+        -0.0011506812879815698,
+        -0.037819843739271164
+      ]
+    },
+    {
+      "children": [
+        1,
+        3,
+        5
+      ],
+      "name": "spine_03",
+      "rotation": [
+        2.247094288421181e-09,
+        -1.513968395094878e-10,
+        1.825392246246338e-07,
+        1
+      ],
+      "translation": [
+        0.18736368417739868,
+        3.4226104617118835e-08,
+        7.322296102785231e-10
+      ]
+    },
+    {
+      "name": "prop_stow",
+      "rotation": [
+        0.05104978755116463,
+        0.7052615284919739,
+        -0.05104978382587433,
+        0.7052616477012634
+      ],
+      "translation": [
+        0.10152097046375275,
+        0.14969877898693085,
+        4.304111911324071e-08
+      ]
+    },
+    {
+      "children": [
+        6,
+        7
+      ],
+      "name": "spine_02",
+      "rotation": [
+        4.745766446490052e-09,
+        7.519938560740513e-10,
+        0.07135848701000214,
+        0.9974507093429565
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.1704481989145279,
+        0.006057295016944408,
+        -1.6879837971828238e-08
+      ]
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "spine_01",
+      "rotation": [
+        9.220636476570121e-10,
+        -5.861985023910762e-14,
+        0.0008404265972785652,
+        0.9999996423721313
+      ],
+      "scale": [
+        0.9999999403953552,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        0.12150943279266357,
+        -0.008909070864319801,
+        -1.277058458981628e-08
+      ]
+    },
+    {
+      "children": [
+        9
+      ],
+      "name": "pelvis",
+      "rotation": [
+        0,
+        -0.7071067690849304,
+        0,
+        0.7071067690849304
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        1.4414657803863424e-17,
+        -0.021897390484809875,
+        1.1163674592971802
+      ]
+    },
+    {
+      "children": [
+        10
+      ],
+      "name": "root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_TrainingDummy_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        12,
+        11
+      ],
+      "name": "SK_TrainingDummy_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_TrainingDummy_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_TrainingDummy_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "2e82a99d4dc00635263db08a.webp",
+      "uri": "../../../textures/webp_1024/2e82a99d4dc00635263db08a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "87b5b29677292cc710cc0754.webp",
+      "uri": "../../../textures/webp_1024/87b5b29677292cc710cc0754.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3262090373ab2cf980e2de3c.webp",
+      "uri": "../../../textures/webp_1024/3262090373ab2cf980e2de3c.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        11,
+        10,
+        9,
+        8,
+        6,
+        1,
+        0,
+        3,
+        2,
+        5,
+        4,
+        7
+      ],
+      "name": "SK_TrainingDummy_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 9730,
+      "max": [
+        0.6620162129402161,
+        2.5021421909332275,
+        0.20520129799842834
+      ],
+      "min": [
+        -0.5080951452255249,
+        -0.1308678537607193,
+        -0.19420112669467926
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 9730,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 9730,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 9730,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 9730,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 34683,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 12,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 109198,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 768,
+      "byteOffset": 109200
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 109968,
+      "uri": "model.bin"
+    }
+  ]
+}

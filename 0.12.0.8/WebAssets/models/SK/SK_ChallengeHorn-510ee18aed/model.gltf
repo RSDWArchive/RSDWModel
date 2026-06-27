@@ -1,0 +1,437 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        14
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "piece0",
+      "translation": [
+        0.03544999659061432,
+        0.5998905301094055,
+        -0.12471615523099899
+      ]
+    },
+    {
+      "name": "piece1",
+      "rotation": [
+        2.328307147081432e-08,
+        0,
+        0,
+        1
+      ],
+      "translation": [
+        0.06441356241703033,
+        0.44623634219169617,
+        0.018551088869571686
+      ]
+    },
+    {
+      "name": "piece2",
+      "translation": [
+        0.03911258652806282,
+        0.24645213782787323,
+        -0.08909647911787033
+      ]
+    },
+    {
+      "name": "piece3",
+      "translation": [
+        0.08198066055774689,
+        0.5051237344741821,
+        -0.20139726996421814
+      ]
+    },
+    {
+      "name": "piece4",
+      "rotation": [
+        9.313220772355635e-08,
+        0,
+        0,
+        1
+      ],
+      "translation": [
+        -0.1232602596282959,
+        0.571860134601593,
+        0.07665298134088516
+      ]
+    },
+    {
+      "name": "piece5",
+      "rotation": [
+        5.820766091346741e-09,
+        0,
+        0,
+        1
+      ],
+      "translation": [
+        -0.1142941415309906,
+        0.5617427229881287,
+        -0.0044446587562561035
+      ]
+    },
+    {
+      "name": "piece6",
+      "translation": [
+        -0.02903454750776291,
+        0.26169055700302124,
+        0.06325633823871613
+      ]
+    },
+    {
+      "name": "piece7",
+      "translation": [
+        0.0857372060418129,
+        0.17748771607875824,
+        0.01922125183045864
+      ]
+    },
+    {
+      "name": "piece8",
+      "translation": [
+        -0.08441619575023651,
+        0.19541624188423157,
+        -0.008273824118077755
+      ]
+    },
+    {
+      "name": "piece9",
+      "translation": [
+        -0.09602001309394836,
+        0.5045461058616638,
+        -0.1375075876712799
+      ]
+    },
+    {
+      "name": "piece10",
+      "rotation": [
+        -1.8626457176651456e-07,
+        0,
+        0,
+        1
+      ],
+      "translation": [
+        0.0007911734282970428,
+        -0.12024810910224915,
+        0.1988784223794937
+      ]
+    },
+    {
+      "name": "piece11",
+      "translation": [
+        0.09235915541648865,
+        0.5811795592308044,
+        0.0640646293759346
+      ]
+    },
+    {
+      "children": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "name": "root",
+      "rotation": [
+        -1.1030863333871821e-07,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_ChallengeHorn_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        13,
+        12
+      ],
+      "name": "SK_ChallengeHorn_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_ChallengeHorn_Simple",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "name": "MI_ChallengeHorn_Breaks_Simple",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_ChallengeHorn_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "JOINTS_0": 9,
+            "WEIGHTS_0": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "b2795a8bde2fdf55f4e65654.webp",
+      "uri": "../../../textures/webp_1024/b2795a8bde2fdf55f4e65654.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "90354004d512a1cf487b1cf6.webp",
+      "uri": "../../../textures/webp_1024/90354004d512a1cf487b1cf6.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 12,
+      "joints": [
+        12,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "name": "SK_ChallengeHorn_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 2195,
+      "max": [
+        0.24109454452991486,
+        0.7259258031845093,
+        0.43590956926345825
+      ],
+      "min": [
+        -0.23455125093460083,
+        -0.30201900005340576,
+        -0.30033954977989197
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2195,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2195,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 2195,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 2195,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 5466,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 942,
+      "max": [
+        0.2383463978767395,
+        0.7257872819900513,
+        0.1657244712114334
+      ],
+      "min": [
+        -0.22786134481430054,
+        -0.007011943496763706,
+        -0.29355543851852417
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 942,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 942,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 942,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 942,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 2520,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 13,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 20477,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7902,
+      "byteOffset": 20480
+    },
+    {
+      "buffer": 0,
+      "byteLength": 832,
+      "byteOffset": 28384
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 29216,
+      "uri": "model.bin"
+    }
+  ]
+}

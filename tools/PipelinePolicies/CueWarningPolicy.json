@@ -40,6 +40,28 @@
       "reviewed_utc": "2026-06-26T00:00:00+00:00",
       "reviewer": "RSDWModel maintainers",
       "expires_after_version": "0.12.0.0"
+    },
+    {
+      "error": "Index was outside the bounds of the array.",
+      "classification": "known_nonfatal",
+      "scope": "version",
+      "version": "0.12.0.8",
+      "reason": "Observed again during the 0.12.0.8 release on the same three packages as 0.12.0.0. The release may proceed when inventories, website indexes, WebAssets, and generated-file size checks pass.",
+      "required_artifact_checks": [
+        "CueExtractManifest.json exists",
+        "SM_Data.json and SK_Data.json exist",
+        "website/model-index.json exists",
+        "website/animation-index.json exists",
+        "WebAssetSizeReport.json has no files over 100 MiB"
+      ],
+      "examples": [
+        "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Weapons/Ranged/Crossbow_Mithril_1H_01/SK_Crossbow_Mithril_1H_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Mount/Vehicle/Carpet_01/SK_Carpet_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/NPC/Reptilian/Dragon_Fuzan_01/SK_Dragon_Fuzan_01.uasset"
+      ],
+      "reviewed_utc": "2026-06-27T00:00:00+00:00",
+      "reviewer": "RSDWMasterPipeline supervised release",
+      "expires_after_version": "0.12.0.8"
     }
   ]
 }

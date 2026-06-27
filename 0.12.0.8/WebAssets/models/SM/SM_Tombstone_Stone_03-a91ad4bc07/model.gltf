@@ -1,0 +1,183 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Tombstone_Stone_03_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Tombstone_Stone_02",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Tombstone_Stone_03_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "48b08bf031ba58eff2b7b887.webp",
+      "uri": "../../../textures/webp_1024/48b08bf031ba58eff2b7b887.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "61a90c04ca2dc2af762f4ee8.webp",
+      "uri": "../../../textures/webp_1024/61a90c04ca2dc2af762f4ee8.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "53bb3ebe18cddc4586019fe5.webp",
+      "uri": "../../../textures/webp_1024/53bb3ebe18cddc4586019fe5.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 687,
+      "max": [
+        0.6203644871711731,
+        1.8232808113098145,
+        0.15586328506469727
+      ],
+      "min": [
+        -0.6203598380088806,
+        -0.09139881283044815,
+        -0.1658766120672226
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 687,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 687,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 687,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3138,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7711,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7712,
+      "uri": "model.bin"
+    }
+  ]
+}

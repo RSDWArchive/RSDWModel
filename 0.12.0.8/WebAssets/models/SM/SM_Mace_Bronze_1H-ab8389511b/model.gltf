@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Mace_Bronze_1H_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Mace_Bronze_1H",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Mace_Bronze_1H_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "158a3f6208e8988e6279ac45.webp",
+      "uri": "../../../textures/webp_1024/158a3f6208e8988e6279ac45.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "84c0ad9f9f5f3634f947fada.webp",
+      "uri": "../../../textures/webp_1024/84c0ad9f9f5f3634f947fada.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "216b9a98058e04dab940a67a.webp",
+      "uri": "../../../textures/webp_1024/216b9a98058e04dab940a67a.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 820,
+      "max": [
+        0.11734417825937271,
+        0.6493154764175415,
+        0.11826839298009872
+      ],
+      "min": [
+        -0.11923757195472717,
+        -0.20786204934120178,
+        -0.11907187104225159
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 820,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 820,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 820,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3618,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8907,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 8908,
+      "uri": "model.bin"
+    }
+  ]
+}
