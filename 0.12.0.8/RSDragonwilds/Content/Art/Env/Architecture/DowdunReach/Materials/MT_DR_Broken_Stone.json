@@ -1,0 +1,208 @@
+{
+  "Textures": {
+    "Moss Base Colour": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_BCO.T_DR_Moss_BCO",
+    "PM_Normals": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_NRH.T_DR_Moss_NRH",
+    "Moss Normal": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_NRH.T_DR_Moss_NRH",
+    "Normal": "RSDragonwilds/Content/Art/Env/Architecture/Human/Temple/Textures/T_Rubble_01_NRM.T_Rubble_01_NRM",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Env/Architecture/Human/Temple/Textures/T_Rubble_01_BCC.T_Rubble_01_BCC",
+    "BaseColor": "RSDragonwilds/Content/Art/Env/Architecture/Human/Temple/Textures/T_Rubble_01_BCC.T_Rubble_01_BCC",
+    "T_DR_Moss_BCO": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_BCO.T_DR_Moss_BCO"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Puddle Tint And Opacity": {
+        "R": 0.147,
+        "G": 0.091,
+        "B": 0.054,
+        "A": 0.5,
+        "Hex": "7F6B5541"
+      },
+      "\"Sunny direction\" or \"South\"": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "00FF00"
+      },
+      "Mould Colour": {
+        "R": 0.010417,
+        "G": 0.004664,
+        "B": 0.000854,
+        "A": 1.0,
+        "Hex": "1A0E02"
+      },
+      "Colour Multiplier": {
+        "R": 0.213542,
+        "G": 0.187243,
+        "B": 0.161054,
+        "A": 1.0,
+        "Hex": "7F7870"
+      },
+      "Gradient": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Channel": {
+        "R": 1.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FF0000"
+      },
+      "Darken": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "000000"
+      },
+      "Lighten": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Custom WindDirection (Alpha as lerp)": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FFFF00"
+      },
+      "Wind Direction": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "0000FF"
+      },
+      "Wind Direction (UV)": {
+        "R": 1.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FF0000"
+      }
+    },
+    "Scalars": {
+      "Glint Transition Time": 0.25,
+      "Glint Time Variance": 0.2,
+      "Glint Time To Distance": 1.0,
+      "NoiseScale": 0.4,
+      "Rain Ripples Normal Intensity": 0.8,
+      "Puddles Height Mask": 80.0,
+      "Puddles AO Mask opacity": 1.0,
+      "Puddles AO Mask power": 1.0,
+      "CanOverrideWetness": 0.0,
+      "WetnessOverride": 0.0,
+      "Puddles Tiling Mult": 1.0,
+      "Wetness BC Darkening": 0.45,
+      "Wetness Roughness": 0.4,
+      "Wetness Specular": 0.15,
+      "Wetness Porousness (Darken Opacity)": 0.0,
+      "Debug Wetness Amount": 1.0,
+      "Debug Rain Amount": 1.0,
+      "Rain Drip Surface Porousness": 0.6,
+      "Rain Flow Normal Intensity": 1.0,
+      "Rain Drip Normal Intensity": 1.5,
+      "Debug Rain Flow Speed": 50.0,
+      "Debug Wind Intensity": 0.8,
+      "Puddles Scale": 0.6,
+      "HeightPosition": 1.0,
+      "HeightFalloff": 60.0,
+      "AngleMaskFalloff": 0.7,
+      "AngleMask_Position": 0.2,
+      "Height Mask Scale": 0.0,
+      "EdgeBlending": 1.0,
+      "Moss - texture scale": 600.0,
+      "Moss - height smoothstep width": 0.5,
+      "\"Bottom Dirt\" Influence - Mould": 0.747885,
+      "\"Bottom Dirt\" Influence - Moss": 0.499943,
+      "Cavity Influence (SDF) - Mould": 0.870402,
+      "Cavity Influence (SDF) - Moss": 1.14469,
+      "\"Top Dirt\" Influence (SDF) - Mould": 0.437025,
+      "\"Top Dirt\" Influence (SDF) - Moss": 0.2,
+      "Dirt Texture Influence - Mould": 0.198625,
+      "Dirt Texture Influence - Moss": 0.4,
+      "Clouds Small (Mult) - Mould": 0.173599,
+      "Clouds Small (Mult) - Moss": 0.119309,
+      "Clouds Big (Add) - Mould": 0.0,
+      "Clouds Big (Add) - Moss": 0.3,
+      "Insolation Influence - Moss": 0.168915,
+      "\"Top Dirt\" Vertical Spread (SDF)": 1000.0,
+      "Dirt Texture - Texture Scale": 2610.4595,
+      "Cavity Distance Small (SDF)": 53.76,
+      "Cavity Distance Big (SDF)": 171.88559,
+      "Ground level - Height Bias": 0.0,
+      "Ground Water Upwards Spread": 200.0,
+      "Dirt Texture - Normal Z Threshold": 0.8,
+      "Insolation Influence - Mould": 0.352915,
+      "Moss below ground bias": -1000.0,
+      "Moss below ground min": 0.0,
+      "Moss below ground max": 1.0,
+      "Moss off blend": 0.0,
+      "Moss Contrast": -0.2,
+      "Moss Mask Shift": 0.0,
+      "Prim Moss Gradient Length": 0.0,
+      "Prim Moss Gradient Shift": 0.2,
+      "Prim Moss Colour": 0.0,
+      "Shift VCR": 0.0,
+      "MouldSTR": 1.0,
+      "AO Strength": 0.5,
+      "Specular": 0.5,
+      "Metalness Mask Value": 0.0,
+      "Tiling": 1.0,
+      "Normal Scale": 1.0,
+      "DbugB": 6.0,
+      "DbugA": 6.0,
+      "Position Scale": 200.0,
+      "Position Offset": 0.0,
+      "UV Min Clip": 0.0,
+      "UV Max Clip": 1.0,
+      "Wind Scale": 10.0,
+      "Wave Scale": 20.0,
+      "Wind Speed": 0.15,
+      "Stop Negative Values": 0.0,
+      "Disable LeafWind": 0.0,
+      "PositionVertexMaskExponent": 1.0,
+      "Param": 0.330667,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Dbug Gradient": false,
+      "Allow Ageing (Mould and Moss)": true,
+      "Allow Moss": false,
+      "CA Colour Moss": true,
+      "Ground level - Use RVT": false,
+      "Debug Ageing": false,
+      "Debug Rain": false
+    },
+    "Properties": {
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "A39E1456-486117DA-F06AC8A0-2682B2D5",
+      "bIncludedInBaseGame": true,
+      "PhysMaterial": {
+        "ObjectName": "DominionPhysicalMaterial'Rock'",
+        "ObjectPath": "RSDragonwilds/Content/Audio/PhysMats/Rock.0"
+      },
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
