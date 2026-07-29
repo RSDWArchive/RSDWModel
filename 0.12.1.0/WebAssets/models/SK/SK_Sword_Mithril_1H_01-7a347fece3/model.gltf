@@ -1,0 +1,236 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Sword_Mithril_1H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Sword_Mithril_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Sword_Mithril_1H",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Sword_Mithril_1H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4,
+            "JOINTS_0": 5,
+            "WEIGHTS_0": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "85db4b001532ecefce061555.webp",
+      "uri": "../../../textures/webp_1024/85db4b001532ecefce061555.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "50cd7833ff673513566b5e52.webp",
+      "uri": "../../../textures/webp_1024/50cd7833ff673513566b5e52.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "436a98081fa856ea97f917bd.webp",
+      "uri": "../../../textures/webp_1024/436a98081fa856ea97f917bd.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 8,
+      "joints": [
+        0
+      ],
+      "name": "SK_Sword_Mithril_1H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1521,
+      "max": [
+        0.14710073173046112,
+        1.01559579372406,
+        0.029128996655344963
+      ],
+      "min": [
+        -0.14710073173046112,
+        -0.23597043752670288,
+        -0.029128996655344963
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1521,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1521,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1521,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1521,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5121,
+      "count": 1521,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 1521,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 7464,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 11906,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 11908
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 11972,
+      "uri": "model.bin"
+    }
+  ]
+}

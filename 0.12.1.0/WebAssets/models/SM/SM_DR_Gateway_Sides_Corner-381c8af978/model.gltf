@@ -1,0 +1,623 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_DR_Gateway_Sides_Corner_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DR_BrickKit",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MT_DR_BrickWall_04",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DR_Trim",
+      "normalTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DR_Metal_Flat",
+      "normalTexture": {
+        "index": 6
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 7
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_DR_MetalKit",
+      "normalTexture": {
+        "index": 8
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 9
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_DR_Gateway_Sides_Corner_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "COLOR_0": 9,
+            "COLOR_1": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 12,
+            "NORMAL": 13,
+            "TEXCOORD_0": 14,
+            "COLOR_0": 15,
+            "COLOR_1": 16
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 17,
+          "material": 2,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 18,
+            "NORMAL": 19,
+            "TEXCOORD_0": 20,
+            "COLOR_0": 21,
+            "COLOR_1": 22
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 3,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 23,
+          "material": 3,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 24,
+            "NORMAL": 25,
+            "TEXCOORD_0": 26,
+            "COLOR_0": 27,
+            "COLOR_1": 28
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 4,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 29,
+          "material": 4,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 5
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 6
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 7
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 8
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 9
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "c4a126f0288e01c04dcce771.webp",
+      "uri": "../../../textures/webp_1024/c4a126f0288e01c04dcce771.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "1581426606277641871ece8a.webp",
+      "uri": "../../../textures/webp_1024/1581426606277641871ece8a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "e58be676795eac9a27f73157.webp",
+      "uri": "../../../textures/webp_1024/e58be676795eac9a27f73157.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "69643f5535130c02d9eea9c3.webp",
+      "uri": "../../../textures/webp_1024/69643f5535130c02d9eea9c3.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "6ceef005a916a285836b5b10.webp",
+      "uri": "../../../textures/webp_1024/6ceef005a916a285836b5b10.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "4885b3baed93fa6107cae9c2.webp",
+      "uri": "../../../textures/webp_1024/4885b3baed93fa6107cae9c2.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "e30f62aa93419c0f218bf21e.webp",
+      "uri": "../../../textures/webp_1024/e30f62aa93419c0f218bf21e.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3c4c0b6caa53506329212bfc.webp",
+      "uri": "../../../textures/webp_1024/3c4c0b6caa53506329212bfc.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "85cb5750a277065b77e40c44.webp",
+      "uri": "../../../textures/webp_1024/85cb5750a277065b77e40c44.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "1c1908c6f9e24514a3e1c382.webp",
+      "uri": "../../../textures/webp_1024/1c1908c6f9e24514a3e1c382.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 925,
+      "max": [
+        9.236828804016113,
+        15.067091941833496,
+        0.8874514102935791
+      ],
+      "min": [
+        3.90364933013916,
+        6.8276214599609375,
+        -0.38582050800323486
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 925,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 925,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 925,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 925,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 2958,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 120,
+      "max": [
+        9.814693450927734,
+        17.259374618530273,
+        6.012610912322998
+      ],
+      "min": [
+        0.3345346450805664,
+        -0.03677385672926903,
+        -0.7776976227760315
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 120,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 120,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 120,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 120,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 324,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 1580,
+      "max": [
+        10.346518516540527,
+        17.251317977905273,
+        6.001499176025391
+      ],
+      "min": [
+        0.3345346450805664,
+        -1.5714257955551147,
+        -1.3245697021484375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1580,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1580,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 1580,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 1580,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 4392,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        10.25129508972168,
+        1.347821831703186,
+        0.5847262740135193
+      ],
+      "min": [
+        8.435179710388184,
+        0.1198323518037796,
+        -1.2335596084594727
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 12,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 12,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 12,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 12,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 24,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 9948,
+      "max": [
+        9.977435111999512,
+        17.354053497314453,
+        6.014225482940674
+      ],
+      "min": [
+        0.25174033641815186,
+        0.9565378427505493,
+        -0.9545203447341919
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 9948,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 9948,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 9948,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 9948,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 24000,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8766,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1157,
+      "byteOffset": 8768
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11636,
+      "byteOffset": 9928
+    },
+    {
+      "buffer": 0,
+      "byteLength": 360,
+      "byteOffset": 21564
+    },
+    {
+      "buffer": 0,
+      "byteLength": 65661,
+      "byteOffset": 21924
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 87588,
+      "uri": "model.bin"
+    }
+  ]
+}

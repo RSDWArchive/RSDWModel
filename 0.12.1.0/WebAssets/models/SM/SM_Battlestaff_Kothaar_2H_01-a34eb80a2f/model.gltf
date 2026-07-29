@@ -1,0 +1,197 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Battlestaff_Kothaar_2H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.0010000000474974513,
+        0.0010000000474974513,
+        0.0010000000474974513
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_T_BattleStaff_KotHaar_1H_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Battlestaff_Kothaar_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "90c7a9ba95fb5f2eb7c33b8b.webp",
+      "uri": "../../../textures/webp_1024/90c7a9ba95fb5f2eb7c33b8b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "d6ea1ef6e7aeb5d6f870a782.webp",
+      "uri": "../../../textures/webp_1024/d6ea1ef6e7aeb5d6f870a782.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ce22ab49846782055449ce73.webp",
+      "uri": "../../../textures/webp_1024/ce22ab49846782055449ce73.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ecbba5851b83da82509523b5.webp",
+      "uri": "../../../textures/webp_1024/ecbba5851b83da82509523b5.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 8166,
+      "max": [
+        0.23642988502979279,
+        0.8787819743156433,
+        0.21171659231185913
+      ],
+      "min": [
+        -0.20027466118335724,
+        -1.3635691404342651,
+        -0.21173997223377228
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 8166,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 8166,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 8166,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 11376,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 76282,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 76284,
+      "uri": "model.bin"
+    }
+  ]
+}

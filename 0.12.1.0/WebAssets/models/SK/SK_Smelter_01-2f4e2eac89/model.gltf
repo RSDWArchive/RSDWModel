@@ -1,0 +1,777 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        24
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "joint_mid_end_01",
+      "rotation": [
+        -1.550963648536927e-25,
+        -7.327471962526033e-15,
+        4.2252642115198545e-18,
+        1
+      ],
+      "translation": [
+        0.39541637897491455,
+        1.0751215473447928e-09,
+        -3.026436701247803e-08
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "joint_mid_mid_01",
+      "rotation": [
+        2.774632719138026e-07,
+        -2.9802606604789617e-08,
+        -9.778890444067656e-07,
+        1
+      ],
+      "translation": [
+        0.05369886755943298,
+        -1.4079898846830474e-07,
+        -7.68843335663405e-08
+      ]
+    },
+    {
+      "name": "joint_lower_end_01",
+      "rotation": [
+        -5.557550588291445e-17,
+        -0.04811345413327217,
+        2.671556474018844e-16,
+        0.9988418817520142
+      ],
+      "scale": [
+        1,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.401405930519104,
+        2.5815873883061613e-09,
+        -5.960767168744496e-08
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "joint_lower_mid_01",
+      "rotation": [
+        3.261228584960918e-07,
+        0.04811342433094978,
+        -9.633138233766658e-07,
+        0.9988418817520142
+      ],
+      "translation": [
+        0.053592655807733536,
+        -1.1926044862775598e-07,
+        -0.03840004280209541
+      ]
+    },
+    {
+      "name": "joint_uppoer_end_01",
+      "rotation": [
+        -2.230384922095158e-16,
+        0.09429934620857239,
+        -6.113813668365595e-17,
+        0.995543897151947
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.39965376257896423,
+        7.0529950768616345e-09,
+        -3.239958346057392e-08
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "joint_upper_mid_01",
+      "rotation": [
+        1.627581838192782e-07,
+        -0.09429937601089478,
+        -9.976829460356385e-07,
+        0.9955438375473022
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1
+      ],
+      "translation": [
+        0.05172798037528992,
+        -1.221276022533857e-07,
+        0.026974601671099663
+      ]
+    },
+    {
+      "name": "joint_top_end_01",
+      "rotation": [
+        1.0722012376352381e-16,
+        0.16118502616882324,
+        3.3044888736626153e-16,
+        0.9869242310523987
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        1
+      ],
+      "translation": [
+        0.41167157888412476,
+        3.5150251598281557e-09,
+        7.958828263099349e-09
+      ]
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "joint_top_mid_01",
+      "rotation": [
+        7.512259259101484e-08,
+        -0.20294728875160217,
+        -1.0142408655156032e-06,
+        0.9791896939277649
+      ],
+      "translation": [
+        0.047509994357824326,
+        -1.5594059732393362e-07,
+        0.04904014989733696
+      ]
+    },
+    {
+      "children": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "name": "joint_bellows_right",
+      "rotation": [
+        0.015348018147051334,
+        0.13712435960769653,
+        -0.11016920208930969,
+        0.9842886328697205
+      ],
+      "scale": [
+        0.9999999403953552,
+        1.0000001192092896,
+        0.9999999403953552
+      ],
+      "translation": [
+        1.6405880451202393,
+        -0.0055637601763010025,
+        0.017544087022542953
+      ]
+    },
+    {
+      "name": "joint_mid_end_02",
+      "rotation": [
+        -0.47022730112075806,
+        0.5280968546867371,
+        0.47022730112075806,
+        0.5280967950820923
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.0000001192092896,
+        1
+      ],
+      "translation": [
+        0.3387575149536133,
+        -2.021058698176148e-08,
+        7.633100373993784e-09
+      ]
+    },
+    {
+      "children": [
+        9
+      ],
+      "name": "joint_mid_mid_02",
+      "rotation": [
+        0.47022750973701477,
+        -0.5280967950820923,
+        -0.4702271819114685,
+        0.5280969738960266
+      ],
+      "translation": [
+        1.427019560651388e-05,
+        -0.07026563584804535,
+        -0.006836161948740482
+      ]
+    },
+    {
+      "name": "joint_lower_end_02",
+      "rotation": [
+        -0.47412657737731934,
+        0.4765986204147339,
+        0.5221154093742371,
+        0.5248364210128784
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.33649325370788574,
+        6.868503987789154e-08,
+        -1.8163746062782593e-08
+      ]
+    },
+    {
+      "children": [
+        11
+      ],
+      "name": "joint_lower_mid_02",
+      "rotation": [
+        0.47412624955177307,
+        -0.47659847140312195,
+        -0.5221153497695923,
+        0.5248370170593262
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.0000001192092896,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.0007265445892699063,
+        -0.06685858219861984,
+        -0.04288001358509064
+      ]
+    },
+    {
+      "name": "joint_upper_end_02",
+      "rotation": [
+        -0.4151124954223633,
+        0.5710754990577698,
+        0.4164046347141266,
+        0.5728539824485779
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.3537520170211792,
+        -1.0756775736808777e-07,
+        -1.5039051959320204e-07
+      ]
+    },
+    {
+      "children": [
+        13
+      ],
+      "name": "joint_upper_mid_02",
+      "rotation": [
+        0.41511270403862,
+        -0.5710756182670593,
+        -0.4164041578769684,
+        0.5728540420532227
+      ],
+      "scale": [
+        1,
+        0.9999998807907104,
+        0.9999999403953552
+      ],
+      "translation": [
+        -5.05842654092703e-05,
+        -0.06479597836732864,
+        0.029963446781039238
+      ]
+    },
+    {
+      "name": "joint_top_end_02",
+      "rotation": [
+        -0.4151116907596588,
+        0.5710760354995728,
+        0.4164048731327057,
+        0.5728537440299988
+      ],
+      "scale": [
+        1,
+        1.0000001192092896,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.35375192761421204,
+        -4.0512531995773315e-08,
+        1.0881461776079959e-07
+      ]
+    },
+    {
+      "children": [
+        15
+      ],
+      "name": "joint_top_mid_02",
+      "rotation": [
+        0.35181671380996704,
+        -0.6121037006378174,
+        -0.3529108166694641,
+        0.6140097975730896
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.0000001192092896,
+        1.0000001192092896
+      ],
+      "translation": [
+        2.4035041860770434e-05,
+        -0.05701381340622902,
+        0.05395204946398735
+      ]
+    },
+    {
+      "children": [
+        10,
+        12,
+        14,
+        16
+      ],
+      "name": "joint_bellows_front",
+      "rotation": [
+        0.015348203480243683,
+        0.13712431490421295,
+        -0.11017053574323654,
+        0.9842885136604309
+      ],
+      "scale": [
+        1,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        1.1373777389526367,
+        -0.5360615849494934,
+        0.2069406807422638
+      ]
+    },
+    {
+      "children": [
+        8,
+        17
+      ],
+      "name": "joint_root",
+      "rotation": [
+        -0.015348149463534355,
+        -0.13712430000305176,
+        0.11017022281885147,
+        0.9842885136604309
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        1
+      ]
+    },
+    {
+      "children": [
+        18
+      ],
+      "name": "Joints"
+    },
+    {
+      "name": "Rotation_Driver"
+    },
+    {
+      "children": [
+        20
+      ],
+      "name": "Controls",
+      "rotation": [
+        3.0616171314629196e-17,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "children": [
+        19,
+        21
+      ],
+      "name": "Rig",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Smelter_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        23,
+        22
+      ],
+      "name": "SK_Smelter_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Smelter_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 3
+      },
+      "name": "MI_Smelter_02",
+      "normalTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Smelter_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "JOINTS_0": 9,
+            "WEIGHTS_0": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 5
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "45bad5d2cdacf761512e047c.webp",
+      "uri": "../../../textures/webp_1024/45bad5d2cdacf761512e047c.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "ebf96580c42b0dea60e50ffd.webp",
+      "uri": "../../../textures/webp_1024/ebf96580c42b0dea60e50ffd.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "66d5ac193f203cff784b2885.webp",
+      "uri": "../../../textures/webp_1024/66d5ac193f203cff784b2885.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "f3127c818c261fa7d5dbcb31.webp",
+      "uri": "../../../textures/webp_1024/f3127c818c261fa7d5dbcb31.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "c359661c9c25b495f321388b.webp",
+      "uri": "../../../textures/webp_1024/c359661c9c25b495f321388b.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "2480eefab7287f9f78dbd2bb.webp",
+      "uri": "../../../textures/webp_1024/2480eefab7287f9f78dbd2bb.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 12,
+      "joints": [
+        22,
+        19,
+        18,
+        8,
+        1,
+        0,
+        3,
+        2,
+        5,
+        4,
+        7,
+        6,
+        17,
+        10,
+        9,
+        12,
+        11,
+        14,
+        13,
+        16,
+        15,
+        21,
+        20
+      ],
+      "name": "SK_Smelter_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 728,
+      "max": [
+        1.5265145301818848,
+        2.270602226257324,
+        0.6547380685806274
+      ],
+      "min": [
+        -2.3088436126708984,
+        -1.3645891385749565e-06,
+        -1.395634412765503
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 728,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 728,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 728,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 728,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 2769,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 2146,
+      "max": [
+        2.3061349391937256,
+        0.9657008647918701,
+        1.9370269775390625
+      ],
+      "min": [
+        -0.8210710883140564,
+        -0.00976808276027441,
+        -1.8472169637680054
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2146,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2146,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 2146,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 2146,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 9504,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 23,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6931,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 21089,
+      "byteOffset": 6932
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1472,
+      "byteOffset": 28024
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 29496,
+      "uri": "model.bin"
+    }
+  ]
+}

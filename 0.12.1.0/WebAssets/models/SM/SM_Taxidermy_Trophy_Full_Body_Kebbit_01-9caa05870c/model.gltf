@@ -1,0 +1,280 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Taxidermy_Trophy_Full_Body_Kebbit_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_T2_Pallisade_Wall_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Kebbit_01_Body",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Taxidermy_Trophy_Full_Body_Kebbit_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 5,
+            "NORMAL": 6,
+            "TEXCOORD_0": 7,
+            "TEXCOORD_1": 8
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "d752e0c0666d9afd7394033c.webp",
+      "uri": "../../../textures/webp_1024/d752e0c0666d9afd7394033c.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "9f09631e4e7e7744e9a249d4.webp",
+      "uri": "../../../textures/webp_1024/9f09631e4e7e7744e9a249d4.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "a52c8befcda1e605a5fb0710.webp",
+      "uri": "../../../textures/webp_1024/a52c8befcda1e605a5fb0710.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "fb4bd80ec1eac01b68970a12.webp",
+      "uri": "../../../textures/webp_1024/fb4bd80ec1eac01b68970a12.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "d8ee2800d300065a3e55c326.webp",
+      "uri": "../../../textures/webp_1024/d8ee2800d300065a3e55c326.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 149,
+      "max": [
+        0.43016207218170166,
+        0.19961723685264587,
+        0.5970142483711243
+      ],
+      "min": [
+        -0.430162250995636,
+        -0.012000099755823612,
+        -0.6770142316818237
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 149,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 149,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 149,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 648,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 4806,
+      "max": [
+        0.2028157114982605,
+        0.9508691430091858,
+        0.4593845307826996
+      ],
+      "min": [
+        -0.20143933594226837,
+        0.16210563480854034,
+        -0.8012158274650574
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4806,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4806,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 4806,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 23604,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2000,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 44151,
+      "byteOffset": 2000
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 46152,
+      "uri": "model.bin"
+    }
+  ]
+}

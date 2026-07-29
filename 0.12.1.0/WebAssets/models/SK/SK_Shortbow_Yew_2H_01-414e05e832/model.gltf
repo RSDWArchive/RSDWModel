@@ -1,0 +1,424 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        12
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "string_aimer_C1_0_jnt",
+      "rotation": [
+        -0.9303188920021057,
+        2.11871906936852e-24,
+        0.36675164103507996,
+        3.55654586460046e-24
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.1249728873372078,
+        3.1403972824083143e-24,
+        0
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "bow_arm_C1_2_jnt",
+      "rotation": [
+        -7.869080430722823e-26,
+        -0.12768137454986572,
+        -3.2185793638763123e-25,
+        0.9918152689933777
+      ],
+      "translation": [
+        0.17581680417060852,
+        7.855622833458301e-25,
+        1.862645149230957e-08
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "bow_arm_C1_1_jnt",
+      "rotation": [
+        -2.255208769265991e-24,
+        -0.28597205877304077,
+        2.7278859406349165e-24,
+        0.9582379460334778
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.15260718762874603,
+        -4.886531824214614e-25,
+        0
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "bow_arm_C1_0_jnt",
+      "rotation": [
+        9.003655165103303e-17,
+        0.7365359663963318,
+        -8.268512623203336e-17,
+        0.6763983964920044
+      ],
+      "translation": [
+        8.914022535671547e-18,
+        0,
+        -0.13616041839122772
+      ]
+    },
+    {
+      "name": "string_aimer_C0_0_jnt",
+      "rotation": [
+        0.9154602289199829,
+        0,
+        0.4024084210395813,
+        0
+      ],
+      "translation": [
+        0.1285640299320221,
+        -3.308722450212111e-24,
+        0.00966065376996994
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "bow_arm_C0_2_jnt",
+      "rotation": [
+        8.303813170683488e-25,
+        -0.08771495521068573,
+        3.3215248738429425e-24,
+        0.9961456060409546
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.1464056670665741,
+        8.271806125530277e-25,
+        1.862645149230957e-08
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "bow_arm_C0_1_jnt",
+      "rotation": [
+        2.1841761834858176e-24,
+        -0.3218580484390259,
+        -1.179455127249428e-23,
+        0.9467878937721252
+      ],
+      "translation": [
+        0.19205178320407867,
+        1.8611563782443123e-24,
+        0
+      ]
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "bow_arm_C0_0_jnt",
+      "rotation": [
+        -0.675122857093811,
+        8.267870731047994e-17,
+        -0.737705409526825,
+        4.485154268042279e-24
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0,
+        0,
+        0.1298171877861023
+      ]
+    },
+    {
+      "name": "bow_string_C0_jnt",
+      "translation": [
+        0.1535489410161972,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arrow_C0_0_jnt",
+      "rotation": [
+        3.0616171314629196e-17,
+        0,
+        0,
+        1
+      ],
+      "translation": [
+        0.15357345342636108,
+        0,
+        0
+      ]
+    },
+    {
+      "children": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "name": "prop_plug_C0_0_jnt",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Shortbow_Yew_2H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        11,
+        10
+      ],
+      "name": "SK_Shortbow_Yew_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Shortbow_Yew_2H_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Shortbow_Yew_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4,
+            "JOINTS_0": 5,
+            "WEIGHTS_0": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "b8058523401180d37494393f.webp",
+      "uri": "../../../textures/webp_1024/b8058523401180d37494393f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "65f1e3810d8ac7d56c0aa257.webp",
+      "uri": "../../../textures/webp_1024/65f1e3810d8ac7d56c0aa257.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7780d956fef8086f324b5a9f.webp",
+      "uri": "../../../textures/webp_1024/7780d956fef8086f324b5a9f.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 8,
+      "joints": [
+        10,
+        3,
+        2,
+        1,
+        0,
+        7,
+        6,
+        5,
+        4,
+        8,
+        9
+      ],
+      "name": "SK_Shortbow_Yew_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 3986,
+      "max": [
+        0.1800503134727478,
+        0.7076084613800049,
+        0.038389772176742554
+      ],
+      "min": [
+        -0.041808728128671646,
+        -0.7076084613800049,
+        -0.038385383784770966
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3986,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 3986,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 3986,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 3986,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5121,
+      "count": 3986,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 3986,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 18756,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 11,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 36996,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 704,
+      "byteOffset": 36996
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 37700,
+      "uri": "model.bin"
+    }
+  ]
+}

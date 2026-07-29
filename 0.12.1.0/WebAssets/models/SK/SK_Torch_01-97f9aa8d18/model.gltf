@@ -1,0 +1,395 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "KHR_materials_specular"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Torch_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Torch_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularFactor": 0.3840000033378601
+        }
+      },
+      "name": "MI_Leather",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.08854199945926666,
+          0.04814299941062927,
+          0.022135000675916672,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.6480000019073486,
+            1.6480000019073486,
+            1.6480000019073486
+          ]
+        }
+      },
+      "name": "MI_Wood",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.03999999910593033,
+          0.017180999740958214,
+          0.007060000207275152,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "name": "MI_Rag",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.40625,
+          0.3705720007419586,
+          0.286408007144928,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.5
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Torch_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4,
+            "JOINTS_0": 5,
+            "WEIGHTS_0": 6
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 8,
+            "NORMAL": 9,
+            "TEXCOORD_0": 10,
+            "TEXCOORD_1": 11,
+            "TEXCOORD_2": 12,
+            "JOINTS_0": 13,
+            "WEIGHTS_0": 14
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 15,
+          "material": 1,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 16,
+            "NORMAL": 17,
+            "TEXCOORD_0": 18,
+            "TEXCOORD_1": 19,
+            "TEXCOORD_2": 20,
+            "JOINTS_0": 21,
+            "WEIGHTS_0": 22
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 2,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4,
+                "JOINTS_0": 5,
+                "WEIGHTS_0": 6
+              }
+            }
+          },
+          "indices": 23,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 24,
+      "joints": [
+        0
+      ],
+      "name": "SK_Torch_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 56,
+      "max": [
+        0.0231429822742939,
+        0.11790946125984192,
+        0.022082779556512833
+      ],
+      "min": [
+        -0.02314298413693905,
+        -0.09373343735933304,
+        -0.023499999195337296
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 56,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 108,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "max": [
+        0.024430181831121445,
+        0.4505453407764435,
+        0.015061531215906143
+      ],
+      "min": [
+        -0.019546063616871834,
+        -0.18256217241287231,
+        -0.022803420200943947
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 352,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 352,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 378,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "max": [
+        0.05464229732751846,
+        0.7240785360336304,
+        0.057624589651823044
+      ],
+      "min": [
+        -0.06536629796028137,
+        0.40311142802238464,
+        -0.06453186273574829
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 2251,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 2251,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 2253,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 726,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3953,
+      "byteOffset": 728
+    },
+    {
+      "buffer": 0,
+      "byteLength": 20888,
+      "byteOffset": 4684
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 25572
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 25636,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_PileOfBooks_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "MI_Level_Design_1X1_Grid_Yellow_Inst",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.16666699945926666,
+          0.1534689962863922,
+          0,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_PileOfBooks_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 48693,
+      "max": [
+        1.0042409896850586,
+        1.8369455337524414,
+        0.9096963405609131
+      ],
+      "min": [
+        -0.8069810271263123,
+        -0.007718115579336882,
+        -0.8864366412162781
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 48693,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 48693,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 48693,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 106416,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 345116,
+      "byteOffset": 0
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 345116,
+      "uri": "model.bin"
+    }
+  ]
+}

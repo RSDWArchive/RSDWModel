@@ -1,0 +1,197 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_HuntersShortbow_OakWood_2H_02_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Shortbow_Skeleton_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_HuntersShortbow_OakWood_2H_02_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "11bf9227eede84d304093c62.webp",
+      "uri": "../../../textures/webp_1024/11bf9227eede84d304093c62.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "a6d95fd5d6121ace0d1ce7a6.webp",
+      "uri": "../../../textures/webp_1024/a6d95fd5d6121ace0d1ce7a6.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "f616e9650f26f34fc4809fe7.webp",
+      "uri": "../../../textures/webp_1024/f616e9650f26f34fc4809fe7.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "dca9abb0afaf61dcbfc4c328.webp",
+      "uri": "../../../textures/webp_1024/dca9abb0afaf61dcbfc4c328.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1322,
+      "max": [
+        0.29848867654800415,
+        0.6888706088066101,
+        0.07594680786132812
+      ],
+      "min": [
+        -0.07600521296262741,
+        -0.782772958278656,
+        -0.03781077265739441
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1322,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1322,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1322,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 6558,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 13170,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 13172,
+      "uri": "model.bin"
+    }
+  ]
+}

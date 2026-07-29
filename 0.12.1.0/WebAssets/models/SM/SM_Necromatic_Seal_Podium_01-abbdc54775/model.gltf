@@ -1,0 +1,293 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp",
+    "KHR_materials_emissive_strength"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Necromatic_Seal_Podium_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 1.2999999523162842
+        }
+      },
+      "name": "MI_Necromatic_Seal_Podium_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_BurrialMound_01",
+      "normalTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 4
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Necromatic_Seal_Podium_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 5,
+            "NORMAL": 6,
+            "TEXCOORD_0": 7,
+            "TEXCOORD_1": 8
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 4
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "e55b5e1b36bbd886c6084666.webp",
+      "uri": "../../../textures/webp_1024/e55b5e1b36bbd886c6084666.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "672e2d0171fd01913c54682c.webp",
+      "uri": "../../../textures/webp_1024/672e2d0171fd01913c54682c.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "fd256b9cd7e682547eb0f108.webp",
+      "uri": "../../../textures/webp_1024/fd256b9cd7e682547eb0f108.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "96ca9e6ebf648a563095afb7.webp",
+      "uri": "../../../textures/webp_1024/96ca9e6ebf648a563095afb7.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "bf9e40318611bf826a853d1f.webp",
+      "uri": "../../../textures/webp_1024/bf9e40318611bf826a853d1f.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 1420,
+      "max": [
+        0.4337693452835083,
+        1.0680162906646729,
+        0.41921550035476685
+      ],
+      "min": [
+        -0.41574713587760925,
+        -0.03739520162343979,
+        -0.3503344655036926
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1420,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 1420,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 1420,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 5631,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 391,
+      "max": [
+        0.09290502220392227,
+        0.9282714128494263,
+        0.04367295652627945
+      ],
+      "min": [
+        -0.09239716827869415,
+        0.6995931267738342,
+        -0.18458108603954315
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 391,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 391,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 391,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 1584,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 16780,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4420,
+      "byteOffset": 16780
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 21200,
+      "uri": "model.bin"
+    }
+  ]
+}

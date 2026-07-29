@@ -1,0 +1,242 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Willow_02_Canopy_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_FH_Willow_Leaves",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.800000011920929
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Willow_02_Canopy_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "COLOR_0": 9,
+            "COLOR_1": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "c62d1e6753715d12fa46aeec.webp",
+      "uri": "../../../textures/webp_1024/c62d1e6753715d12fa46aeec.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "0fb3e07ad93300e9b50d41af.webp",
+      "uri": "../../../textures/webp_1024/0fb3e07ad93300e9b50d41af.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 66338,
+      "max": [
+        8.744634628295898,
+        20.544065475463867,
+        8.33054256439209
+      ],
+      "min": [
+        -8.87687873840332,
+        3.294217109680176,
+        -8.216495513916016
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 66338,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 66338,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 66338,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 66338,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5125,
+      "count": 245730,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 14616,
+      "max": [
+        8.691795349121094,
+        19.191627502441406,
+        8.574248313903809
+      ],
+      "min": [
+        -8.828200340270996,
+        3.258175849914551,
+        -8.442898750305176
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 14616,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 14616,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 14616,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 14616,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 37716,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 756299,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 168250,
+      "byteOffset": 756300
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 924552,
+      "uri": "model.bin"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Exploding_Plant_Trap_Spike_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "WorldGridMaterial",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Exploding_Plant_Trap_Spike_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TEXCOORD_2": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3,
+                "TEXCOORD_2": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "cd835a9e7bea6f2ea1921c24.webp",
+      "uri": "../../../textures/webp_1024/cd835a9e7bea6f2ea1921c24.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "da5f5dac86ddd49c61dcdf67.webp",
+      "uri": "../../../textures/webp_1024/da5f5dac86ddd49c61dcdf67.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 222,
+      "max": [
+        0.06614542007446289,
+        0.07592938095331192,
+        0.02501620724797249
+      ],
+      "min": [
+        -0.0895090326666832,
+        -0.07960057258605957,
+        -0.1751480996608734
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 222,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 222,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 222,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 222,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 1320,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3078,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 3080,
+      "uri": "model.bin"
+    }
+  ]
+}

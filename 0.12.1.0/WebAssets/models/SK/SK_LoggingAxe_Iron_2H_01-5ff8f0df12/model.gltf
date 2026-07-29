@@ -1,0 +1,220 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Prop_Plug",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_LoggingAxe_Iron_2H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_LoggingAxe_Iron_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_LoggingAxe_Iron",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_LoggingAxe_Iron_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "1a3f6f7c2938f4c2aa3f37fd.webp",
+      "uri": "../../../textures/webp_1024/1a3f6f7c2938f4c2aa3f37fd.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "0dda9ceffab37e7a0f83c574.webp",
+      "uri": "../../../textures/webp_1024/0dda9ceffab37e7a0f83c574.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "9da34bbaf30b748ae9c6bf01.webp",
+      "uri": "../../../textures/webp_1024/9da34bbaf30b748ae9c6bf01.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0
+      ],
+      "name": "SK_LoggingAxe_Iron_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 680,
+      "max": [
+        0.1752552092075348,
+        0.9145467877388,
+        0.058921732008457184
+      ],
+      "min": [
+        -0.24380682408809662,
+        -0.24618582427501678,
+        -0.058726128190755844
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 680,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 680,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 680,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 680,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 3120,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6142,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 6144
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6208,
+      "uri": "model.bin"
+    }
+  ]
+}

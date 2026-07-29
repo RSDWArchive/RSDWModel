@@ -1,0 +1,402 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        12
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "string_aimer_C1_0_jnt",
+      "rotation": [
+        0.9797507524490356,
+        6.176267627550343e-28,
+        -0.20022109150886536,
+        2.628486385089158e-26
+      ],
+      "translation": [
+        0.17705635726451874,
+        -1.1994187870370253e-26,
+        -2.9802322387695312e-08
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "bow_arm_C1_2_jnt",
+      "rotation": [
+        7.87437874103703e-27,
+        0.02243957482278347,
+        1.1257228466034544e-26,
+        0.999748170375824
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.26057669520378113,
+        2.087955657269414e-26,
+        -7.450580596923828e-09
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "bow_arm_C1_1_jnt",
+      "rotation": [
+        1.5019622745916407e-27,
+        -0.2769087553024292,
+        -1.044207399484078e-26,
+        0.9608961939811707
+      ],
+      "scale": [
+        1.0000001192092896,
+        1,
+        1.0000001192092896
+      ],
+      "translation": [
+        0.33176326751708984,
+        2.783772267612354e-27,
+        8.381903171539307e-09
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "bow_arm_C1_0_jnt",
+      "rotation": [
+        2.1824121316567115e-19,
+        0.7409342527389526,
+        -1.9781228187866075e-19,
+        0.6715775728225708
+      ],
+      "translation": [
+        9.156601522108848e-18,
+        0,
+        -0.10396658629179001
+      ]
+    },
+    {
+      "name": "string_aimer_C0_0_jnt",
+      "rotation": [
+        0.8359348773956299,
+        -2.288282551578287e-24,
+        0.548828661441803,
+        1.546136904480719e-24
+      ],
+      "translation": [
+        0.19419139623641968,
+        -1.1855857958736378e-16,
+        -1.4901161193847656e-08
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "bow_arm_C0_2_jnt",
+      "rotation": [
+        1.6545783590702174e-24,
+        0.0161899421364069,
+        4.1364457990679304e-24,
+        0.9998689293861389
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.296170175075531,
+        -8.921264005626081e-17,
+        -2.2351741790771484e-08
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "bow_arm_C0_1_jnt",
+      "rotation": [
+        -8.69577941904131e-25,
+        -0.308439701795578,
+        -2.1739448547603274e-24,
+        0.9512439370155334
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.2816070020198822,
+        -3.725290298461914e-09,
+        -3.725290298461914e-09
+      ]
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "bow_arm_C0_0_jnt",
+      "rotation": [
+        -0.6418390870094299,
+        7.860263918450444e-17,
+        -0.766839325428009,
+        0
+      ],
+      "translation": [
+        1.014847420821149e-18,
+        0,
+        0.1298171877861023
+      ]
+    },
+    {
+      "name": "bow_string_C0_jnt",
+      "translation": [
+        0.15202489495277405,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "arrow_C0_0_jnt",
+      "translation": [
+        0.15204940736293793,
+        0,
+        0
+      ]
+    },
+    {
+      "children": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "name": "prop_plug_C0_0_jnt",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Longbow_Willow_2H_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        11,
+        10
+      ],
+      "name": "SK_Longbow_Willow_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Longbow_Willow",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Longbow_Willow_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "7a0c2ec4cfd1331d343efa39.webp",
+      "uri": "../../../textures/webp_1024/7a0c2ec4cfd1331d343efa39.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "a60c9f689a59ce930d859779.webp",
+      "uri": "../../../textures/webp_1024/a60c9f689a59ce930d859779.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "bedf53d8a4f6572a8b5e83b9.webp",
+      "uri": "../../../textures/webp_1024/bedf53d8a4f6572a8b5e83b9.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        10,
+        3,
+        2,
+        1,
+        0,
+        7,
+        6,
+        5,
+        4,
+        8,
+        9
+      ],
+      "name": "SK_Longbow_Willow_2H_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 2713,
+      "max": [
+        0.20633232593536377,
+        1.2131645679473877,
+        0.06754780560731888
+      ],
+      "min": [
+        -0.10744602978229523,
+        -1.193067193031311,
+        -0.03837812319397926
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2713,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 2713,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 2713,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 2713,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 12096,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 11,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 23891,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 704,
+      "byteOffset": 23892
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 24596,
+      "uri": "model.bin"
+    }
+  ]
+}

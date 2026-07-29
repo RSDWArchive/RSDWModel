@@ -1,0 +1,162 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Mining_Node_Medium_Tin_03_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Mining_Node_Medium_Tin_03",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Mining_Node_Medium_Tin_03_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "9cd0bb662b8c754e62f6c39d.webp",
+      "uri": "../../../textures/webp_1024/9cd0bb662b8c754e62f6c39d.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "95d185bb22bc699e0ca89909.webp",
+      "uri": "../../../textures/webp_1024/95d185bb22bc699e0ca89909.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 973,
+      "max": [
+        1.8634892702102661,
+        0.7488750219345093,
+        1.1654038429260254
+      ],
+      "min": [
+        -1.6886905431747437,
+        -0.7414649724960327,
+        -0.9918951392173767
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 973,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 973,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 973,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 4722,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 11381,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 11384,
+      "uri": "model.bin"
+    }
+  ]
+}

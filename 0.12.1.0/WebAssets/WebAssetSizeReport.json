@@ -1,0 +1,83 @@
+{
+  "schema": "RSDWModel.WebAssetSizeReport.v1",
+  "updated_utc": "2026-07-29T12:20:50.904444+00:00",
+  "source_root": "0.12.1.0",
+  "output_root": "0.12.1.0/WebAssets",
+  "texture_profile": {
+    "format": "webp",
+    "max_dimension": 1024,
+    "quality": 75,
+    "upscale": false
+  },
+  "source_texture_bytes": 10427742747,
+  "optimized_texture_bytes": 600932002,
+  "model_bytes": 273111919,
+  "animation_bytes": 1042065942,
+  "total_web_asset_bytes": 1994307370,
+  "file_counts": {
+    ".bin": {
+      "count": 7736,
+      "bytes": 936187948
+    },
+    ".webp": {
+      "count": 4249,
+      "bytes": 602525766
+    },
+    ".gltf": {
+      "count": 7844,
+      "bytes": 378989913
+    },
+    ".json": {
+      "count": 3,
+      "bytes": 76603743
+    }
+  },
+  "output_files_over_50_mib": [],
+  "output_files_over_100_mib": [],
+  "texture_failures": [
+    {
+      "source": "Engine/Content/MapTemplates/Sky/DaylightAmbientCubemap.hdr",
+      "source_bytes": 2242852,
+      "optimized": "textures/webp_1024/258e4330c80d9f5cd7f50b4b.webp",
+      "optimized_bytes": 0,
+      "hash": "258e4330c80d9f5cd7f50b4b",
+      "status": "failed",
+      "source_width": null,
+      "source_height": null,
+      "optimized_width": null,
+      "optimized_height": null,
+      "has_alpha": null,
+      "error": "UnidentifiedImageError: cannot identify image file 'E:\\\\Github\\\\RSDWModel\\\\0.12.1.0\\\\Engine\\\\Content\\\\MapTemplates\\\\Sky\\\\DaylightAmbientCubemap.hdr'"
+    },
+    {
+      "source": "Engine/Content/MapTemplates/daylight.hdr",
+      "source_bytes": 189599,
+      "optimized": "textures/webp_1024/6f3882407dc8d5276db976d5.webp",
+      "optimized_bytes": 0,
+      "hash": "6f3882407dc8d5276db976d5",
+      "status": "failed",
+      "source_width": null,
+      "source_height": null,
+      "optimized_width": null,
+      "optimized_height": null,
+      "has_alpha": null,
+      "error": "UnidentifiedImageError: cannot identify image file 'E:\\\\Github\\\\RSDWModel\\\\0.12.1.0\\\\Engine\\\\Content\\\\MapTemplates\\\\daylight.hdr'"
+    },
+    {
+      "source": "RSDragonwilds/Content/Art/VFX/Component/Lava/CA_VFX_Lava.hdr",
+      "source_bytes": 336,
+      "optimized": "textures/webp_1024/8438f62d7ea6ed43d6eae211.webp",
+      "optimized_bytes": 0,
+      "hash": "8438f62d7ea6ed43d6eae211",
+      "status": "failed",
+      "source_width": null,
+      "source_height": null,
+      "optimized_width": null,
+      "optimized_height": null,
+      "has_alpha": null,
+      "error": "UnidentifiedImageError: cannot identify image file 'E:\\\\Github\\\\RSDWModel\\\\0.12.1.0\\\\RSDragonwilds\\\\Content\\\\Art\\\\VFX\\\\Component\\\\Lava\\\\CA_VFX_Lava.hdr'"
+    }
+  ],
+  "equipment_variants_included": true,
+  "web_animations_included": true
+}

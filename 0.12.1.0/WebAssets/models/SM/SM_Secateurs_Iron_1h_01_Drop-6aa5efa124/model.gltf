@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Secateurs_Iron_1h_01_Drop_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Secateurs_Iron_1H_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Secateurs_Iron_1h_01_Drop_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "3bb3e7eec5bbe1b361a550bf.webp",
+      "uri": "../../../textures/webp_1024/3bb3e7eec5bbe1b361a550bf.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "c51eab328a3a61c63f916db5.webp",
+      "uri": "../../../textures/webp_1024/c51eab328a3a61c63f916db5.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "82d5815150babd11170b0ba7.webp",
+      "uri": "../../../textures/webp_1024/82d5815150babd11170b0ba7.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 761,
+      "max": [
+        0.07367970794439316,
+        0.34448397159576416,
+        0.019023625180125237
+      ],
+      "min": [
+        -0.07367970794439316,
+        -0.10244882851839066,
+        -0.01523546688258648
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 761,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 761,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 761,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3432,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8315,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 8316,
+      "uri": "model.bin"
+    }
+  ]
+}

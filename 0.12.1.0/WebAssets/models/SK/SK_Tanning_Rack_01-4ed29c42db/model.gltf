@@ -1,0 +1,358 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        10
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "joint_beam_02_end_r",
+      "rotation": [
+        0.5860068798065186,
+        0.5860068798065186,
+        0.39572209119796753,
+        0.39572209119796753
+      ],
+      "scale": [
+        0.9999999403953552,
+        0.9999999403953552,
+        0.9999999403953552
+      ],
+      "translation": [
+        0.44155555963516235,
+        0,
+        8.381903171539307e-08
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "name": "joint_joint_beam_02_r",
+      "rotation": [
+        0,
+        -0.038807857781648636,
+        0,
+        0.9992467164993286
+      ],
+      "scale": [
+        0.9999998807907104,
+        1,
+        0.9999998807907104
+      ],
+      "translation": [
+        0.7594974637031555,
+        5.960464477539063e-08,
+        2.9802322387695312e-08
+      ]
+    },
+    {
+      "children": [
+        1
+      ],
+      "name": "joint_beam_01_r",
+      "rotation": [
+        -0.5702081918716431,
+        -0.5702082514762878,
+        -0.4181656837463379,
+        0.4181656837463379
+      ],
+      "scale": [
+        1,
+        0.9999999403953552,
+        1
+      ],
+      "translation": [
+        0.6610309481620789,
+        0.0953182503581047,
+        0
+      ]
+    },
+    {
+      "name": "joint_leather",
+      "translation": [
+        0,
+        0.3304712176322937,
+        0.7395051717758179
+      ]
+    },
+    {
+      "name": "joint_beam_02_end_l",
+      "rotation": [
+        0.5860068202018738,
+        0.5860069394111633,
+        0.39572203159332275,
+        0.39572203159332275
+      ],
+      "scale": [
+        1.0000001192092896,
+        1.000000238418579,
+        1.0000001192092896
+      ],
+      "translation": [
+        -0.4415530562400818,
+        0,
+        -6.575137376785278e-07
+      ]
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "joint_joint_beam_02_l",
+      "rotation": [
+        0,
+        -0.03880787268280983,
+        0,
+        0.9992467164993286
+      ],
+      "scale": [
+        0.9999999403953552,
+        1,
+        0.9999999403953552
+      ],
+      "translation": [
+        -0.7631517648696899,
+        0,
+        0.04697504639625549
+      ]
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "joint_beam_01_l",
+      "rotation": [
+        0.4181656837463379,
+        0.4181656837463379,
+        -0.5702082514762878,
+        0.5702082514762878
+      ],
+      "translation": [
+        -0.6994273662567139,
+        0.09531829506158829,
+        -6.10587298263927e-18
+      ]
+    },
+    {
+      "name": "joint_dagger",
+      "rotation": [
+        3.0616171314629196e-17,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "children": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "name": "joint_root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Tanning_Rack_01_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        9,
+        8
+      ],
+      "name": "SK_Tanning_Rack_01_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Tanning_Rack_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Tanning_Rack_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "82fb40b7c7b4efc34c6b307a.webp",
+      "uri": "../../../textures/webp_1024/82fb40b7c7b4efc34c6b307a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "248c7ff894fbe69567df0de1.webp",
+      "uri": "../../../textures/webp_1024/248c7ff894fbe69567df0de1.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 6,
+      "joints": [
+        8,
+        2,
+        1,
+        0,
+        3,
+        6,
+        5,
+        4,
+        7
+      ],
+      "name": "SK_Tanning_Rack_01_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 5287,
+      "max": [
+        0.8687798380851746,
+        1.574884295463562,
+        -0.010863309726119041
+      ],
+      "min": [
+        -0.8781914710998535,
+        9.982280607800931e-05,
+        -0.556416928768158
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 5287,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 5287,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 5287,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 5287,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 22236,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 9,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 53364,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 576,
+      "byteOffset": 53364
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 53940,
+      "uri": "model.bin"
+    }
+  ]
+}
