@@ -1,0 +1,120 @@
+{
+  "Textures": {
+    "Noise": "RSDragonwilds/Content/Art/VFX/Component/Texture/Noise/T_VFX_WaterNoise.T_VFX_WaterNoise"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "BaseColour": {
+        "R": 0.02933,
+        "G": 0.031239,
+        "B": 0.041667,
+        "A": 1.0,
+        "Hex": "2F3139"
+      },
+      "FoamColour": {
+        "R": 0.304697,
+        "G": 0.404404,
+        "B": 0.526042,
+        "A": 1.0,
+        "Hex": "96ABC0"
+      },
+      "LargeNoiseDistortion": {
+        "R": 0.131,
+        "G": 0.0,
+        "B": 0.252,
+        "A": 0.0,
+        "Hex": "65008A"
+      },
+      "EdgeColour": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "ShineColour": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "DisturbanceTileX": 0.305905,
+      "DisturbanceTileY": -0.435626,
+      "LargeNoiseDistortionTileY": -0.063419,
+      "SideMaskSub": 0.0,
+      "SideMaskMult": 6.114837,
+      "OpacityMult": 0.555551,
+      "DistortionNoisePanX": 0.0,
+      "DistortionNoisePanY": -0.632,
+      "NoiseTileX": 0.274122,
+      "NoiseTileY": 0.632,
+      "FresnelSub": 0.2,
+      "FresnelMult": 2.854702,
+      "ShineLengthMult": 15.174213,
+      "FoamTileX": 0.888,
+      "FoamTileY": 1.0,
+      "FoamDistortionMult": 0.876345,
+      "ShineLengthSub": 0.96,
+      "ShineSub": 0.104,
+      "ShineMult": 0.8,
+      "WPOScale": 2.456941,
+      "DisturbanceMult": 0.64,
+      "DisturbanceRand": 0.012,
+      "LargeNoiseDistortionScaleX": 0.62806,
+      "FoamSub": 0.456,
+      "FoamMult": 0.515044,
+      "DistortionMovement": 0.0,
+      "LargeNoisePan": -0.613594,
+      "LargeNoiseDistortionScaleY": 0.954226,
+      "OverallFoam": 0.152,
+      "CameraDistanceFade": 4.879479,
+      "FoamMaskMult": 1.031337,
+      "EmissiveScale": 0.7,
+      "YGradMult": 20.0,
+      "YGradSub": 0.0,
+      "EdgeHighlightIntensity": 0.068,
+      "EdgeHighlightMaskSub": 0.807551,
+      "EdgeHighlightMaskMult": 6.408613,
+      "DarkenDistance": 10000.0,
+      "DarkenBlendRange": 800.0,
+      "EdgeDistortion": 0.384,
+      "ShineOffset": 0.296,
+      "DepthFade": 40.0,
+      "BottomEdgeSub": 0.304,
+      "BottomEdgeMult": 1.07973,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Use top fade": true
+    },
+    "Properties": {
+      "TwoSided": true,
+      "bUsedWithNiagaraMeshParticles": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUsesDistortion": true,
+      "bRootNodeOverridesDefaultDistortion": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "RefractionMethod": "ERefractionMode::RM_2DOffset",
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "6C5D05AB-44198B29-FD2D4F94-64D12060",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_TranslucentGreyTransmittance",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}

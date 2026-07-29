@@ -1,0 +1,97 @@
+{
+  "Textures": {
+    "PM_Normals": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal 0": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal 1": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/VFX/Library/Character/Beast_Thane/T_VFX_Garou_Thane_ShieldSheen.T_VFX_Garou_Thane_ShieldSheen",
+    "Diffuse 0": "RSDragonwilds/Content/Art/VFX/Library/Character/Beast_Thane/T_VFX_Garou_Thane_ShieldSheen.T_VFX_Garou_Thane_ShieldSheen",
+    "Diffuse 1": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "Distortion": "RSDragonwilds/Content/Art/VFX/Component/Texture/Noise/T_VectorNoise_01.T_VectorNoise_01"
+  },
+  "Parameters": {
+    "BlendMode": 3,
+    "ShadingModel": 0,
+    "Colors": {
+      "SecondaryColor": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "FresnelAxis": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      }
+    },
+    "Scalars": {
+      "DepthFade": 20.0,
+      "CameraFade": 20.0,
+      "FresnelFadePower": 0.02,
+      "T0 Pan U": -0.2,
+      "T0 Pan V": 0.0,
+      "T1 Pan U": 0.0,
+      "T1 Pan V": 0.0,
+      "T2 Pan U": 0.0,
+      "T2 Pan V": 0.0,
+      "IOR": 1.1,
+      "T0 Power Diffuse": 1.0,
+      "T0 Power Alpha": 1.0,
+      "T1 Power Diffuse": 1.0,
+      "T1 Power Alpha": 1.0,
+      "CellsX": 8.0,
+      "CellsY": 8.0,
+      "T0 Multiply Diffuse": 1.0,
+      "T0 Multiply Alpha": 1.0,
+      "T1 Multiply Diffuse": 1.0,
+      "T1 Multiply Alpha": 1.0,
+      "VertexColorPower": 1.0,
+      "FresnelPostFadePower": 1.0,
+      "LinearMaskPower": 3.0,
+      "WPOStrength": 0.0,
+      "InflateMesh": 0.0,
+      "NormalStrength": 1.0,
+      "SecondaryColorLerpPower": 1.0,
+      "SecondaryColorLerpMultiply": 1.0,
+      "OneSideMaskIntensity": 0.0,
+      "PowerRadialMask": 2.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "EnableFresnelFade": true
+    },
+    "Properties": {
+      "MaterialDecalResponse": "EMaterialDecalResponse::MDR_None",
+      "TranslucencyPass": "EMaterialTranslucencyPass::MTP_BeforeDOF",
+      "TranslucencyLightingMode": "ETranslucencyLightingMode::TLM_VolumetricDirectional",
+      "bUsedWithSkeletalMesh": true,
+      "bUsedWithNiagaraSprites": true,
+      "bUsedWithNiagaraRibbons": true,
+      "bUsedWithNiagaraMeshParticles": true,
+      "bUsesDistortion": true,
+      "bRootNodeOverridesDefaultDistortion": true,
+      "bCastRayTracedShadows": false,
+      "RefractionMethod": "ERefractionMode::RM_IndexOfRefraction",
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "7C23773C-492D0545-328CDDA9-BAC5FD18",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "bOverride_BlendMode": true,
+        "bOverride_ShadingModel": true,
+        "BlendMode": "EBlendMode::BLEND_Additive",
+        "ShadingModel": "EMaterialShadingModel::MSM_Unlit",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

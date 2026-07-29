@@ -1,0 +1,70 @@
+{
+  "Textures": {
+    "Moss BC (A=roughness)": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_BCO.T_DR_Moss_BCO",
+    "Moss Normal (A=height)": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_NRH.T_DR_Moss_NRH",
+    "ProjectedTexture": "RSDragonwilds/Content/Materials/DefaultTextures/DebugProjectionShader.DebugProjectionShader"
+  },
+  "Parameters": {
+    "Colors": {
+      "Rock Base": {
+        "R": 0.147573,
+        "G": 0.193635,
+        "B": 0.250744,
+        "A": 1.0,
+        "Hex": "6B7A89"
+      },
+      "Rock Variation": {
+        "R": 0.255208,
+        "G": 0.226237,
+        "B": 0.225523,
+        "A": 1.0,
+        "Hex": "8A8383"
+      },
+      "Variation Mask Channel": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "00FF00"
+      }
+    },
+    "Scalars": {
+      "Rock Detail Scale": 1.0,
+      "Gradient Length": 0.846667,
+      "Rock Base Scale": 17917.59,
+      "SmoothStep Fix Offset": 0.049704,
+      "Normal Scale": 1.0,
+      "Moss - height smoothstep width": 0.751359,
+      "Height Mask Scale": 0.0,
+      "HeightFalloff": 200.0,
+      "HeightPosition": 1.0,
+      "AngleMask_Position": 0.2,
+      "AngleMaskFalloff": 3.0,
+      "Dirt Texture - Texture Scale": 4220.8057,
+      "Dirt Texture - Normal Z Threshold": 0.862399,
+      "Moss Scale Mult": 1.0,
+      "Macro Noise Contrast": 0.503679,
+      "Macro Noise Mult": 0.612136,
+      "Macro Noise Scale": 2.297448,
+      "BlendNormalFalloffPow": 56.50234,
+      "ProjectedTextureBlend": 0.688801,
+      "ProjectedTextureRoughnessBlend": 0.459886,
+      "ProjectedTextureRoughnessValue": 0.473258,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Dbug Mask": false,
+      "DBug Mask Tex": false,
+      "Moss": true,
+      "BlendWithLandscape": true,
+      "DEBUG Projected Plane Enable": false,
+      "Projected Plane Enable": false
+    },
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    }
+  },
+  "ArchiveSource": "E:/Github/RSDWArchive/0.12.1.0/json/RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Env/Rocks/Materials/MI_DR_Rocks_BackgroundMoss.json"
+}
