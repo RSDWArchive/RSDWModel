@@ -1,0 +1,56 @@
+{
+  "Textures": {
+    "HDRI_Reflection": "Engine/Content/MapTemplates/daylight.daylight",
+    "PM_Normals": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Normal": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "daylight": "Engine/Content/MapTemplates/daylight.daylight"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "TintGlass": {
+        "R": 0.65625,
+        "G": 0.522462,
+        "B": 0.109375,
+        "A": 1.0,
+        "Hex": "D4BF5D"
+      },
+      "TintGlass2": {
+        "R": 0.288502,
+        "G": 0.307292,
+        "B": 0.074218,
+        "A": 1.0,
+        "Hex": "92974D"
+      }
+    },
+    "Scalars": {
+      "OpacityMin": 0.75,
+      "OpacityMax": 0.85,
+      "ReflectionFresnelExponentIn": 1.5,
+      "ExponentIn": 3.8,
+      "BaseReflectFractionIn": -1.35,
+      "Flatness (S)": 0.0,
+      "Emissive Rim Amount": -4.45,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bUsedWithSkeletalMesh": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "30F511AC-453ADFD2-CFBA71AD-53AF147B",
+      "bIncludedInBaseGame": true,
+      "BasePropertyOverrides": {
+        "BlendMode": "EBlendMode::BLEND_TranslucentGreyTransmittance",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}

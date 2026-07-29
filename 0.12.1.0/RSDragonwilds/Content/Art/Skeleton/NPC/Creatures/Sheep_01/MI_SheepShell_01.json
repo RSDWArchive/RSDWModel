@@ -1,0 +1,128 @@
+{
+  "Textures": {
+    "Shell Texture": "RSDragonwilds/Content/Materials/Character/Fur_Hair/shell_texture.shell_texture",
+    "BaseTexture": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_D.T_Sheep_01_D",
+    "PM_Normals": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_N.T_Sheep_01_N",
+    "Baked Normal": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_N.T_Sheep_01_N",
+    "PM_SpecularMasks": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_ORM.T_Sheep_01_ORM",
+    "ORM Map": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_ORM.T_Sheep_01_ORM",
+    "Fur mask": "RSDragonwilds/Content/Materials/DefaultTextures/T_DefaultBlack_D.T_DefaultBlack_D",
+    "HAir Scale Mask": "RSDragonwilds/Content/Materials/DefaultTextures/T_DefaultBlack_D.T_DefaultBlack_D",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_D.T_Sheep_01_D",
+    "T_Sheep_01_D": "RSDragonwilds/Content/Art/Skeleton/NPC/Creatures/Sheep_01/Textures/T_Sheep_01_D.T_Sheep_01_D"
+  },
+  "Parameters": {
+    "BlendMode": 1,
+    "ShadingModel": 2,
+    "Colors": {
+      "OverlayColor": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "MixColor": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "SSS Emisive": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "SSS Color": {
+        "R": 1.0,
+        "G": 0.071264,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "FF4B00"
+      },
+      "GlowColor": {
+        "R": 1.0,
+        "G": 0.211286,
+        "B": 0.65415,
+        "A": 1.0,
+        "Hex": "FF7FD4"
+      }
+    },
+    "Scalars": {
+      "Roughness": 0.696,
+      "Density": 100.0,
+      "Random Width": 0.0,
+      "Hair Sacle": 10.656289,
+      "Shell Contrast": 0.7,
+      "Hair Thickness": 0.7,
+      "NormalMap Intensity": 0.0,
+      "Base color power": 0.969059,
+      "AO Strength Diffuse": 0.25,
+      "AO Strength": 0.5,
+      "Roughness Influence": 1.0,
+      "Depth Offset": 2.0,
+      "Spec": 0.0,
+      "Spec Range (set to -0.015)": -0.015,
+      "Spec Tips (set to 0.2)": 0.2,
+      "Desaturation": -7.671577,
+      "Luminosity": 3.058198,
+      "HUeShift": 0.032,
+      "Contrast": -134.42474,
+      "Power": 1.880493,
+      "Compensation Clamping": 0.25,
+      "Compensation Amount": 0.15,
+      "Compensation Power": 2.0,
+      "AO roughness inf": 1.0,
+      "fur mask Desity influence": 0.0,
+      "Fur Mask Denstiy": 1.0,
+      "Hair Scale Mask": 21.084278,
+      "ShadowBIas Offset": -0.6,
+      "Thickness Strength": 0.25,
+      "SSS Color Travel (High = iso color)": 1.0,
+      "Sub Surface color": 1.0,
+      "Thickness Color Strength": 0.15,
+      "Dither Width": 0.2,
+      "Glow Width": 0.2,
+      "Glow Intensity": 0.0,
+      "Dissolve": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Advance color controls": false,
+      "Invert Thickness": false,
+      "Shell Normals?": true,
+      "UseTexture?": true
+    },
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 4
+      },
+      "TwoSided": true,
+      "DitheredLODTransition": true,
+      "DitherOpacityMask": true,
+      "bUsedWithSkeletalMesh": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "35D5D19A-47FBEB37-409BCBB2-645B161B",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "bOverride_TwoSided": true,
+        "TwoSided": true,
+        "DitheredLODTransition": true,
+        "BlendMode": "EBlendMode::BLEND_Masked",
+        "ShadingModel": "EMaterialShadingModel::MSM_Subsurface",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
