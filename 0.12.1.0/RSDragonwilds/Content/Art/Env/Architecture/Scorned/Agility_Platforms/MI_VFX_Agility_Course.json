@@ -1,0 +1,129 @@
+{
+  "Textures": {
+    "PM_Diffuse": "RSDragonwilds/Content/Art/VFX/UI/T_Smoke_Tiled_D.T_Smoke_Tiled_D",
+    "Edge_Texture_01": "RSDragonwilds/Content/Art/VFX/Library/Crafting/Brewing_Barrel/Textures/T_Noise_Soft.T_Noise_Soft",
+    "Edge_Texture_02": "RSDragonwilds/Content/Art/VFX/UI/T_Smoke_Tiled_D.T_Smoke_Tiled_D"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "Tint": {
+        "R": 0.052083,
+        "G": 0.052083,
+        "B": 0.052083,
+        "A": 1.0,
+        "Hex": "404040"
+      },
+      "HighlightColour": {
+        "R": 0.230468,
+        "G": 0.267278,
+        "B": 0.307292,
+        "A": 1.0,
+        "Hex": "848D97"
+      },
+      "BaseColour": {
+        "R": 0.56935,
+        "G": 0.539508,
+        "B": 0.653125,
+        "A": 1.0,
+        "Hex": "C7C2D4"
+      },
+      "MinColour": {
+        "R": 0.392769,
+        "G": 0.300029,
+        "B": 0.653125,
+        "A": 1.0,
+        "Hex": "A895D4"
+      },
+      "Edge Texture 1 Size/Speed": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.05,
+        "A": 0.0,
+        "Hex": "FFFF3F"
+      },
+      "Edge Texture 2 Size/Speed": {
+        "R": 0.6,
+        "G": 0.6,
+        "B": -0.1,
+        "A": 0.0,
+        "Hex": "CCCC00"
+      },
+      "Edge Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      }
+    },
+    "Scalars": {
+      "NoiseStrengthA": 0.01,
+      "NoiseStrengthB": 2.796543,
+      "MainMaskDensity": 2.0,
+      "TintBrightness": 19.920668,
+      "DepthFade": 50.0,
+      "MainMaskOffsetY": 0.5,
+      "MainMaskOffsetX": 0.176,
+      "MainMaskRadiusNight": 0.503408,
+      "CentreMaskOffsetX": 0.176,
+      "CentreMaskOffsetY": 0.5,
+      "CentreMaskRadius": 0.141444,
+      "CentreMaskDensity": 0.464,
+      "Distortion": 0.084,
+      "Opacity": 1.0,
+      "CameraDepthFadeLength": 0.0,
+      "CameraDepthFadeOffset": 0.0,
+      "refraction": 0.933689,
+      "NoiseScale": 0.350216,
+      "DayNightLerpAdd": -0.828,
+      "DayNightLerpMult": 5.854455,
+      "OpacityMult": 0.75,
+      "BiasOffset": 3.220673,
+      "MainMaskRadiusDay": 11.551428,
+      "DepthFadeAdd": 0.2,
+      "DistortionHighlightColourStrength": 10.0,
+      "OpacityIntoRefraction?": 0.0,
+      "PanSpeed": 0.058888,
+      "OpacityOnCustomPrim?": 0.0,
+      "Edge_Lerp": 0.1,
+      "Edge_Distance_Mult": 200.0,
+      "Edge_Distance_Pow": 3.0,
+      "Edge_Opacity_Mult": 0.2,
+      "Edge_Emissive_Mult": 0.6,
+      "Edge_Night_Emissive_Mult": 0.1,
+      "Edge_Day_Emissive_Mult": 0.1,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "UseCubemap?": false
+    },
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 1
+      },
+      "TwoSided": true,
+      "bUsesDistortion": true,
+      "bRootNodeOverridesDefaultDistortion": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "bUseTranslucencyVertexFog": false,
+      "RefractionMethod": "ERefractionMode::RM_2DOffset",
+      "StateId": "64786EAE-4D5AAFCB-E59086B9-59E7132D",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "bOverride_TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_TranslucentGreyTransmittance",
+        "ShadingModel": "EMaterialShadingModel::MSM_Unlit",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}
