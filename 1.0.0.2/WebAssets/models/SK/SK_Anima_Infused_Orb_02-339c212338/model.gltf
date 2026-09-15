@@ -1,0 +1,317 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        2
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Root",
+      "rotation": [
+        -0.7071067690849304,
+        0,
+        0,
+        0.7071067690849304
+      ],
+      "translation": [
+        0,
+        -0.0018926321063190699,
+        -6.67572024326546e-08
+      ]
+    },
+    {
+      "mesh": 0,
+      "name": "SK_Anima_Infused_Orb_02_LOD0",
+      "skin": 0
+    },
+    {
+      "children": [
+        1,
+        0
+      ],
+      "name": "SK_Anima_Infused_Orb_02_LOD0_Skeleton"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.5839999914169312,
+        0.5839999914169312,
+        0.5839999914169312
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Anima_Infused_Orb_02v5",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    },
+    {
+      "doubleSided": true,
+      "name": "MI_VFX_AnimaOrb_Base",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.46875,
+          0.13669799268245697,
+          0.05258899927139282,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaMode": "MASK",
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Anima_Infused_Orb_02_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "JOINTS_0": 3,
+            "WEIGHTS_0": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 6,
+            "NORMAL": 7,
+            "TEXCOORD_0": 8,
+            "JOINTS_0": 9,
+            "WEIGHTS_0": 10
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "JOINTS_0": 3,
+                "WEIGHTS_0": 4
+              }
+            }
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "7ce3cc3eb086c43470547a8e.webp",
+      "uri": "../../../textures/webp_1024/7ce3cc3eb086c43470547a8e.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "324ee4adab83332f3089294a.webp",
+      "uri": "../../../textures/webp_1024/324ee4adab83332f3089294a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "9c45d786a0691e83332fcc09.webp",
+      "uri": "../../../textures/webp_1024/9c45d786a0691e83332fcc09.webp"
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 12,
+      "joints": [
+        0
+      ],
+      "name": "SK_Anima_Infused_Orb_02_LOD0_Skeleton"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 392,
+      "max": [
+        0.14477641880512238,
+        0.1849939525127411,
+        0.18499161303043365
+      ],
+      "min": [
+        -0.14519941806793213,
+        -0.18499396741390228,
+        -0.1849917471408844
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 392,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 392,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 392,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 392,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 888,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5126,
+      "count": 132,
+      "max": [
+        0.17208212614059448,
+        0.17208215594291687,
+        0.17277927696704865
+      ],
+      "min": [
+        -0.17208212614059448,
+        -0.17208215594291687,
+        -0.17277950048446655
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 132,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 132,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 576,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1,
+      "type": "MAT4"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3021,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1521,
+      "byteOffset": 3024
+    },
+    {
+      "buffer": 0,
+      "byteLength": 64,
+      "byteOffset": 4548
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 4612,
+      "uri": "model.bin"
+    }
+  ]
+}

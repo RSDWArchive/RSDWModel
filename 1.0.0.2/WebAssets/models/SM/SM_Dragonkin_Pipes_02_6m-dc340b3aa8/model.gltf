@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Dragonkin_Pipes_02_6m_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.20000000298023224,
+        0.20000000298023224,
+        0.20000000298023224
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Dragonkin_Pipes_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7200000286102295
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Dragonkin_Pipes_02_6m_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "c7e90d73739a5f2a85b9e23d.webp",
+      "uri": "../../../textures/webp_1024/c7e90d73739a5f2a85b9e23d.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3b200deebe91c8af01ed9757.webp",
+      "uri": "../../../textures/webp_1024/3b200deebe91c8af01ed9757.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "7d040f54a73d71480a7bbc16.webp",
+      "uri": "../../../textures/webp_1024/7d040f54a73d71480a7bbc16.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 918,
+      "max": [
+        0.34290820360183716,
+        0.34292224049568176,
+        6.662675857543945
+      ],
+      "min": [
+        -0.3430123031139374,
+        -0.34292155504226685,
+        -0.1718476116657257
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 918,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 918,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 4332,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8025,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 8028,
+      "uri": "model.bin"
+    }
+  ]
+}
