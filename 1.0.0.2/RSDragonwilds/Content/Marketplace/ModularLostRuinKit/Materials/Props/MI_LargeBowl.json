@@ -1,0 +1,126 @@
+{
+  "Textures": {
+    "PM_Normals": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_N.T_Painted_Wood_N",
+    "BaseNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Props/T_Large_Bowl_N.T_Large_Bowl_N",
+    "PM_Diffuse": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_BC.T_Painted_Wood_BC",
+    "BaseAlbedoT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Props/T_Large_Bowl_BC.T_Large_Bowl_BC",
+    "BaseMasksT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Props/T_Large_Bowl_M.T_Large_Bowl_M",
+    "BaseDetailNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Tiling_Plaster_N.T_Tiling_Plaster_N",
+    "SecondNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_N.T_Painted_Wood_N",
+    "SecondAlbedoT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_BC.T_Painted_Wood_BC",
+    "SecondMasksT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_M.T_Painted_Wood_M",
+    "SandAlbedoT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_Sand_BC.T_Sand_BC",
+    "SandNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_Sand_N.T_Sand_N",
+    "MossAlbedoT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_Moss_BC.T_Moss_BC",
+    "MossNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_Moss_N.T_Moss_N",
+    "GroundEffectNormalT": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_Moss_N.T_Moss_N",
+    "WMaskTexture": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Generic/T_DirtD_rips_M.T_DirtD_rips_M",
+    "T_Large_Bowl_M": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Props/T_Large_Bowl_M.T_Large_Bowl_M",
+    "T_Painted_Wood_M": "RSDragonwilds/Content/Marketplace/ModularLostRuinKit/Textures/Structure/T_Painted_Wood_M.T_Painted_Wood_M"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "BaseAlbedoTColorMultiply": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "BaseNormalMultiplier": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.6,
+        "A": 1.0,
+        "Hex": "FFFFCC"
+      },
+      "ExtaDirtColor": {
+        "R": 0.479167,
+        "G": 0.242954,
+        "B": 0.070579,
+        "A": 1.0,
+        "Hex": "B8874B"
+      },
+      "BaseDetailNormalMultiplier": {
+        "R": 0.6,
+        "G": 0.6,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "CCCCFF"
+      },
+      "SecondAlbedoColor": {
+        "R": 0.328125,
+        "G": 0.070112,
+        "B": 0.050511,
+        "A": 1.0,
+        "Hex": "9B4B3F"
+      },
+      "GroundEffectColor": {
+        "R": 0.086228,
+        "G": 0.104167,
+        "B": 0.031467,
+        "A": 1.0,
+        "Hex": "535B31"
+      }
+    },
+    "Scalars": {
+      "BaseRoughnessMultiplier": 1.0,
+      "BaseAO": 1.0,
+      "BaseRoughnessPower": 1.0,
+      "TilingBase": 1.0,
+      "TilingTop": 1.0,
+      "TopDownBlendSharpness": 3.349844,
+      "TopDownBlendBias": -0.738095,
+      "ScaleLeak": 1.0,
+      "TilingBaseDetail": 4.0,
+      "DirtRoughness": 0.5,
+      "BakedAORoughness": 0.75,
+      "SecondAO": 1.0,
+      "TilingSecond": 2.0,
+      "SecondBlendContrast": 0.452381,
+      "BakedAOMaskContrast": 1.093139,
+      "BakedAOMaskMultiplier": 0.662273,
+      "BakedAOMaskPower": 0.533153,
+      "TilingAOMaterial": 3.0,
+      "BakedAOLayerBlendContrast": 0.671517,
+      "BakedAOWetRoughnessContrast": 1.5,
+      "GroundEffectRoughness": 0.9,
+      "GroundGradientMin": 130.0,
+      "GroundGradientMax": -20.0,
+      "GroundMaskPower": 3.0,
+      "GroundMaskMultiplier": 6.0,
+      "GroundEffectOpacity": 0.85,
+      "WMaskPower": 2.0,
+      "WMaskMultiplier": 3.0,
+      "WMaskTiling": 1500.0,
+      "GroundEffectTiling": 3.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "UseMetallicT?": true,
+      "UseExtraDirt?": false,
+      "UseSecondAlbedoColorOnly?": true,
+      "UseSecondBaseMaterial?": false
+    },
+    "Properties": {
+      "bUsedWithStaticLighting": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "96161CC9-ACDD9521-D2B2D795-D23BCFBC",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

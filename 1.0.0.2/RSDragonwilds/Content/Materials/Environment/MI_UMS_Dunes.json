@@ -1,0 +1,106 @@
+{
+  "Textures": {
+    "GrainVectorNoise": "RSDragonwilds/Content/Materials/Functions/Sand/SandShading/Textures/T_VectorNoisePacked_02.T_VectorNoisePacked_02",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Env/Landscape/Ground/TA_Landscape_Ground_UmbralSands_BC.TA_Landscape_Ground_UmbralSands_BC",
+    "BaseColor": "RSDragonwilds/Content/Art/Env/Landscape/Ground/TA_Landscape_Ground_UmbralSands_BC.TA_Landscape_Ground_UmbralSands_BC",
+    "PM_Normals": "RSDragonwilds/Content/Materials/Functions/Sand/SandShading/Textures/T_SlopeErosion_Inv_NRH.T_SlopeErosion_Inv_NRH",
+    "Normal": "RSDragonwilds/Content/Art/Env/Landscape/Ground/TA_Landscape_Ground_UmbralSands_NRH.TA_Landscape_Ground_UmbralSands_NRH",
+    "SlopeNormal": "RSDragonwilds/Content/Materials/Functions/Sand/SandShading/Textures/T_SlopeErosion_Inv_NRH.T_SlopeErosion_Inv_NRH"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "SandColourA": {
+        "R": 0.9,
+        "G": 0.781704,
+        "B": 0.729237,
+        "A": 1.0,
+        "Hex": "F4E5DE"
+      },
+      "SandColourB": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "BrightGrainColour": {
+        "R": 0.262251,
+        "G": 0.051269,
+        "B": 0.023153,
+        "A": 1.0,
+        "Hex": "8C402A"
+      }
+    },
+    "Scalars": {
+      "LightingOffset": 1.0,
+      "LightingSharpness": 20.01157,
+      "BlendLighting": 1.0,
+      "NormalIntensityMultAmount": 0.6,
+      "Tiling": 3.0,
+      "LayerBlendingHeightContrast": 0.5,
+      "LayerBlendingHeightSmoothness": 1.0,
+      "LayerBlendingTransitionContrast": 0.0,
+      "LayerBlending05FlattenAmount": 1.0,
+      "TextureScale": 1000.0,
+      "Steps": 16.0,
+      "Side Blend Point": 0.5,
+      "Side Blend Harness": 0.5,
+      "Top Blend Point": 0.5,
+      "Top Blend Harness": 1.0,
+      "TopBlendPoint": 0.65,
+      "TopBlendHardness": 0.1,
+      "BiomeBlendingHeightContrast": 0.3,
+      "BiomeBlendingSmoothness": 0.5,
+      "LayerBlendingHeightAmount": 0.0,
+      "LevelNoiseAmount_BM": 4.0,
+      "LevelNoiseAmount_GF": 1.0,
+      "OverlayNoiseSize": 10000.0,
+      "Test": 0.8,
+      "OrientationNoiseSize": 35000.0,
+      "OrientationNormalWeight": 0.7,
+      "OrientationWindWeight": 0.8,
+      "OrientationNoiseWeight": 0.3,
+      "SandNormalIntensity": 0.35,
+      "OrientationObjectRotationWeight": 0.4,
+      "GrainsPerMeter": 256.0,
+      "ShadingOffset": 1.270583,
+      "ShadingOffsetSharpness": 10.0,
+      "ShadingBlend": 1.0,
+      "VerticalShadiingOffset": 1.0,
+      "SandGrainSize (S)": 0.35,
+      "GroundVertexSmoothingAmountLineClose": 0.0,
+      "GroundVertexSmoothingDistance": 300.0,
+      "GroundVertexSmoothingAmountSkirtClose": 0.8,
+      "GroundVertexSmoothingAmountLineFar": 1.0,
+      "GroundVertexSmoothingAmountSkirtFar": 1.0,
+      "MinDistance": 200.0,
+      "BlendDistance": 2400.0,
+      "FlatteningAmountLow": 0.0,
+      "FlatteningAmount": 1.0,
+      "Dither Offset": 5.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "IsALandscape": false
+    },
+    "Properties": {
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "546DD29D-4AF70A2C-60B254AE-486CC760",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
