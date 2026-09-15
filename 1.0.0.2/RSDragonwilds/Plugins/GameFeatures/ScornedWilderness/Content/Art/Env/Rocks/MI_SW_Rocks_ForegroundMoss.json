@@ -1,0 +1,74 @@
+{
+  "Textures": {
+    "Moss BC (A=roughness)": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Rocks/T_SW_Moss_BCO.T_SW_Moss_BCO",
+    "Moss Normal (A=height)": "RSDragonwilds/Content/Art/Env/Architecture/DowdunReach/Materials/Textures/Architecture/T_DR_Moss_NRH.T_DR_Moss_NRH",
+    "ProjectedTexture": "RSDragonwilds/Content/Materials/DefaultTextures/DebugProjectionShader.DebugProjectionShader",
+    "Rock BC Details": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Rocks/T_Rocks_SW_BCR.T_Rocks_SW_BCR",
+    "Rock Base Colour": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Rocks/T_Rocks_SW_BCR.T_Rocks_SW_BCR",
+    "Rock Details Texture": "RSDragonwilds/Content/Art/Env/Landscape/Ground/Brinemaw/T_Cliff_Tileable_01_N.T_Cliff_Tileable_01_N",
+    "Rock Normal": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Rocks/T_Rocks_SW_NH.T_Rocks_SW_NH"
+  },
+  "Parameters": {
+    "Colors": {
+      "Rock Base": {
+        "R": 0.710811,
+        "G": 0.660516,
+        "B": 0.768601,
+        "A": 1.0,
+        "Hex": "DCD5E3"
+      },
+      "Rock Variation": {
+        "R": 0.530506,
+        "G": 0.490503,
+        "B": 0.436256,
+        "A": 1.0,
+        "Hex": "C1BAB1"
+      },
+      "Variation Mask Channel": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "00FF00"
+      }
+    },
+    "Scalars": {
+      "Rock Detail Scale": 1.0,
+      "Gradient Length": 1.126839,
+      "Rock Base Scale": 5800.0,
+      "SmoothStep Fix Offset": 0.033161,
+      "Moss - height smoothstep width": 0.600686,
+      "Height Mask Scale": 0.0,
+      "HeightFalloff": 200.0,
+      "HeightPosition": 1.0,
+      "AngleMask_Position": 0.2,
+      "AngleMaskFalloff": 3.0,
+      "Moss - Offset": -0.064001,
+      "Dirt Texture - Texture Scale": 6391.0586,
+      "Dirt Texture - Normal Z Threshold": 0.629715,
+      "Moss Scale Mult": 1.0,
+      "Macro Noise Contrast": 0.503679,
+      "Macro Noise Mult": 0.612136,
+      "Macro Noise Scale": 2.297448,
+      "BlendNormalFalloffPow": 56.50234,
+      "ProjectedTextureBlend": 0.688801,
+      "ProjectedTextureRoughnessBlend": 0.459886,
+      "ProjectedTextureRoughnessValue": 0.473258,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Dbug Mask": false,
+      "DBug Mask Tex": false,
+      "Moss": true,
+      "BlendWithLandscape": true,
+      "DEBUG Projected Plane Enable": false,
+      "Projected Plane Enable": false
+    },
+    "Properties": {
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    }
+  },
+  "ArchiveSource": "E:/Github/RSDWArchive/1.0.0.2/json/RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Rocks/MI_SW_Rocks_ForegroundMoss.json"
+}

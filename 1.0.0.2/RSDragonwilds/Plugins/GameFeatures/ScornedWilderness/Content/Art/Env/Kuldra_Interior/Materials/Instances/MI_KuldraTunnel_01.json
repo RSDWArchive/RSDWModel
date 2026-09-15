@@ -1,0 +1,58 @@
+{
+  "Textures": {
+    "AnimaCausticTexture": "RSDragonwilds/Content/Art/VFX/Component/Texture/Noise/T_VFX_Caustics.T_VFX_Caustics",
+    "Emissive Mask 01": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Kuldra_Interior/Textures/Effect/T_TunnelMask_03.T_TunnelMask_03",
+    "Emissive Mask 03": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Kuldra_Interior/Textures/Effect/T_TunnelMask_01.T_TunnelMask_01",
+    "Ground_BCR": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Kuldra_Interior/Textures/Material/Simplified/T_TunnelGround_BCR.T_TunnelGround_BCR",
+    "Ground_NMM": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Kuldra_Interior/Textures/Material/Simplified/T_TunnelGround_NMM.T_TunnelGround_NMM",
+    "UVD TExture": "RSDragonwilds/Content/Art/VFX/Component/Texture/Noise/T_VFX_WaterNoise.T_VFX_WaterNoise"
+  },
+  "Parameters": {
+    "Colors": {
+      "WallOverlayColour": {
+        "R": 0.255938,
+        "G": 1.3,
+        "B": 0.663429,
+        "A": 1.0,
+        "Hex": "8AFFD5"
+      },
+      "EmissiveColourA": {
+        "R": 0.003775,
+        "G": 0.927083,
+        "B": 0.733419,
+        "A": 1.0,
+        "Hex": "0CF7DF"
+      },
+      "EmissiveVeinColour": {
+        "R": 0.473958,
+        "G": 0.247347,
+        "B": 0.42845,
+        "A": 1.0,
+        "Hex": "B788AF"
+      }
+    },
+    "Scalars": {
+      "GlobalSpeed": -1.0,
+      "ID_Unique": 1.0,
+      "SegmentCount": 1.0,
+      "DepthOffset": -0.3,
+      "EmissivePower": 0.4,
+      "SSS_Power": 10.0,
+      "Caustic Strength": 0.4,
+      "RoughnessMin": 0.5,
+      "RoughnessMax": 0.7,
+      "NormalIntensity": 1.5,
+      "CausticAnimaGradient": 6.0,
+      "WallColourGradient": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "BasePropertyOverrides": {
+        "ShadingModel": "EMaterialShadingModel::MSM_Subsurface",
+        "OpacityMaskClipValue": 0.3333
+      }
+    }
+  },
+  "ArchiveSource": "E:/Github/RSDWArchive/1.0.0.2/json/RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Env/Kuldra_Interior/Materials/Instances/MI_KuldraTunnel_01.json"
+}
