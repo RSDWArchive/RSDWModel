@@ -1,7 +1,7 @@
 {
   "schema": "RSDWModel.EquipmentVariants.v1",
   "datasetVersion": "1.0.0.2",
-  "generatedUtc": "2026-09-15T11:37:06.936713+00:00",
+  "generatedUtc": "2026-09-27T21:48:34.156775+00:00",
   "mode": "full",
   "sourceArchiveRoot": "E:/Github/RSDWArchive/1.0.0.2",
   "sourceModelIndex": "website/model-index.json",
@@ -10,9 +10,42 @@
     "quality": 75,
     "format": "webp"
   },
-  "baseModelCount": 19,
-  "variantCount": 118,
+  "baseModelCount": 22,
+  "variantCount": 204,
   "skippedCount": 0,
+  "coverage": {
+    "status": "pass",
+    "sourceRoots": [
+      {
+        "feature": "Base",
+        "path": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment"
+      },
+      {
+        "feature": "Agility",
+        "path": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment"
+      },
+      {
+        "feature": "DowdunReach",
+        "path": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment"
+      },
+      {
+        "feature": "Fishing",
+        "path": "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Gameplay/Character/Player/Equipment"
+      },
+      {
+        "feature": "ScornedWilderness",
+        "path": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment"
+      },
+      {
+        "feature": "UmbralSands",
+        "path": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment"
+      }
+    ],
+    "discoveredRecords": 437,
+    "materialVariantRecords": 204,
+    "generatedVariants": 204,
+    "missing": []
+  },
   "byModel": {
     "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel": {
       "modelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -25,6 +58,7 @@
           "label": "Artisan Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Artisan_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -49,6 +83,7 @@
           "label": "Artisan Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Artisan_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -73,6 +108,7 @@
           "label": "Attack Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Attack_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -97,6 +133,7 @@
           "label": "Attack Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Attack_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -117,10 +154,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:d33dd93264f2",
+          "label": "Cape Skillcape Agility",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Agility_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/variants/cape-skillcape-agility-d33dd93264f2/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/SkillCape_Agility_01/Materials/MI_SkillCape_Agility_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Agility_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9fc2247f7dfca988f443d214.webp",
+            "textures/webp_1024/d7fcfcd204c8cdba81da28fd.webp",
+            "textures/webp_1024/fbcc7e346034876ab07e5d5b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:87faa249e785",
+          "label": "Cape Trimmed Skillcape Agility",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Agility_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/variants/cape-trimmed-skillcape-agility-87faa249e785/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/SkillCape_Agility_01/Materials/MI_SkillCape_Agility_Trim_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Agility_Trim_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/49a206ae48da2f45eadd8361.webp",
+            "textures/webp_1024/5a7165f5fd2241e8a449176f.webp",
+            "textures/webp_1024/955740933c6cf1d83ba7afdf.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:b5705aabd321",
           "label": "Construction Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Construction_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -145,6 +233,7 @@
           "label": "Construction Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Construction_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -169,6 +258,7 @@
           "label": "Cooking Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Cooking_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -193,6 +283,7 @@
           "label": "Cooking Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Cooking_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -217,6 +308,7 @@
           "label": "Farming Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Farming_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -241,6 +333,7 @@
           "label": "Farming Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Farming_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -261,10 +354,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:5456c22910b7",
+          "label": "Fishing Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Fishing",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Fishing_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/variants/fishing-cape-5456c22910b7/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Art/Skeleton/Armour/U_MED/SkillCape_Fishing_01/Materials/MI_SkillCape_Fishing_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Fishing_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9470e38d7040e09aea158334.webp",
+            "textures/webp_1024/b86879e650f1396e24887b5b.webp",
+            "textures/webp_1024/ef1e43e9a0936980366fcab7.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:9bf7b47fd7a8",
+          "label": "Fishing Cape (Trimmed)",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Fishing",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Fishing_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_CapeOfAccomplishment_01-d7cd523437/variants/fishing-cape-trimmed-9bf7b47fd7a8/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Art/Skeleton/Armour/U_MED/SkillCape_Fishing_01/Materials/MI_SkillCape_Fishing_Trim_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Fishing_Trim_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3d9e18fe59f11aee94f81e03.webp",
+            "textures/webp_1024/4eed210563c6cdc147f04940.webp",
+            "textures/webp_1024/7e7a692ef2bc5753d0799874.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:89039d54b39c",
           "label": "Magic Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Magic_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -289,6 +433,7 @@
           "label": "Magic Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Magic_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -313,6 +458,7 @@
           "label": "Mining Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Mining_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -337,6 +483,7 @@
           "label": "Mining Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Mining_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -361,6 +508,7 @@
           "label": "Ranged Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Ranged_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -385,6 +533,7 @@
           "label": "Ranged Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Ranged_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -409,6 +558,7 @@
           "label": "Runecrafting Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Runecrafting_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -433,6 +583,7 @@
           "label": "Runecrafting Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Runecrafting_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -457,6 +608,7 @@
           "label": "Woodcutting Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Woodcutting_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -481,6 +633,7 @@
           "label": "Woodcutting Cape (Trimmed)",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Woodcutting_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/CapeOfAccomplishment_01/SK_F_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -513,6 +666,7 @@
           "label": "Adventurers Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -542,6 +696,7 @@
           "label": "Black Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Black_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -578,6 +733,7 @@
           "label": "Bloodblight Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Bloodblight_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -598,10 +754,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:02326a43ef38",
+          "label": "Bloodblight Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Bloodblight/ITEM_Cape_Bloodblight_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/bloodblight-cape-02326a43ef38/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BloodBlightCape_01/Materials/MI_BloodBlightCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_BloodBlightCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3ab21b932816c06f52828a18.webp",
+            "textures/webp_1024/d202c53ee86029c090c3979b.webp",
+            "textures/webp_1024/eeef88f8c78e0e4df756feeb.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:e18e02ab9272",
           "label": "Blue Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Blue_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -638,6 +820,7 @@
           "label": "Bramblemead Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Bramblemead_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -658,10 +841,511 @@
           "diagnostics": []
         },
         {
+          "id": "EV:7b2500430bdb",
+          "label": "Bramblemead Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Brynmoor/Bramblemead/ITEM_Cape_Bramblemead_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/bramblemead-cape-7b2500430bdb/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BramblemeadCape_01/Materials/MI_BramblemeadCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_BramblemeadCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3cb99b5b66c9d0981060e664.webp",
+            "textures/webp_1024/8f9841dc9982d404bc87a01f.webp",
+            "textures/webp_1024/9f984609fb448ddfd83bf14b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:24d9f5995e5c",
+          "label": "Cape Blue Dyad",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_BlueDyad_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-blue-dyad-24d9f5995e5c/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Blue.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Blue"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/6b9565586bb7c9cb60e60243.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:7ac0e9b8fabe",
+          "label": "Cape Blue Hex",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_BlueHex_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-blue-hex-7ac0e9b8fabe/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Blue.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Blue"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/9684e2dd7c16c2cb22f4d982.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:45aa4547614b",
+          "label": "Cape Dragonslayer",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Dragonslayer_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-dragonslayer-45aa4547614b/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/KuldraCape_01/Materials/MI_KuldraCape_01.json"
+          ],
+          "materialNames": [
+            "MI_KuldraCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/57d7ea69102e32747226412c.webp",
+            "textures/webp_1024/8c5307ca6abc49212bd7c508.webp",
+            "textures/webp_1024/d4967fe54733a4813f19c5e6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:186096d9163c",
+          "label": "Cape Green Dyad",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GreenDyad_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-green-dyad-186096d9163c/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Green.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Green"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/122dc67ab5b8c79fb3e5e447.webp",
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:5ffd96fae6a9",
+          "label": "Cape Green Hex",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GreenHex_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-green-hex-5ffd96fae6a9/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Green.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Green"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/bcb1e6b8a4d215e6f028dc4f.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:a7b55642b13b",
+          "label": "Cape Menaphite Cape Black",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Black_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-black-a7b55642b13b/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_07.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_07"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/855979ba85b02df37920a8b6.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:101e3826e5a7",
+          "label": "Cape Menaphite Cape Blue",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Blue_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-blue-101e3826e5a7/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_01.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/b385dd31ecda461a59c75c83.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:ea26f556736c",
+          "label": "Cape Menaphite Cape Green",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Green_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-green-ea26f556736c/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_05.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_05"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/d5a0b53765a3b168d5e918e6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:2fe0992862ad",
+          "label": "Cape Menaphite Cape Orange",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Orange_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-orange-2fe0992862ad/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_06.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_06"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/cbf4da3c3c528ce1e61182c6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:28a860efb06c",
+          "label": "Cape Menaphite Cape Pink",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Pink_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-pink-28a860efb06c/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_04.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_04"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/95f5b2a124068ce0458066d8.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:e503c83a9ae3",
+          "label": "Cape Menaphite Cape Purple",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Purple_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-purple-e503c83a9ae3/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_03.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_03"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/fedf088e8c49a94e15edbfc4.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:95ab46178f2d",
+          "label": "Cape Menaphite Cape Red",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Red_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-red-95ab46178f2d/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_08.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_08"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d6c535b726585ba1502fe23.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:39be7d1d3bf9",
+          "label": "Cape Menaphite Cape White",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_White_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-white-39be7d1d3bf9/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_09.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_09"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/09cb2e0853ae286d9c62a260.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:8f772b2ed8f3",
+          "label": "Cape Menaphite Cape Yellow",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Yellow_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-menaphite-cape-yellow-8f772b2ed8f3/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_02.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_02"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/25f07ae211b1d0aafab7fe3d.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:a54e8b514098",
+          "label": "Cape Pink Dyad",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_PinkDyad_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-pink-dyad-a54e8b514098/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_01_Pink.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_01_Pink"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp",
+            "textures/webp_1024/c1085d972eb2c36d2c975692.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:84907f900079",
+          "label": "Cape Pink Hex",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_PinkHex_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-pink-hex-84907f900079/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Pink.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Pink"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/caa1d6a3153238e555f94361.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:842680a339ef",
+          "label": "Cape Red Dyad",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_RedDyad_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-red-dyad-842680a339ef/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Red.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Red"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2528ef5d1a3acfdcc6b4382e.webp",
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:8ca5bfdf25d2",
+          "label": "Cape Red Hex",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_RedHex_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-red-hex-8ca5bfdf25d2/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Red.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Red"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/fd615a337eb862ae5351418b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:2217eee10ce6",
+          "label": "Cape Scorned Wilderness Golden",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/ScornedWilderness/ITEM_Cape_ScornedWilderness_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-scorned-wilderness-golden-2217eee10ce6/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BramblemeadCape_01/Materials/MI_BramblemeadCape_01.json"
+          ],
+          "materialNames": [
+            "MI_BramblemeadCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/039314f974be458dde009d77.webp",
+            "textures/webp_1024/4502a042211f3a4fc59838d9.webp",
+            "textures/webp_1024/8ccc0f11b060b3d95d8fa1ac.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:d4b75ed0ffdf",
           "label": "Cape Skeleton",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skeleton_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -682,10 +1366,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:f7ffbd2148fb",
+          "label": "Cape Yellow Dyad",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_YellowDyad_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-yellow-dyad-f7ffbd2148fb/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Yellow.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Yellow"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp",
+            "textures/webp_1024/cc166122ead22d1b335195b2.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:fdbca08749f3",
+          "label": "Cape Yellow Hex",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_YellowHex_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/cape-yellow-hex-fdbca08749f3/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Yellow.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Yellow"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/ce10aa7118a61768838d1931.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:3ec35d26c27f",
           "label": "Community Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Community_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -706,10 +1441,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:565c944c0290",
+          "label": "Dowdun Reach Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/DowdunReach/ITEM_Cape_DowdunReach_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/dowdun-reach-cape-565c944c0290/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/DowdunCape_01/Materials/MI_DowdunCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_DowdunCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/5964dc9df790cd1810c41414.webp",
+            "textures/webp_1024/61fbf112c7dc1b92d77aa171.webp",
+            "textures/webp_1024/9164d28c6622e6177dd7b474.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:c0a647c01576",
+          "label": "Dowdun Reach Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_DowdunReach_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/dowdun-reach-cape-c0a647c01576/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/DowdunCape_01/Materials/MI_DowdunCape_01.json"
+          ],
+          "materialNames": [
+            "MI_DowdunCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/99110666b5827886c38760f7.webp",
+            "textures/webp_1024/b360ca6da9732d77f4dd70cc.webp",
+            "textures/webp_1024/f783dfddab218d04adfb475b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:f1602c548f3f",
           "label": "Dragonbane Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_AlphaTest_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -734,6 +1520,7 @@
           "label": "Fellhollow Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fellhollow_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -754,10 +1541,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:9051f0cce90a",
+          "label": "Fellhollow Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Fellhollow/ITEM_Cape_Fellhollow_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/fellhollow-cape-9051f0cce90a/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/FellhollowCape_01/Materials/MI_FellollowCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_FellollowCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9594ad4aebfd012e909be339.webp",
+            "textures/webp_1024/977eed586864be0ee03d4133.webp",
+            "textures/webp_1024/a0c7ab92461c55d90af0021e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:26ece09a1201",
           "label": "Fractured Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fractured_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -778,10 +1591,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:55809bdb4b72",
+          "label": "Fractured Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Fractured/ITEM_Cape_Fractured_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/fractured-cape-55809bdb4b72/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/FracturedCape_01/Materials/MI_FracturedCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_FracturedCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/005ce76d97d58ec4f74a540b.webp",
+            "textures/webp_1024/334e7437ed8dd5fb8926dc5e.webp",
+            "textures/webp_1024/568bf694775d4620575f9f6e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:bd3268fc4964",
           "label": "Garou Highborn's Cloak",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Garou_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -806,6 +1645,7 @@
           "label": "Goblin War Banner",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Goblin_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -830,6 +1670,7 @@
           "label": "Green Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Green_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -866,6 +1707,7 @@
           "label": "Orange Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Orange_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -902,6 +1744,7 @@
           "label": "Pink Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Pink_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -938,6 +1781,7 @@
           "label": "Pioneer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_EarlyAdopter_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -962,6 +1806,7 @@
           "label": "Purple Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Purple_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -998,6 +1843,7 @@
           "label": "Red Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Red_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1034,6 +1880,7 @@
           "label": "Saradominist Cloak",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Saradominist_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1058,6 +1905,7 @@
           "label": "Spectral Chinchompa Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Chinchompa_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1080,6 +1928,7 @@
           "label": "Stormtouched Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Stormtouched_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1100,10 +1949,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:2d2c51ef1929",
+          "label": "Stormtouched Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Stormtouched/ITEM_Cape_Stormtouched_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/stormtouched-cape-2d2c51ef1929/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/StormtouchedCape_01/Materials/MI_StormtouchedCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_StormtouchedCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/49b66248a719a58d73617f22.webp",
+            "textures/webp_1024/652cd500a710ca74512c85d7.webp",
+            "textures/webp_1024/7a4f8abb4eccddb3f722906d.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:cb74b7ef7229",
           "label": "Tattered Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Tattered_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1124,10 +1999,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:78c036bb4e08",
+          "label": "Umbral Sands Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/UmbralSands/ITEM_Cape_UmbralSands_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/umbral-sands-cape-78c036bb4e08/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/UmbralSandsCape_01/Materials/MI_UmbralSandsCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_UmbralSandsCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2771e82211dbb31ffd2a0b27.webp",
+            "textures/webp_1024/9fb002c93511670013fba5cd.webp",
+            "textures/webp_1024/fea730e70b7478e989ccca07.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:676f8db714a1",
+          "label": "Umbral Sands Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_UmbralSands_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/umbral-sands-cape-676f8db714a1/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/UmbralSandsCape_01/Materials/MI_UmbralSandsCape_01.json"
+          ],
+          "materialNames": [
+            "MI_UmbralSandsCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2a36a3fc88e85111e74b9f60.webp",
+            "textures/webp_1024/b5cf7716e4ad8b2f1b41ddd0.webp",
+            "textures/webp_1024/cceeeb38c5702ab880dc08b1.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:e0fe9bcf4f54",
           "label": "Whispering Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Whispering_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1148,10 +2074,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:95b1e683dd96",
+          "label": "Whispering Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Brynmoor/Whispering/ITEM_Cape_Whispering_Golden_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/whispering-cape-95b1e683dd96/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/WhisperingCape_01/Materials/MI_WhisperingCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_WhisperingCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/4049d34d14a18a698957e45b.webp",
+            "textures/webp_1024/53ad2e25e464a1a6a36864f1.webp",
+            "textures/webp_1024/64d5c262a7752a785f0f6ee5.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:d0be2ac446ef",
           "label": "White Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_White_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1188,6 +2140,7 @@
           "label": "Yellow Adventurer's Cape",
           "slot": "cape",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Yellow_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
@@ -1218,6 +2171,114 @@
               "optimized": "textures/webp_1024/e690e7365fdc96a8762533e1.webp"
             }
           ]
+        },
+        {
+          "id": "EV:dfe3c1a1a1e1",
+          "label": "Zamorak Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Zamorak_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_01/SK_F_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_Cape_01-7a2f8fe3c0/variants/zamorak-cape-dfe3c1a1a1e1/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/ZamorakCape_01/Materials/MI_ZamorakCape_01.json"
+          ],
+          "materialNames": [
+            "MI_ZamorakCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/4e7988eca1771567f41ee29b.webp",
+            "textures/webp_1024/6a4e241f4c497a0f081c64f3.webp",
+            "textures/webp_1024/9e796eb2b59f22df919fc5a8.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        }
+      ]
+    },
+    "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel": {
+      "modelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+      "path": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+      "displayName": "SK_F_MED_CAPE_Cape_Long_01",
+      "baseGltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/model.gltf",
+      "variants": [
+        {
+          "id": "EV:423fbe77c116",
+          "label": "Fire Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fire_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/variants/fire-cape-423fbe77c116/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/FireCape_01/Materials/MI_FireCape_01.json"
+          ],
+          "materialNames": [
+            "MI_FireCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/85ce2ee5a2dcc17e6f1513e4.webp",
+            "textures/webp_1024/a75bcf15198b8909f9e73c1f.webp",
+            "textures/webp_1024/d9ad43a53fe4015485747a18.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:c8b43598de90",
+          "label": "Gilded Paladin Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GildedPaladin_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/variants/gilded-paladin-cape-c8b43598de90/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/GoldenCape_01/Materials/MI_GoldenCape_01.json"
+          ],
+          "materialNames": [
+            "MI_GoldenCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2121063cc8af8f332095e335.webp",
+            "textures/webp_1024/831d975210fe860ca1aba8a8.webp",
+            "textures/webp_1024/cc59418dc0974c989473317a.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:59fd993df394",
+          "label": "Obsidian Cape",
+          "slot": "cape",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Obsidian_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/Cape_Long_01/SK_F_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/model.gltf",
+          "gltfPath": "models/SK/SK_F_MED_CAPE_Cape_Long_01-6e8130f5ed/variants/obsidian-cape-59fd993df394/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/ObsidianCape_01/Materials/MI_ObsidianCape_01.json"
+          ],
+          "materialNames": [
+            "MI_ObsidianCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/941e64e2e6825e084ea56cdc.webp",
+            "textures/webp_1024/a27248118aaf5eeacd06fcfc.webp",
+            "textures/webp_1024/d00a61450fc499da7028589e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
         }
       ]
     },
@@ -1232,6 +2293,7 @@
           "label": "Body Dragonkin Mage",
           "slot": "torso",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Body/ITEM_Armour_Body_DragonkinMage_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_BODY_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_BODY_DarkMageRobes_01.uemodel",
@@ -1264,6 +2326,7 @@
           "label": "Head Dragonkin Mage",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_DragonkinMage_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_HEAD_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_HEAD_DarkMageRobes_01.uemodel",
@@ -1296,6 +2359,7 @@
           "label": "Legs Dragonkin Mage",
           "slot": "legs",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Legs/ITEM_Armour_Legs_DragonkinMage_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_LEGS_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/DarkMageRobes_01/SK_F_MED_LEGS_DarkMageRobes_01.uemodel",
@@ -1328,6 +2392,7 @@
           "label": "Legs Paladin",
           "slot": "legs",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Legs/ITEM_Armour_Legs_Paladin_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/IronArmour_01/SK_F_MED_LEGS_IronArmour_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/IronArmour_01/SK_F_MED_LEGS_IronArmour_01.uemodel",
@@ -1360,6 +2425,7 @@
           "label": "Wild Archer Body",
           "slot": "torso",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Body/ITEM_Armour_Body_WildArcher_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/StuddedLeather_01/SK_F_MED_BODY_StuddedLeather_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/StuddedLeather_01/SK_F_MED_BODY_StuddedLeather_01.uemodel",
@@ -1392,6 +2458,7 @@
           "label": "Wild Archer Chaps",
           "slot": "legs",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Legs/ITEM_Armour_Legs_WildArcher_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/StuddedLeather_01/SK_F_MED_LEGS_StuddedLeather_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/StuddedLeather_01/SK_F_MED_LEGS_StuddedLeather_01.uemodel",
@@ -1424,6 +2491,7 @@
           "label": "Artisan Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Artisan_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1448,6 +2516,7 @@
           "label": "Artisan Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Artisan_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1472,6 +2541,7 @@
           "label": "Attack Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Attack_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1496,6 +2566,7 @@
           "label": "Attack Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Attack_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1516,10 +2587,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:1a2759b8157d",
+          "label": "Cape Skillcape Agility",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Agility_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/variants/cape-skillcape-agility-1a2759b8157d/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/SkillCape_Agility_01/Materials/MI_SkillCape_Agility_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Agility_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9fc2247f7dfca988f443d214.webp",
+            "textures/webp_1024/d7fcfcd204c8cdba81da28fd.webp",
+            "textures/webp_1024/fbcc7e346034876ab07e5d5b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:70852baaac8b",
+          "label": "Cape Trimmed Skillcape Agility",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Agility_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/variants/cape-trimmed-skillcape-agility-70852baaac8b/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/SkillCape_Agility_01/Materials/MI_SkillCape_Agility_Trim_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Agility_Trim_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/49a206ae48da2f45eadd8361.webp",
+            "textures/webp_1024/5a7165f5fd2241e8a449176f.webp",
+            "textures/webp_1024/955740933c6cf1d83ba7afdf.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:694b124b29ab",
           "label": "Construction Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Construction_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1544,6 +2666,7 @@
           "label": "Construction Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Construction_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1568,6 +2691,7 @@
           "label": "Cooking Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Cooking_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1592,6 +2716,7 @@
           "label": "Cooking Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Cooking_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1616,6 +2741,7 @@
           "label": "Farming Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Farming_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1640,6 +2766,7 @@
           "label": "Farming Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Farming_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1660,10 +2787,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:122653879c84",
+          "label": "Fishing Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Fishing",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Fishing_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/variants/fishing-cape-122653879c84/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Art/Skeleton/Armour/U_MED/SkillCape_Fishing_01/Materials/MI_SkillCape_Fishing_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Fishing_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9470e38d7040e09aea158334.webp",
+            "textures/webp_1024/b86879e650f1396e24887b5b.webp",
+            "textures/webp_1024/ef1e43e9a0936980366fcab7.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:b4e07682cc29",
+          "label": "Fishing Cape (Trimmed)",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Fishing",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Fishing_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_CapeOfAccomplishment_01-2c42fe67cb/variants/fishing-cape-trimmed-b4e07682cc29/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/Fishing/Content/Art/Skeleton/Armour/U_MED/SkillCape_Fishing_01/Materials/MI_SkillCape_Fishing_Trim_01.json"
+          ],
+          "materialNames": [
+            "MI_SkillCape_Fishing_Trim_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3d9e18fe59f11aee94f81e03.webp",
+            "textures/webp_1024/4eed210563c6cdc147f04940.webp",
+            "textures/webp_1024/7e7a692ef2bc5753d0799874.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:3019b2b6d94e",
           "label": "Magic Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Magic_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1688,6 +2866,7 @@
           "label": "Magic Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Magic_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1712,6 +2891,7 @@
           "label": "Mining Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Mining_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1736,6 +2916,7 @@
           "label": "Mining Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Mining_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1760,6 +2941,7 @@
           "label": "Ranged Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Ranged_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1784,6 +2966,7 @@
           "label": "Ranged Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Ranged_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1808,6 +2991,7 @@
           "label": "Runecrafting Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Runecrafting_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1832,6 +3016,7 @@
           "label": "Runecrafting Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Runecrafting_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1856,6 +3041,7 @@
           "label": "Woodcutting Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skillcape_Woodcutting_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1880,6 +3066,7 @@
           "label": "Woodcutting Cape (Trimmed)",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Trimmed_Skillcape_Woodcutting_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/CapeOfAccomplishment_01/SK_M_MED_CAPE_CapeOfAccomplishment_01.uemodel",
@@ -1912,6 +3099,7 @@
           "label": "Adventurers Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -1941,6 +3129,7 @@
           "label": "Black Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Black_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -1977,6 +3166,7 @@
           "label": "Bloodblight Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Bloodblight_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -1997,10 +3187,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:d46fe22447a1",
+          "label": "Bloodblight Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Bloodblight/ITEM_Cape_Bloodblight_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/bloodblight-cape-d46fe22447a1/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BloodBlightCape_01/Materials/MI_BloodBlightCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_BloodBlightCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3ab21b932816c06f52828a18.webp",
+            "textures/webp_1024/d202c53ee86029c090c3979b.webp",
+            "textures/webp_1024/eeef88f8c78e0e4df756feeb.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:fc4b66f62fe7",
           "label": "Blue Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Blue_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2037,6 +3253,7 @@
           "label": "Bramblemead Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Bramblemead_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2057,10 +3274,511 @@
           "diagnostics": []
         },
         {
+          "id": "EV:5a02d42fe57b",
+          "label": "Bramblemead Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Brynmoor/Bramblemead/ITEM_Cape_Bramblemead_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/bramblemead-cape-5a02d42fe57b/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BramblemeadCape_01/Materials/MI_BramblemeadCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_BramblemeadCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/3cb99b5b66c9d0981060e664.webp",
+            "textures/webp_1024/8f9841dc9982d404bc87a01f.webp",
+            "textures/webp_1024/9f984609fb448ddfd83bf14b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:e65196fe9fd6",
+          "label": "Cape Blue Dyad",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_BlueDyad_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-blue-dyad-e65196fe9fd6/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Blue.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Blue"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/6b9565586bb7c9cb60e60243.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:c9d67c87055c",
+          "label": "Cape Blue Hex",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_BlueHex_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-blue-hex-c9d67c87055c/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Blue.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Blue"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/9684e2dd7c16c2cb22f4d982.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:66276b6d4ef9",
+          "label": "Cape Dragonslayer",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Dragonslayer_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-dragonslayer-66276b6d4ef9/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/KuldraCape_01/Materials/MI_KuldraCape_01.json"
+          ],
+          "materialNames": [
+            "MI_KuldraCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/57d7ea69102e32747226412c.webp",
+            "textures/webp_1024/8c5307ca6abc49212bd7c508.webp",
+            "textures/webp_1024/d4967fe54733a4813f19c5e6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:05528c1335ee",
+          "label": "Cape Green Dyad",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GreenDyad_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-green-dyad-05528c1335ee/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Green.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Green"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/122dc67ab5b8c79fb3e5e447.webp",
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:879f306ac2f4",
+          "label": "Cape Green Hex",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GreenHex_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-green-hex-879f306ac2f4/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Green.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Green"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/bcb1e6b8a4d215e6f028dc4f.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:7eed3b317587",
+          "label": "Cape Menaphite Cape Black",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Black_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-black-7eed3b317587/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_07.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_07"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/855979ba85b02df37920a8b6.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:e7b88fd997e2",
+          "label": "Cape Menaphite Cape Blue",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Blue_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-blue-e7b88fd997e2/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_01.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/b385dd31ecda461a59c75c83.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:4a8c052a9b37",
+          "label": "Cape Menaphite Cape Green",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Green_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-green-4a8c052a9b37/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_05.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_05"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/d5a0b53765a3b168d5e918e6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:0942fa4d63c2",
+          "label": "Cape Menaphite Cape Orange",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Orange_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-orange-0942fa4d63c2/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_06.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_06"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/cbf4da3c3c528ce1e61182c6.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:29a6249dbaaf",
+          "label": "Cape Menaphite Cape Pink",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Pink_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-pink-29a6249dbaaf/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_04.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_04"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/95f5b2a124068ce0458066d8.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:2d3b7f945bbb",
+          "label": "Cape Menaphite Cape Purple",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Purple_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-purple-2d3b7f945bbb/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_03.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_03"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp",
+            "textures/webp_1024/fedf088e8c49a94e15edbfc4.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:617504c283bc",
+          "label": "Cape Menaphite Cape Red",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Red_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-red-617504c283bc/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_08.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_08"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d6c535b726585ba1502fe23.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:9fd65c695f29",
+          "label": "Cape Menaphite Cape White",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_White_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-white-9fd65c695f29/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_09.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_09"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/09cb2e0853ae286d9c62a260.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:e2e10ac77ed6",
+          "label": "Cape Menaphite Cape Yellow",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_MenaphiteCape_Yellow_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-menaphite-cape-yellow-e2e10ac77ed6/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/MenaphiteCape_01/Materials/MI_MenaphiteCape_01_02.json"
+          ],
+          "materialNames": [
+            "MI_MenaphiteCape_01_02"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/25f07ae211b1d0aafab7fe3d.webp",
+            "textures/webp_1024/84ab67ee9eeeb47f1adb1250.webp",
+            "textures/webp_1024/862b06cff46be2b882298473.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:f05587b4749e",
+          "label": "Cape Pink Dyad",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_PinkDyad_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-pink-dyad-f05587b4749e/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_01_Pink.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_01_Pink"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp",
+            "textures/webp_1024/c1085d972eb2c36d2c975692.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:33a2b5de3821",
+          "label": "Cape Pink Hex",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_PinkHex_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-pink-hex-33a2b5de3821/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Pink.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Pink"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/caa1d6a3153238e555f94361.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:5dfbc96469d7",
+          "label": "Cape Red Dyad",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_RedDyad_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-red-dyad-5dfbc96469d7/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Red.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Red"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2528ef5d1a3acfdcc6b4382e.webp",
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:f408e91252c5",
+          "label": "Cape Red Hex",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_RedHex_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-red-hex-f408e91252c5/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Red.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Red"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/fd615a337eb862ae5351418b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:45257985f899",
+          "label": "Cape Scorned Wilderness Golden",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/ScornedWilderness/ITEM_Cape_ScornedWilderness_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-scorned-wilderness-golden-45257985f899/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/BramblemeadCape_01/Materials/MI_BramblemeadCape_01.json"
+          ],
+          "materialNames": [
+            "MI_BramblemeadCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/039314f974be458dde009d77.webp",
+            "textures/webp_1024/4502a042211f3a4fc59838d9.webp",
+            "textures/webp_1024/8ccc0f11b060b3d95d8fa1ac.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:f6938c164738",
           "label": "Cape Skeleton",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Skeleton_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2081,10 +3799,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:d03becb41588",
+          "label": "Cape Yellow Dyad",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_YellowDyad_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-yellow-dyad-d03becb41588/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCapesPattern2_01/Materials/MI_AdventureCapesPattern2_02_Yellow.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCapesPattern2_02_Yellow"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/366eae96a18f326c00be864b.webp",
+            "textures/webp_1024/7e2bcb02cd9339014ef2cce3.webp",
+            "textures/webp_1024/cc166122ead22d1b335195b2.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:52bae400db11",
+          "label": "Cape Yellow Hex",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_YellowHex_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/cape-yellow-hex-52bae400db11/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/AdventureCape_01/Materials/MI_AdventureCape_Wild_01_Yellow.json"
+          ],
+          "materialNames": [
+            "MI_AdventureCape_Wild_01_Yellow"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/6d00a2d7f3734c6e1ab7ec6d.webp",
+            "textures/webp_1024/ba463a06eb2fcb3d70debd44.webp",
+            "textures/webp_1024/ce10aa7118a61768838d1931.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:498591bbc621",
           "label": "Community Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Community_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2105,10 +3874,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:990214b5e3cb",
+          "label": "Dowdun Reach Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/DowdunReach/ITEM_Cape_DowdunReach_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/dowdun-reach-cape-990214b5e3cb/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/DowdunCape_01/Materials/MI_DowdunCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_DowdunCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/5964dc9df790cd1810c41414.webp",
+            "textures/webp_1024/61fbf112c7dc1b92d77aa171.webp",
+            "textures/webp_1024/9164d28c6622e6177dd7b474.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:0203300fd5c3",
+          "label": "Dowdun Reach Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_DowdunReach_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/dowdun-reach-cape-0203300fd5c3/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/DowdunCape_01/Materials/MI_DowdunCape_01.json"
+          ],
+          "materialNames": [
+            "MI_DowdunCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/99110666b5827886c38760f7.webp",
+            "textures/webp_1024/b360ca6da9732d77f4dd70cc.webp",
+            "textures/webp_1024/f783dfddab218d04adfb475b.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:9a3009642297",
           "label": "Dragonbane Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_AlphaTest_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2133,6 +3953,7 @@
           "label": "Fellhollow Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fellhollow_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2153,10 +3974,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:17089dc2c00d",
+          "label": "Fellhollow Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Fellhollow/ITEM_Cape_Fellhollow_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/fellhollow-cape-17089dc2c00d/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/FellhollowCape_01/Materials/MI_FellollowCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_FellollowCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9594ad4aebfd012e909be339.webp",
+            "textures/webp_1024/977eed586864be0ee03d4133.webp",
+            "textures/webp_1024/a0c7ab92461c55d90af0021e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:c2fdc50fe1ba",
           "label": "Fractured Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fractured_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2177,10 +4024,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:511cfde28cc9",
+          "label": "Fractured Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Fractured/ITEM_Cape_Fractured_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/fractured-cape-511cfde28cc9/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/FracturedCape_01/Materials/MI_FracturedCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_FracturedCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/005ce76d97d58ec4f74a540b.webp",
+            "textures/webp_1024/334e7437ed8dd5fb8926dc5e.webp",
+            "textures/webp_1024/568bf694775d4620575f9f6e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:6fb4a0dac028",
           "label": "Garou Highborn's Cloak",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Garou_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2205,6 +4078,7 @@
           "label": "Goblin War Banner",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Goblin_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2229,6 +4103,7 @@
           "label": "Green Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Green_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2265,6 +4140,7 @@
           "label": "Orange Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Orange_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2301,6 +4177,7 @@
           "label": "Pink Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Pink_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2337,6 +4214,7 @@
           "label": "Pioneer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_EarlyAdopter_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2361,6 +4239,7 @@
           "label": "Purple Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Purple_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2397,6 +4276,7 @@
           "label": "Red Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Red_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2433,6 +4313,7 @@
           "label": "Saradominist Cloak",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Saradominist_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2457,6 +4338,7 @@
           "label": "Spectral Chinchompa Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Chinchompa_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2479,6 +4361,7 @@
           "label": "Stormtouched Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Stormtouched_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2499,10 +4382,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:8640407aaa70",
+          "label": "Stormtouched Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Ghornfell/Stormtouched/ITEM_Cape_Stormtouched_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/stormtouched-cape-8640407aaa70/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/StormtouchedCape_01/Materials/MI_StormtouchedCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_StormtouchedCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/49b66248a719a58d73617f22.webp",
+            "textures/webp_1024/652cd500a710ca74512c85d7.webp",
+            "textures/webp_1024/7a4f8abb4eccddb3f722906d.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:16b21d17817c",
           "label": "Tattered Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Tattered_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2523,10 +4432,61 @@
           "diagnostics": []
         },
         {
+          "id": "EV:b7e33fedb89e",
+          "label": "Umbral Sands Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/UmbralSands/ITEM_Cape_UmbralSands_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/umbral-sands-cape-b7e33fedb89e/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/UmbralSandsCape_01/Materials/MI_UmbralSandsCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_UmbralSandsCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2771e82211dbb31ffd2a0b27.webp",
+            "textures/webp_1024/9fb002c93511670013fba5cd.webp",
+            "textures/webp_1024/fea730e70b7478e989ccca07.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:8a5629b93c32",
+          "label": "Umbral Sands Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_UmbralSands_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/umbral-sands-cape-8a5629b93c32/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/UmbralSandsCape_01/Materials/MI_UmbralSandsCape_01.json"
+          ],
+          "materialNames": [
+            "MI_UmbralSandsCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2a36a3fc88e85111e74b9f60.webp",
+            "textures/webp_1024/b5cf7716e4ad8b2f1b41ddd0.webp",
+            "textures/webp_1024/cceeeb38c5702ab880dc08b1.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:773adb29510a",
           "label": "Whispering Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Whispering_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2547,10 +4507,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:145d181fda2f",
+          "label": "Whispering Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "Agility",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/Agility/Content/Gameplay/Character/Player/Equipment/Cape/RegionCapes/Brynmoor/Whispering/ITEM_Cape_Whispering_Golden_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/whispering-cape-145d181fda2f/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/WhisperingCape_01/Materials/MI_WhisperingCape_Gilded_01.json"
+          ],
+          "materialNames": [
+            "MI_WhisperingCape_Gilded_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/4049d34d14a18a698957e45b.webp",
+            "textures/webp_1024/53ad2e25e464a1a6a36864f1.webp",
+            "textures/webp_1024/64d5c262a7752a785f0f6ee5.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:ac580e42a8c8",
           "label": "White Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_White_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2587,6 +4573,7 @@
           "label": "Yellow Adventurer's Cape",
           "slot": "cape",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Adventurers_Yellow_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
@@ -2617,6 +4604,114 @@
               "optimized": "textures/webp_1024/e690e7365fdc96a8762533e1.webp"
             }
           ]
+        },
+        {
+          "id": "EV:70922e0cfe52",
+          "label": "Zamorak Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Zamorak_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_01/SK_M_MED_Cape_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_Cape_01-04d3bc7a24/variants/zamorak-cape-70922e0cfe52/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Armour/U_MED/ZamorakCape_01/Materials/MI_ZamorakCape_01.json"
+          ],
+          "materialNames": [
+            "MI_ZamorakCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/4e7988eca1771567f41ee29b.webp",
+            "textures/webp_1024/6a4e241f4c497a0f081c64f3.webp",
+            "textures/webp_1024/9e796eb2b59f22df919fc5a8.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        }
+      ]
+    },
+    "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel": {
+      "modelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+      "path": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+      "displayName": "SK_M_MED_CAPE_Cape_Long_01",
+      "baseGltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/model.gltf",
+      "variants": [
+        {
+          "id": "EV:5488aa61b29e",
+          "label": "Fire Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Fire_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/variants/fire-cape-5488aa61b29e/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/FireCape_01/Materials/MI_FireCape_01.json"
+          ],
+          "materialNames": [
+            "MI_FireCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/85ce2ee5a2dcc17e6f1513e4.webp",
+            "textures/webp_1024/a75bcf15198b8909f9e73c1f.webp",
+            "textures/webp_1024/d9ad43a53fe4015485747a18.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:06b1821f5c4e",
+          "label": "Gilded Paladin Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_GildedPaladin_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/variants/gilded-paladin-cape-06b1821f5c4e/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/GoldenCape_01/Materials/MI_GoldenCape_01.json"
+          ],
+          "materialNames": [
+            "MI_GoldenCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/2121063cc8af8f332095e335.webp",
+            "textures/webp_1024/831d975210fe860ca1aba8a8.webp",
+            "textures/webp_1024/cc59418dc0974c989473317a.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:1083c9d8f049",
+          "label": "Obsidian Cape",
+          "slot": "cape",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Obsidian_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Cape_Long_01/SK_M_MED_CAPE_Cape_Long_01.uemodel",
+          "baseGltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/model.gltf",
+          "gltfPath": "models/SK/SK_M_MED_CAPE_Cape_Long_01-d197b09c94/variants/obsidian-cape-1083c9d8f049/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/ObsidianCape_01/Materials/MI_ObsidianCape_01.json"
+          ],
+          "materialNames": [
+            "MI_ObsidianCape_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/941e64e2e6825e084ea56cdc.webp",
+            "textures/webp_1024/a27248118aaf5eeacd06fcfc.webp",
+            "textures/webp_1024/d00a61450fc499da7028589e.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
         }
       ]
     },
@@ -2631,6 +4726,7 @@
           "label": "Body Dragonkin Mage",
           "slot": "torso",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Body/ITEM_Armour_Body_DragonkinMage_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Body_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Body_DarkMageRobes_01.uemodel",
@@ -2663,6 +4759,7 @@
           "label": "Head Dragonkin Mage",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_DragonkinMage_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Head_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Head_DarkMageRobes_01.uemodel",
@@ -2695,6 +4792,7 @@
           "label": "Legs Dragonkin Mage",
           "slot": "legs",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Legs/ITEM_Armour_Legs_DragonkinMage_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Legs_DarkMageRobes_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/DarkMageRobes_01/SK_M_MED_Legs_DarkMageRobes_01.uemodel",
@@ -2727,6 +4825,7 @@
           "label": "Jewellery Amulet Of Defence",
           "slot": null,
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Jewellery/Deprecated/ITEM_Jewellery_Amulet_Of_Defence_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
@@ -2750,6 +4849,7 @@
           "label": "Jewellery Amulet Of Magic",
           "slot": null,
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Jewellery/Deprecated/ITEM_Jewellery_Amulet_Of_Magic_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
@@ -2773,6 +4873,7 @@
           "label": "Jewellery Bracelet Of Slaughter",
           "slot": null,
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Jewellery/Deprecated/ITEM_Jewellery_Bracelet_Of_Slaughter_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
@@ -2796,6 +4897,7 @@
           "label": "Jewellery Regen Bracelet",
           "slot": null,
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Jewellery/Deprecated/ITEM_Jewellery_Regen_Bracelet_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
@@ -2819,6 +4921,7 @@
           "label": "Jewellery Ring Of Pursuit",
           "slot": null,
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Jewellery/Deprecated/ITEM_Jewellery_Ring_Of_Pursuit_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/Rags_01/SK_M_MED_CAPE_MED_Rags_01.uemodel",
@@ -2850,6 +4953,7 @@
           "label": "Wild Archer Body",
           "slot": "torso",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Body/ITEM_Armour_Body_WildArcher_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/StuddedLeather_01/SK_M_MED_BODY_StuddedLeather_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/StuddedLeather_01/SK_M_MED_BODY_StuddedLeather_01.uemodel",
@@ -2882,6 +4986,7 @@
           "label": "Wild Archer Chaps",
           "slot": "legs",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Legs/ITEM_Armour_Legs_WildArcher_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/StuddedLeather_01/SK_M_MED_LEGS_StuddedLeather_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/StuddedLeather_01/SK_M_MED_LEGS_StuddedLeather_01.uemodel",
@@ -2914,6 +5019,7 @@
           "label": "Cape Avas Accumulator",
           "slot": "cape",
           "sex": "U_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Avas_Accumulator_MeshData_Uni1.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/Avas_Attractor_01/SK_U_MED_CAPE_Avas_Attractor_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/Avas_Attractor_01/SK_U_MED_CAPE_Avas_Attractor_01.uemodel",
@@ -2942,10 +5048,36 @@
       "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
       "variants": [
         {
+          "id": "EV:7fc604374229",
+          "label": "Head Adamant Med",
+          "slot": "helmet",
+          "sex": "F_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_AdamantMed_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-adamant-med-7fc604374229/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Adamant_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Adamant_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/324fdc6e0336d3a8892fca2d.webp",
+            "textures/webp_1024/44e234af92aaaef54dd9e8f9.webp",
+            "textures/webp_1024/51f1597f4212dfc875d381da.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:8a30d8c94828",
           "label": "Head Black Med",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_BlackMed_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -2968,6 +5100,7 @@
           "label": "Head Bronze Med",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_BronzeMed_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -2990,6 +5123,7 @@
           "label": "Head Iron Med",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_IronMed_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3008,10 +5142,57 @@
           "diagnostics": []
         },
         {
+          "id": "EV:a3d2b3126ae5",
+          "label": "Head Mithril Med",
+          "slot": "helmet",
+          "sex": "F_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_MithrilMed_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-mithril-med-a3d2b3126ae5/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Mithril_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Mithril_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/429fcb2f1c9a80f916a30d8d.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:acb5f7d4af1d",
+          "label": "Head Rune Med",
+          "slot": "helmet",
+          "sex": "F_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_RuneMed_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-rune-med-acb5f7d4af1d/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Rune_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Rune_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9e1b2b4b78bf915157b44234.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:9bed2864292e",
           "label": "Head Steel Med",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_SteelMed_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3034,6 +5215,7 @@
           "label": "Head White Med",
           "slot": "helmet",
           "sex": "F_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_WhiteMed_MeshData_Female.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3052,10 +5234,36 @@
           "diagnostics": []
         },
         {
+          "id": "EV:73948e966898",
+          "label": "Head Adamant Med",
+          "slot": "helmet",
+          "sex": "M_MED",
+          "sourceFeature": "UmbralSands",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_AdamantMed_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-adamant-med-73948e966898/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Adamant_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Adamant_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/324fdc6e0336d3a8892fca2d.webp",
+            "textures/webp_1024/44e234af92aaaef54dd9e8f9.webp",
+            "textures/webp_1024/51f1597f4212dfc875d381da.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:f6c823e766f1",
           "label": "Head Black Med",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_BlackMed_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3078,6 +5286,7 @@
           "label": "Head Bronze Med",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_BronzeMed_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3100,6 +5309,7 @@
           "label": "Head Iron Med",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_IronMed_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3118,10 +5328,57 @@
           "diagnostics": []
         },
         {
+          "id": "EV:05dacb2c9c84",
+          "label": "Head Mithril Med",
+          "slot": "helmet",
+          "sex": "M_MED",
+          "sourceFeature": "DowdunReach",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_MithrilMed_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-mithril-med-05dacb2c9c84/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Mithril_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Mithril_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/429fcb2f1c9a80f916a30d8d.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:355d13ffa6ac",
+          "label": "Head Rune Med",
+          "slot": "helmet",
+          "sex": "M_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_RuneMed_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_01-f8515e9643/variants/head-rune-med-355d13ffa6ac/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Rune_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Rune_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/9e1b2b4b78bf915157b44234.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
           "id": "EV:4e71dc6d1496",
           "label": "Head Steel Med",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_SteelMed_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3144,6 +5401,7 @@
           "label": "Head White Med",
           "slot": "helmet",
           "sex": "M_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_WhiteMed_MeshData_Male.json",
           "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
           "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/SK_U_MED_HEAD_MediumHelmet_01.uemodel",
@@ -3163,6 +5421,60 @@
         }
       ]
     },
+    "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel": {
+      "modelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+      "path": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+      "displayName": "SK_U_MED_HEAD_MediumHelmet_02",
+      "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_02-1c6c88941d/model.gltf",
+      "variants": [
+        {
+          "id": "EV:45aaa31d6860",
+          "label": "Head Dragon Med",
+          "slot": "helmet",
+          "sex": "F_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_DragonMed_MeshData_Female.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_02-1c6c88941d/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_02-1c6c88941d/variants/head-dragon-med-45aaa31d6860/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Dragon_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Dragon_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/dfc9381931b5cb20a5433520.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        },
+        {
+          "id": "EV:f58e1852bf01",
+          "label": "Head Dragon Med",
+          "slot": "helmet",
+          "sex": "M_MED",
+          "sourceFeature": "ScornedWilderness",
+          "meshDataPath": "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Gameplay/Character/Player/Equipment/Head/ITEM_Armour_Head_DragonMed_MeshData_Male.json",
+          "baseModelId": "SK:RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+          "baseModelPath": "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_02/SK_U_MED_HEAD_MediumHelmet_02.uemodel",
+          "baseGltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_02-1c6c88941d/model.gltf",
+          "gltfPath": "models/SK/SK_U_MED_HEAD_MediumHelmet_02-1c6c88941d/variants/head-dragon-med-f58e1852bf01/model.gltf",
+          "materialOverridePaths": [
+            "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/MediumHelmet_01/Materials/MI_MediumHelmet_Dragon_01.json"
+          ],
+          "materialNames": [
+            "MI_MediumHelmet_Dragon_01"
+          ],
+          "optimizedTextures": [
+            "textures/webp_1024/dfc9381931b5cb20a5433520.webp"
+          ],
+          "missingTextureCount": 0,
+          "diagnostics": []
+        }
+      ]
+    },
     "SK:RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/LumberjackBackpack_01/SK_U_MED_CAPE_LumberjackBackpack_01.uemodel": {
       "modelId": "SK:RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/LumberjackBackpack_01/SK_U_MED_CAPE_LumberjackBackpack_01.uemodel",
       "path": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/LumberjackBackpack_01/SK_U_MED_CAPE_LumberjackBackpack_01.uemodel",
@@ -3174,6 +5486,7 @@
           "label": "Cape Avas Atractor",
           "slot": "cape",
           "sex": "U_MED",
+          "sourceFeature": "Base",
           "meshDataPath": "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Cape/ITEM_Cape_Avas_Atractor_MeshData_Uni.json",
           "baseModelId": "SK:RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/LumberjackBackpack_01/SK_U_MED_CAPE_LumberjackBackpack_01.uemodel",
           "baseModelPath": "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Armour/U_MED/LumberjackBackpack_01/SK_U_MED_CAPE_LumberjackBackpack_01.uemodel",

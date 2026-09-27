@@ -347,13 +347,13 @@ Current publish config:
 
 The Pages workflow deploys only `website/`; it does not copy generated model
 assets into the Pages artifact. On localhost, the site reads
-`../0.12.0.0/WebAssets`. When deployed, `assetBaseUrl: "auto"` resolves model
+`../1.0.0.2/WebAssets`. When deployed, `assetBaseUrl: "auto"` resolves model
 URLs to raw GitHub content under
-`https://raw.githubusercontent.com/RSDWArchive/RSDWModel/main/0.12.0.0/WebAssets`.
+`https://raw.githubusercontent.com/RSDWArchive/RSDWModel/main/1.0.0.2/WebAssets`.
 
 The optimized `WebAssets/` corpus is tracked in git so the deployed static site
 can load model payloads from raw GitHub URLs. The latest measured generated
-corpus is about `1.9 GiB` (`1,985,899,149` bytes), with equipment variants and
+corpus is about `1.9 GiB` (`2,062,282,342` bytes), with equipment variants and
 web animations included and no generated file over `50 MiB` or `100 MiB`. Keep
 checking `WebAssetSizeReport.json` after clean rebuilds before pushing.
 
@@ -369,6 +369,14 @@ assets and held equipment metadata from the current `WebAssets` / RSDWArchive
 corpus, writes `website/avatar-index.json`, and creates avatar-only color
 variants under `<version>/WebAssets/avatar/textures/`. Runtime color swaps use
 those generated textures; the original model glTF files are not mutated.
+
+Equipment discovery covers both the base
+`RSDragonwilds/Content/Art/Skeleton/Player/Equipment` tree and every active
+`RSDragonwilds/Plugins/GameFeatures/*/Content/Art/Skeleton/Player/Equipment`
+tree. `FutureMajorVersion` is excluded until it becomes an active feature. The
+generated Avatar and equipment-variant indexes include a `coverage` block, and
+normal generation fails when an eligible mesh, held item, or material variant
+cannot be resolved. Use `--allow-incomplete` only for deliberate diagnostics.
 
 Held weapons are generated from RSDWArchive `Held` equipment `ITEM_*.json`
 metadata. The generator resolves the linked equipment blueprint to a skeletal

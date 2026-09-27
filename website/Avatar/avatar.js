@@ -24,6 +24,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   const OPTIONAL_SLOTS = new Set(["hair", "beard", "torso", "legs", "helmet", "cape", "rightHand", "leftHand"]);
   const HAND_SLOTS = ["rightHand", "leftHand"];
   const HELD_SLOTS = new Set(HAND_SLOTS);
+  const FILTERABLE_SLOTS = new Set(["torso", "legs", "helmet", "cape", ...HAND_SLOTS]);
   const ATTACHMENT_SOURCE_SLOTS = ["baseBody", "torso", "legs", "baseHead"];
   const SLOT_LABELS = {
     baseBody: "Body",
@@ -111,6 +112,9 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     animationPlay: document.getElementById("avatar-animation-play"),
     animationCapture: document.getElementById("avatar-animation-capture"),
     slotControls: Object.fromEntries(SLOT_ORDER.map((slot) => [slot, document.getElementById(`slot-${slot}`)])),
+    slotFilters: Object.fromEntries(
+      Array.from(document.querySelectorAll("[data-slot-filter]")).map((input) => [input.dataset.slotFilter, input]),
+    ),
     handAdjustPanels: Object.fromEntries(HAND_SLOTS.map((slot) => [slot, document.querySelector(`[data-hand-adjust="${slot}"]`)])),
     handAdjustInputs: Array.from(document.querySelectorAll("[data-hand-adjust-input]")),
     handAdjustReset: Array.from(document.querySelectorAll("[data-hand-adjust-reset]")),
@@ -139,6 +143,7 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
   let isCapturingAnimation = false;
   let isExportingAvatar = false;
   let animationFilterText = "";
+  const slotFilterText = Object.fromEntries(Array.from(FILTERABLE_SLOTS, (slot) => [slot, ""]));
   const gltfCache = new Map();
   const textureCache = new Map();
   const activeObjects = new Map();
@@ -606,7 +611,22 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
 
   function fillSlotSelect(slot) {
     const select = els.slotControls[slot];
-    const rows = compatibleRows(slot);
+    const allRows = compatibleRows(slot);
+    const query = String(slotFilterText[slot] || "").trim().toLowerCase();
+    const terms = query.split(/\s+/).filter(Boolean);
+    let rows = terms.length
+      ? allRows.filter((row) => {
+          const text = [row.label, row.displayName, row.sourceFeature, row.category, row.path]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+          return terms.every((term) => text.includes(term));
+        })
+      : allRows;
+    const selectedRow = rowById(state.slots[slot]);
+    if (selectedRow && !rows.some((row) => row.id === selectedRow.id)) {
+      rows = [selectedRow, ...rows];
+    }
     const lockedByTwoHander =
       (slot === "leftHand" && isTwoHandedRow(rowById(state.slots.rightHand))) ||
       (slot === "rightHand" && isTwoHandedRow(rowById(state.slots.leftHand)));
@@ -614,15 +634,42 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
     if (OPTIONAL_SLOTS.has(slot)) {
       const option = document.createElement("option");
       option.value = "";
-      option.textContent = lockedByTwoHander ? "Two-handed item selected" : "None";
+      option.textContent = lockedByTwoHander
+        ? "Two-handed item selected"
+        : query
+          ? `None (${rows.length}/${allRows.length})`
+          : "None";
       select.appendChild(option);
     }
-    for (const row of lockedByTwoHander ? [] : rows) {
+    const appendOption = (parent, row) => {
       const option = document.createElement("option");
       option.value = row.id;
       option.textContent = row.label;
       if (row.isTwoHanded) option.textContent = `${row.label} (2H)`;
-      select.appendChild(option);
+      parent.appendChild(option);
+    };
+    if (!lockedByTwoHander && FILTERABLE_SLOTS.has(slot)) {
+      const groups = new Map();
+      for (const row of rows) {
+        const feature = row.sourceFeature || "Base";
+        const category = HELD_SLOTS.has(slot) && row.category ? ` / ${row.category}` : "";
+        const label = `${feature}${category}`;
+        if (!groups.has(label)) groups.set(label, []);
+        groups.get(label).push(row);
+      }
+      const labels = Array.from(groups.keys()).sort((a, b) => {
+        if (a.startsWith("Base")) return b.startsWith("Base") ? a.localeCompare(b) : -1;
+        if (b.startsWith("Base")) return 1;
+        return a.localeCompare(b);
+      });
+      for (const label of labels) {
+        const group = document.createElement("optgroup");
+        group.label = label;
+        for (const row of groups.get(label)) appendOption(group, row);
+        select.appendChild(group);
+      }
+    } else {
+      for (const row of lockedByTwoHander ? [] : rows) appendOption(select, row);
     }
     select.value = state.slots[slot] || "";
     select.disabled = lockedByTwoHander;
@@ -1293,6 +1340,12 @@ import * as SkeletonUtils from "three/addons/utils/SkeletonUtils.js";
       });
       select.addEventListener("focus", () => {
         activeSlot = slot;
+      });
+    }
+    for (const [slot, input] of Object.entries(els.slotFilters)) {
+      input.addEventListener("input", () => {
+        slotFilterText[slot] = input.value;
+        fillSlotSelect(slot);
       });
     }
 

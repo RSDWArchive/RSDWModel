@@ -1061,6 +1061,24 @@ def validate_publish_existing(*, root: Path, version: str, file_limit_mb: float)
             "Publish-existing validation failed; generated WebAssets include files over GitHub's "
             f"{file_limit_mb:g} MiB file limit:\n{preview}"
         )
+
+    coverage_artifacts = {
+        "avatar index": root / "website" / "avatar-index.json",
+        "equipment variants": root / "website" / "equipment-variants.json",
+    }
+    for label, path in coverage_artifacts.items():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if data.get("datasetVersion") != version:
+            raise SystemExit(
+                f"Publish-existing validation failed; {label} dataset version "
+                f"{data.get('datasetVersion')!r} does not match requested {version!r}."
+            )
+        coverage = data.get("coverage") or {}
+        if coverage.get("status") != "pass":
+            raise SystemExit(
+                f"Publish-existing validation failed; {label} coverage is "
+                f"{coverage.get('status') or 'missing'!r}. Rebuild website indexes with the current pipeline."
+            )
     return {
         "output_root": str(output_root),
         "pipeline_run": str(output_root / "PipelineRun.json"),

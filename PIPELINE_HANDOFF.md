@@ -127,7 +127,7 @@ A successful full update should refresh or validate these files:
 Current measured generated WebAssets:
 
 - Total: about `1.9 GiB`
-- Exact bytes: `1,985,899,149`
+- Exact bytes: `2,062,282,342`
 - Equipment variants included: yes
 - Web animations included: yes
 - Files over `50 MiB`: none
@@ -144,6 +144,8 @@ After a full build:
    file is over GitHub's `100 MiB` hard limit.
 3. Confirm `website\model-index.json`, `website\avatar-index.json`,
    `website\equipment-variants.json`, and `website\animation-index.json` exist.
+   The Avatar and equipment-variant indexes must report `coverage.status` as
+   `pass`; this confirms base and active GameFeature equipment was resolved.
 4. If committing and pushing, confirm `git status --short` is clean afterward.
 5. Confirm [rsdwmodel.com](https://rsdwmodel.com/) loads the current
    cache-busted website JavaScript and current website indexes after GitHub

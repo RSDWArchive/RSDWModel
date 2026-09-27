@@ -24,6 +24,11 @@ from EnrichFromArchive import (  # noqa: E402
     _first_existing_texture,
     _package_path_to_relatives,
 )
+from PlayerEquipmentPaths import (  # noqa: E402
+    configured_dataset_version,
+    feature_from_archive_path,
+    iter_player_equipment_roots,
+)
 from WebTextureRules import is_web_texture_candidate  # noqa: E402
 
 
@@ -31,8 +36,6 @@ SCHEMA = "RSDWModel.EquipmentVariants.v1"
 TEXTURE_EXTENSIONS = (".png", ".hdr", ".tga", ".jpg", ".jpeg", ".webp", ".dds", ".bmp")
 WEBP_ALPHA_REVISION = "equipment-variant-webp-v1"
 VARIANT_GLTF_REVISION = "equipment-variant-gltf-v1"
-DEFAULT_DATASET_VERSION = "0.12.0.0"
-PLAYER_EQUIPMENT_REL = "RSDragonwilds/Content/Gameplay/Character/Player/Equipment"
 ITEM_NAMES_REL = "RSDragonwilds/Content/Gameplay/Items/ST_ItemNames.json"
 
 ROLE_TEXTURE_KEYS = {
@@ -191,8 +194,11 @@ def _sex_from_mesh_data(stem: str, mesh_path: str) -> str:
 
 
 def _slot_from_mesh_data(path: Path) -> str | None:
-    for folder, slot in MATERIAL_SLOT_BY_EQUIPMENT_FOLDER.items():
-        if path.parent.name == folder:
+    parts = path.parent.parts
+    equipment_index = max((index for index, part in enumerate(parts) if part == "Equipment"), default=-1)
+    for part in parts[equipment_index + 1:]:
+        slot = MATERIAL_SLOT_BY_EQUIPMENT_FOLDER.get(part)
+        if slot:
             return slot
     return None
 
@@ -721,10 +727,10 @@ def _write_variant_gltf(
 
 
 def _iter_equipment_mesh_data(archive_root: Path) -> list[Path]:
-    root = archive_root / "json" / PLAYER_EQUIPMENT_REL
-    if not root.is_dir():
-        return []
-    return sorted(root.rglob("*MeshData*.json"), key=lambda path: path.as_posix().lower())
+    paths: list[Path] = []
+    for _source_feature, equipment_root in iter_player_equipment_roots(archive_root / "json"):
+        paths.extend(equipment_root.rglob("*MeshData*.json"))
+    return sorted(paths, key=lambda path: path.as_posix().lower())
 
 
 def _mesh_data_record(path: Path, archive_root: Path) -> dict | None:
@@ -751,6 +757,7 @@ def _mesh_data_record(path: Path, archive_root: Path) -> dict | None:
         "mesh_asset": str(mesh_path),
         "materials": [str(mat) for mat in mats],
         "archive_json_path": rel,
+        "source_feature": feature_from_archive_path(path, archive_root / "json"),
     }
 
 
@@ -863,6 +870,7 @@ def generate_equipment_variants(
     texture_quality: int,
     limit: int | None,
     dry_run: bool,
+    strict_coverage: bool = True,
 ) -> dict:
     source_root = repo_root / dataset_version
     webassets_root = source_root / "WebAssets"
@@ -974,6 +982,7 @@ def generate_equipment_variants(
             "label": label,
             "slot": slot,
             "sex": sex,
+            "sourceFeature": rec.get("source_feature") or "Base",
             "meshDataPath": rec["archive_json_path"],
             "baseModelId": base_model["id"],
             "baseModelPath": model_path,
@@ -1012,9 +1021,30 @@ def generate_equipment_variants(
         "baseModelCount": len(by_model),
         "variantCount": variant_count,
         "skippedCount": len(skipped),
+        "coverage": {
+            "status": "pass" if not skipped else "incomplete",
+            "sourceRoots": [
+                {
+                    "feature": feature,
+                    "path": root.resolve().relative_to((archive_root / "json").resolve()).as_posix(),
+                }
+                for feature, root in iter_player_equipment_roots(archive_root / "json")
+            ],
+            "discoveredRecords": len(records),
+            "materialVariantRecords": len(selected),
+            "generatedVariants": variant_count,
+            "missing": skipped[:250],
+        },
         "byModel": dict(sorted(by_model.items(), key=lambda item: item[0])),
         "skipped": skipped[:250],
     }
+
+    if strict_coverage and skipped:
+        reasons = sorted({str(row.get("reason") or "unknown") for row in skipped})
+        raise SystemExit(
+            f"Equipment variant coverage validation failed for {len(skipped)} record(s): "
+            + ", ".join(reasons)
+        )
 
     if not dry_run:
         _write_json_atomic(output_path, output)
@@ -1026,7 +1056,7 @@ def generate_equipment_variants(
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate website equipment material variants from RSDWArchive mesh-data records.")
     parser.add_argument("--repo-root", type=Path, default=_repo_root())
-    parser.add_argument("--dataset-version", default=DEFAULT_DATASET_VERSION)
+    parser.add_argument("--dataset-version", default=None)
     parser.add_argument("--archive-root", type=Path, default=None)
     parser.add_argument("--model-index", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
@@ -1035,15 +1065,17 @@ def main() -> int:
     parser.add_argument("--texture-quality", type=int, default=75)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--allow-incomplete", action="store_true", help="Write partial equipment variants when eligible records are unresolved.")
     args = parser.parse_args()
 
     repo_root = args.repo_root.resolve()
-    archive_root = (args.archive_root or _default_archive_root(args.dataset_version)).resolve()
+    dataset_version = args.dataset_version or configured_dataset_version(repo_root)
+    archive_root = (args.archive_root or _default_archive_root(dataset_version)).resolve()
     model_index = (args.model_index or repo_root / "website" / "model-index.json").resolve()
     output = (args.output or repo_root / "website" / "equipment-variants.json").resolve()
     result = generate_equipment_variants(
         repo_root=repo_root,
-        dataset_version=args.dataset_version,
+        dataset_version=dataset_version,
         archive_root=archive_root,
         model_index_path=model_index,
         output_path=output,
@@ -1052,6 +1084,7 @@ def main() -> int:
         texture_quality=args.texture_quality,
         limit=args.limit,
         dry_run=args.dry_run,
+        strict_coverage=not args.allow_incomplete,
     )
     action = "would write" if args.dry_run else "wrote"
     print(

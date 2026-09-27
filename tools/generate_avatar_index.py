@@ -14,16 +14,25 @@ from typing import Any
 from PIL import Image, ImageColor, ImageEnhance, ImageFilter
 
 
+MODEL_DATA_DIR = Path(__file__).resolve().parent / "ModelData"
+if str(MODEL_DATA_DIR) not in sys.path:
+    sys.path.insert(0, str(MODEL_DATA_DIR))
+
+from EnrichFromArchive import _package_path_to_relatives  # noqa: E402
+from PlayerEquipmentPaths import (  # noqa: E402
+    configured_dataset_version,
+    feature_from_model_path,
+    is_excluded_feature_path,
+    iter_player_equipment_roots,
+)
+
+
 THREE_AVATAR_SCHEMA = "RSDWModel.WebsiteAvatarIndex.v1"
 HAIR_TEXTURE_REVISION = "hair-v2"
 BROW_TEXTURE_REVISION = "brow-v1"
-PLAYER_PREFIX = "RSDragonwilds/Content/Art/Skeleton/Player/"
-ARMOUR_PREFIXES = (
-    "RSDragonwilds/Content/Art/Skeleton/Armour/M_MED/",
-    "RSDragonwilds/Content/Art/Skeleton/Armour/F_MED/",
-    "RSDragonwilds/Content/Art/Skeleton/Armour/U_MED/",
-)
-HELD_EQUIPMENT_PREFIX = "RSDragonwilds/Content/Gameplay/Character/Player/Equipment/Held/"
+PLAYER_MARKER = "/Content/Art/Skeleton/Player/"
+ARMOUR_MARKER = "/Content/Art/Skeleton/Armour/"
+PLAYER_ARMOUR_FAMILIES = frozenset({"M_MED", "F_MED", "U_MED"})
 HELD_SLOT_NAMES = ("rightHand", "leftHand")
 HELD_SLOT_STRATEGIES = {
     "ELoadoutSlotStrategy::HeldOnlyRight": ("rightHand", False),
@@ -210,8 +219,12 @@ def _build_palettes(source_root: Path, archive_json_root: Path | None) -> dict[s
 
 
 def _slot_for(name: str, path: str) -> str | None:
-    if path.startswith(PLAYER_PREFIX):
-        rest = path[len(PLAYER_PREFIX):]
+    normalized = f"/{str(path or '').replace(chr(92), '/').lstrip('/')}"
+    if is_excluded_feature_path(normalized):
+        return None
+
+    if PLAYER_MARKER in normalized:
+        rest = normalized.split(PLAYER_MARKER, 1)[1]
         folder = rest.split("/", 1)[0]
         if folder == "Body":
             return "baseBody"
@@ -223,7 +236,11 @@ def _slot_for(name: str, path: str) -> str | None:
             return "beard"
         return None
 
-    if not path.startswith(ARMOUR_PREFIXES):
+    if ARMOUR_MARKER not in normalized:
+        return None
+    armour_rest = normalized.split(ARMOUR_MARKER, 1)[1]
+    armour_family = armour_rest.split("/", 1)[0]
+    if armour_family not in PLAYER_ARMOUR_FAMILIES:
         return None
 
     if any(token in name for token in ("_BODY_", "_Body_", "_UpperHalf", "_Upperhalf", "StarterOutfit_01_Top", "LightArmour_01_Body")):
@@ -303,22 +320,26 @@ def _asset_path_to_archive_rel(asset_path: str) -> str | None:
     value = str(asset_path or "").replace("\\", "/")
     if not value:
         return None
-    if value.startswith("/Game/"):
-        value = "RSDragonwilds/Content/" + value[len("/Game/"):]
     if "." in value:
-        value = value.split(".", 1)[0]
+        value = value.rsplit(".", 1)[0]
     if value.endswith("_C"):
         value = value[:-2]
-    if not value.startswith("RSDragonwilds/Content/"):
-        return None
-    return value
+    candidates = _package_path_to_relatives(value)
+    return next((row for row in candidates if row.startswith("RSDragonwilds/")), None)
 
 
 def _asset_path_to_json_path(asset_path: str, archive_json_root: Path) -> Path | None:
-    rel = _asset_path_to_archive_rel(asset_path)
-    if not rel:
-        return None
-    return archive_json_root / Path(rel + ".json")
+    value = str(asset_path or "").replace("\\", "/")
+    if "." in value:
+        value = value.rsplit(".", 1)[0]
+    if value.endswith("_C"):
+        value = value[:-2]
+    candidates = _package_path_to_relatives(value)
+    for rel in candidates:
+        candidate = archive_json_root / Path(rel + ".json")
+        if candidate.is_file():
+            return candidate
+    return archive_json_root / Path(candidates[0] + ".json") if candidates else None
 
 
 def _asset_path_to_model_id(asset_path: str, kind: str | None = None) -> str | None:
@@ -665,9 +686,12 @@ def _candidate_rows(
     palettes: dict[str, list[ColorOption]],
     quality: int,
     force_textures: bool,
-) -> dict[str, list[dict]]:
+) -> tuple[dict[str, list[dict]], dict]:
     slots = {key: [] for key in ("baseBody", "baseHead", "hair", "beard", "torso", "legs", "helmet", "cape", *HELD_SLOT_NAMES)}
     variant_cache: dict[tuple[str, str, str], str] = {}
+    expected_by_slot = {key: 0 for key in slots}
+    included_by_slot = {key: 0 for key in slots}
+    missing: list[dict] = []
 
     for model in model_index.get("models") or []:
         if not isinstance(model, dict) or model.get("kind") != "SK":
@@ -677,8 +701,10 @@ def _candidate_rows(
         slot = _slot_for(name, path)
         if not slot:
             continue
+        expected_by_slot[slot] += 1
         gltf_path = str(model.get("gltfPath") or "")
         if not gltf_path or not (webassets_root / Path(gltf_path)).is_file():
+            missing.append({"id": model.get("id"), "path": path, "slot": slot, "reason": "gltf_missing"})
             continue
         row = {
             "id": model.get("id"),
@@ -688,6 +714,7 @@ def _candidate_rows(
             "slot": slot,
             "sex": _sex_for(name, path),
             "headFamily": _head_family(name),
+            "sourceFeature": feature_from_model_path(path),
             "path": path,
             "gltfPath": gltf_path,
             "assetDir": model.get("assetDir"),
@@ -703,10 +730,16 @@ def _candidate_rows(
             ),
         }
         slots[slot].append(row)
+        included_by_slot[slot] += 1
 
     for slot, rows in slots.items():
         rows.sort(key=lambda item: (item["sex"], item["label"].lower(), item["path"].lower()))
-    return slots
+    return slots, {
+        "status": "pass" if not missing else "incomplete",
+        "expectedBySlot": expected_by_slot,
+        "includedBySlot": included_by_slot,
+        "missing": missing,
+    }
 
 
 def _model_lookup(model_index: dict) -> dict[str, dict]:
@@ -717,7 +750,7 @@ def _model_lookup(model_index: dict) -> dict[str, dict]:
         model_id = model.get("id")
         gltf_path = model.get("gltfPath")
         if model_id and gltf_path:
-            out[str(model_id)] = model
+            out[str(model_id).casefold()] = model
     return out
 
 
@@ -741,22 +774,49 @@ def _build_held_equipment_rows(
     archive_json_root: Path | None,
     webassets_root: Path,
     model_index: dict,
-) -> dict[str, list[dict]]:
+) -> tuple[dict[str, list[dict]], dict]:
     slots = {key: [] for key in HELD_SLOT_NAMES}
+    coverage = {
+        "status": "pass",
+        "sourceRoots": [],
+        "records": 0,
+        "eligible": 0,
+        "resolved": 0,
+        "missing": [],
+    }
     if archive_json_root is None or not archive_json_root.is_dir():
-        return slots
-
-    held_root = archive_json_root / Path(HELD_EQUIPMENT_PREFIX)
-    if not held_root.is_dir():
-        return slots
+        coverage["status"] = "unavailable"
+        return slots, coverage
 
     lookup = _model_lookup(model_index)
     seen_ids: set[str] = set()
-    item_paths = sorted(held_root.rglob("ITEM_*.json"), key=lambda path: path.as_posix().lower())
-    for item_path in item_paths:
+    item_records: list[tuple[str, Path]] = []
+    for source_feature, equipment_root in iter_player_equipment_roots(archive_json_root):
+        held_root = equipment_root / "Held"
+        if not held_root.is_dir():
+            continue
+        coverage["sourceRoots"].append(
+            {
+                "feature": source_feature,
+                "path": _archive_rel(held_root, archive_json_root),
+            }
+        )
+        item_records.extend(
+            (source_feature, path)
+            for path in held_root.rglob("ITEM_*.json")
+        )
+    item_records.sort(key=lambda item: item[1].as_posix().lower())
+    coverage["records"] = len(item_records)
+
+    for source_feature, item_path in item_records:
+        if any(part.casefold() in {"deleted", "deprecated"} for part in item_path.parts):
+            continue
         try:
             data = _read_json(item_path)
-        except Exception:
+        except Exception as exc:
+            coverage["missing"].append(
+                {"path": _archive_rel(item_path, archive_json_root), "reason": f"json_error:{type(exc).__name__}"}
+            )
             continue
         rows = data if isinstance(data, list) else [data]
         item = next((row for row in rows if isinstance(row, dict) and isinstance(row.get("Properties"), dict)), None)
@@ -767,6 +827,7 @@ def _build_held_equipment_rows(
         hand_slot, is_two_handed = HELD_SLOT_STRATEGIES.get(slot_strategy, (None, False))
         if not hand_slot:
             continue
+        coverage["eligible"] += 1
         category = _category_label(props)
         if is_two_handed and _is_left_hand_two_hander(category, item_path):
             hand_slot = "leftHand"
@@ -779,24 +840,42 @@ def _build_held_equipment_rows(
             actor_json_path = _asset_path_to_json_path(str(actor_ref.get("AssetPathName") or ""), archive_json_root)
             actor_model_id, actor_diagnostics = _find_actor_skeletal_model_id(actor_json_path) if actor_json_path else (None, ["missing_actor_path"])
             diagnostics.extend(actor_diagnostics)
-            if actor_model_id in lookup:
-                model_id = actor_model_id
+            actor_model = lookup.get(str(actor_model_id).casefold()) if actor_model_id else None
+            if actor_model:
+                model_id = str(actor_model.get("id") or actor_model_id)
 
         static_ref = props.get("StaticMesh")
         static_model_id = None
         if isinstance(static_ref, dict):
             static_model_id = _asset_path_to_model_id(str(static_ref.get("AssetPathName") or ""), "SM")
-        if not model_id and static_model_id in lookup:
-            model_id = static_model_id
+        if not model_id and static_model_id:
+            static_model = lookup.get(static_model_id.casefold())
+            if static_model:
+                model_id = str(static_model.get("id") or static_model_id)
         if not model_id:
+            coverage["missing"].append(
+                {
+                    "path": _archive_rel(item_path, archive_json_root),
+                    "reason": "published_model_unresolved",
+                    "actor": str((actor_ref or {}).get("AssetPathName") or "") if isinstance(actor_ref, dict) else "",
+                    "static": str((static_ref or {}).get("AssetPathName") or "") if isinstance(static_ref, dict) else "",
+                }
+            )
             continue
 
-        model = lookup.get(model_id)
+        model = lookup.get(model_id.casefold())
         if not model:
+            coverage["missing"].append(
+                {"path": _archive_rel(item_path, archive_json_root), "reason": "model_index_missing", "modelId": model_id}
+            )
             continue
         gltf_path = str(model.get("gltfPath") or "")
         if not gltf_path or not (webassets_root / Path(gltf_path)).is_file():
+            coverage["missing"].append(
+                {"path": _archive_rel(item_path, archive_json_root), "reason": "gltf_missing", "modelId": model_id}
+            )
             continue
+        coverage["resolved"] += 1
 
         item_name = str(item.get("Name") or item_path.stem)
         label = _localized_label(props, item_name)
@@ -815,6 +894,7 @@ def _build_held_equipment_rows(
                 "label": label,
                 "slot": row_slot,
                 "sex": "U_MED",
+                "sourceFeature": source_feature,
                 "path": str(model.get("path") or ""),
                 "gltfPath": gltf_path,
                 "assetDir": model.get("assetDir"),
@@ -840,8 +920,17 @@ def _build_held_equipment_rows(
             slots[row_slot].append(row)
 
     for slot, rows in slots.items():
-        rows.sort(key=lambda item: (item.get("category") or "", item["label"].lower(), item["path"].lower()))
-    return slots
+        rows.sort(
+            key=lambda item: (
+                item.get("sourceFeature") != "Base",
+                item.get("sourceFeature") or "",
+                item.get("category") or "",
+                item["label"].lower(),
+                item["path"].lower(),
+            )
+        )
+    coverage["status"] = "pass" if not coverage["missing"] else "incomplete"
+    return slots, coverage
 
 
 def _append_equipment_variant_rows(
@@ -853,13 +942,17 @@ def _append_equipment_variant_rows(
     palettes: dict[str, list[ColorOption]],
     quality: int,
     force_textures: bool,
-) -> None:
+) -> dict:
+    coverage = {"status": "pass", "records": 0, "eligible": 0, "appended": 0, "missing": []}
     if equipment_variants_path is None or not equipment_variants_path.is_file():
-        return
+        coverage["status"] = "unavailable"
+        return coverage
     try:
         variants_index = _read_json(equipment_variants_path)
-    except Exception:
-        return
+    except Exception as exc:
+        coverage["status"] = "incomplete"
+        coverage["missing"].append({"reason": f"index_error:{type(exc).__name__}"})
+        return coverage
     variant_cache: dict[tuple[str, str, str], str] = {}
     valid_slots = set(slots)
     seen_ids = {str(row.get("id")) for rows in slots.values() for row in rows}
@@ -869,14 +962,20 @@ def _append_equipment_variant_rows(
         for variant in group.get("variants") or []:
             if not isinstance(variant, dict):
                 continue
+            coverage["records"] += 1
             slot = str(variant.get("slot") or "")
             if slot not in valid_slots:
                 continue
+            coverage["eligible"] += 1
             variant_id = str(variant.get("id") or "")
             gltf_path = str(variant.get("gltfPath") or "")
-            if not variant_id or variant_id in seen_ids or not gltf_path:
+            if variant_id in seen_ids:
+                continue
+            if not variant_id or not gltf_path:
+                coverage["missing"].append({"id": variant_id, "slot": slot, "reason": "variant_path_missing"})
                 continue
             if not (webassets_root / Path(gltf_path)).is_file():
+                coverage["missing"].append({"id": variant_id, "slot": slot, "reason": "variant_gltf_missing", "gltfPath": gltf_path})
                 continue
             label = str(variant.get("label") or variant_id)
             row = {
@@ -887,6 +986,7 @@ def _append_equipment_variant_rows(
                 "slot": slot,
                 "sex": variant.get("sex") or "U_MED",
                 "headFamily": None,
+                "sourceFeature": variant.get("sourceFeature") or feature_from_model_path(str(variant.get("baseModelPath") or "")),
                 "path": variant.get("baseModelPath") or variant.get("meshDataPath") or "",
                 "gltfPath": gltf_path,
                 "assetDir": str(Path(gltf_path).parent).replace("\\", "/"),
@@ -908,9 +1008,20 @@ def _append_equipment_variant_rows(
             }
             slots[slot].append(row)
             seen_ids.add(variant_id)
+            coverage["appended"] += 1
 
     for slot, rows in slots.items():
-        rows.sort(key=lambda item: (item["sex"], item["label"].lower(), item["path"].lower()))
+        rows.sort(
+            key=lambda item: (
+                item["sex"],
+                item.get("sourceFeature") != "Base",
+                item.get("sourceFeature") or "",
+                item["label"].lower(),
+                item["path"].lower(),
+            )
+        )
+    coverage["status"] = "pass" if not coverage["missing"] else "incomplete"
+    return coverage
 
 
 def _default_for(slots: dict[str, list[dict]], slot: str, display_name: str | None = None) -> str | None:
@@ -939,12 +1050,13 @@ def build_avatar_index(
     equipment_variants_path: Path | None,
     texture_quality: int,
     force_textures: bool,
+    strict_coverage: bool = True,
 ) -> dict:
     source_root = repo_root / dataset_version
     webassets_root = source_root / "WebAssets"
     model_index = _read_json(model_index_path)
     palettes = _build_palettes(source_root, archive_json_root)
-    slots = _candidate_rows(
+    slots, direct_coverage = _candidate_rows(
         repo_root=repo_root,
         webassets_root=webassets_root,
         model_index=model_index,
@@ -952,14 +1064,14 @@ def build_avatar_index(
         quality=texture_quality,
         force_textures=force_textures,
     )
-    held_slots = _build_held_equipment_rows(
+    held_slots, held_coverage = _build_held_equipment_rows(
         archive_json_root=archive_json_root,
         webassets_root=webassets_root,
         model_index=model_index,
     )
     for slot, rows in held_slots.items():
         slots.setdefault(slot, []).extend(rows)
-    _append_equipment_variant_rows(
+    variant_coverage = _append_equipment_variant_rows(
         repo_root=repo_root,
         webassets_root=webassets_root,
         slots=slots,
@@ -968,6 +1080,27 @@ def build_avatar_index(
         quality=texture_quality,
         force_textures=force_textures,
     )
+
+    coverage = {
+        "status": "pass",
+        "directModels": direct_coverage,
+        "heldItems": held_coverage,
+        "equipmentVariants": variant_coverage,
+    }
+    incomplete_sections = [
+        name
+        for name, section in (
+            ("directModels", direct_coverage),
+            ("heldItems", held_coverage),
+            ("equipmentVariants", variant_coverage),
+        )
+        if section.get("status") == "incomplete"
+    ]
+    if incomplete_sections:
+        coverage["status"] = "incomplete"
+        if strict_coverage:
+            details = ", ".join(incomplete_sections)
+            raise SystemExit(f"Avatar coverage validation failed: {details}")
 
     out = {
         "schema": THREE_AVATAR_SCHEMA,
@@ -1001,6 +1134,7 @@ def build_avatar_index(
         "colors": _serialize_palettes(palettes),
         "slots": slots,
         "counts": {slot: len(rows) for slot, rows in slots.items()},
+        "coverage": coverage,
     }
     _write_json(output_path, out)
     return out
@@ -1009,21 +1143,23 @@ def build_avatar_index(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Generate the Avatar page index and avatar-only color texture variants.")
     parser.add_argument("--repo-root", type=Path, default=_repo_root())
-    parser.add_argument("--dataset-version", default="0.12.0.0")
+    parser.add_argument("--dataset-version", default=None)
     parser.add_argument("--model-index", type=Path, default=None)
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--archive-json-root", type=Path, default=None)
     parser.add_argument("--equipment-variants", type=Path, default=None)
     parser.add_argument("--texture-quality", type=int, default=75)
     parser.add_argument("--force-textures", action="store_true", help="Rewrite existing generated avatar texture variants.")
+    parser.add_argument("--allow-incomplete", action="store_true", help="Write an index even when eligible Avatar assets are unresolved.")
     args = parser.parse_args(argv)
 
     repo = args.repo_root.resolve()
+    dataset_version = args.dataset_version or configured_dataset_version(repo)
     model_index = args.model_index or repo / "website" / "model-index.json"
     output = args.output or repo / "website" / "avatar-index.json"
     archive_json_root = args.archive_json_root
     if archive_json_root is None:
-        candidate = Path(r"E:\Github\RSDWArchive") / args.dataset_version / "json"
+        candidate = Path(r"E:\Github\RSDWArchive") / dataset_version / "json"
         archive_json_root = candidate if candidate.is_dir() else None
     elif not archive_json_root.is_dir():
         archive_json_root = None
@@ -1036,13 +1172,14 @@ def main(argv: list[str] | None = None) -> int:
 
     result = build_avatar_index(
         repo_root=repo,
-        dataset_version=args.dataset_version,
+        dataset_version=dataset_version,
         model_index_path=model_index.resolve(),
         output_path=output.resolve(),
         archive_json_root=archive_json_root.resolve() if archive_json_root else None,
         equipment_variants_path=equipment_variants.resolve() if equipment_variants else None,
         texture_quality=args.texture_quality,
         force_textures=args.force_textures,
+        strict_coverage=not args.allow_incomplete,
     )
     print(f"wrote avatar index to {output}")
     print("slot counts:")

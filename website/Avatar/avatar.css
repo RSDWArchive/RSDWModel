@@ -77,6 +77,36 @@
   font: inherit;
 }
 
+.slot-filter-input {
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid var(--rsdw-border);
+  border-radius: 8px;
+  background: rgba(12, 12, 15, 0.92);
+  color: var(--rsdw-text);
+  caret-color: var(--rsdw-accent);
+  font: inherit;
+  font-weight: 500;
+  padding: 0.38rem 0.5rem;
+  outline: none;
+}
+
+.slot-filter-input::placeholder {
+  color: var(--rsdw-muted);
+  opacity: 0.78;
+}
+
+.slot-filter-input::-webkit-search-cancel-button {
+  filter: invert(0.8) sepia(0.25) saturate(0.7);
+}
+
+.slot-filter-input:focus {
+  border-color: var(--rsdw-border-strong);
+  box-shadow: 0 0 0 3px var(--rsdw-accent-soft);
+}
+
 .segmented button {
   min-height: 36px;
   cursor: pointer;
