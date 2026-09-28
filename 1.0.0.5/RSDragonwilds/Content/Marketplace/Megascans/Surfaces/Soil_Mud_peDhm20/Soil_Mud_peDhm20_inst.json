@@ -1,0 +1,108 @@
+{
+  "Textures": {
+    "Transmission": "Engine/Content/EngineResources/Black.Black",
+    "Roughness": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Roughness_2K_peDhm20.T_Roughness_2K_peDhm20",
+    "PM_Diffuse": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Albedo_2K_peDhm20.T_Albedo_2K_peDhm20",
+    "Albedo": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Albedo_2K_peDhm20.T_Albedo_2K_peDhm20",
+    "PM_Normals": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Normal_2K_peDhm20.T_Normal_2K_peDhm20",
+    "Normal": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Normal_2K_peDhm20.T_Normal_2K_peDhm20",
+    "Metallic": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Black_D.T_Default_Black_D",
+    "T_Roughness_2K_peDhm20": "RSDragonwilds/Content/Marketplace/Megascans/Surfaces/Soil_Mud_peDhm20/T_Roughness_2K_peDhm20.T_Roughness_2K_peDhm20"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "SSS Color": {
+        "R": 0.60403,
+        "G": 0.990052,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "CCFEFF"
+      },
+      "SSS Controls": {
+        "R": 0.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "00FFFF"
+      },
+      "Albedo Tint": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Specular - Desaturation": {
+        "R": 0.5,
+        "G": 0.5,
+        "B": 0.5,
+        "A": 1.0,
+        "Hex": "BCBCBC"
+      },
+      "Albedo Controls": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Metallic Controls": {
+        "R": 1.0,
+        "G": 0.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FF00FF"
+      },
+      "Tiling/Offset": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FFFF00"
+      },
+      "Detail Normal Tiling/Offset": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FFFF00"
+      }
+    },
+    "Scalars": {
+      "Min Roughness": 0.0,
+      "Max Roughness": 1.0,
+      "Normal Strength": 1.0,
+      "Detail Normal Strength": 1.0,
+      "Detail Normal  Override": 0.0,
+      "Base Specular": 0.5,
+      "Specular From Albedo Override": 0.0,
+      "Rotation Angle": 0.0,
+      "Detail Normal Rotation Angle": 0.0,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "bUsedWithStaticLighting": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "2B6CDE92-AFC030FA-189F0B9E-06F0FE7F",
+      "bIncludedInBaseGame": true,
+      "PhysMaterial": {
+        "ObjectName": "DominionPhysicalMaterial'Mud_Shallow'",
+        "ObjectPath": "RSDragonwilds/Content/Audio/PhysMats/Mud_Shallow.0"
+      },
+      "BasePropertyOverrides": {
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}

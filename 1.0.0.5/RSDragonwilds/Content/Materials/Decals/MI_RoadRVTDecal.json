@@ -1,0 +1,72 @@
+{
+  "Textures": {
+    "Base Color": "RSDragonwilds/Content/Art/Env/Decals/Textures/T_Drypath_BC.T_Drypath_BC",
+    "PM_Normals": "RSDragonwilds/Content/Art/Env/Decals/Textures/T_Drypath_N.T_Drypath_N",
+    "Normal": "RSDragonwilds/Content/Art/Env/Decals/Textures/T_Drypath_N.T_Drypath_N",
+    "Edge Noise": "RSDragonwilds/Content/Art/VFX/Component/Building/Textures/T_Noise_7.T_Noise_7",
+    "World  Noise": "RSDragonwilds/Content/Art/Env/Landscape/Ground/Moss/T_Moss_Noise_O.T_Moss_Noise_O",
+    "Roughtness": "RSDragonwilds/Content/Art/Env/Decals/Textures/T_Drypath_R.T_Drypath_R",
+    "T_Noise_7": "RSDragonwilds/Content/Art/VFX/Component/Building/Textures/T_Noise_7.T_Noise_7",
+    "T_Moss_Noise_O": "RSDragonwilds/Content/Art/Env/Landscape/Ground/Moss/T_Moss_Noise_O.T_Moss_Noise_O"
+  },
+  "Parameters": {
+    "BlendMode": 2,
+    "ShadingModel": 0,
+    "Colors": {
+      "Color Var A": {
+        "R": 1.0,
+        "G": 0.905614,
+        "B": 0.828125,
+        "A": 1.0,
+        "Hex": "FFF5EB"
+      },
+      "Color Var B": {
+        "R": 1.0,
+        "G": 0.905614,
+        "B": 0.828125,
+        "A": 1.0,
+        "Hex": "FFF5EB"
+      }
+    },
+    "Scalars": {
+      "ID_Unique": 1.0,
+      "IsEnd": 0.0,
+      "Edge 1: Noise size M": 10.558136,
+      "Edge 1: Erode Strength": 0.4,
+      "Edge 2: Noise Size": 18.084238,
+      "Edge 2: Erode Distance": 0.096,
+      "Edge Shoftness": 1.72,
+      "WidenPath": 0.0,
+      "EdgeRepeat": 18.077211,
+      "Edge Mask Widge": 0.676964,
+      "World Noise Size": 1680.0808,
+      "World Noise Levels Min": 0.176,
+      "World Noise Levels Max": 0.56,
+      "Edge Mask Min": -0.578754,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {},
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 1
+      },
+      "bUsedWithSplineMeshes": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bCanMaskedBeAssumedOpaque": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "B4A592A2-47CCE6B8-7B04BFAB-75C019DB",
+      "bIncludedInBaseGame": true,
+      "BasePropertyOverrides": {
+        "BlendMode": "EBlendMode::BLEND_TranslucentGreyTransmittance",
+        "ShadingModel": "EMaterialShadingModel::MSM_Unlit",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": true,
+    "HasTopNormals": true,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": true,
+    "IsNull": false
+  }
+}
