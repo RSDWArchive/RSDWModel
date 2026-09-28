@@ -1,0 +1,206 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Shovel_Rune_2H_01_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.029999999329447746,
+        0.029999999329447746,
+        0.029999999329447746
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "name": "MI_Shovel_Rune_2H_01",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Shovel_Rune_2H_01_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "COLOR_0": 3,
+            "COLOR_1": 4
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "COLOR_0": 3,
+                "COLOR_1": 4
+              }
+            }
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 3
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "d2ce1fa69691e572f5f9d54f.webp",
+      "uri": "../../../textures/webp_1024/d2ce1fa69691e572f5f9d54f.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "d642b8612fd0f78491b36bb6.webp",
+      "uri": "../../../textures/webp_1024/d642b8612fd0f78491b36bb6.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "2a9e789d71bee52dc012c9e6.webp",
+      "uri": "../../../textures/webp_1024/2a9e789d71bee52dc012c9e6.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "61489e291a6d20cc15a9c830.webp",
+      "uri": "../../../textures/webp_1024/61489e291a6d20cc15a9c830.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 4355,
+      "max": [
+        0.1593519151210785,
+        1.3506132364273071,
+        0.060038596391677856
+      ],
+      "min": [
+        -0.1602923572063446,
+        0.0036543363239616156,
+        -0.04154963418841362
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4355,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 4355,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5121,
+      "count": 4355,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 4355,
+      "normalized": true,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5123,
+      "count": 21516,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 29575,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 29576,
+      "uri": "model.bin"
+    }
+  ]
+}
