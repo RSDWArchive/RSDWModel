@@ -1,6 +1,6 @@
 {
   "schema": "RSDWModel.CueWarningPolicy.v1",
-  "updated_utc": "2026-09-15T10:56:00+00:00",
+  "updated_utc": "2026-09-28T21:31:08+00:00",
   "rules": [
     {
       "error": "no supported exports found",
@@ -108,6 +108,30 @@
       "reviewed_utc": "2026-09-15T10:56:00+00:00",
       "reviewer": "RSDWMasterPipeline supervised release",
       "expires_after_version": "1.0.0.2"
+    },
+    {
+      "error": "Index was outside the bounds of the array.",
+      "classification": "known_nonfatal",
+      "scope": "version",
+      "version": "1.0.0.5",
+      "reason": "Supervised 1.0.0.5 extraction reproduced the exact same five array-index failures reviewed for 1.0.0.2, with no new package paths or error categories. Archive JSON extraction passed and Model exported 5,117 meshes from 5,197 selected packages. These five missing skeletal meshes remain a documented converter limitation. Permit this version only when inventories, website indexes, WebAssets, and generated-file size checks pass; this does not declare complete skeletal-mesh coverage.",
+      "required_artifact_checks": [
+        "CueExtractManifest.json exists",
+        "SM_Data.json and SK_Data.json exist",
+        "website/model-index.json exists",
+        "website/animation-index.json exists",
+        "WebAssetSizeReport.json has no files over 100 MiB"
+      ],
+      "examples": [
+        "RSDragonwilds/Plugins/GameFeatures/DowdunReach/Content/Art/Skeleton/Weapons/Ranged/Crossbow_Mithril_1H_01/SK_Crossbow_Mithril_1H_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Skeleton/Weapons/Ranged/Crossbow_Dragon_1H_01/SK_Crossbow_Dragon_1H_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/ScornedWilderness/Content/Art/Skeleton/Weapons/Ranged/Crossbow_Runite_1H_01/SK_Crossbow_Runite_1H_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/Mount/Vehicle/Carpet_01/SK_Carpet_01.uasset",
+        "RSDragonwilds/Plugins/GameFeatures/UmbralSands/Content/Art/Skeleton/NPC/Reptilian/Dragon_Fuzan_01/SK_Dragon_Fuzan_01.uasset"
+      ],
+      "reviewed_utc": "2026-09-28T21:31:08+00:00",
+      "reviewer": "RSDWMasterPipeline supervised release",
+      "expires_after_version": "1.0.0.5"
     }
   ]
 }
