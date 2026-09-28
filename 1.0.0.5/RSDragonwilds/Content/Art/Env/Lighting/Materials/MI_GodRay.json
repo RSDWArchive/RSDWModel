@@ -1,0 +1,82 @@
+{
+  "Textures": {
+    "Mask": "RSDragonwilds/Content/Art/Env/Lighting/Texture/T_GodRay_Mask01.T_GodRay_Mask01",
+    "TilingNoiseMask": "RSDragonwilds/Content/Marketplace/Surface_Footsteps/Textures/T_Perlin.T_Perlin",
+    "SecondNoise": "RSDragonwilds/Content/Art/VFX/Component/Texture/T_Cloud_1.T_Cloud_1",
+    "Color noise": "RSDragonwilds/Content/Art/VFX/Component/Texture/T_Cloud_1.T_Cloud_1",
+    "T_GodRay_Mask01": "RSDragonwilds/Content/Art/Env/Lighting/Texture/T_GodRay_Mask01.T_GodRay_Mask01",
+    "T_Cloud_1": "RSDragonwilds/Content/Art/VFX/Component/Texture/T_Cloud_1.T_Cloud_1",
+    "T_Perlin": "RSDragonwilds/Content/Marketplace/Surface_Footsteps/Textures/T_Perlin.T_Perlin"
+  },
+  "Parameters": {
+    "BlendMode": 3,
+    "ShadingModel": 0,
+    "Colors": {
+      "Color_1": {
+        "R": 0.0,
+        "G": 0.351208,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "00A0FF"
+      },
+      "Color_2": {
+        "R": 1.0,
+        "G": 0.190264,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "FF7900"
+      },
+      "speed": {
+        "R": 0.016,
+        "G": 0.016,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "222200"
+      }
+    },
+    "Scalars": {
+      "Length": 2243.867,
+      "Width": 531.816,
+      "FadeDistance": 1460.6854,
+      "Random": 3.105684,
+      "Brightness": 0.615367,
+      "Opacity Clamp Max": 0.063617,
+      "second noise": 0.0,
+      "second noise tile": 0.44052,
+      "Color Contrast": 0.821744,
+      "ExponentIn": 1.0,
+      "Dither Intensity": 0.998417,
+      "Dither Mask Contrast": 0.901804,
+      "Random2": 55.842365,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "Animated": true,
+      "switch\\": true
+    },
+    "Properties": {
+      "ShadingModels": {
+        "ShadingModelField": 1
+      },
+      "TwoSided": true,
+      "bCastRayTracedShadows": false,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "5C0DE99E-432533C2-44F96FA5-B0F5C3F3",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "bOverride_BlendMode": true,
+        "TwoSided": true,
+        "BlendMode": "EBlendMode::BLEND_Additive",
+        "ShadingModel": "EMaterialShadingModel::MSM_Unlit",
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
