@@ -1,0 +1,148 @@
+{
+  "Textures": {
+    "PM_SpecularMasks": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_ORM.T_Floor_ORM",
+    "ARM00": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_ORM.T_Floor_ORM",
+    "PM_Normals": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_N.T_Floor_N",
+    "Normal00": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_N.T_Floor_N",
+    "PM_Diffuse": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_BC.T_Floor_BC",
+    "Albedo00": "RSDragonwilds/Content/Art/Env/Misc/Dungeon/Textures/T_Floor_BC.T_Floor_BC",
+    "BlendMask00": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "BlendMask01": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "ARM01": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_ORM.T_Default_ORM",
+    "Normal01": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Albedo01": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_Gray2_D.T_Default_Gray2_D",
+    "Detail Normal": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_N.T_Default_N",
+    "Mask01": "RSDragonwilds/Content/Marketplace/DepthsBelow/Geometry/Architecture/Textures/T_ArcadeTrim01_M.T_ArcadeTrim01_M",
+    "Opacity00": "RSDragonwilds/Content/Materials/DefaultTextures/T_Default_White_D.T_Default_White_D",
+    "T_ArcadeTrim01_M": "RSDragonwilds/Content/Marketplace/DepthsBelow/Geometry/Architecture/Textures/T_ArcadeTrim01_M.T_ArcadeTrim01_M"
+  },
+  "Parameters": {
+    "BlendMode": 0,
+    "ShadingModel": 0,
+    "Colors": {
+      "Layer Tint01": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Base Tint01": {
+        "R": 0.609375,
+        "G": 0.421649,
+        "B": 0.391233,
+        "A": 0.0,
+        "Hex": "CDAEA8"
+      },
+      "BlendMaskChannel00": {
+        "R": 1.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 0.0,
+        "Hex": "FF0000"
+      },
+      "BlendMaskChannel01": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 1.0,
+        "Hex": "000000"
+      },
+      "Tint02": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Tint03": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 0.0,
+        "Hex": "FFFFFF"
+      },
+      "Tint01": {
+        "R": 1.0,
+        "G": 1.0,
+        "B": 1.0,
+        "A": 1.0,
+        "Hex": "FFFFFF"
+      },
+      "Puddle Tint And Opacity": {
+        "R": 0.147,
+        "G": 0.091,
+        "B": 0.054,
+        "A": 0.5,
+        "Hex": "7F6B5541"
+      }
+    },
+    "Scalars": {
+      "Roughness Max00": 1.0,
+      "Roughness Min00": 0.45,
+      "NormalIntensity": 1.0,
+      "TextureSize": 512.0,
+      "UV00": 1.0,
+      "UV01": 1.0,
+      "BlendBias": 0.5,
+      "BlendContrast": 0.1,
+      "Roughness Max 01": 1.0,
+      "Roughness Min 01": 0.0,
+      "Detail Normal Intensity": 1.0,
+      "Detail Scale": 2.0,
+      "Blend Specular": 0.071,
+      "BlendRoughness": 0.95,
+      "Specular00": 0.5,
+      "Specular01": 0.5,
+      "MeshDecalOffset": -0.5,
+      "RoughnessWhenWet": 0.2,
+      "DesaturationWhenWet": 0.7,
+      "NoiseScale": 0.4,
+      "Rain Ripples Normal Intensity": 0.8,
+      "Puddles Height Mask": 80.0,
+      "Puddles AO Mask opacity": 1.0,
+      "Puddles AO Mask power": 1.0,
+      "CanOverrideWetness": 0.0,
+      "WetnessOverride": 0.0,
+      "Puddles Tiling Mult": 1.0,
+      "Wetness BC Darkening": 0.45,
+      "Wetness Roughness": 0.4,
+      "Wetness Specular": 0.15,
+      "Wetness Porousness (Darken Opacity)": 0.4,
+      "Debug Wetness Amount": 1.0,
+      "Debug Rain Amount": 1.0,
+      "Rain Drip Surface Porousness": 0.6,
+      "Rain Flow Normal Intensity": 1.0,
+      "Rain Drip Normal Intensity": 1.5,
+      "Debug Rain Flow Speed": 50.0,
+      "Debug Wind Intensity": 0.8,
+      "Puddles Scale": 0.6,
+      "RefractionDepthBias": 0.0
+    },
+    "Switches": {
+      "ColorBlend": true,
+      "ColorBlendSingle": true
+    },
+    "Properties": {
+      "bUsedWithStaticLighting": true,
+      "bUsedWithSplineMeshes": true,
+      "bUsedWithInstancedStaticMeshes": true,
+      "bUsedWithNanite": true,
+      "bUseMaterialAttributes": true,
+      "PixelDepthOffsetMode": "EPixelDepthOffsetMode::PDOM_Legacy",
+      "StateId": "769A3463-475B1744-6AE0D1AC-7DCA139B",
+      "bIncludedInBaseGame": true,
+      "bHasStaticPermutationResource": true,
+      "BasePropertyOverrides": {
+        "bOverride_TwoSided": true,
+        "OpacityMaskClipValue": 0.3333
+      }
+    },
+    "HasTopDiffuse": false,
+    "HasTopNormals": false,
+    "HasTopSpecularMasks": false,
+    "HasTopEmissive": false,
+    "IsTranslucent": false,
+    "IsNull": false
+  }
+}
