@@ -1,0 +1,176 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.0.21",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression",
+    "EXT_texture_webp"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "SM_Penguin_Head_LOD0"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "MI_Penguin_01",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "alphaCutoff": 0.3333
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SM_Penguin_Head_LOD0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2,
+                "TEXCOORD_1": 3
+              }
+            }
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      },
+      "sampler": 0
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      },
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/webp",
+      "name": "24bca966699e4b7e9efd218a.webp",
+      "uri": "../../../textures/webp_1024/24bca966699e4b7e9efd218a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "3fd9defc175e45dd6b57b39a.webp",
+      "uri": "../../../textures/webp_1024/3fd9defc175e45dd6b57b39a.webp"
+    },
+    {
+      "mimeType": "image/webp",
+      "name": "82bcbdb7bc3af6d56ceb8143.webp",
+      "uri": "../../../textures/webp_1024/82bcbdb7bc3af6d56ceb8143.webp"
+    }
+  ],
+  "accessors": [
+    {
+      "componentType": 5126,
+      "count": 626,
+      "max": [
+        0.15068739652633667,
+        0.31843453645706177,
+        0.3065600097179413
+      ],
+      "min": [
+        -0.15000605583190918,
+        0.00523027591407299,
+        -0.14048972725868225
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 626,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 626,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 626,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5123,
+      "count": 3183,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 7053,
+      "byteOffset": 0
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7056,
+      "uri": "model.bin"
+    }
+  ]
+}
